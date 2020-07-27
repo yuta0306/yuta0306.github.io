@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
+
+    <title>scikit-learnのmake_blobsに乗り換えよう!!</title>
+    <!-- OGP -->
+    <meta property="og:title" content="scikit-learnのmake_blobsに乗り換えよう!!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/prefer-to-make_blobs" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
+    <meta property="og:site_name" content="ゆうぼうの書跡棚" />
+    <meta property="og:description" content="Pythonではじめる機械学習をやっている最中に、mglearnというライブラリからmake_forge()メソッドでデータを生成することがあったのですが、Warningが出て怒られたので、推奨される形に戻すために互換性のあるコードに直します。" />
+
+    <!-- ※Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- /OGP -->
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="Pythonではじめる機械学習をやっている最中に、mglearnというライブラリからmake_forge()メソッドでデータを生成することがあったのですが、Warningが出て怒られたので、推奨される形に戻すために互換性のあるコードに直します。" />
+    <meta name="author" content="ゆうぼう" />
+    <!-- Favicon -->
+    <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/icon-192x192.png">
+    <!-- /Favicon -->
+</head>
+<body ontouchstart="">
+    <header class="header">
+        <div class="inner-header wrap">
+            <a class="logo link-item" href="https://yuta0306.github.io/blog">
+                <span class="logo-text">ゆうぼうの書跡棚</span>
+            </a>
+        </div>
+        <ul class="navbar wrap">
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/ml" class="link-item">ML</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/programming" class="link-item">Programming</a></li>
+        </ul>
+    </header>    
+    <div class="content">
+        <div class="wrap">
+            <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog/category/programming" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Programming</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">scikit-learnのmake_blobsに乗り換えよう!!</h1>
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2020-07-21">2020-07-21</time></li>
+                            </ul>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">とりあえずmake_forge()をやってみようか</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section2" class="link-item">make_blobsに乗り換える</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section3" class="link-item">まとめ</a>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <p>一応参考書通りに学習するのだが、基本的にはいつも最新版をインストールして使う人間なもので、Warning及びErrorとの戦いはよくあることです。ので、Warningとかが出るとうっと身構えてしまうので、困らないように備忘録かつ反面教師として残しておきます。</p>
+<section id="section1">
+<h2>とりあえずmake_forge()をやってみようか</h2>
+<p>とりあえずmake_forge()でforgeデータを生成し、Warningさせてみますかね。。。</p>
+<p>ライブラリはmglearnを使うのでpip環境がある人は、<strong>pip install mglearn</strong>をしてください。その上で、</p>
+<pre><code>import mglearn    # mglearnのインポート
+X, y = mglearn.datasets.make_forge()    # make_forgeメソッドで生成
+</code></pre>
+<p>以下がアウトプットです。</p>
+<pre><code>/Users/slothyubo/opt/anaconda3/envs/ML/lib/python3.6/site-packages/sklearn/utils/deprecation.py:86: FutureWarning: Function make_blobs is deprecated; Please import make_blobs directly from scikit-learn
+warnings.warn(msg, category=FutureWarning)
+</code></pre>
+<p>なんだかWarningで怒られましたorz</p>
+<p>将来的にsklearn.datasets.makeblobs()と被るよってことを言いたいらしいです。<em>scikit-learnから直接make_blobsをインポートしろ</em>とか言ってますね。
+次からWarningを避けて行きます。</p>
+</section>
+<section id="section2">
+<h2>make_blobsに乗り換える</h2>
+<p>make_blobsメソッドに乗り換えて行きます。これはscikit-learnのdatasetsモジュールに含まれているみたいなので、こいつをインポートして行きます。</p>
+<pre><code>from sklearn.datasets import make_blobs    # これでインポート完了
+</code></pre>
+<p>インポートがうまくいったら次はメソッドを呼び出します。</p>
+<pre><code>X, y = make_blobs()
+</code></pre>
+<p>これでデータがうまく生成されたようです。無事Warningも出てきません!!!
+念のため、Xの型をみて行きます。</p>
+<pre><code>print("X.shape: {}".format(X.shape))
+
+-&gt; X.shape: (100, 2)
+</code></pre>
+<p>詰まるところ、2つの特徴量を持つデータが100個生成されました。100*2の行列ですね。
+make_forge()のときは2つの特徴量のデータが26個を期待していたようなので、データ量が増えたみたいですね。</p>
+</section>
+<section id="section3">
+<h2>まとめ</h2>
+<p>mglearn.datasets.make_forge()でWarningを回避する方法のまとめがこちらです。</p>
+<pre><code>from sklearn.datasets import make_blobs    # インポート
+X, y = make_blobs()    # make_blobsメソッドの実行
+
+"""
+確認のおまけ
+"""
+print("X.shape: {}".format(X.shape))
+
+-&gt; X.shape: (100, 2)    # 特徴量を2つ持つ100個のデータ
+</code></pre>
+<p>scikit-learn周りは、アップデートが早いので少し古い技術書なだけでも、Future Warningが出たり、Errorが出たりすることが多々あります。
+気をつけながら学習をする必要がありそうですね。では、今回はここまで！</p>
+</section>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/blog/tag/ml" class="link-item">ML</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/scikit-learn" class="link-item">Scikit-learn</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/prefer-to-make_blobs" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/prefer-to-make_blobs" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/prefer-to-make_blobs" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/prefer-to-make_blobs" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </article>
+                
+            </main>
+            <aside class="aside">
+                <div class="bio" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <div class="bio-header">
+                        <div class="bio-img">
+                            <img class="bio-img" src="https://yuta0306.github.io/blog/theme/img/bio.jpeg" alt="ゆうぼうの画像">
+                        </div>
+                        <h3 class="bio-name" itemprop="name">ゆうぼう</h3>
+                    </div>
+                    <div class="bio-content">
+                        <p class="bio-detail">Pythonエンジニア認定基礎|データ分析/ G検定2020#2受けます(やばめ😇/ G検定終わったら、pelicanで静的サイトジェネレーターの独自テンプレ開発/ 教師なし学習も始めました/ ナマケモノになるべく勉強漬けの毎日です</p>
+                    </div>
+                    <div class="bio-footer">
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">Web制作依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">スクレイピング依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">その他ご相談依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">お問い合わせ</a>
+                    </div>
+                </div>
+                <div class="social">
+                    <div class="social-header">
+                        <h3>FOLLOW ゆうぼう</h3>
+                    </div>
+                    <div class="social-content">
+                        <ul>
+                            <li><a href="https://twitter.com/Sloth65557166" target="_blank">
+                                <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="ゆうぼうのtwitter">
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- Google Analytics Code Here! -->
+    <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-147997959-2"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-147997959-2');</script>
+
+    <footer class="footer">
+        <div class="wrap">
+            <ul class="footer-link">
+                <li><a href="#" class="link-item">利用規約</a></li>
+                <li><a href="#" class="link-item">お問い合わせ</a></li>
+            </ul>
+            <p class="footer-copy">&copy; Copyright 2020 ゆうぼうの書跡棚 All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
