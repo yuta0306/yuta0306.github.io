@@ -613,6 +613,9 @@ html, body {
     .post-content {
         font-size: .7rem;
     }
+    .post-content p {
+        font-size: 1.05rem;
+    }
     .post-title {
         font-size: 1.3rem;
     }
@@ -623,7 +626,7 @@ html, body {
         font-size: 1.1rem;
     }
     .post-content section p {
-        font-size: .9rem;
+        font-size: 1.05rem;
     }
     .post-content section pre {
         font-size: .95rem;
