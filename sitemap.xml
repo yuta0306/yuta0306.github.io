@@ -1,71 +1,230 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/logistic-with-l1</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/</loc>
+<lastmod>2020-08-01T10:28:19-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/appium-install</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/tags</loc>
+<lastmod>2020-08-01T10:28:19-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/centos-v7-make</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/categories</loc>
+<lastmod>2020-08-01T10:28:19-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/mysql-add-column</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/archives</loc>
+<lastmod>2020-08-01T10:28:19-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/prefer-to-make_blobs</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/sitemap.html</loc>
+<lastmod>2020-08-01T10:28:19-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/mysql-drop-user</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/logistic-with-l1</loc>
+<lastmod>2020-08-01T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/mysql-remote-setup</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/appium-install</loc>
+<lastmod>2020-07-29T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/show_tables-mysql-python</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/centos-v7-make</loc>
+<lastmod>2020-07-29T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/connect-to-mysql-python</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/mysql-add-column</loc>
+<lastmod>2020-07-21T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/mysql-version</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/prefer-to-make_blobs</loc>
+<lastmod>2020-07-21T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/corpus</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/mysql-drop-user</loc>
+<lastmod>2020-07-18T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/only_sp_newline</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/mysql-remote-setup</loc>
+<lastmod>2020-07-18T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
 
-  <url>
-    <loc>https://yuta0306.github.io/blog/touch-device-hover</loc>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://yuta0306.github.io/blog/show_tables-mysql-python</loc>
+<lastmod>2020-07-14T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
 
+<url>
+<loc>https://yuta0306.github.io/blog/connect-to-mysql-python</loc>
+<lastmod>2020-07-13T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
 
+<url>
+<loc>https://yuta0306.github.io/blog/mysql-version</loc>
+<lastmod>2020-07-12T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/corpus</loc>
+<lastmod>2020-07-11T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/only_sp_newline</loc>
+<lastmod>2020-07-10T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/touch-device-hover</loc>
+<lastmod>2020-07-10T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/category/ml.html</loc>
+<lastmod>2020-07-11T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/category/programming.html</loc>
+<lastmod>2020-08-01T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/ml.html</loc>
+<lastmod>2020-08-01T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/python.html</loc>
+<lastmod>2020-08-01T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/scikit-learn.html</loc>
+<lastmod>2020-08-01T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/appium.html</loc>
+<lastmod>2020-07-29T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/nodejs.html</loc>
+<lastmod>2020-07-29T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/centos7.html</loc>
+<lastmod>2020-07-29T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/make.html</loc>
+<lastmod>2020-07-29T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/mysql.html</loc>
+<lastmod>2020-07-21T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/nlp.html</loc>
+<lastmod>2020-07-11T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/html.html</loc>
+<lastmod>2020-07-10T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/tag/css.html</loc>
+<lastmod>2020-07-10T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/author/yuubou.html</loc>
+<lastmod>2020-08-01T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
 
 </urlset>
