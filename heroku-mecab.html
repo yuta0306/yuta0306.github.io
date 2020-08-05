@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
+
+    <title>HerokuにMecCabインストールで困った!!</title>
+    <!-- OGP -->
+    <meta property="og:title" content="HerokuにMecCabインストールで困った!!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/heroku-mecab" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
+    <meta property="og:site_name" content="ゆうぼうの書跡棚" />
+    <meta property="og:description" content="MeCabを利用したWebアプリケーションをHerokuにデプロイしようとして、環境をrequirements.txtにまとめていたのですが、、、どうしてもエラーが出てインストールが止まってしまうことがありました。原因は、Mecabだったようなので、エラー回避方法を共有します。" />
+
+    <!-- ※Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- /OGP -->
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="MeCabを利用したWebアプリケーションをHerokuにデプロイしようとして、環境をrequirements.txtにまとめていたのですが、、、どうしてもエラーが出てインストールが止まってしまうことがありました。原因は、Mecabだったようなので、エラー回避方法を共有します。" />
+    <meta name="author" content="ゆうぼう" />
+    <!-- Favicon -->
+    <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/icon-192x192.png">
+    <!-- /Favicon -->
+</head>
+<body ontouchstart="">
+    <header class="header">
+        <div class="inner-header wrap">
+            <a class="logo link-item" href="https://yuta0306.github.io/blog">
+                <span class="logo-text">ゆうぼうの書跡棚</span>
+            </a>
+        </div>
+        <ul class="navbar wrap">
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/ml" class="link-item">ML</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/programming" class="link-item">Programming</a></li>
+        </ul>
+    </header>    
+    <div class="content">
+        <div class="wrap">
+            <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog/category/programming" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Programming</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">HerokuにMecCabインストールで困った!!</h1>
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2020-08-05">2020-08-05</time></li>
+                            </ul>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">とりあえずrequirements.txtを作成</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section2" class="link-item">Herokuへログインしてデプロイ</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section3" class="link-item">悪さをするのはMecabだった！？</a>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <p>MeCabを利用したWebアプリケーションをHerokuにデプロイしようとして、環境をrequirements.txtにまとめていたのですが、、、どうしてもエラーが出てインストールが止まってしまうことがありました。原因は、Mecabだったようなので、エラー回避方法を共有します。</p>
+<p>前提条件として、</p>
+<ul>
+<li>mecabを<em>pip mecab</em>でインストール済み</li>
+<li>HerokuをCLIでいじる準備ができている</li>
+</ul>
+<section id="section1">
+<h2>とりあえずrequirements.txtを作成</h2>
+<p>まあ、pip listしてまず現環境におけるライブラリをみていきましょう。</p>
+<p>例えばこんな構成だとします。</p>
+<pre><code>(myvenv)$ ~ pip list
+Package                Version
+---------------------- -------------------
+certifi                2020.6.20
+chardet                3.0.4
+click                  7.1.2
+Flask                  1.1.2
+gunicorn               20.0.4
+idna                   2.10
+itsdangerous           1.1.0
+Jinja2                 2.11.2
+MarkupSafe             1.1.1
+mecab                  0.996.2
+mysql-connector-python 8.0.21
+oauthlib               3.1.0
+pip                    20.1.1
+protobuf               3.12.4
+requests               2.24.0
+requests-oauthlib      1.3.0
+setuptools             49.2.0.post20200714
+six                    1.15.0
+urllib3                1.25.10
+Werkzeug               1.0.1
+wheel                  0.34.2
+</code></pre>
+<p>中段くらいにmecabのバージョン0.996.2がありますね。それではこれをもとに、requirements.txtを作成していきます。</p>
+<pre><code>(myvenv)$ ~ pip freeze &gt; requirements.txt
+</code></pre>
+<p>これで下準備OKです</p>
+</section>
+<section id="section2">
+<h2>Herokuへログインしてデプロイ</h2>
+<p>それではコマンドラインを開きまして、デプロイしていきましょう。</p>
+<pre><code>$ ~ heroku % login
+</code></pre>
+<p>これを打つと、認証画面的にブラウザが勝手に開きます。それでログインできていれば、この画面を消してターミナルに戻る旨の内容が書かれています。</p>
+<p>それで、成功したとして、次は</p>
+<pre><code>$ ~ % heroku git:clone -a your-app-name
+$ ~ % cd your-app-directory
+
+$ your-app-directory % git add .
+$ your-app-directorygit % commit -am "deploy!!"
+$ your-app-directorygit % push heroku master
+</code></pre>
+<p>こうするとPythonの場合、<strong>runtime.txt</strong>からPythonのバージョンを、<strong>requirements.txt</strong>から依存ライブラリのパッケージを確認して、インストールしていくと次のような問題が発生します。</p>
+<pre><code>-----&gt; Python app detected
+-----&gt; Installing python-3.8.5
+-----&gt; Installing pip 20.0.2, setuptools 39.0.1 and wheel 0.34.2
+-----&gt; Installing SQLite3
+-----&gt; Installing requirements with pip
+    Collecting certifi==2020.6.20
+        Downloading certifi-2020.6.20-py2.py3-none-any.whl (156 kB)
+    Collecting chardet==3.0.4
+            ( 中略 )
+    Collecting mecab==0.996.2
+        Downloading mecab-0.996.2.tar.gz (62 kB)
+        ERROR: Command errored out with exit status 1:
+            command: /app/.heroku/python/bin/python -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-kr1kq54r/
+            mecab/setup.py'"'"'; __file__='"'"'/tmp/pip-install-kr1kq54r/mecab/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)
+            (__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' 
+            egg_info --egg-base /tmp/pip-install-kr1kq54r/mecab/pip-egg-info
+                cwd: /tmp/pip-install-kr1kq54r/mecab/
+        Complete output (10 lines):
+        /bin/sh: 1: mecab-config: not found
+        Traceback (most recent call last):
+            File "&lt;string&gt;", line 1, in &lt;module&gt;
+            File "/tmp/pip-install-kr1kq54r/mecab/setup.py", line 53, in &lt;module&gt;
+            include_dirs=cmd2("mecab-config --inc-dir"),
+            File "/tmp/pip-install-kr1kq54r/mecab/setup.py", line 19, in cmd2
+            return cmd1(strings).split()
+            File "/tmp/pip-install-kr1kq54r/mecab/setup.py", line 15, in cmd1
+            return os.popen(strings).readlines()[0].rstrip()
+        IndexError: list index out of range
+        ----------------------------------------
+    ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+    !     Push rejected, failed to compile Python app.
+    !     Push failed
+</code></pre>
+<p>こんな感じに怒られるわけですよ...orz</p>
+</section>
+<section id="section3">
+<h2>悪さをするのはMecabだった！？</h2>
+<p>どうやら悪さをしていたのは、<strong>MeCab</strong>だったようです。再度requirements.txtの一部を確認します。</p>
+<pre><code>requirements.txt   |
+----------------------------
+certifi==2020.6.20
+chardet==3.0.4
+click==7.1.2
+Flask==1.1.2
+gunicorn==20.0.4
+idna==2.10
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+mecab==0.996.2
+..................
+</code></pre>
+<p>どうやら調べてみると、このmecabで指定しているのがよくないみたいですね...</p>
+<p>というわけで、この<strong>mecab==0.996.2</strong>というのをどかしてやりますね。どうするかと言いますと、<br />
+<strong>mecab-python</strong>に変えてあげます。特にバージョンは指定しなくてもよかったです。</p>
+<p>ということで直します。</p>
+<pre><code>requirements.txt   |
+----------------------------
+..................
+..................
+mecab-python       # mecab==0.996.2 を修正
+..................
+</code></pre>
+<p>これでうまくいくはずです！！</p>
+<p>もしうまくいかなかったら、打ち損じとか全角になってないか、他のライブラリでのエラー等を疑うといいと思います。</p>
+<p>これぬまにハマりそうなので、同じエラーに悩む人がいたら是非参考にしてください。</p>
+</section>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/mecab" class="link-item">MeCab</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/heroku-mecab" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/heroku-mecab" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/heroku-mecab" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/heroku-mecab" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </article>
+                
+            </main>
+            <aside class="aside">
+                <div class="bio" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <div class="bio-header">
+                        <div class="bio-img">
+                            <img class="bio-img" src="https://yuta0306.github.io/blog/theme/img/bio.jpeg" alt="ゆうぼうの画像">
+                        </div>
+                        <h3 class="bio-name" itemprop="name">ゆうぼう</h3>
+                    </div>
+                    <div class="bio-content">
+                        <p class="bio-detail">Pythonエンジニア認定基礎|データ分析/ G検定2020#2受けます(やばめ😇/ G検定終わったら、pelicanで静的サイトジェネレーターの独自テンプレ開発/ 教師なし学習も始めました/ ナマケモノになるべく勉強漬けの毎日です</p>
+                    </div>
+                    <div class="bio-footer">
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">Web制作依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">スクレイピング依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">その他ご相談依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">お問い合わせ</a>
+                    </div>
+                </div>
+                <div class="social">
+                    <div class="social-header">
+                        <h3>FOLLOW ゆうぼう</h3>
+                    </div>
+                    <div class="social-content">
+                        <ul>
+                            <li><a href="https://twitter.com/Sloth65557166" target="_blank">
+                                <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="ゆうぼうのtwitter">
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- Google Analytics Code Here! -->
+    <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-147997959-2"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-147997959-2');</script>
+
+    <footer class="footer">
+        <div class="wrap">
+            <ul class="footer-link">
+                <li><a href="#" class="link-item">利用規約</a></li>
+                <li><a href="#" class="link-item">お問い合わせ</a></li>
+            </ul>
+            <p class="footer-copy">&copy; Copyright 2020 ゆうぼうの書跡棚 All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
