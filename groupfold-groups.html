@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
+
+    <title>Scikit-learnのGroupKFoldでgroups配列でWarning発生!!</title>
+    <!-- OGP -->
+    <meta property="og:title" content="Scikit-learnのGroupKFoldでgroups配列でWarning発生!!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/groupfold-groups" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
+    <meta property="og:site_name" content="ゆうぼうの書跡棚" />
+    <meta property="og:description" content="Pythonで始める機械学習でお勉強中にFutureWarningに遭遇しました。GroupKFoldで起こったのですが、とりあえず今は使えるもののこの先使えなくなることが示されているので修正します。" />
+
+    <!-- ※Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- /OGP -->
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="Pythonで始める機械学習でお勉強中にFutureWarningに遭遇しました。GroupKFoldで起こったのですが、とりあえず今は使えるもののこの先使えなくなることが示されているので修正します。" />
+    <meta name="author" content="ゆうぼう" />
+    <!-- Favicon -->
+    <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/icon-192x192.png">
+    <!-- /Favicon -->
+</head>
+<body ontouchstart="">
+    <header class="header">
+        <div class="inner-header wrap">
+            <a class="logo link-item" href="https://yuta0306.github.io/blog">
+                <span class="logo-text">ゆうぼうの書跡棚</span>
+            </a>
+        </div>
+        <ul class="navbar wrap">
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/ml" class="link-item">ML</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/programming" class="link-item">Programming</a></li>
+        </ul>
+    </header>    
+    <div class="content">
+        <div class="wrap">
+            <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog/category/programming" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Programming</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">Scikit-learnのGroupKFoldでgroups配列でWarning発生!!</h1>
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2020-08-18">2020-08-18</time></li>
+                            </ul>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">sudo yum install make -y</a>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <p>Pythonで始める機械学習でお勉強中にFutureWarningに遭遇しました。GroupKFoldで起こったのですが、とりあえず今は使えるもののこの先使えなくなることが示されているので修正します。</p>
+<section id="section1">
+<h2>FutureWarningを発生させてみる</h2>
+<p>少し前の書籍の型に合わせてコードを書いてみます。~FutureWarning~が発生するはずです。</p>
+<pre><code>@python
+
+from sklearn.model_selection import GroupKFold  # グループ交差検証
+from sklearn.datasets import make_blobs  # 合成データ生成
+
+# 合成データセットを生成
+X, y = make_blobs(n_samples=10, random_state=0)
+# 最初の2サンプルが同じグループに、次の4つが同じグループに
+groups = [0, 0, 1, 1, 1, 1, 3, 3, 4, 4]
+scores = cross_val_score(logreg, X, y, groups, cv=GroupKFold(n_splits=3))
+print("Cross-validation scores:\n{}".format(scores))
+</code></pre>
+<p>おそらくこの型が少し前の技術書の仕様だと思います。<em>Pythonで始める機械学習</em>もこの型でした。</p>
+<p>結果をみてみます。</p>
+<pre><code>Cross-validation scores:
+[0.5 1.  1. ]
+/Users/user/opt/anaconda3/envs/ML/lib/python3.6/site-packages/sklearn/utils/validation.py:71: 
+FutureWarning: Pass groups=[0, 0, 1, 1, 1, 1, 3, 3, 4, 4] as keyword args. 
+From version 0.25 passing these as positional arguments will result in an error
+FutureWarning)
+</code></pre>
+<p>こんな感じのWarningが発生します。</p>
+<p>最後の方を読んでみると、<strong>バージョン0.25からはgroups配列は位置引数としてだとエラーになるよ</strong>みたいな感じのことを言っています。改善方法は至ってシンプルです。<br />
+次に示します。</p>
+</section>
+<section id="section2">
+<h2>改善策</h2>
+<p>改善策は至ってシンプルです。</p>
+<p><strong>groups=(グループ配列)</strong>にすればいいのです。直したコードを示します。</p>
+<pre><code>@python
+
+from sklearn.model_selection import GroupKFold  # グループ交差検証
+from sklearn.datasets import make_blobs  # 合成データ生成
+
+# 合成データセットを生成
+X, y = make_blobs(n_samples=10, random_state=0)
+# 最初の2サンプルが同じグループに、次の4つが同じグループに
+groups = [0, 0, 1, 1, 1, 1, 3, 3, 4, 4]
+scores = cross_val_score(logreg, X, y, groups=groups, cv=GroupKFold(n_splits=3))
+print("Cross-validation scores:\n{}".format(scores))
+</code></pre>
+<p>直したのはこの部分</p>
+<pre><code>scores = cross_val_score(logreg, X, y, groups=groups, cv=GroupKFold(n_splits=3))
+</code></pre>
+<p>単に<em>groups=groups</em>にするだけです。これだけで直ります。</p>
+<p>やはりFutureWarningが多いですね〜この周りは。</p>
+</section>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/blog/tag/scikit-learn" class="link-item">Scikit-learn</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/groupfold-groups" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/groupfold-groups" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/groupfold-groups" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/groupfold-groups" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </article>
+                
+            </main>
+            <aside class="aside">
+                <div class="bio" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <div class="bio-header">
+                        <div class="bio-img">
+                            <img class="bio-img" src="https://yuta0306.github.io/blog/theme/img/bio.jpeg" alt="ゆうぼうの画像">
+                        </div>
+                        <h3 class="bio-name" itemprop="name">ゆうぼう</h3>
+                    </div>
+                    <div class="bio-content">
+                        <p class="bio-detail">Pythonエンジニア認定基礎|データ分析/ G検定2020#2受けます(やばめ😇/ G検定終わったら、pelicanで静的サイトジェネレーターの独自テンプレ開発/ 教師なし学習も始めました/ ナマケモノになるべく勉強漬けの毎日です</p>
+                    </div>
+                    <div class="bio-footer">
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">Web制作依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">スクレイピング依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">その他ご相談依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">お問い合わせ</a>
+                    </div>
+                </div>
+                <div class="social">
+                    <div class="social-header">
+                        <h3>FOLLOW ゆうぼう</h3>
+                    </div>
+                    <div class="social-content">
+                        <ul>
+                            <li><a href="https://twitter.com/Sloth65557166" target="_blank">
+                                <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="ゆうぼうのtwitter">
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- Google Analytics Code Here! -->
+    <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-147997959-2"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-147997959-2');</script>
+
+    <footer class="footer">
+        <div class="wrap">
+            <ul class="footer-link">
+                <li><a href="#" class="link-item">利用規約</a></li>
+                <li><a href="#" class="link-item">お問い合わせ</a></li>
+            </ul>
+            <p class="footer-copy">&copy; Copyright 2020 ゆうぼうの書跡棚 All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
