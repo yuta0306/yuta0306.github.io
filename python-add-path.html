@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
+
+    <title>自作のモジュールを他のディレクトリから持ってきたい!!</title>
+    <!-- OGP -->
+    <meta property="og:title" content="自作のモジュールを他のディレクトリから持ってきたい!!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/python-add-path" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
+    <meta property="og:site_name" content="ゆうぼうの書跡棚" />
+    <meta property="og:description" content="機械学習の学習中に、他のディレクトリで作った自作関数が使いたかったのだけど、うまくimportする方法に悩みました。pythonがモジュールを探すpathをセットしてあげるだけで済んだので、その方法を解説します。" />
+
+    <!-- ※Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- /OGP -->
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="機械学習の学習中に、他のディレクトリで作った自作関数が使いたかったのだけど、うまくimportする方法に悩みました。pythonがモジュールを探すpathをセットしてあげるだけで済んだので、その方法を解説します。" />
+    <meta name="author" content="ゆうぼう" />
+    <!-- Favicon -->
+    <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/icon-192x192.png">
+    <!-- /Favicon -->
+</head>
+<body ontouchstart="">
+    <header class="header">
+        <div class="inner-header wrap">
+            <a class="logo link-item" href="https://yuta0306.github.io/blog">
+                <span class="logo-text">ゆうぼうの書跡棚</span>
+            </a>
+        </div>
+        <ul class="navbar wrap">
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/ml" class="link-item">ML</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/programming" class="link-item">Programming</a></li>
+        </ul>
+    </header>    
+    <div class="content">
+        <div class="wrap">
+            <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog/category/programming" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Programming</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">自作のモジュールを他のディレクトリから持ってきたい!!</h1>
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2020-09-03">2020-09-03</time></li>
+                            </ul>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">やりたかったこと</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section2" class="link-item">【 解決策 】Pathにセットしてあげる</a>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <p>他のディレクトリで作ったモジュールの<em>import</em>をさせたかったのですが、その方法がイマイチわからなくて詰まりました。</p>
+<p>下の階層にあるなら"<em>.</em>"でつなげばいいのですが、階層を遡る必要があると困ったので解決策を提示します。</p>
+<p>今回は下層にあるとして進めます。階層が深くなると.(ドット)による記述が無駄に長くなるので、ある程度この記述で冗長な記述も避けられるかな？？と思ったからです。</p>
+<section id="section1">
+<h2>やりたかったこと</h2>
+<p>他のディレクトリ内のモジュールを引っ張ってくる。</p>
+<p>階層構造は以下のようにしてみる</p>
+<pre><code>--- target
+  |      |
+  |      |--- sample.py
+  |
+  |--- main.py  &lt;-- 今ここ
+</code></pre>
+<p>で、直感的にやりたかったのがこれ</p>
+<pre><code>@ main.py
+from target.sample import Sample
+</code></pre>
+<p>これはできるんだけど、もし<br />
+<em>from target.target1.target2.sample import Sample</em><br />
+とかだったらすごく萎えるよね...</p>
+</section>
+<section id="section2">
+<h2>【 解決策 】Pathにセットしてあげる</h2>
+<p><strong>sysとosを使って解決します!!</strong></p>
+<p>先ほどの階層構造に則ると、参照して欲しいディレクトリはtargetですね。</p>
+<p>先に手順を話すと以下になります。</p>
+<ol>
+<li>sysとosのimport</li>
+<li>os.getcwd()でカレントディレクトリを取得(今回は同じ階層のディレクトリにつながっているため)</li>
+<li>sys.path.append()でPathを追加</li>
+</ol>
+<p>この手順にのっとって書いてみます</p>
+<pre><code>@ main.py
+
+# 手順1
+import sys
+import os
+
+# 手順2 &amp; 3
+sys.path.append(os.getcwd() + 'target')
+from sample import Sample
+</code></pre>
+<p>一応これで対応できました。</p>
+<p>もし仮に4層、5層...と続いてもpathをセットしておけば、探してくれるので大丈夫です。</p>
+<p>階層を遡るときは、その都度pathにいれるパスを変えてみてください!!</p>
+</section>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/python-add-path" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/python-add-path" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/python-add-path" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/python-add-path" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </article>
+                
+            </main>
+            <aside class="aside">
+                <div class="bio" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <div class="bio-header">
+                        <div class="bio-img">
+                            <img class="bio-img" src="https://yuta0306.github.io/blog/theme/img/bio.jpeg" alt="ゆうぼうの画像">
+                        </div>
+                        <h3 class="bio-name" itemprop="name">ゆうぼう</h3>
+                    </div>
+                    <div class="bio-content">
+                        <p class="bio-detail">Pythonエンジニア認定基礎|データ分析/ G検定2020#2受けます(やばめ😇/ G検定終わったら、pelicanで静的サイトジェネレーターの独自テンプレ開発/ 教師なし学習も始めました/ ナマケモノになるべく勉強漬けの毎日です</p>
+                    </div>
+                    <div class="bio-footer">
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">Web制作依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">スクレイピング依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">その他ご相談依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">お問い合わせ</a>
+                    </div>
+                </div>
+                <div class="social">
+                    <div class="social-header">
+                        <h3>FOLLOW ゆうぼう</h3>
+                    </div>
+                    <div class="social-content">
+                        <ul>
+                            <li><a href="https://twitter.com/Sloth65557166" target="_blank">
+                                <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="ゆうぼうのtwitter">
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- Google Analytics Code Here! -->
+    <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-147997959-2"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-147997959-2');</script>
+
+    <footer class="footer">
+        <div class="wrap">
+            <ul class="footer-link">
+                <li><a href="#" class="link-item">利用規約</a></li>
+                <li><a href="#" class="link-item">お問い合わせ</a></li>
+            </ul>
+            <p class="footer-copy">&copy; Copyright 2020 ゆうぼうの書跡棚 All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
