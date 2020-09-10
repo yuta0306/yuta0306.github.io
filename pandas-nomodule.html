@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
+
+    <title>pickleでロードした時pandasがあるのに"No module ~~"で悩んだ件について</title>
+    <!-- OGP -->
+    <meta property="og:title" content="pickleでロードした時pandasがあるのに"No module ~~"で悩んだ件について" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/pandas-nomodule" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
+    <meta property="og:site_name" content="ゆうぼうの書跡棚" />
+    <meta property="og:description" content="Macは普段使いなので、あまり情報収集に使いたくなかったために、常時Windowsのノートパソコンを情報収集ボットとしようとしました。その時コードの共有をDropboxを用いたのですが、なぜかいくらpandasを入れても"No module named 'pandas.core.internals.managers'; 'pandas.core.internals' is not a package"というエラーが。。。その原因がわかったのでそのお話をします。" />
+
+    <!-- ※Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- /OGP -->
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="Macは普段使いなので、あまり情報収集に使いたくなかったために、常時Windowsのノートパソコンを情報収集ボットとしようとしました。その時コードの共有をDropboxを用いたのですが、なぜかいくらpandasを入れても"No module named 'pandas.core.internals.managers'; 'pandas.core.internals' is not a package"というエラーが。。。その原因がわかったのでそのお話をします。" />
+    <meta name="author" content="ゆうぼう" />
+    <!-- Favicon -->
+    <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/icon-192x192.png">
+    <!-- /Favicon -->
+</head>
+<body ontouchstart="">
+    <header class="header">
+        <div class="inner-header wrap">
+            <a class="logo link-item" href="https://yuta0306.github.io/blog">
+                <span class="logo-text">ゆうぼうの書跡棚</span>
+            </a>
+        </div>
+        <ul class="navbar wrap">
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/javascript" class="link-item">JavaScript</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/linux" class="link-item">Linux</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/ml" class="link-item">ML</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/python" class="link-item">Python</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/sql" class="link-item">SQL</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/web" class="link-item">Web</a></li>
+        </ul>
+    </header>    
+    <div class="content">
+        <div class="wrap">
+            <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog/category/python" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Python</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">pickleでロードした時pandasがあるのに"No module ~~"で悩んだ件について</h1>
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2020-09-10">2020-09-10</time></li>
+                            </ul>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">"No module"エラーの発生!?</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section2" class="link-item">再度データを作り直す</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section3" class="link-item">前の環境を調べてinstallし直す</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section4" class="link-item">前の環境にrequirements.txtを作成しておいて同じ環境を立てる</a>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <p>Macは普段使いなので、あまり情報収集に使いたくなかったために、常時Windowsのノートパソコンを情報収集ボットとしようとしました。</p>
+<p>その時コードの共有をDropboxを用いたのですが、なぜかいくらpandasを入れても<br />
+<em>"No module named 'pandas.core.internals.managers'; 'pandas.core.internals' is not a package"</em><br />
+というエラーが...</p>
+<p>その原因がわかったのでそのお話をします。</p>
+<section id="section1">
+<h2>"No module"エラーの発生!?</h2>
+<p>前述したとおり、環境の違う状態でコードを共有したわけです。</p>
+<p>確認してみると、やはりpandasのバージョンが違っていました。他の記事でも採算を話をしていますが、機械学習によく使われるライブラリたちは特段アップデートが早く、さらに大幅な変更も多い印象です。</p>
+<p>実際に起こった原因は、<strong>pickleに入れたpandasとロード先のpandasのバージョンの違い</strong>でした。</p>
+<p>そのバージョンが違うと次のようなエラーが出ることがあります。</p>
+<pre><code class="terminal">&quot;No module named 'pandas.core.internals.managers'; 'pandas.core.internals' is not a package&quot;
+</code></pre>
+
+<p>上のようなモジュールがないよ！！</p>
+<p>と怒られるわけです。</p>
+<p>なので、次の解決策を示します</p>
+<ul>
+<li>再度データを作り直す</li>
+<li>前の環境を調べてinstallし直す</li>
+<li>前の環境にrequirements.txtを作成しておいて同じ環境を立てる</li>
+</ul>
+<p>次のセクションでお話をします。</p>
+</section>
+<section id="section2">
+<h2>再度データを作り直す</h2>
+<p>このやり方はいうまでもないですが、もう一度作り直す方法です。</p>
+<p>前の環境がわからないなど、どうしようもない時はこの方法で太刀打ちすれば良いかと思います</p>
+<p>```@python
+import pandas as pd
+import pickle</p>
+<p>df = pd.DataFrame()
+with open('sample.pickle', 'wb') as f:
+    pickle.load(df, f)</p>
+<pre><code>
+といったように、現状の環境で作り直す方法です。
+
+&lt;/section&gt;
+
+&lt;section markdown=1 id=&quot;section3&quot;&gt;
+##前の環境を調べてinstallし直す
+
+前の環境でのバージョンが分かっていれば入れ直せば良いでしょう。
+
+```@terminal
+$ pip install pandas=='your pandas version'
+</code></pre>
+
+<p>これで特定のバージョンのpandasを入手できるはずです。</p>
+</section>
+<section id="section4">
+<h2>前の環境にrequirements.txtを作成しておいて同じ環境を立てる</h2>
+<p>前の環境が目の前にあるならば、以下のようにして<em>requirements.txt</em>を作成してしまえば早いでしょう。</p>
+<p>```@terminal
+$ pip freeze &gt; requirements.txt</p>
+<pre><code>
+```@terminal
+# 新しい環境にて
+$ pip install -r requirements.txt
+</code></pre>
+
+<p>これで以前と同じ環境が整うので、心配なく動くと思います。</p>
+</section>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/pandas" class="link-item">Pandas</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/pandas-nomodule" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/pandas-nomodule" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/pandas-nomodule" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/pandas-nomodule" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </article>
+                
+            </main>
+            <aside class="aside">
+                <div class="bio" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <div class="bio-header">
+                        <div class="bio-img">
+                            <img class="bio-img" src="https://yuta0306.github.io/blog/theme/img/bio.jpeg" alt="ゆうぼうの画像">
+                        </div>
+                        <h3 class="bio-name" itemprop="name">ゆうぼう</h3>
+                    </div>
+                    <div class="bio-content">
+                        <p class="bio-detail">Pythonエンジニア認定基礎|データ分析/ G検定2020#2受けます(やばめ😇/ G検定終わったら、pelicanで静的サイトジェネレーターの独自テンプレ開発/ 教師なし学習も始めました/ ナマケモノになるべく勉強漬けの毎日です</p>
+                    </div>
+                    <div class="bio-footer">
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">Web制作依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">スクレイピング依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">その他ご相談依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">お問い合わせ</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>サイト内検索</h3>
+                    <script async src="https://cse.google.com/cse.js?cx=10a5bc44e4224ddfc"></script><div class="gcse-searchbox-only"></div>
+                </div>
+
+                <div class="social">
+                    <div class="social-header">
+                        <h3>FOLLOW ゆうぼう</h3>
+                    </div>
+                    <div class="social-content">
+                        <ul>
+                            <li><a href="https://twitter.com/Sloth65557166" target="_blank">
+                                <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="ゆうぼうのtwitter">
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- Google Analytics Code Here! -->
+    <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-147997959-2"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-147997959-2');</script>
+
+    <footer class="footer">
+        <div class="wrap">
+            <ul class="footer-link">
+                <li><a href="#" class="link-item">利用規約</a></li>
+                <li><a href="#" class="link-item">お問い合わせ</a></li>
+            </ul>
+            <p class="footer-copy">&copy; Copyright 2020 ゆうぼうの書跡棚 All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
