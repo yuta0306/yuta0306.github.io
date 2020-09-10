@@ -123,24 +123,20 @@
 <h2>再度データを作り直す</h2>
 <p>このやり方はいうまでもないですが、もう一度作り直す方法です。</p>
 <p>前の環境がわからないなど、どうしようもない時はこの方法で太刀打ちすれば良いかと思います</p>
-<p>```@python
-import pandas as pd
-import pickle</p>
-<p>df = pd.DataFrame()
+<pre><code class="python">import pandas as pd
+import pickle
+
+df = pd.DataFrame()
 with open('sample.pickle', 'wb') as f:
-    pickle.load(df, f)</p>
-<pre><code>
-といったように、現状の環境で作り直す方法です。
+    pickle.load(df, f)
+</code></pre>
 
-&lt;/section&gt;
-
-&lt;section markdown=1 id=&quot;section3&quot;&gt;
-##前の環境を調べてinstallし直す
-
-前の環境でのバージョンが分かっていれば入れ直せば良いでしょう。
-
-```@terminal
-$ pip install pandas=='your pandas version'
+<p>といったように、現状の環境で作り直す方法です。</p>
+</section>
+<section id="section3">
+<h2>前の環境を調べてinstallし直す</h2>
+<p>前の環境でのバージョンが分かっていれば入れ直せば良いでしょう。</p>
+<pre><code class="terminal">$ pip install pandas=='your pandas version'
 </code></pre>
 
 <p>これで特定のバージョンのpandasを入手できるはずです。</p>
@@ -148,11 +144,10 @@ $ pip install pandas=='your pandas version'
 <section id="section4">
 <h2>前の環境にrequirements.txtを作成しておいて同じ環境を立てる</h2>
 <p>前の環境が目の前にあるならば、以下のようにして<em>requirements.txt</em>を作成してしまえば早いでしょう。</p>
-<p>```@terminal
-$ pip freeze &gt; requirements.txt</p>
-<pre><code>
-```@terminal
-# 新しい環境にて
+<pre><code class="terminal">$ pip freeze &gt; requirements.txt
+</code></pre>
+
+<pre><code class="terminal"># 新しい環境にて
 $ pip install -r requirements.txt
 </code></pre>
 
