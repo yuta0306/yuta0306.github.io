@@ -105,6 +105,25 @@
 <p>前述したとおり、環境の違う状態でコードを共有したわけです。</p>
 <p>確認してみると、やはりpandasのバージョンが違っていました。他の記事でも採算を話をしていますが、機械学習によく使われるライブラリたちは特段アップデートが早く、さらに大幅な変更も多い印象です。</p>
 <p>実際に起こった原因は、<strong>pickleに入れたpandasとロード先のpandasのバージョンの違い</strong>でした。</p>
+<p>実際の僕のバージョンは以下でした。</p>
+<table>
+<thead>
+<tr>
+<th>対象</th>
+<th>pandasのバージョン</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>以前のpandas</td>
+<td>0.24.2</td>
+</tr>
+<tr>
+<td>移植先のpandas</td>
+<td>0.23.1</td>
+</tr>
+</tbody>
+</table>
 <p>そのバージョンが違うと次のようなエラーが出ることがあります。</p>
 <pre><code class="terminal">&quot;No module named 'pandas.core.internals.managers'; 'pandas.core.internals' is not a package&quot;
 </code></pre>
