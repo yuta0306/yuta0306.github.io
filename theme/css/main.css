@@ -585,6 +585,16 @@ html, body {
 .twitter > .twitter-timeline {
     width: 100%;
 }
+/* Categories */
+.categories, .tags {
+    margin: 5px;
+    list-style-type: none;
+    display: inline-block;
+}
+.categories a, .tags a {
+    text-decoration: none;
+    color: #5ba9f7;
+}
 
 /* Media query */
 /* max-width 768px */
