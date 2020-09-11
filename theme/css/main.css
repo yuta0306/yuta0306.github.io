@@ -587,6 +587,7 @@ html, body {
 }
 /* Categories */
 .categories, .tags {
+    padding: 0;
     margin: 5px;
     list-style-type: none;
     display: inline-block;
