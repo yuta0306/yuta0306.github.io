@@ -303,14 +303,14 @@ html, body {
 .post-content section table td:hover {
     background: #d9d9d9;
 }
-.post-content section pre {
+/* .post-content section pre {
     padding: 14px;
     width: 95%;
     background: #364549;
     color: #8bdf4c;
     font-size: 1.2rem;
     overflow: scroll;
-}
+} */
 
 /* TOC */
 .toc {
@@ -657,9 +657,9 @@ html, body {
     .post-content section p {
         font-size: 1.05rem;
     }
-    .post-content section pre {
+    /* .post-content section pre {
         font-size: .95rem;
-    }
+    } */
     /* TOC */
     .toc h2 {
         font-size: 1.2rem;
