@@ -113,13 +113,14 @@ driver.execute_script('Your Procedure')
 <section id="section2">
 <h2>実際にボタンをクリックしてみる!</h2>
 <p>実際にJSのスクリプトと合わせて、<em>#button</em>を持つ要素をクリックしてみましょう。</p>
-<p>``python
-<span>from selenium import webdriver</span>
-import chromedriver_binary</p>
-<p>driver = webdriver.Chrome()
+<pre><code class="python">&lt;span markdown=1&gt;from selenium import webdriver&lt;/span&gt;
+import chromedriver_binary
+
+driver = webdriver.Chrome()
 driver.get('https://www.example.com/')
-driver.execute_script('document.getElementById("button").click();')
-``</p>
+driver.execute_script('document.getElementById(&quot;button&quot;).click();')
+</code></pre>
+
 <p>スクリプト全体の流れは以下になります。</p>
 <ol>
 <li>必要なモジュールをインポート</li>
