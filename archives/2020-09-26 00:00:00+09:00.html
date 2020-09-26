@@ -8,21 +8,21 @@
 
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
 
-    <title>CentOS7にmakeコマンドをインストールする</title>
+    <title>ゆうぼうの書跡棚 2020 archives</title>
     <!-- OGP -->
-    <meta property="og:title" content="CentOS7にmakeコマンドをインストールする" />
+    <meta property="og:title" content="ゆうぼうの書跡棚" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/centos-v7-make" />
-    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/linux.jpg" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="色々あってtmuxをConoHa VPSにインストールをすることになったのだが、そこでmakeしてmake installをする必要があった。しかし、このVPSのCentOS7には標準搭載では無かったようなので、インストールした。その際やったことを共有する。" />
+    <meta property="og:description" content="これはゆうぼうのテストサイトです" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="色々あってtmuxをConoHa VPSにインストールをすることになったのだが、そこでmakeしてmake installをする必要があった。しかし、このVPSのCentOS7には標準搭載では無かったようなので、インストールした。その際やったことを共有する。" />
+    <meta name="description" content="これはゆうぼうのテストサイトです" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -49,95 +49,50 @@
     <div class="content">
         <div class="wrap">
             <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-                    <div class="inner-post">
-                        <header class="post-header">
-                            <nav class="breadcrumb">
-                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
-                                            <span class="link-to-home" itemprop="name">ホーム</span>
-                                            <meta itemprop="position" content="1">
-                                        </a>
-                                    </li>
-                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog/category/linux" itemprop="item" class="link-item">
-                                            <span class="link-to-category" itemprop="name">Linux</span>
-                                            <meta itemprop="position" content="2">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <h1 class="post-title">CentOS7にmakeコマンドをインストールする</h1>
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-29">2020-07-29</time></li>
-                            </ul>
-                        </header>
-                        <div class="post-content" itemprop="text">
-                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/blog/theme/img/linux.jpg" alt="">
-                            </div>
-                            <nav class="toc">
-                                <h2>目次</h2>
-                                <ol>
-                                    <li>
-                                        <a href="#section1" class="link-item">sudo yum install make -y</a>
-                                    </li>
-                                </ol>
-                            </nav>
+                <h1>Archives for 2020</h1>
 
-                            <p>色々あってtmuxをConoHa VPSにインストールをすることになったのだが、そこでmakeしてmake installをする必要があった。しかし、このVPSのCentOS7には標準搭載では無かったようなので、インストールした。その際やったことを共有する。</p>
-<section id="section1">
-<h2>sudo yum install make -y</h2>
-<p>一応僕がこれインストールしたときは、ユーザー権限なのでsudoをしました。<br />
-root権限ならsudoはいらないと思います。</p>
-<p>あと、これは推奨されるべきかは知らないけど、<em>-y</em>オプションを付けました。<em>--assumeyes</em>と同値らしいです。全ての質問に対してyesと答えるオプションです。</p>
-<pre><code>$ sudo yum install make -y
-</code></pre>
-<p>これだけで終わりです。</p>
-<p>これで目標だった「make」と「make install」が使えるようになりました。</p>
-<p>実際どうなんでしょう？CentOS6は<strong>make</strong>がデフォルトにないとかっていう記事は見かけたのですが、CentOS7でそのような記事やブログは見つからなかったです。</p>
-<p>これってConoHa VPSだけとかって話はほぼないと思うので、CentOS7は標準搭載じゃないのかな？</p>
-</section>
-
-                            <div class="post-tag">
-                                <h3>タグ</h3>
-                                <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/blog/tag/centos7" class="link-item">CentOS7</a></li>
-                                    <li><a href="https://yuta0306.github.io/blog/tag/make" class="link-item">make</a></li>
-                                </ul>
-                            </div>
-
-                        <div class="post-footer">
-                            <div class="share">
-                                <h3>SHARE</h3>
-                                <ul>
-                                    <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/centos-v7-make" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
-                                        </a>
-                                    </li>
-                                    <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/centos-v7-make" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
-                                        </a>
-                                    </li>
-                                    <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/centos-v7-make" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
-                                        </a>
-                                    </li>
-                                    <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/centos-v7-make" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>                            
-                        </div>
-                    </div>
-                </article>
+                <dl>
+                    <dt>2020年 09月 26日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/selenium-click-by-js">Seleniumからクリックができない...そうだ、JSからクリックしよう</a></dd>
+                    <dt>2020年 09月 11日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/parse-int-base10">invalid literal for int() with base 10: でint型のパースでエラーが！</a></dd>
+                    <dt>2020年 09月 10日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/pandas-nomodule">pickleでロードした時pandasがあるのに"No module ~~"で悩んだ件について</a></dd>
+                    <dt>2020年 09月 03日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/python-add-path">自作のモジュールを他のディレクトリから持ってきたい!!</a></dd>
+                    <dt>2020年 08月 21日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/zsh-compinit">突然Macのターミナル起動時に"zsh compinit: insecure directories"が現れた!?</a></dd>
+                    <dt>2020年 08月 18日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/groupfold-groups">Scikit-learnのGroupKFoldでgroups配列でWarning発生!!</a></dd>
+                    <dt>2020年 08月 05日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/heroku-mecab">HerokuにMecCabインストールで困った!!</a></dd>
+                    <dt>2020年 08月 01日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/logistic-with-l1">ロジスティック回帰でL1正則化を利用できない問題の解決法</a></dd>
+                    <dt>2020年 07月 29日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/appium-install">Appiumをインストールする!!</a></dd>
+                    <dt>2020年 07月 29日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/centos-v7-make">CentOS7にmakeコマンドをインストールする</a></dd>
+                    <dt>2020年 07月 21日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/mysql-add-column">MySQLで困った!カラム追加したい</a></dd>
+                    <dt>2020年 07月 21日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/prefer-to-make_blobs">scikit-learnのmake_blobsに乗り換えよう!!</a></dd>
+                    <dt>2020年 07月 18日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/mysql-drop-user">MySQLでユーザーの権限を削除する</a></dd>
+                    <dt>2020年 07月 18日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/mysql-remote-setup">MySQL8.0.xでリモート接続のセットアップをする!</a></dd>
+                    <dt>2020年 07月 14日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/show_tables-mysql-python">mysql-connector-pythonで'SHOW ~~~'に困ったのでその対処法</a></dd>
+                    <dt>2020年 07月 13日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/connect-to-mysql-python">mysql-connector-pythonでローカルDBに接続する</a></dd>
+                    <dt>2020年 07月 12日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/mysql-version">MySQLでバージョンを確認する</a></dd>
+                    <dt>2020年 07月 11日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/corpus">自然言語処理(NLP)のコーパスって何なん？</a></dd>
+                    <dt>2020年 07月 10日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/only_sp_newline">sp仕様(スマホ)の時のみ改行したい!!</a></dd>
+                    <dt>2020年 07月 10日</dt>
+                    <dd><a href="https://yuta0306.github.io/blog/touch-device-hover">スマホにも:hoverを対応させてみる</a></dd>
+                </dl>
                 
             </main>
             <aside class="aside">
