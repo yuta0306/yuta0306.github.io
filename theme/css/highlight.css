@@ -1,0 +1,12 @@
+.python .reserved {
+    color: rgb(240, 46, 240);
+}
+.python .builtins {
+    color: rgb(43, 186, 197);
+}
+.python .function {
+    color: rgb(82, 173, 242);
+}
+.python .strings {
+    color: rgb(135, 198, 118);
+}
