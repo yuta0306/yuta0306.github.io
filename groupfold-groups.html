@@ -91,18 +91,22 @@
 <section id="section1">
 <h2>FutureWarningを発生させてみる</h2>
 <p>少し前の書籍の型に合わせてコードを書いてみます。~FutureWarning~が発生するはずです。</p>
-<pre><code>@python
+<pre>
+<code class="python">
+@python
 
-from sklearn.model_selection import GroupKFold  # グループ交差検証
-from sklearn.datasets import make_blobs  # 合成データ生成
+<span class="reserved">from</span> sklearn.model_selection <span class="reserved">import</span> GroupKFold  # グループ交差検証
+<span class="reserved">from</span> sklearn.datasets <span class="reserved">import</span> make_blobs  # 合成データ生成
 
 # 合成データセットを生成
-X, y = make_blobs(n_samples=10, random_state=0)
+X, y = <span class="function">make_blobs</span>(n_samples=10, random_state=0)
 # 最初の2サンプルが同じグループに、次の4つが同じグループに
 groups = [0, 0, 1, 1, 1, 1, 3, 3, 4, 4]
-scores = cross_val_score(logreg, X, y, groups, cv=GroupKFold(n_splits=3))
-print("Cross-validation scores:\n{}".format(scores))
-</code></pre>
+scores = <span class="function">cross_val_score</span>(logreg, X, y, groups, cv=<span class="function">GroupKFold</span>(n_splits=3))
+<span class="function">print</span>("Cross-validation scores:\n{}".<span class="function">format</span>(scores))
+</code>
+</pre>
+
 <p>おそらくこの型が少し前の技術書の仕様だと思います。<em>Pythonで始める機械学習</em>もこの型でした。</p>
 <p>結果をみてみます。</p>
 <pre><code>Cross-validation scores:
@@ -115,29 +119,36 @@ FutureWarning)
 <p>こんな感じのWarningが発生します。</p>
 <p>最後の方を読んでみると、<strong>バージョン0.25からはgroups配列は位置引数としてだとエラーになるよ</strong>みたいな感じのことを言っています。改善方法は至ってシンプルです。<br />
 次に示します。</p>
+<section id="section2"></section>
 </section>
-<section id="section2">
 <h2>改善策</h2>
 <p>改善策は至ってシンプルです。</p>
 <p><strong>groups=(グループ配列)</strong>にすればいいのです。直したコードを示します。</p>
-<pre><code>@python
+<pre>
+<code class="python">
+@python
 
-from sklearn.model_selection import GroupKFold  # グループ交差検証
-from sklearn.datasets import make_blobs  # 合成データ生成
+<span class="reserved">from</span> sklearn.model_selection <span class="reserved">import</span> GroupKFold  # グループ交差検証
+<span class="reserved">from</span> sklearn.datasets <span class="reserved">import</span> make_blobs  # 合成データ生成
 
 # 合成データセットを生成
-X, y = make_blobs(n_samples=10, random_state=0)
+X, y = <span class="function">make_blobs</span>(n_samples=10, random_state=0)
 # 最初の2サンプルが同じグループに、次の4つが同じグループに
 groups = [0, 0, 1, 1, 1, 1, 3, 3, 4, 4]
-scores = cross_val_score(logreg, X, y, groups=groups, cv=GroupKFold(n_splits=3))
-print("Cross-validation scores:\n{}".format(scores))
-</code></pre>
+scores = <span class="function">cross_val_score</span>(logreg, X, y, groups=groups, cv=<span class="function">GroupKFold</span>(n_splits=3))
+<span class="function">print</span>("Cross-validation scores:\n{}".<span class="function">format</span>(scores))
+</code>
+</pre>
+
 <p>直したのはこの部分</p>
-<pre><code>scores = cross_val_score(logreg, X, y, groups=groups, cv=GroupKFold(n_splits=3))
-</code></pre>
+<pre>
+<code class="python">
+scores = <span class="function">cross_val_score</span>(logreg, X, y, groups=groups, cv=<span class="function">GroupKFold</span>(n_splits=3))
+</code>
+</pre>
+
 <p>単に<em>groups=groups</em>にするだけです。これだけで直ります。</p>
 <p>やはりFutureWarningが多いですね〜この周りは。</p>
-</section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>

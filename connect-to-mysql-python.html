@@ -111,8 +111,12 @@
 <section id="section2">
 <h2>まずはconnectorをインポート</h2>
 <p>まずは接続するためのメソッドをインポートしないと使えないので、インポートしましょう。</p>
-<pre><code>import mysql.connector
-</code></pre>
+<pre>
+<code class="python">
+<span class="reserved">import</span> mysql.connector
+</code>
+</pre>
+
 <p>これで準備はOK!!</p>
 </section>
 <section id="section3">
@@ -138,74 +142,108 @@
 </tbody>
 </table>
 <p>さて、早速接続の処理を書いてみましょう。</p>
-<pre><code>cnx = mysql.connecor.connect(
-    user='root',
-    host='127.0.0.1',
-    password='**********',
-    database='example',
-)
-</code></pre>
+<pre>
+<code class="python">
+<span class="reserved">import</span> mysql.connectorcnx = mysql.connecor.<span class="function">connect</span>(
+        user='root',
+        host='127.0.0.1',
+        password='**********',
+        database='example',
+    )
+</code>
+</pre>
+
 <p>これだけで接続は完了です。（パスワード等が全て正しければ）</p>
 <p>他の処理等も終わったら、しっかり切断しておきましょう。</p>
 <pre><code>cnx.close()
 </code></pre>
 <p>これで接続と切断の処理は完了です。</p>
 <p>また、hostが127.0.0.1であることは、他のポートとぶつかっているために人為的にローカルホストやポート番号を変えていなければ、デフォルトの位置になっているはずなので、以下でも実行可能です。</p>
-<pre><code>cnx = mysql.connecor.connect(
-    user='root',
-    password='**********',
-    database='example',
-)
-</code></pre>
+<pre>
+<code class="python">
+<span class="reserved">import</span> mysql.connectorcnx = mysql.connecor.<span class="function">connect</span>(
+        user='root',
+        host='127.0.0.1',
+        password='**********',
+        database='example',
+    cnx = mysql.connecor.<span class="function">connect</span>(
+        user='root',
+        password='**********',
+        database='example',
+    )
+</code>
+</pre>
+
 </section>
 <section id="section4">
 <h2>connectの引数の内容を辞書にまとめておく</h2>
 <p>先ほど、引数に入力した情報を辞書にまとめて接続することもできます。
 以下のようなスクリプトになります。</p>
-<pre><code>import mysql.connector
+<pre>
+<code class="python">
+<span class="reserved">import</span> mysql.connector
 
-config = {
-    user: 'root',
-    host: '127.0.0.1',
-    password: '**********',
-    database: 'example',
-}
-cnx = mysql.connector.connect(**config)
+    config = {
+        user: 'root',
+        host: '127.0.0.1',
+        password: '**********',
+        database: 'example',
+    }
+    cnx = mysql.connector.<span class="function">connect</span>(**config)
 
-cnx.close()
-</code></pre>
+    cnx.<span class="function">close</span>()
+</code>
+</pre>
+
 <p>configは辞書型なので、「**」でアンパックすることも忘れないようにしましょう。</p>
+<section id="section5"></section>
 </section>
-<section id="section5">
 <h2>まとめ</h2>
 <p>最終的にまとめると、流れはこんな感じです。</p>
 <h3>辞書使わない</h3>
-<pre><code>import mysql.connector
+<pre>
+<code class="python">
+<span class="reserved">import</span> mysql.connector
 
-cnx = mysql.connecor.connect(
-    user='root',
-    host='127.0.0.1',
-    password='**********',
-    database='example',
-)
+    config = {
+        user: 'root',
+        host: '127.0.0.1',
+        password: '**********',
+        database: 'example',
+    }
+    cnx = mysql.connector.<span class="function">connect</span>(**config)
 
-cnx.close()
-</code></pre>
+    cnx.<span class="function">close</span>(import mysql.connector
+
+    cnx = mysql.connecor.<span class="function">connect</span>(
+        user='root',
+        host='127.0.0.1',
+        password='**********',
+        database='example',
+    )
+
+    cnx.<span class="function">close</span>()
+</code>
+</pre>
+
 <h3>辞書型</h3>
-<pre><code>import mysql.connector
+<pre>
+<code class="python">
+<span class="reserved">import</span> mysql.connector
 
-config = {
-    user: 'root',
-    host: '127.0.0.1',
-    password: '**********',
-    database: 'example',
-}
-cnx = mysql.connector.connect(**config)
+    config = {
+        user: 'root',
+        host: '127.0.0.1',
+        password: '**********',
+        database: 'example',
+    }
+    cnx = mysql.connector.<span class="function">connect</span>(**config)
 
-cnx.close()
+<pre><code>cnx.&lt;span class="function"&gt;close&lt;/span&gt;()
 </code></pre>
+<p></code>
+</pre></p>
 <p>後ほど、テーブルを実際に作ったり、インサートしたりの方法を紹介しようと思います。</p>
-</section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
