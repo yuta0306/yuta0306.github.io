@@ -306,6 +306,7 @@ html, body {
 .post-content section pre {
     padding: 14px;
     width: 95%;
+    background: rgb(40, 44, 52);
     font-size: 1.2rem;
     overflow: scroll;
 }
