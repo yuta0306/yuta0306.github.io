@@ -136,10 +136,14 @@ scikit-learn           0.23.1
 </tbody>
 </table>
 <p>また、訓練データ(X_train, y_train)とテストデータ(X_test, y_test)に分けてあることにします。</p>
-<pre><code>from sklearn.linear_model import LogisticRegression
+<pre>
+<code class="python">
+<span class="reserved">from</span> sklearn.linear_model <span class="reserved">import</span> LogisticRegression
 
-lr_l1 = LogisticRegression(penalty='l1', max_iter=100000).fit(X_train, y_train)
-</code></pre>
+lr_l1 = <span class="function">LogisticRegression</span>(penalty='l1', max_iter=100000).<span class="function">fit</span>(X_train, y_train)
+</code>
+</pre>
+
 <p>するとこんなエラーが返ってきます。</p>
 <pre><code>~/opt/anaconda3/envs/ML/lib/python3.6/site-packages/sklearn/linear_model/_logistic.py in fit(self, X, y, sample_weight)
 1302         The SAGA solver supports both float64 and float32 bit arrays.
@@ -160,8 +164,8 @@ ValueError: Solver lbfgs supports only 'l2' or 'none' penalties, got l1 penalty.
 <p>ファイルのありかは人それぞれですが、エラーは返ってきます。<br />
 デフォルトの<strong>Solverがlbfgs</strong>に変わっていたそうで、l2またはnoneしかペナルティをサポートしていないそうです。</p>
 <p>というわけで、Solverに<strong>liblinear</strong>を指定しないといけないようですね。</p>
+<section id="section3"></section>
 </section>
-<section id="section3">
 <h2>liblinearを指定する</h2>
 <p>先ほどのエラーをなくすため、新たにパラメータを足します。</p>
 <table>
@@ -191,12 +195,14 @@ ValueError: Solver lbfgs supports only 'l2' or 'none' penalties, got l1 penalty.
 </tbody>
 </table>
 <p>では足します。</p>
-<pre><code>from sklearn.linear_model import LogisticRegression
+<pre>
+<code class="python">
+<span class="reserved">from</span> sklearn.linear_model <span class="reserved">import</span> LogisticRegression
 
-lr_l1 = LogisticRegression(penalty='l1', solver='liblinear', max_iter=100000).fit(X_train, y_train)
-</code></pre>
+<p>lr_l1 = <span class="function">LogisticRegression</span>(penalty='l1', solver='liblinear', max_iter=100000).<span class="function">fit</span>(X_train, y_train)
+</code>
+</pre></p>
 <p>これで無事動くようになりました!!!</p>
-</section>
 <section id="section4">
 <h2>まとめ</h2>
 <p>まとめです。<br />
