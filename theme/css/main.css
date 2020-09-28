@@ -307,6 +307,7 @@ html, body {
     padding: 14px;
     width: 95%;
     background: rgb(40, 44, 52);
+    color: rgb(187, 187, 187);
     font-size: 1.2rem;
     overflow: scroll;
 }
