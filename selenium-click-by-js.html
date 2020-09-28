@@ -101,14 +101,16 @@
 <section id="section1">
 <h2>SeleniumからJavascriptを発火する</h2>
 <p>JavaScriptを発火させることはとても簡単です。</p>
-<pre><code class="python">from selenium import webdriver
-import chromedriver_binary
+<pre>
+<code class="python">
+<span class="reserved">from</span> selenium <span class="reserved">import</span> webdriver
+<span class="reserved">import</span> chromedriver_binary
 
-driver = webdriver.Chrome()
-driver.get('https://www.example.com/')
-driver.execute_script('Your Procedure')
-</code></pre>
-
+<p>driver = webdriver.<span class="function">Chrome</span>()
+driver.<span class="function">get</span>(<span class="strings">'https://www.example.com/'</span>)
+driver.<span class="function">execute_script</span>(<span class="strings">'Your Procedure'</span>)
+</code>
+</pre></p>
 <p>まずは、Webdriverを開き、その後<em>execute_script</em>メソッドを用いて、引数にJSのスクリプトを書き込むのみです。</p>
 </section>
 <section id="section2">
@@ -119,12 +121,11 @@ driver.execute_script('Your Procedure')
 <span class="reserved">from</span> selenium <span class="reserved">import</span> webdriver
 <span class="reserved">import</span> chromedriver_binary
 
-driver = webdriver.<span class="function">Chrome</span>()
-driver.<span class="function">get</span>('https://www.example.com/')
-driver.<span class="function">execute_script</span>('document.<span class="function">getElementById</span>("button").<span class="function">click</span>();')
+<p>driver = webdriver.<span class="function">Chrome</span>()
+driver.<span class="function">get</span>(<span class="strings">'https://www.example.com/'</span>)
+driver.<span class="function">execute_script</span>(<span class="strings">'document.getElementById("button").click();'</span>)
 </code>
-</pre>
-
+</pre></p>
 <p>スクリプト全体の流れは以下になります。</p>
 <ol>
 <li>必要なモジュールをインポート</li>
