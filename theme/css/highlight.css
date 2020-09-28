@@ -1,3 +1,4 @@
+/* Python syntax */
 .python .reserved {
     color: rgb(240, 46, 240);
 }
@@ -9,4 +10,41 @@
 }
 .python .strings {
     color: rgb(135, 198, 118);
+}
+.python .comment {
+    color: rgb(92, 99, 112);
+}
+
+/* JS syntax */
+.js .reserved {
+    color: rgb(240, 46, 240);
+}
+.js .builtins {
+    color: rgb(43, 186, 197);
+}
+.js .function {
+    color: rgb(82, 173, 242);
+}
+.js .strings {
+    color: rgb(135, 198, 118);
+}
+.js .comment {
+    color: rgb(92, 99, 112);
+}
+
+/* Ruby syntax */
+.ruby .reserved {
+    color: rgb(240, 46, 240);
+}
+.ruby .builtins {
+    color: rgb(43, 186, 197);
+}
+.ruby .function {
+    color: rgb(82, 173, 242);
+}
+.ruby .strings {
+    color: rgb(135, 198, 118);
+}
+.ruby .comment {
+    color: rgb(92, 99, 112);
 }
