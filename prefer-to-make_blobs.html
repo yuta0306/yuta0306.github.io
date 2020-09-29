@@ -98,9 +98,14 @@
 <h2>とりあえずmake_forge()をやってみようか</h2>
 <p>とりあえずmake_forge()でforgeデータを生成し、Warningさせてみますかね。。。</p>
 <p>ライブラリはmglearnを使うのでpip環境がある人は、<strong>pip install mglearn</strong>をしてください。その上で、</p>
-<pre><code>import mglearn    # mglearnのインポート
-X, y = mglearn.datasets.make_forge()    # make_forgeメソッドで生成
-</code></pre>
+<pre>
+<code class="python">
+<span class="reserved">import</span> mglearn    <span class="comment"># mglearnのインポート</span>
+X, y = mglearn.datasets.<span class="function">make_forge</span>()    <span class="comment"># make_forgeメソッドで生成</span>
+</code>
+</pre>
+
+
 <p>以下がアウトプットです。</p>
 <pre><code>/Users/user/opt/anaconda3/envs/ML/lib/python3.6/site-packages/sklearn/utils/deprecation.py:86: FutureWarning: Function make_blobs is deprecated; Please import make_blobs directly from scikit-learn
 warnings.warn(msg, category=FutureWarning)
@@ -112,33 +117,51 @@ warnings.warn(msg, category=FutureWarning)
 <section id="section2">
 <h2>make_blobsに乗り換える</h2>
 <p>make_blobsメソッドに乗り換えて行きます。これはscikit-learnのdatasetsモジュールに含まれているみたいなので、こいつをインポートして行きます。</p>
-<pre><code>from sklearn.datasets import make_blobs    # これでインポート完了
-</code></pre>
+<pre>
+<code class="python">
+<span class="reserved">from</span> sklearn.datasets <span class="reserved">import</span> make_blobs    <span class="comment"># これでインポート完了</span>
+</code>
+</pre>
+
+
 <p>インポートがうまくいったら次はメソッドを呼び出します。</p>
-<pre><code>X, y = make_blobs()
-</code></pre>
+<pre>
+<code class="python">
+X, y = <span class="function">make_blobs</span>()
+</code>
+</pre>
+
+
 <p>これでデータがうまく生成されたようです。無事Warningも出てきません!!!
 念のため、Xの型をみて行きます。</p>
-<pre><code>print("X.shape: {}".format(X.shape))
+<pre>
+<code class="python">
+<span class="builtins">print</span>(<span class="strings">"X.shape: {}"</span>.<span class="function">format</span>(X.shape))
 
--&gt; X.shape: (100, 2)
-</code></pre>
+<span class="comment"># -> X.shape: (100, 2)</span>
+</code>
+</pre>
+
 <p>詰まるところ、2つの特徴量を持つデータが100個生成されました。100*2の行列ですね。
 make_forge()のときは2つの特徴量のデータが26個を期待していたようなので、データ量が増えたみたいですね。</p>
 </section>
 <section id="section3">
 <h2>まとめ</h2>
 <p>mglearn.datasets.make_forge()でWarningを回避する方法のまとめがこちらです。</p>
-<pre><code>from sklearn.datasets import make_blobs    # インポート
-X, y = make_blobs()    # make_blobsメソッドの実行
+<pre>
+<code class="python">
+<span class="reserved">from</span> sklearn.datasets <span class="reserved">import</span> make_blobs    <span class="comment"># インポート</span>
+X, y = <span class="function">make_blobs</span>()    <span class="comment"># make_blobsメソッドの実行</span>
 
-"""
+<span class="strings">""</span>"
 確認のおまけ
-"""
-print("X.shape: {}".format(X.shape))
+<span class="strings">"</span><span class="strings">""</span>
+<span class="builtins">print</span>(<span class="strings">"X.shape: {}"</span>.<span class="function">format</span>(X.shape))
 
--&gt; X.shape: (100, 2)    # 特徴量を2つ持つ100個のデータ
-</code></pre>
+<p><span class="comment">#-> X.shape: (100, 2)    # 特徴量を2つ持つ100個のデータ</span>
+</code>
+</pre>
+</p>
 <p>scikit-learn周りは、アップデートが早いので少し古い技術書なだけでも、Future Warningが出たり、Errorが出たりすることが多々あります。
 気をつけながら学習をする必要がありそうですね。では、今回はここまで！</p>
 </section>

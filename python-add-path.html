@@ -122,16 +122,18 @@ from target.sample import Sample
 <li>sys.path.append()でPathを追加</li>
 </ol>
 <p>この手順にのっとって書いてみます</p>
-<pre><code>@ main.py
+<pre>
+<code class="python">
+<span class="comment"># 手順1</span>
+<span class="reserved">import</span> sys
+<span class="reserved">import</span> os
 
-# 手順1
-import sys
-import os
+<span class="comment"># 手順2 & 3</span>
+sys.path.<span class="function">append</span>(os.<span class="function">getcwd</span>() + <span class="strings">'target'</span>)
+<span class="reserved">from</span> sample <span class="reserved">import</span> Sample
+</code>
+</pre>
 
-# 手順2 &amp; 3
-sys.path.append(os.getcwd() + 'target')
-from sample import Sample
-</code></pre>
 <p>一応これで対応できました。</p>
 <p>もし仮に4層、5層...と続いてもpathをセットしておけば、探してくれるので大丈夫です。</p>
 <p>階層を遡るときは、その都度pathにいれるパスを変えてみてください!!</p>

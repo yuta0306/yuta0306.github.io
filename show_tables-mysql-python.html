@@ -114,8 +114,12 @@
 <section id="section2">
 <h2>まずはconnectorをインポート</h2>
 <p>まずは接続するためのメソッドをインポートしないと使えないので、インポートしましょう。</p>
-<pre><code>import mysql.connector
-</code></pre>
+<pre>
+<code class="python">
+<span class="reserved">import</span> mysql.connector
+</code>
+</pre>
+
 <p>これで準備はOK!!</p>
 </section>
 <section id="section3">
@@ -140,41 +144,62 @@
 </tbody>
 </table>
 <p>さて、早速接続の処理を書いてみましょう。</p>
-<pre><code>cnx = mysql.connector.connect(
-    user='root',
-    password='example',
-    database='example',
+<pre>
+<code class="python">
+cnx = mysql.connector.<span class="function">connect</span>(
+    user=<span class="strings">'root'</span>,
+    password=<span class="strings">'example'</span>,
+    database=<span class="strings">'example'</span>,
 )
-</code></pre>
+</code>
+</pre>
+
+
 <p>これだけで接続は完了です。（パスワード等が全て正しければ）<br />
 ホストはデフォルトが127.0.0.1なので書かなくていいです。</p>
 <p>この後に、カーソルをあてます。</p>
-<pre><code>cur = cnx.cursor()
-</code></pre>
+<pre>
+<code class="python">
+cur = cnx.<span class="function">cursor</span>()
+</code>
+</pre>
+
 <p>この処理だけでオッケーです。</p>
 <p>他の処理等も終わったら、しっかり切断しておきましょう。</p>
-<pre><code>cur.close()
-cnx.close()
-</code></pre>
+<pre>
+<code class="python">
+cur.<span class="function">close</span>()
+cnx.<span class="function">close</span>()
+</code>
+</pre>
+
 <p>これで接続と切断の処理は完了です。</p>
 </section>
 <section id="section4">
 <h2>SHOW TABLE表示していく</h2>
 <p>それでは、ここまでで準備は整ったので、<em>cur = cnx.cursor()</em>のすぐ後に以下の処理を書いてみましょう。</p>
-<pre><code>sql = "SHOW TABLES"    #命令文
-print(cur.execute(sql))    #結果の出力
+<pre>
+<code class="python">
+sql = <span class="strings">"SHOW TABLES"</span>    <span class="comment">#命令文</span>
+<span class="builtins">print</span>(cur.<span class="function">execute</span>(sql))    <span class="comment">#結果の出力</span>
 
---&gt; None    #あれ？？ない
-</code></pre>
+<span class="comment"># --> None    #あれ？？ない</span>
+</code>
+</pre>
+
 <p>見事失敗ですね(笑)</p>
 <p>僕はずっと、実行した結果が戻り値として吐き出されていると思ってこの処理を書きました。しかし、それがないので<em>None</em>が返ってきてしまうのですね...</p>
 <p>それでは正しいスクリプトを書いていきましょう。</p>
-<pre><code>sql = "SHOW TABLES"    #命令文
-cur.execute(sql)    #実行
-print(cur.fetchone())    #1つだけフェッチする
+<pre>
+<code class="python">
+sql = <span class="strings">"SHOW TABLES"</span>    <span class="comment">#命令文</span>
+cur.<span class="function">execute</span>(sql)    <span class="comment">#実行</span>
+<span class="builtins">print</span>(cur.<span class="function">fetchone</span>())    <span class="comment">#1つだけフェッチする</span>
 
---&gt; (example, )
-</code></pre>
+<p><span class="comment"># --> (example, )</span>
+</code>
+</pre>
+</p>
 <p>出力本体は人の環境によって異なりますが、このような感じでタプル型でテーブル名が出力されます。</p>
 <p>複数処理結果をまとめて吐き出すには「<strong>fetchall()</strong>」というものがあるようです。今回は一つだけテーブルに対して情報を吐いてもらうので「<strong>fetchone()</strong>」で取得しました。</p>
 </section>
@@ -197,37 +222,44 @@ print(cur.fetchone())    #1つだけフェッチする
 </tr>
 </tbody>
 </table>
-<pre><code>import mysql.connector
+<pre>
+<code class="python">
+<span class="reserved">import</span> mysql.connector
 
-cnx = mysql.connector.connect(
-    user='root',
-    password='example',
+cnx = mysql.<span class="function">connect</span>or.<span class="function">connect</span>(
+    user=<span class="strings">'root'</span>,
+    password=<span class="strings">'example'</span>,
     )
 
-cur = cnx.cursor()
+cur = cnx.<span class="function">cursor</span>()
 
-cur.execute("SHOW DATABASES")
-print(cur.fetchall())    #&lt;&lt; fetchall()に注意
+cur.<span class="function">execute</span>(<span class="strings">"SHOW DATABASES"</span>)
+<span class="builtins">print</span>(cur.<span class="function">fetchall</span>())    <span class="comment">#<< fetchall()に注意</span>
 
-cur.close()
-cnx.close()
+cur.<span class="function">close</span>()
+cnx.<span class="function">close</span>()
 
---&gt; [(example, ), (sys, )]
-</code></pre>
+<p><span class="comment"># --> [(example, ), (sys, )]</span>
+</code>
+</pre>
+</p>
 <p>今回は複数のデータがあることに留意したとして、<strong>fetchall()</strong>しました。ここも見落としポイントが多い気がします。</p>
 <p>僕はそうだったのですが、タプル型に全ての名前が入ると期待したのですが、実際は一つ一つの名前に対してタプルを作り、そのタプル群をリストに入れるようです。</p>
-</section>
 <section id="section6">
 <h2>まとめ</h2>
 <p>ここまでみてきた結果、一番安全なのはこれでしょうか。</p>
-<pre><code>cur = cnx.cursor()
+<pre>
+<code class="python">
+cur = cnx.<span class="function">cursor</span>()
 
-cur.execute("SHOW DATABASES")
-print(cur.fetchall())
-</code></pre>
+</section>
+</section>
+<p>cur.<span class="function">execute</span>(<span class="strings">"SHOW DATABASES"</span>)
+<span class="builtins">print</span>(cur.<span class="function">fetchall</span>()) 
+</code>
+</pre></p>
 <p>まずはカーソルを当ててから、そこでコマンドを実行する。そのあとは「<strong>fetchall()</strong>」でリストに包める。</p>
 <p>情報が1つしかないことがわかっているならば問題ないのですが、基本的には複数あるという想定のもと、fetchall()で取得する方がいい気もしました。</p>
-</section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>

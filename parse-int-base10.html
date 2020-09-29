@@ -97,8 +97,12 @@
 <section id="section1">
 <h2>ValueErrorの発生</h2>
 <p>エラーを招いたコードの例がこちら</p>
-<pre><code class="python">a = np.array(['1.0', '2.0']).astype('int16')
-</code></pre>
+<pre>
+<code class="python">
+a = np.<span class="function">array</span>([<span class="strings">'1.0'</span>, <span class="strings">'2.0'</span>]).<span class="function">astype</span>(<span class="strings">'int16'</span>)
+</code>
+</pre>
+
 
 <p>実際に出たエラーがこちらです。</p>
 <pre><code class="python">ValueError: invalid literal for int() with base 10:
@@ -111,25 +115,34 @@
 <h2>【原因】文字列が小数だった</h2>
 <p>原因は意外にもシンプルで、文字列の形が<strong>小数</strong>だったからみたいです...</p>
 <p>他のコードで確認してみると</p>
-<pre><code class="python">a = np.array(['1', '2']).astype('int16')
+<pre>
+<code class="python">
+a = np.<span class="function">array</span>([<span class="strings">'1'</span>, <span class="strings">'2'</span>]).<span class="function">astype</span>(<span class="strings">'int16'</span>)
 
-# &gt;&gt; array([1, 2], dtype=int16
-</code></pre>
+<p><span class="comment"># >> array([1, 2], dtype=int16</span>
+</code>
+</pre>
+</p>
+<pre>
+<code class="python">
+a = np.<span class="function">array</span>([<span class="strings">'1.0'</span>, <span class="strings">'2.0'</span>]).<span class="function">astype</span>(<span class="strings">'float32'</span>)
 
-<pre><code class="python">a = np.array(['1.0', '2.0']).astype('float32')
-
-# &gt;&gt; array([1, 2], dtype=float32)
-</code></pre>
-
+<p><span class="comment"># >> array([1, 2], dtype=float32)</span>
+</code>
+</pre>
+</p>
 <p>小数であった時、floatへの変換はうまくいっているようです。</p>
 </section>
 <section id="section3">
 <h2>改善策</h2>
 <p>いったんfloatに変換してから、intに変換するとできます。遠回りですが。</p>
-<pre><code class="python">a = np.array(['1.0', '2.0']).astype('float32').astype('int16')
+<pre>
+<code class="python">
+a = np.<span class="function">array</span>([<span class="strings">'1.0'</span>, <span class="strings">'2.0'</span>]).<span class="function">astype</span>(<span class="strings">'float32'</span>).<span class="function">astype</span>(<span class="strings">'int16'</span>)
 
-# &gt;&gt; array([1, 2], dtype=int16)
-</code></pre>
+<span class="comment"># >> array([1, 2], dtype=int16)</span>
+</code>
+</pre>
 
 <p>このようなエラーに直面したら、<strong>配列の中身の文字列が少数になっていないか</strong>確認してみましょう!!</p>
 </section>
