@@ -205,43 +205,31 @@
 <code class="python">
 <span class="reserved">import</span> mysql.connector
 
-    config = {
-        user: 'root',
-        host: '127.0.0.1',
-        password: '**********',
-        database: 'example',
-    }
-    cnx = mysql.connector.<span class="function">connect</span>(**config)
+cnx = mysql.connecor.<span class="function">connect</span>(
+    user=<span class="strings">'root'</span>,
+    host=<span class="strings">'127.0.0.1'</span>,
+    password=<span class="strings">'**********'</span>,
+    database=<span class="strings">'example'</span>,
+)
 
-    cnx.<span class="function">close</span>(import mysql.connector
-
-    cnx = mysql.connecor.<span class="function">connect</span>(
-        user='root',
-        host='127.0.0.1',
-        password='**********',
-        database='example',
-    )
-
-    cnx.<span class="function">close</span>()
+<p>cnx.<span class="function">close</span>()
 </code>
-</pre>
-
+</pre></p>
 <h3>辞書型</h3>
 <pre>
 <code class="python">
 <span class="reserved">import</span> mysql.connector
 
-    config = {
-        user: 'root',
-        host: '127.0.0.1',
-        password: '**********',
-        database: 'example',
-    }
-    cnx = mysql.connector.<span class="function">connect</span>(**config)
+config = {
+    user: <span class="strings">'root'</span>,
+    host: <span class="strings">'127.0.0.1'</span>,
+    password: <span class="strings">'**********'</span>,
+    database: <span class="strings">'example'</span>,
+}
+cnx = mysql.connector.<span class="function">connect</span>(**config)
 
-<pre><code>cnx.&lt;span class="function"&gt;close&lt;/span&gt;()
-</code></pre>
-<p></code>
+<p>cnx.<span class="function">close</span>()
+</code>
 </pre></p>
 <p>後ほど、テーブルを実際に作ったり、インサートしたりの方法を紹介しようと思います。</p>
 
