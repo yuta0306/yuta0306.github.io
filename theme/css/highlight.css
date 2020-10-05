@@ -2,6 +2,23 @@ pre, code {
     color: rgb(187, 187, 187);
 }
 
+/* Default syntax */
+.reserved {
+    color: rgb(240, 46, 240);
+}
+.builtins {
+    color: rgb(43, 186, 197);
+}
+.function {
+    color: rgb(82, 173, 242);
+}
+.strings {
+    color: rgb(135, 198, 118);
+}
+.comment {
+    color: rgb(92, 99, 112);
+}
+
 /* Python syntax */
 .python .reserved {
     color: rgb(240, 46, 240);
