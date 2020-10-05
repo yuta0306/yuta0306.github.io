@@ -95,7 +95,9 @@ html, body {
 .navbar {
     margin: 0 auto;
     padding: 0;
-    display: block;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     overflow-x: scroll;
     list-style-type: none;
 }
