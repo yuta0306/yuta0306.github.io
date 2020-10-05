@@ -153,8 +153,12 @@ go version go1.15.2 darwin/amd64
 <h3>PATHを明示的に通す</h3>
 <p>一応デフォルトでPATHが通るはずですが、通らないこともあると思うので、<strong>明示的に</strong>PATHを通してみます。</p>
 <p>ターミナルでPATHを通しましょう。</p>
-<pre><code class="bash">$ export PATH=$PATH:/usr/local/go/bin
-</code></pre>
+<pre>
+<code class="sh">
+$ <span class="builtins">export</span> <span class="reserved">PATH</span>=$PATH:/usr/local/go/bin
+</code>
+</pre>
+
 
 <p>とりあえず、これでPATHが通ればうまくいくはずです。</p>
 <p>......</p>
