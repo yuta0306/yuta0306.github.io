@@ -102,13 +102,12 @@
 
 <span class="reserved">import</span> <span class="strings">"fmt"</span>
 
-<span class="reserved">func</span> <span class="function">main</span>() {
+<p><span class="reserved">func</span> <span class="function">main</span>() {
     fmt.<span class="function">Printf</span>(<span class="strings">"Hello, world!"</span>)
 }
-
 </code>
 </pre>
-
+</p>
 <p>そしてターミナルから実行します。</p>
 <pre>
 <code class="sh">
@@ -117,26 +116,26 @@ Hello, world!
 </code>
 </pre>
 
+
 <p>これがよくある標準出力させるプログラムになります。</p>
 <p>構造は至ってシンプルで、<em>fmt</em>をインポートして、そのメソッドである<em>Printf</em>で出力するという感じです。</p>
 <p>他にも<em>fmt.Println</em>や<em>fmt.Print</em>といった物もあるようですが。</p>
+</section>
 <section id="section2">
 <h2>ビルトインにprintln</h2>
 <p>ビルトインを漁ってみるとなんだか、<em>println</em>というビルトイン関数を発見!!</p>
-</section>
-</section>
 <p>これで試しにハロワしてみました。<br />
 こちらも<em>hello.go</em>に書いていきましょう。</p>
 <pre>
 <code class="go">
 <span class="reserved">package</span> main
 
-<span class="reserved">func</span> <span class="function">main</span>()  {
+<p><span class="reserved">func</span> <span class="function">main</span>()  {
     <span class="builtins">println</span>(<span class="strings">"Hello, world!"</span>)
 }
 </code>
 </pre>
-
+</p>
 <p>このコードもターミナルから同様に実行していきます。</p>
 <pre>
 <code class="sh">
@@ -145,12 +144,14 @@ Hello, world!
 </code>
 </pre>
 
+
 <p>同じような結果が得られました。</p>
 <p><em>fmt.Println</em>をするなら、ビルトイン関数の<em>println</em>で代用できそうですね。</p>
 <p>一応ブートストラッピングとかデバッグに有用性を示せるみたいです。</p>
 <p>簡単にデバッグをするときに、このビルトイン関数を使えば良いでしょう。チュートリアルでもfmtをインポートして使っているので、推奨はfmtなんですかね。</p>
 <p>その辺はもう少し知見をつけてからにしようと思います。</p>
 <p>とりあえずはこれだけでHello, world!はできそうです。</p>
+</section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
