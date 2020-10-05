@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
 
-    <title>ゆうぼうの書跡棚</title>
+    <title>GoでHello, world!</title>
     <!-- OGP -->
-    <meta property="og:title" content="ゆうぼうの書跡棚" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog" />
-    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
+    <meta property="og:title" content="GoでHello, world!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/go-hello" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/gopher.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="これはゆうぼうのテストサイトです" />
+    <meta property="og:description" content="GoでHello, world!" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="これはゆうぼうのテストサイトです" />
+    <meta name="description" content="GoでHello, world!" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -34,11 +34,9 @@
 <body ontouchstart="">
     <header class="header">
         <div class="inner-header wrap">
-            <h1 class="h1">
-                <a class="logo link-item" href="https://yuta0306.github.io/blog">
-                    <span class="logo-text">ゆうぼうの書跡棚</span>
-                </a>
-            </h1>
+            <a class="logo link-item" href="https://yuta0306.github.io/blog">
+                <span class="logo-text">ゆうぼうの書跡棚</span>
+            </a>
         </div>
         <ul class="navbar wrap">
             <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/go" class="link-item">Go</a></li>
@@ -53,122 +51,148 @@
     <div class="content">
         <div class="wrap">
             <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-                <div class="card-wrapper">
-                    <a href="https://yuta0306.github.io/blog/mysql-add-column" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/database.jpg" alt="">
-                        </div>
-                        <div class="card-content">
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog/category/go" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Go</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">GoでHello, world!</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-21">2020-07-21</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-10-05">2020-10-05</time></li>
                             </ul>
-                            <h2>MySQLで困った!カラム追加したい</h2>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/blog/theme/img/gopher.jpg" alt="">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">チュートリアルによくあるHello</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section2" class="link-item"> world!</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section3" class="link-item">ビルトインにprintln??</a>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <p><strong>GoでHello, world!</strong></p>
+<p>今回はただそれだけをしたいと思いますw</p>
+<section id="section1">
+<h2>チュートリアルによくあるHello, world!</h2>
+<p>hello.goというファイルに書き書きしていきます。</p>
+<pre>
+<code class="go">
+<span class="reserved">package</span> main
+
+<span class="reserved">import</span> <span class="strings">"fmt"</span>
+
+<span class="reserved">func</span> <span class="function">main</span>() {
+    fmt.<span class="function">Printf</span>(<span class="strings">"Hello, world!"</span>)
+}
+
+</code>
+</pre>
+
+<p>そしてターミナルから実行します。</p>
+<pre>
+<code class="sh">
+$ go run hello.go
+Hello, world!
+</code>
+</pre>
+
+
+<p>これがよくある標準出力させるプログラムになります。</p>
+<p>構造は至ってシンプルで、<em>fmt</em>をインポートして、そのメソッドである<em>Printf</em>で出力するという感じです。</p>
+<p>他にも<em>fmt.Println</em>や<em>fmt.Print</em>といった物もあるようですが。</p>
+<section id="section2">
+<h2>ビルトインにprintln??</h2>
+</section>
+</section>
+<p>ビルトインを漁ってみるとなんだか、<em>println</em>というビルトイン関数を発見!!</p>
+<p>これで試しにハロワしてみました。<br />
+こちらも<em>hello.go</em>に書いていきましょう。</p>
+<pre>
+<code class="go">
+<span class="reserved">package</span> main
+
+<span class="reserved">func</span> <span class="function">main</span>()  {
+    <span class="builtins">println</span>(<span class="strings">"Hello, world!"</span>)
+}
+</code>
+</pre>
+
+<p>このコードもターミナルから同様に実行していきます。</p>
+<pre>
+<code class="sh">
+$ go run hello.go
+Hello, world!
+</code>
+</pre>
+
+<p>同じような結果が得られました。</p>
+<p><em>fmt.Println</em>をするなら、ビルトイン関数の<em>println</em>で代用できそうですね。</p>
+<p>一応ブートストラッピングとかデバッグに有用性を示せるみたいです。</p>
+<p>簡単にデバッグをするときに、このビルトイン関数を使えば良いでしょう。チュートリアルでもfmtをインポートして使っているので、推奨はfmtなんですかね。</p>
+<p>その辺はもう少し知見をつけてからにしようと思います。</p>
+<p>とりあえずはこれだけでHello, world!はできそうです。</p>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/blog/tag/go" class="link-item">Go</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/go-hello" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/go-hello" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/go-hello" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/go-hello" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
                         </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/blog/prefer-to-make_blobs" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-21">2020-07-21</time></li>
-                            </ul>
-                            <h2>scikit-learnのmake_blobsに乗り換えよう!!</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/blog/mysql-drop-user" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/database.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-18">2020-07-18</time></li>
-                            </ul>
-                            <h2>MySQLでユーザーの権限を削除する</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/blog/mysql-remote-setup" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/database.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-18">2020-07-18</time></li>
-                            </ul>
-                            <h2>MySQL8.0.xでリモート接続のセットアップをする!</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/blog/show_tables-mysql-python" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/database.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-14">2020-07-14</time></li>
-                            </ul>
-                            <h2>mysql-connector-pythonで'SHOW ~~~'に困ったのでその対処法</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/blog/connect-to-mysql-python" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/database.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-13">2020-07-13</time></li>
-                            </ul>
-                            <h2>mysql-connector-pythonでローカルDBに接続する</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/blog/mysql-version" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/database.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-12">2020-07-12</time></li>
-                            </ul>
-                            <h2>MySQLでバージョンを確認する</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/blog/corpus" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-11">2020-07-11</time></li>
-                            </ul>
-                            <h2>自然言語処理(NLP)のコーパスって何なん？</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/blog/only_sp_newline" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-10">2020-07-10</time></li>
-                            </ul>
-                            <h2>sp仕様(スマホ)の時のみ改行したい!!</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/blog/touch-device-hover" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-10">2020-07-10</time></li>
-                            </ul>
-                            <h2>スマホにも:hoverを対応させてみる</h2>
-                        </div>
-                    </a>
-                    <div class="paginator-wrapper">
-                        <a href="index.html" class="paginator previous">Previous</a>
                     </div>
-                </div>
-                    
+                </article>
                 
             </main>
             <aside class="aside">
