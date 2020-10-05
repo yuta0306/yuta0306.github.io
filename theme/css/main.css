@@ -98,6 +98,7 @@ html, body {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: center;
     overflow-x: scroll;
     list-style-type: none;
 }
