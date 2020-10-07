@@ -113,24 +113,29 @@ six==1.15.0
 <p>さて、本題。。。</p>
 <p>まずは、Entryを生成します。今回は、<em>entry.py</em>に書いていきます。</p>
 <p>一番大きなくくりのクラスを<em>App</em>として、このインスタンスをメインルーティンで立てていきます。</p>
-<pre><p><code class="python">
-<span class="reserved">import</span> tkinter <span class="reserved">as</span> tk</p><p><span class="reserved">class</span> <span class="function">App</span>(tk.Tk):
+<pre>
+<code class="python">
+<span class="reserved">import</span> tkinter <span class="reserved">as</span> tk
+
+<span class="reserved">class</span> <span class="function">App</span>(tk.Tk):
     <span class="reserved">def</span> <span class="function">__init__</span>(self, *args, **kwargs):
         <span class="comment"># 魔法</span>
-        tk.Tk.<span class="function">__init__</span>(self, *args, **kwargs)</p><pre><code>    &lt;span class="comment"&gt;# 以下でタイトルとウィンドウサイズを設定&lt;/span&gt;
-    self.&lt;span class="function"&gt;title&lt;/span&gt;(u&lt;span class="strings"&gt;"tkinterでEntryにデフォルト値を入れたい"&lt;/span&gt;)
-    self.&lt;span class="function"&gt;geometry&lt;/span&gt;(&lt;span class="strings"&gt;"500x300"&lt;/span&gt;)
+        tk.Tk.<span class="function">__init__</span>(self, *args, **kwargs)
 
-    &lt;span class="comment"&gt;# Frameを生成&lt;/span&gt;
-    self.frame = tk.&lt;span class="function"&gt;Frame&lt;/span&gt;()
-    self.frame.&lt;span class="function"&gt;pack&lt;/span&gt;()
-    &lt;span class="comment"&gt;# Labelを生成&lt;/span&gt;
-    label = tk.&lt;span class="function"&gt;Label&lt;/span&gt;(self.frame, text=&lt;span class="strings"&gt;'Your name'&lt;/span&gt;)
-    label.&lt;span class="function"&gt;pack&lt;/span&gt;()
-    &lt;span class="comment"&gt;# Entryを生成&lt;/span&gt;
-    name = tk.&lt;span class="function"&gt;Entry&lt;/span&gt;(self.frame)
-    name.&lt;span class="function"&gt;pack&lt;/s
-</code></pre></pre>
+        <span class="comment"># 以下でタイトルとウィンドウサイズを設定</span>
+        self.<span class="function">title</span>(u<span class="strings">"tkinterでEntryにデフォルト値を入れたい"</span>)
+        self.<span class="function">geometry</span>(<span class="strings">"500x300"</span>)
+
+        <span class="comment"># Frameを生成</span>
+        self.frame = tk.<span class="function">Frame</span>()
+        self.frame.<span class="function">pack</span>()
+        <span class="comment"># Labelを生成</span>
+        label = tk.<span class="function">Label</span>(self.frame, text=<span class="strings">'Your name'</span>)
+        label.<span class="function">pack</span>()
+        <span class="comment"># Entryを生成</span>
+        name = tk.<span class="function">Entry</span>(self.frame)
+        name.<span class="function">pack</span>()
+
 <p><span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">"__main__"</span>:
     app = <span class="function">App</span>()
     app.<span class="function">mainloop</span>()
@@ -140,10 +145,11 @@ six==1.15.0
 <p>これでとりあえずエントリー(入力受付)が可能になります。ここでUIは一切凝っていないので、下のような状態になると思います。</p>
 <p><img alt="完成画面" src="./theme/img/article/tk-entry-default_1.png" /></p>
 <p>この入力受付に対して、「山田太郎」をデフォルト値として設定していきたいと思います。</p>
-</section>
 <section id="section2">
 <h2>デフォルト値の設定</h2>
 <p>続いて、「山田太郎」をデフォルト値として設定していきます。基盤は先ほどのコードになります。</p>
+</section>
+</section>
 <p>先に言うと、<em>tk.Entry().insert()</em>メソッドを用いて、エントリーに対して文字列を挿入します。</p>
 <p>それではコードを追加しましょう。</p>
 <pre>
@@ -190,7 +196,6 @@ six==1.15.0
 <p>これでデフォルト値の設定ができました。</p>
 <p>正攻法なのかは定かではないですが......www</p>
 <p>これでデフォルト値の設定ができました。必要な時は是非ご活用を。</p>
-</section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
