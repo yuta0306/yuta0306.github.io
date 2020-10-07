@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
 
-    <title>MySQL8.0.xでリモート接続のセットアップをする!</title>
+    <title>【Python】tkinterでEntryにデフォルト値を入れたい</title>
     <!-- OGP -->
-    <meta property="og:title" content="MySQL8.0.xでリモート接続のセットアップをする!" />
+    <meta property="og:title" content="【Python】tkinterでEntryにデフォルト値を入れたい" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/mysql-remote-setup" />
-    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/database.jpg" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/tk-entry-default" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="MySQLでリモート接続のためのセットアップを行いました。現環境はバージョン8.0.19なのですが、前回からのメジャーアップデートにて、コマンドが変わっており大変苦労したので備忘録として。かなりつまずきますので共有します。" />
+    <meta property="og:description" content="Pythonからtkinterを使ってGUIを実装していました。Entryを使ってユーザの入力値を受け取ることができますが、デフォルト値の設定の仕方に困ったので、デフォルト値を設定した方法を共有します。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="MySQLでリモート接続のためのセットアップを行いました。現環境はバージョン8.0.19なのですが、前回からのメジャーアップデートにて、コマンドが変わっており大変苦労したので備忘録として。かなりつまずきますので共有します。" />
+    <meta name="description" content="Pythonからtkinterを使ってGUIを実装していました。Entryを使ってユーザの入力値を受け取ることができますが、デフォルト値の設定の仕方に困ったので、デフォルト値を設定した方法を共有します。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -63,105 +63,145 @@
                                         </a>
                                     </li>
                                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog/category/sql" itemprop="item" class="link-item">
-                                            <span class="link-to-category" itemprop="name">SQL</span>
+                                        <a href="https://yuta0306.github.io/blog/category/python" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Python</span>
                                             <meta itemprop="position" content="2">
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
-                            <h1 class="post-title">MySQL8.0.xでリモート接続のセットアップをする!</h1>
+                            <h1 class="post-title">【Python】tkinterでEntryにデフォルト値を入れたい</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-18">2020-07-18</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-10-07">2020-10-07</time></li>
                             </ul>
                         </header>
                         <div class="post-content" itemprop="text">
                             <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/blog/theme/img/database.jpg" alt="">
+                                <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
                             </div>
                             <nav class="toc">
                                 <h2>目次</h2>
                                 <ol>
                                     <li>
-                                        <a href="#section1" class="link-item">sshにてリモートサーバにアクセス</a>
+                                        <a href="#section1" class="link-item">チュートリアルによくあるHello world!</a>
                                     </li>
                                     <li>
-                                        <a href="#section2" class="link-item">【本題】権限を与える</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section3" class="link-item">実際にマイナーバージョンでのコマンド打ってみる</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section4" class="link-item">まとめ</a>
+                                        <a href="#section2" class="link-item">ビルトインにprintln</a>
                                     </li>
                                 </ol>
                             </nav>
 
-                            <p>現在conoHa VPSにMySQLの環境を作り外部からアクセスしようとしていました。しかし、ここで問題が...</p>
-<p>リモート接続するためのセットアップってどうやるん？<br />
-しかも何や。記事まねても全然うまくいかないやん...orz</p>
-<p>ってことなのですが、バージョン8にメジャーアップデートにあたり、コマンドの変更があったようなので共有します。</p>
-<p>で、今回はroot権限をどこからでも接続する権限を与えます。</p>
+                            <p>Pythonからtkinterを使ってGUIを実装していました。Entryを使ってユーザの入力値を受け取ることができますが、デフォルト値の設定の仕方に困ったので、デフォルト値を設定した方法を共有します。</p>
 <section id="section1">
-<h2>sshにてリモートサーバにアクセス</h2>
-<p>まずははじめに、コマンドラインで<strong>ssh</strong>を使ってリモートサーバに入ります。今回はルートとして入ります。</p>
-<pre><code>$~ ssh root@xxx.xxx.x.xxx    #@以降はアドレス
-Enter password: **********
-~~ 以下略 ~~
-
-[root@xxx-xxx-x-xxx]#
+<h2>まずはEntryを生成</h2>
+<p>とりあえずコピペしたら動くようにします。</p>
+<p>ちなみに今回の僕の環境は以下になります。同じ環境で動かしたい場合は、以下のライブラリを<em>requirements.txt</em>にコピペでもして、インストールしてください。</p>
+<pre><code>altgraph==0.17
+certifi==2020.6.20
+macholib==1.14
+mysql-connector-python==8.0.21
+protobuf==3.13.0
+pyinstaller==4.0
+pyinstaller-hooks-contrib==2020.9
+six==1.15.0
 </code></pre>
-<p>このようにログイン先の情報とともに表示されます。</p>
-</section>
+
+<pre><code class="sh">pip install -r  requirements.txt
+</code></pre>
+
+<p>上のやつをターミナルで回せばインストールできると思います。</p>
+<p>さて、本題。。。</p>
+<p>まずは、Entryを生成します。今回は、<em>entry.py</em>に書いていきます。</p>
+<p>一番大きなくくりのクラスを<em>App</em>として、このインスタンスをメインルーティンで立てていきます。</p>
+<pre>
+<code class="python">
+<span class="reserved">import</span> tkinter <span class="reserved">as</span> tk
+
+<span class="reserved">class</span> <span class="function">App</span>(tk.Tk):
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, *args, **kwargs):
+        <span class="comment"># 魔法</span>
+        tk.Tk.<span class="function">__init__</span>(self, *args, **kwargs)
+
+        <span class="comment"># 以下でタイトルとウィンドウサイズを設定</span>
+        self.<span class="function">title</span>(u<span class="strings">"tkinterでEntryにデフォルト値を入れたい"</span>)
+        self.<span class="function">geometry</span>(<span class="strings">"500x300"</span>)
+
+        <span class="comment"># Frameを生成</span>
+        self.frame = tk.<span class="function">Frame</span>()
+        self.frame.<span class="function">pack</span>()
+        <span class="comment"># Labelを生成</span>
+        label = tk.<span class="function">Label</span>(self.frame, text=<span class="strings">'Your name'</span>)
+        label.<span class="function">pack</span>()
+        <span class="comment"># Entryを生成</span>
+        name = tk.<span class="function">Entry</span>(self.frame)
+        name.<span class="function">pack</span>()
+
+<p><span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">"__main__"</span>:
+    app = <span class="function">App</span>()
+    app.<span class="function">mainloop</span>()
+</code>
+</pre>
+</p>
+<p>これでとりあえずエントリー(入力受付)が可能になります。ここでUIは一切凝っていないので、下のような状態になると思います。</p>
+<p><img alt="完成画面" src="./theme/img/article/tk-entry-default_1.png" /></p>
+<p>この入力受付に対して、「山田太郎」をデフォルト値として設定していきたいと思います。</p>
 <section id="section2">
-<h2>【本題】権限を与える</h2>
-<p>まずはMySQLを起動しまして、以下のコマンドを打ちます。</p>
-<pre><code>mysql&gt; CREATE USER 'root'@'%' IDENTIFIED BY 'your-password';
-Query OK, 0 rows affected (0.01 sec)
+<h2>デフォルト値の設定</h2>
+</section>
+</section>
+<p>続いて、「山田太郎」をデフォルト値として設定していきます。基盤は先ほどのコードになります。</p>
+<p>先に言うと、<em>tk.Entry().insert()</em>メソッドを用いて、エントリーに対して文字列を挿入します。</p>
+<p>それではコードを追加しましょう。</p>
+<pre>
+<code class="python">
+<span class="reserved">import</span> tkinter <span class="reserved">as</span> tk
 
-mysql&gt; GRANT all PRIVILEGES
-       -&gt; ON *.* TO 'root'@'%' 
-       -&gt; WITH GRANT OPTION;
-</code></pre>
-<p>まずは1つ目のコマンドでユーザーを作ります。(<strong>コレが8.0.x以降の仕様なのでドツボにハマるやつ!!</strong>)</p>
-<p>そして2つ目のコマンドにて、権限を付与してきます。ただ、今回は見易さのため複数行にしましたが、1行でも問題はないです。(大文字小文字もあまり気にしなくて良かったりもする)</p>
-<p>あと、'%'ってんはアクセスするIPアドレスを書くところであって、今回はどこからでもアクセスできる(どのPCからでも)を想定するので<strong>'%'</strong>を指定して全てを許可します。</p>
-<p>あと、<strong><em>.</em></strong>の部分はデータベースとテーブルの設定ですが、こちらも全てにアクセスができると想定してこちらにしています。任意のデータベースを許可したければ  '任意の名前'.*とでもすれば良いでしょう。</p>
-<p>一応コレで下準備は完了ってところですかね。</p>
-<p>基本的には問題ないのですが、僕が使ってみたconoHa VPSとかだと、ファイヤウォールの設定が必要なので今回は省略。</p>
-<p>ドツボにハマるのはきっとここなので注意。</p>
-</section>
-<section id="section3">
-<h2>実際にマイナーバージョンでのコマンド打ってみる</h2>
-<p>実際にマイナーバージョンでのコマンドを実行してみますか。(愚行)<br />
-あと小文字でやってみた。</p>
-<pre><code>mysql&gt; grant all privileges on 
-       -&gt; *.* to root@"%" identified by 'your-password' 
-        -&gt; with grant option;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'identified by 'your-password'
-with grant option' at line 2
-</code></pre>
-<p>まあこうなってわからないよね。SQL構文チェックしようねって言われるわけだけど、記事も少なかったし、ここはドツボにハマりかけるのかなと思います。</p>
-</section>
-<section id="section4">
-<h2>まとめ</h2>
-<p>ルートとして外部からどこでもどのデータベースのアクセスを許可するには以下のコマンドを打ちましょう。</p>
-<pre><code>mysql&gt; CREATE USER 'root'@'%' IDENTIFIED BY 'your-password';
-Query OK, 0 rows affected (0.01 sec)
+<span class="reserved">class</span> <span class="function">App</span>(tk.Tk):
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, *args, **kwargs):
+        <span class="comment"># 魔法</span>
+        tk.Tk.<span class="function">__init__</span>(self, *args, **kwargs)
 
-mysql&gt; GRANT all PRIVILEGES
-       -&gt; ON *.* TO 'root'@'%' 
-       -&gt; WITH GRANT OPTION;
-</code></pre>
-<p>他にも外部サーバの設定のよって動かないことがあるので、それはまた紹介しますが。
-今回はバージョン8.0.xでの変更点に触れました。</p>
-<p>快適なデータベースライフを!!</p>
-</section>
+        <span class="comment"># 以下でタイトルとウィンドウサイズを設定</span>
+        self.<span class="function">title</span>(u<span class="strings">"tkinterでEntryにデフォルト値を入れたい"</span>)
+        self.<span class="function">geometry</span>(<span class="strings">"500x300"</span>)
+
+        <span class="comment"># Frameを生成</span>
+        self.frame = tk.<span class="function">Frame</span>()
+        self.frame.<span class="function">pack</span>()
+        <span class="comment"># Labelを生成</span>
+        label = tk.<span class="function">Label</span>(self.frame, text=<span class="strings">'Your name'</span>)
+        label.<span class="function">pack</span>()
+        <span class="comment"># Entryを生成</span>
+        name = tk.<span class="function">Entry</span>(self.frame)
+
+        <span class="strings">""</span><span class="strings">"ここにコードを1行追加"</span><span class="strings">""</span>
+        name.<span class="function">insert</span>(0, <span class="strings">"山田太郎"</span>)
+        <span class="strings">""</span><span class="strings">"ここにコードを1行追加"</span><span class="strings">""</span>
+
+        name.<span class="function">pack</span>()
+
+<p><span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">"__main__"</span>:
+    app = <span class="function">App</span>()
+    app.<span class="function">mainloop</span>()
+</code>
+</pre>
+</p>
+<p>概要は上記のようになります。</p>
+<p>後半部分に1行足しただけです。足したのはこれ。</p>
+<p><strong>name.insert(0, "山田太郎")</strong></p>
+<p>第一引数はインデックスを指していて、今回はエントリーの一番初めに挿入したいので、<em>0</em>を入れました。</p>
+<p>第二引数は実際に挿入したい値です。よって、今回は「<em>山田太郎</em>」を書きました。</p>
+<p>こうすることで結果は以下が得られると思います。</p>
+<p><img alt="挿入後完成画面" src="./theme/img/article/tk-entry-default_2.png" /></p>
+<p>これでデフォルト値の設定ができました。</p>
+<p>正攻法なのかは定かではないですが......www</p>
+<p>これでデフォルト値の設定ができました。必要な時は是非ご活用を。</p>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
                                 <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/blog/tag/mysql" class="link-item">MySQL</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/tkinter" class="link-item">Tkinter</a></li>
                                 </ul>
                             </div>
 
@@ -170,22 +210,22 @@ mysql&gt; GRANT all PRIVILEGES
                                 <h3>SHARE</h3>
                                 <ul>
                                     <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/mysql-remote-setup" target="_blank" class="link-item">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/tk-entry-default" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
                                         </a>
                                     </li>
                                     <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/mysql-remote-setup" target="_blank" class="link-item">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/tk-entry-default" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
                                         </a>
                                     </li>
                                     <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/mysql-remote-setup" target="_blank" class="link-item">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/tk-entry-default" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
                                         </a>
                                     </li>
                                     <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/mysql-remote-setup" target="_blank" class="link-item">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/tk-entry-default" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
                                         </a>
                                     </li>
