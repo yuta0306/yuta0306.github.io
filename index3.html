@@ -12,7 +12,7 @@
     <title>ゆうぼうの書跡棚</title>
     <!-- OGP -->
     <meta property="og:title" content="ゆうぼうの書跡棚" />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="https://yuta0306.github.io/blog" />
     <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
@@ -34,9 +34,11 @@
 <body ontouchstart="">
     <header class="header">
         <div class="inner-header wrap">
-            <a class="logo link-item" href="https://yuta0306.github.io/blog">
-                <span class="logo-text">ゆうぼうの書跡棚</span>
-            </a>
+            <h1 class="h1">
+                <a class="logo link-item" href="https://yuta0306.github.io/blog">
+                    <span class="logo-text">ゆうぼうの書跡棚</span>
+                </a>
+            </h1>
         </div>
         <ul class="navbar wrap">
             <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/go" class="link-item">Go</a></li>
@@ -52,45 +54,23 @@
     <div class="content">
         <div class="wrap">
             <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-                <div class="archive-header">
-                    <div>
-                        <nav class="breadcrumb">
-                            <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                    <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
-                                        <span class="link-to-home" itemprop="name">ホーム</span>
-                                        <meta itemprop="position" content="1">
-                                    </a>
-                                </li>
+                <div class="card-wrapper">
+                    <a href="https://yuta0306.github.io/blog/touch-device-hover" class="card">
+                        <div class="card-header">
+                            <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
+                        </div>
+                        <div class="card-content">
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2020-07-10">2020-07-10</time></li>
                             </ul>
-                        </nav>
-                        <h1>カテゴリー「JS」記事一覧</h1>
+                            <h2>スマホにも:hoverを対応させてみる</h2>
+                        </div>
+                    </a>
+                    <div class="paginator-wrapper">
+                        <a href="index2.html" class="paginator previous">Previous</a>
                     </div>
                 </div>
-                <div class="card-wrapper">
-                    <a href="https://yuta0306.github.io/blog/js-return-mul" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-10">2020-10-10</time></li>
-                            </ul>
-                            <h2>JSで返り値にパラメータを複数設定する</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/blog/sort-mularr-by-str" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-10">2020-10-10</time></li>
-                            </ul>
-                            <h2>【JS】多次元配列を文字列に合わせてソートしたい!</h2>
-                        </div>
-                    </a>
-                </div>
+                    
                 
             </main>
             <aside class="aside">
