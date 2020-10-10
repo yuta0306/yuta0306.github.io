@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
 
-    <title>Goのインストールが楽すぎた話</title>
+    <title>Goはどうやら型を推論できるらしい話</title>
     <!-- OGP -->
-    <meta property="og:title" content="Goのインストールが楽すぎた話" />
+    <meta property="og:title" content="Goはどうやら型を推論できるらしい話" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/go-install" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/go-type-inference" />
     <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/gopher.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="環境構築がいつも面倒くさくて、実際にローカルで開発を始めるまでに毎回時間がかかるので新しい言語を始める時躊躇われることが多いです。そう思いつつもGoを始めてみたところ、かなり環境構築が楽でした。その時の話を少ししていきます。" />
+    <meta property="og:description" content="Goは静的型付言語でありながら、どうやら型を推論できるらしいですね。公式チュートリアルをみて知りましたが。ここでいくつか型を試してみたので、その実験結果を報告していきます。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="環境構築がいつも面倒くさくて、実際にローカルで開発を始めるまでに毎回時間がかかるので新しい言語を始める時躊躇われることが多いです。そう思いつつもGoを始めてみたところ、かなり環境構築が楽でした。その時の話を少ししていきます。" />
+    <meta name="description" content="Goは静的型付言語でありながら、どうやら型を推論できるらしいですね。公式チュートリアルをみて知りましたが。ここでいくつか型を試してみたので、その実験結果を報告していきます。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -70,9 +70,9 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <h1 class="post-title">Goのインストールが楽すぎた話</h1>
+                            <h1 class="post-title">Goはどうやら型を推論できるらしい話</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-05">2020-10-05</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-10-10">2020-10-10</time></li>
                             </ul>
                         </header>
                         <div class="post-content" itemprop="text">
@@ -83,94 +83,97 @@
                                 <h2>目次</h2>
                                 <ol>
                                     <li>
-                                        <a href="#section1" class="link-item">インストーラのダウンロード</a>
+                                        <a href="#section1" class="link-item">静的型付らしい変数宣言</a>
                                     </li>
                                     <li>
-                                        <a href="#section2" class="link-item">インストールする</a>
+                                        <a href="#section2" class="link-item">型推論(Goチュートリアルより)</a>
                                     </li>
                                     <li>
-                                        <a href="#section3" class="link-item">go versionがエラーで表示されない</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section4" class="link-item">まとめ</a>
+                                        <a href="#section3" class="link-item">推論できた型集</a>
                                     </li>
                                 </ol>
                             </nav>
 
-                            <p>環境構築がいつも面倒くさくて、実際にローカルで開発を始めるまでに毎回時間がかかるので新しい言語を始める時躊躇われることが多いです。そう思いつつもGoを始めてみたところ、かなり環境構築が楽でした。その時の話を少ししていきます。</p>
-<p>インストールをしていく際は、こちらのサイトを参照されたい。</p>
-<p><a href="https://golang.org/doc/install">https://golang.org/doc/install</a></p>
+                            <p>Goは静的型付言語でありながら、どうやら型を推論できるらしいですね。公式チュートリアルをみて知りましたが。ここでいくつか型を試してみたので、その実験結果を報告していきます。</p>
 <section id="section1">
-<h2>インストーラのダウンロード</h2>
-<p>まずは、上に示していた<a href="https://golang.org/doc/install">https://golang.org/doc/install</a>にアクセスします。</p>
-<p>すると、最上部にダウンロードの手順が示されており以下のようになっています。</p>
-<ol>
-<li>Go donwload.</li>
-<li>Go install.</li>
-<li>Go code.</li>
-</ol>
-<p>最初の手順としてインストーラのダウンロードを行います。</p>
-<p><img alt="Goのdownload" src="./theme/img/article/go-download.png" /></p>
-<p>上の画像をのように、画面は開いているPCのOSに合わせて適したインストーラがダウンロードできるようになっています。</p>
-<p>私の場合は、Macから触っているのでMac用ダウンロードになっています。</p>
-<p>こちらをクリックしてダウンロードします。</p>
-</section>
-<section id="section2">
-<h2>インストールする</h2>
-<p>続いて、インストールをします。先ほどダウンロードしたものがインストーラなのでそれを立ち上げてインストールを開始します。</p>
-<p>インストール画面が出たら、特に何も設定せずに、次へと進んでいって大丈夫です。</p>
-<p><strong>PATH</strong>は勝手に通してくれるみたいです。</p>
-<p>ちなみに、公式にはこのようなことが説明に書いてあります。</p>
-<p>Linux</p>
-<p><img alt="Go install for linux" src="./theme/img/article/go-install-linux.png" /></p>
-<p>Mac</p>
-<p><img alt="Go install for mac" src="./theme/img/article/go-install-mac.png" /></p>
-<p>Windows</p>
-<p><img alt="Go install for windows" src="./theme/img/article/go-install-windows.png" /></p>
-<p>とりあえず、Macでしかインストールを試していないのでMacを前提にこの記事を進めさせていただきますね。</p>
-<p>インストールできたら、ターミナルを開きます。（or 開きなおします）</p>
-<p>そこで、<em>go version</em>とコマンドを打ってみましょう。</p>
-<pre><code class="bash">$ go version
-</code></pre>
-
-<p>結果は以下が得られるはずです(10/5現在)</p>
-<pre><code class="bash">$ go version
-go version go1.15.2 darwin/amd64
-</code></pre>
-
-</section>
-<section id="section3">
-<h2>go versionがエラーで表示されない</h2>
-<p>PATHが通っていないことが考えられます。</p>
-<p>そこで解決策を二つ提示します。</p>
-<ol>
-<li>ターミナルを開き直す</li>
-<li>PATHを明示的に通す</li>
-</ol>
-<h3>ターミナルを開き直す</h3>
-<p>ターミナルを開きなおして、インストールの設定が完了した状態にしましょう。</p>
-<p>これでもダメなら次へ行きます。</p>
-<h3>PATHを明示的に通す</h3>
-<p>一応デフォルトでPATHが通るはずですが、通らないこともあると思うので、<strong>明示的に</strong>PATHを通してみます。</p>
-<p>ターミナルでPATHを通しましょう。</p>
+<h2>静的型付らしい変数宣言</h2>
 <pre>
-<code class="sh">
-$ <span class="builtins">export</span> <span class="reserved">PATH</span>=$PATH:/usr/local/go/bin
-</code>
+<code class="go">
+<span class="reserved">var</span> i, j <span class="builtins">int</span> = 1, 2</code>
 </pre>
 
 
-<p>とりあえず、これでPATHが通ればうまくいくはずです。</p>
-<p>......</p>
-<p>これでもダメならインストールしなおせばうまくいくんじゃないかな...(暴論)</p>
+<p>よくやる印象を持つのはこれですかね。(Cの方がGoより馴染んでいる状態だからかもしれないけど)</p>
+<p>とりあえず、<em>var variable type</em>で型宣言ができるという仕様なわけですね。</p>
 </section>
-<section id="section4">
-<h2>まとめ</h2>
-<p>これでGoのインストールが完了したはずです。</p>
-<p>インストール自体に時間が割かれることが多い印象ですが、この言語はインストールも早く、かなり高速で言語をローカルで触る環境が整うといった印象でした。</p>
-<p>書き方もかなり使い易くて、静的型付言語の煩わしさを取っ払ったような感じがしました。(感じがしただけで実際まだよくわからないww)</p>
-<p>ちょっと面白そうな感じだったので、深掘りして学んでみてWeb APIでもあとで作ってみようかなと思います。</p>
-<p>それではGoのインストールはここまでです。</p>
+<section id="section2">
+<h2>型推論(Goチュートリアルより)</h2>
+<p>Goのチュートリアルの中に「<a href="https://tour.golang.org/basics/14">型推論(type inferece)</a>」というセクションがありました。そこからコードを引用させていただきます。</p>
+<p>そこで紹介されていたコードがこちらです。</p>
+<pre>
+<code class="go">
+<span class="reserved">package</span> main<br>
+<span class="reserved">import</span> <span class="strings">"fmt"</span><br>
+<span class="reserved">func</span> <span class="function">main</span>() {
+    v := 42 // change me!
+    fmt.<span class="function">Printf</span>(<span class="strings">"v is of type %T\n"</span>, v)
+}<br></code>
+</pre>
+
+<p>これで得られる結果がこちらです。</p>
+<pre><code>v is of type int
+</code></pre>
+
+<p>型宣言は明示的には行っていませんが、int型であることを推論し認識したようです。</p>
+<p>それでは、次のセクションでは他に推論できた型を紹介していきます。</p>
+</section>
+<section id="section3">
+<h2>推論できた型集</h2>
+<p>ソースコードにより紹介していきます。</p>
+<p>コード自体は先ほどの公式チュートリアルより引用させていただいたコードが元になっています。(Go使いではないので、慣習的によくない表現があれば教えていただきたいです。)</p>
+<p>コードがこちら。</p>
+<pre>
+<code class="go">
+<span class="reserved">package</span> main<br>
+<span class="reserved">import</span> <span class="strings">"fmt"</span><br>
+<span class="reserved">func</span> <span class="function">main</span>()  {
+    i := 3
+    i32 := <span class="strings">'3'</span>
+    f := 3.14
+    j := 1 + 1i
+    b := false
+    s := <span class="strings">"string"</span>
+    fmt.<span class="function">Printf</span>(<span class="strings">"i is of type %T\\n"</span>, i)
+    fmt.<span class="function">Printf</span>(<span class="strings">"i32 is of type %T\\n"</span>, i32)
+    fmt.<span class="function">Printf</span>(<span class="strings">"f is of type %T\\n"</span>, f)
+    fmt.<span class="function">Printf</span>(<span class="strings">"j is of type %T\\n"</span>, j)
+    fmt.<span class="function">Printf</span>(<span class="strings">"b is of type %T\\n"</span>, b)
+    fmt.<span class="function">Printf</span>(<span class="strings">"s is of type %T\\n"</span>, s)
+}</code>
+</pre>
+
+<p>上記のコードより得られる結果がこちらです。</p>
+<pre><code>i is of type int
+i32 is of type int32
+f is of type float64
+j is of type complex128
+b is of type bool
+s is of type string
+</code></pre>
+
+<p>個人的に詰まった？理解に苦しむのは<em>int32</em>ですかね。「''」と「""」が違った意味合いを持つのはPythonユーザからすると少しつまりますね。しかし、経験してしまえば覚えるので大丈夫ですね。</p>
+<p>とりあえず、Go初めて勉強3日間の僕が観測できた型推論はこれらになります。</p>
+<ul>
+<li>int</li>
+<li>int32</li>
+<li>float64</li>
+<li>complex128</li>
+<li>bool</li>
+<li>string</li>
+</ul>
+<p>他にもあったら教えていただきたいです。(Gopherの皆さんよろしくお願いします)</p>
+<p>なかなか使いやすい言語と言った所感なので、これからGoの勉強とこのブログによるアウトプットをゆっくりやって行こうかなと思います。(他の開発が最優先なので)</p>
+<p>今回は「<strong>Goの型の推論</strong>」についてお話ししました〜。それでは。</p>
 </section>
 
                             <div class="post-tag">
@@ -185,22 +188,22 @@ $ <span class="builtins">export</span> <span class="reserved">PATH</span>=$PATH:
                                 <h3>SHARE</h3>
                                 <ul>
                                     <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/go-install" target="_blank" class="link-item">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/go-type-inference" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
                                         </a>
                                     </li>
                                     <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/go-install" target="_blank" class="link-item">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/go-type-inference" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
                                         </a>
                                     </li>
                                     <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/go-install" target="_blank" class="link-item">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/go-type-inference" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
                                         </a>
                                     </li>
                                     <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/go-install" target="_blank" class="link-item">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/go-type-inference" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
                                         </a>
                                     </li>
