@@ -91,6 +91,9 @@
                                     <li>
                                         <a href="#section3" class="link-item">推論できた型集</a>
                                     </li>
+                                    <li>
+                                        <a href="#section4" class="link-item">追記</a>
+                                    </li>
                                 </ol>
                             </nav>
 
@@ -174,6 +177,23 @@ s is of type string
 <p>他にもあったら教えていただきたいです。(Gopherの皆さんよろしくお願いします)</p>
 <p>なかなか使いやすい言語と言った所感なので、これからGoの勉強とこのブログによるアウトプットをゆっくりやって行こうかなと思います。(他の開発が最優先なので)</p>
 <p>今回は「<strong>Goの型の推論</strong>」についてお話ししました〜。それでは。</p>
+</section>
+<section id="section4">
+<h2>追記</h2>
+<p>uint8(unsigned int8)もできるみたいです。情報提供ありがとうございます。</p>
+<pre>
+<code class="go">
+<span class="reserved">func</span> <span class="function">main</span>()  {
+    u := []byte{<span class="strings">'3'</span>}
+    fmt.<span class="function">Printf</span>(<span class="strings">"u is of type %T\\n"</span>, u)
+}</code>
+</pre>
+
+
+<p>出力は以下になります。</p>
+<pre><code>u is of type []uint8
+</code></pre>
+
 </section>
 
                             <div class="post-tag">
