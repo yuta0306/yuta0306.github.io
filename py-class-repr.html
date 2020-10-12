@@ -89,7 +89,7 @@
                                         <a href="#section2" class="link-item">Scalarクラスを作る</a>
                                     </li>
                                     <li>
-                                        <a href="#section3" class="link-item">【\_\_str\_\_】の出番</a>
+                                        <a href="#section3" class="link-item">【__str__】の出番</a>
                                     </li>
                                     <li>
                                         <a href="#section4" class="link-item">今回のソースの推奨</a>
@@ -177,7 +177,7 @@ TypeError: (<span class="strings">'expect int or float, but {}'</span>, class <s
 <p>しかし、やはりこのままではクラスをそのまま出力してしまっています。</p>
 </section>
 <section id="section3">
-<h2>【__str__】の出番</h2>
+<h2>【<strong>str</strong>】の出番</h2>
 <p>それでは、__str__という特殊メソッドを用いて、出力結果を変更していきます。</p>
 <p>先までのクラスを以下のように変えていきます。</p>
 <pre>
@@ -187,8 +187,7 @@ TypeError: (<span class="strings">'expect int or float, but {}'</span>, class <s
         <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
             self.data = data
         else:
-            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
-
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))<br>
     <span class="comment"># 以下を追加</span>
     <span class="reserved">def</span> <span class="function">__str__</span>(self):
         <span class="reserved">return</span> <span class="strings">'Scalar({})'</span>.<span class="function">format</span>(self.data)</code>
@@ -203,10 +202,9 @@ TypeError: (<span class="strings">'expect int or float, but {}'</span>, class <s
         <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
             self.data = data
         else:
-            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))<br>
 
-<pre><code>&lt;span class="comment"&gt;# 以下を追加&lt;/span&gt;
-&lt;span class="reserved"&gt;def&lt;/span&gt; &lt;span class="function"&gt;__str__&lt;/span&gt;(self):
+<pre><code>&lt;span class="reserved"&gt;def&lt;/span&gt; &lt;span class="function"&gt;__str__&lt;/span&gt;(self):
     &lt;span class="reserved"&gt;return&lt;/span&gt; &lt;span class="strings"&gt;'Scalar({})'&lt;/span&gt;.&lt;span class="function"&gt;format&lt;/span&gt;(self.data)&lt;br&gt;
 </code></pre>
 <p><span class="reserved">if</span> <span class="builtins"><strong>name</strong></span> == <span class="strings">"<strong>main</strong>"</span>:
@@ -225,8 +223,8 @@ Scalar(3.0)
 <p>このように、クラスのインスタンスの出力を制御するには<strong><strong>str</strong></strong>という特殊メソッドを使うと良いみたいです。</p>
 <p>ただし、<strong>__repr</strong>というものもあります。今回のソースに関しては正直いうと、この<strong><strong>repr</strong></strong>の方が適している気がします。(evalを使えば可逆的に戻すことができるため)</p>
 <p>詳しくはこちらを参照されたい(<a href="https://docs.python.org/ja/3/reference/datamodel.html">https://docs.python.org/ja/3/reference/datamodel.html</a>)</p>
-<section id="section4"></section>
 </section>
+<section id="section4">
 <h2>今回のソースの推奨</h2>
 <pre>
 <code class="python">
@@ -246,6 +244,7 @@ Scalar(3.0)
     scalar = <span class="function">Scalar</span>(3.0)
     <span class="builtins">print</span>(scalar)</code>
 </pre></p>
+</section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
