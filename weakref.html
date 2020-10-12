@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
+    <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
+
+    <title>【weakref】弱い参照によってメモリ管理をする</title>
+    <!-- OGP -->
+    <meta property="og:title" content="【weakref】弱い参照によってメモリ管理をする" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/weakref" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/python.jpg" />
+    <meta property="og:site_name" content="ゆうぼうの書跡棚" />
+    <meta property="og:description" content="ディープラーニングとか、とにかく複雑でメモリを使用するような計算処理が家庭用パソコンでもできる時代になりました。(そーゆー時代しか生きていないんですけど)とはいえ、メモリを意識せずともプログラムをかけているのは最適化されたライブラリを使っているからなわけで。。。そんなわけで自分でもメモリ管理を気をつけたいわけです。そこで、弱参照によって、うまいことPython処理系にメモリの破棄を促す方法をお話ししていきます。" />
+
+    <!-- ※Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- /OGP -->
+    <meta name="robots" content="index, follow" />
+    <meta name="generator" content="Pelican" />
+    <meta name="description" content="ディープラーニングとか、とにかく複雑でメモリを使用するような計算処理が家庭用パソコンでもできる時代になりました。(そーゆー時代しか生きていないんですけど)とはいえ、メモリを意識せずともプログラムをかけているのは最適化されたライブラリを使っているからなわけで。。。そんなわけで自分でもメモリ管理を気をつけたいわけです。そこで、弱参照によって、うまいことPython処理系にメモリの破棄を促す方法をお話ししていきます。" />
+    <meta name="author" content="ゆうぼう" />
+    <!-- Favicon -->
+    <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/icon-192x192.png">
+    <!-- /Favicon -->
+</head>
+<body ontouchstart="">
+    <header class="header">
+        <div class="inner-header wrap">
+            <a class="logo link-item" href="https://yuta0306.github.io/blog">
+                <span class="logo-text">ゆうぼうの書跡棚</span>
+            </a>
+        </div>
+        <ul class="navbar wrap">
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/go" class="link-item">Go</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/javascript" class="link-item">JavaScript</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/linux" class="link-item">Linux</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/ml" class="link-item">ML</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/python" class="link-item">Python</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/sql" class="link-item">SQL</a></li>
+            <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/web" class="link-item">Web</a></li>
+        </ul>
+    </header>    
+    <div class="content">
+        <div class="wrap">
+            <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/blog/category/python" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Python</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">【weakref】弱い参照によってメモリ管理をする</h1>
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2020-10-12">2020-10-12</time></li>
+                            </ul>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/blog/theme/img/python.jpg" alt="">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">Pyton処理系のお話</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section2" class="link-item">メモリが即座に消されるパターン</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section3" class="link-item">循環参照により即座に破棄されないパターン</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section4" class="link-item">weakrefで改良</a>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <p>ディープラーニングとか、とにかく複雑でメモリを使用するような計算処理が家庭用パソコンでもできる時代になりました。(そーゆー時代しか生きていないんですけど)とはいえ、メモリを意識せずともプログラムをかけているのは最適化されたライブラリを使っているからなわけで。。。そんなわけで自分でもメモリ管理を気をつけたいわけです。そこで、弱参照によって、うまいことPython処理系にメモリの破棄を促す方法をお話ししていきます。</p>
+<section id="section1">
+<h2>Pyton処理系のお話</h2>
+<p>さて、これまでPythonを触ってきた僕ですが、メモリ管理を意識したことはほっとんどなく、大学の授業でC言語を学んだ際、低レイヤーの処理に少し不慣れで難しさを感じました。</p>
+<p>それくらいPython処理系はメモリ管理を強く意識させることはないということなのでしょう。</p>
+<p>それで、Python処理系は基本的には、<strong>オブジェクトが参照される回数をカウント</strong>して、参照するものがなくなった段階でメモリを破棄する。そんなイメージらしい。</p>
+<p>つまり、循環参照のような状態に陥ると、<strong>ユーザからは参照できないにもかかわらず、メモリに残ってしまう</strong>ということが発生するそうです。(他の手法でメモリが消されるのだろうが、こちらの消えて欲しいタイミングで消せることをメモリ管理と今回は考える)</p>
+</section>
+<section id="section2">
+<h2>メモリが即座に消されるパターン</h2>
+<p>以下が、参照カウント(あるオブジェクトを参照するものの数)によってきれいに即座にメモリが破棄されるパターンです。</p>
+<pre>
+<code class="python">
+<span class="reserved">class</span> object:
+    <span class="reserved">pass</span><br>
+<span class="reserved">def</span> <span class="function">func</span>(a):
+    <span class="builtins">print</span>(a)<br>
+a = <span class="builtins">object</span>()  <span class="comment"># a: 参照カウント 1</span>
+b = <span class="builtins">object</span>()  <span class="comment"># b: 参照カウント 1</span>
+c = <span class="builtins">object</span>()  <span class="comment"># c: 参照カウント 1</span><br>
+a.b = b  <span class="comment"># b: 参照カウント 2</span>
+b.c = c  <span class="comment"># c: 参照カウント 2</span><br>
+a = b = c = <span class="reserved">None</span>  <span class="comment"># メモリ破棄(a, b, c: 参照カウント 0)</span></code>
+</pre>
+
+
+</section>
+<section id="section3">
+<h2>循環参照により即座に破棄されないパターン</h2>
+<p>続いて、循環参照を起こしてみます。これによって、長い間メモリに<strong>ユーザが参照できないオブジェクトが残ってしまいます</strong>。</p>
+<pre>
+<code class="python">
+<span class="comment"># ライブラリをインポート</span>
+<span class="reserved">import</span> weakref<br>
+<span class="reserved">class</span> object:
+    <span class="reserved">pass</span><br>
+<span class="reserved">def</span> <span class="function">func</span>(a):
+    <span class="builtins">print</span>(a)<br>
+a = <span class="builtins">object</span>()  <span class="comment"># a: 参照カウント 1</span>
+b = <span class="builtins">object</span>()  <span class="comment"># b: 参照カウント 1</span>
+c = <span class="builtins">object</span>()  <span class="comment"># c: 参照カウント 1</span><br>
+<span class="comment"># 以下を弱参照で循環させる</span>
+a.b = b  <span class="comment"># b: 参照カウント 2</span>
+b.c = c  <span class="comment"># c: 参照カウント 2</span>
+c.a = a  <span class="comment"># a: 参照カウント 2</span>
+<span class="comment"># 以下でメモリが破棄されているか参照する</span>
+a_<span class="function">ref</span> = weak<span class="function">ref</span>.<span class="function">ref</span>(a)
+b_<span class="function">ref</span> = weak<span class="function">ref</span>.<span class="function">ref</span>(b)
+c_<span class="function">ref</span> = weak<span class="function">ref</span>.<span class="function">ref</span>(c)<br>
+a = b = c = <span class="reserved">None</span>  <span class="comment"># メモリ破棄できない(a, b, c: 参照カウント 1)</span><br>
+<span class="builtins">print</span>(a_ref, b_ref, c_ref)</code>
+</pre>
+
+
+<p>出力はこんな感じです</p>
+<pre><code>&lt;weakref at 0x7fc5e3a49bf0; to 'object' at 0x7fc5e3a40150&gt; &lt;weakref at 0x7fc5e3a49c50; to 'object' at 0x7fc5e3a40190&gt; &lt;weakref at 0x7fc5e3a49cb0; to 'object' at 0x7fc5e3a40250&gt;
+</code></pre>
+
+<p>破棄されていれば<em>dead</em>と書かれるはず...</p>
+<p>やはりダメですね。弱参照で破棄させましょう。</p>
+</section>
+<section id="section4">
+<h2>weakrefで改良</h2>
+<p>先ほどの問題を、<em>weakref.ref</em>を用いて、弱参照とすることで参照カウントを行わないように設定します。</p>
+<p>そうすることで参照カウントが最終的に0になり、メモリをPython処理系によって即座に破棄されることができます。</p>
+<pre>
+<code class="python">
+<span class="comment"># ライブラリをインポート</span>
+<span class="reserved">import</span> weakref<br>
+<span class="reserved">class</span> object:
+    <span class="reserved">pass</span><br>
+<span class="reserved">def</span> <span class="function">func</span>(a):
+    <span class="builtins">print</span>(a)<br>
+a = <span class="builtins">object</span>()  <span class="comment"># a: 参照カウント 1</span>
+b = <span class="builtins">object</span>()  <span class="comment"># b: 参照カウント 1</span>
+c = <span class="builtins">object</span>()  <span class="comment"># c: 参照カウント 1</span><br>
+<span class="comment"># 以下を弱参照で循環させる</span>
+a.b = weak<span class="function">ref</span>.<span class="function">ref</span>(b)  <span class="comment"># b: 参照カウント 0</span>
+b.c = weak<span class="function">ref</span>.<span class="function">ref</span>(c)  <span class="comment"># c: 参照カウント 0</span>
+c.a = weak<span class="function">ref</span>.<span class="function">ref</span>(a)  <span class="comment"># a: 参照カウント 0</span>
+<span class="comment"># 以下でメモリが破棄されているか参照</span>
+a_<span class="function">ref</span> = weak<span class="function">ref</span>.<span class="function">ref</span>(a)
+b_<span class="function">ref</span> = weak<span class="function">ref</span>.<span class="function">ref</span>(b)
+c_<span class="function">ref</span> = weak<span class="function">ref</span>.<span class="function">ref</span>(c)<br>
+a = b = c = <span class="reserved">None</span>  <span class="comment"># メモリ破棄(a, b, c: 参照カウント 0)</span><br>
+<span class="builtins">print</span>(a_ref, b_ref, c_ref)</code>
+</pre>
+
+
+<p>出力がこんな感じ。</p>
+<pre><code>&lt;weakref at 0x7f868932dcb0; dead&gt; &lt;weakref at 0x7f868932dbf0; dead&gt; &lt;weakref at 0x7f868932dc50; dead&gt;
+</code></pre>
+
+<p>全て<em>dead</em>になっていますね。これで期待した通りのタイミングでメモリを破棄することができました!!!</p>
+<p>時には低いレイヤーまで考えてみるのも楽しいものですね。(時にはです。意識しなくていいことが幸せ)</p>
+</section>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/weakref" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/weakref" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/weakref" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/weakref" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </article>
+                
+            </main>
+            <aside class="aside">
+                <div class="bio" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <div class="bio-header">
+                        <div class="bio-img">
+                            <img class="bio-img" src="https://yuta0306.github.io/blog/theme/img/bio.jpeg" alt="ゆうぼうの画像">
+                        </div>
+                        <h3 class="bio-name" itemprop="name">ゆうぼう</h3>
+                    </div>
+                    <div class="bio-content">
+                        <p class="bio-detail">Pythonエンジニア認定基礎|データ分析/ G検定2020#2なんやかんやで受かりました/ pelicanという静的サイトジェネレーターの独自テンプレで当ブログを運営中!!/ 主に機械学習やGAS,Go,JS,Pythonを使って遊んでおります。僕の作った静的サイトジェネレータによるブログ運営をサポートするアプリもWebで公開しています。</p>
+                    </div>
+                    <div class="bio-footer">
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">Web制作依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">スクレイピング依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">その他ご相談依頼はこちら</a>
+                        <a href="https://twitter.com/Sloth65557166" target="_blank" class="link-item">お問い合わせ</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>サイト内検索</h3>
+                    <script async src="https://cse.google.com/cse.js?cx=10a5bc44e4224ddfc"></script><div class="gcse-searchbox-only"></div>
+                </div>
+
+                <div class="social">
+                    <div class="social-header">
+                        <h3>FOLLOW ゆうぼう</h3>
+                    </div>
+                    <div class="social-content">
+                        <ul>
+                            <li><a href="https://twitter.com/Sloth65557166" target="_blank">
+                                <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="ゆうぼうのtwitter">
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <h3>カテゴリー一覧</h3>
+                    <ul class="categories">
+                       <li><a href="https://yuta0306.github.io/blog/category/go">Go</a></li> 
+                       <li><a href="https://yuta0306.github.io/blog/category/javascript">JavaScript</a></li> 
+                       <li><a href="https://yuta0306.github.io/blog/category/linux">Linux</a></li> 
+                       <li><a href="https://yuta0306.github.io/blog/category/ml">ML</a></li> 
+                       <li><a href="https://yuta0306.github.io/blog/category/python">Python</a></li> 
+                       <li><a href="https://yuta0306.github.io/blog/category/sql">SQL</a></li> 
+                       <li><a href="https://yuta0306.github.io/blog/category/web">Web</a></li> 
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>タグ一覧</h3>
+                    <ul class="tags">
+                        <li><a href="https://yuta0306.github.io/blog/tag/python">Python</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/特殊メソッド">特殊メソッド</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/オブジェクト指向">オブジェクト指向</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/go">Go</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/javascript">JavaScript</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/tkinter">Tkinter</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/selenium">Selenium</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/pandas">Pandas</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/mac">Mac</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/zsh">zsh</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/scikit-learn">Scikit-learn</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/mecab">MeCab</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/ml">ML</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/appium">Appium</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/node.js">node.js</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/centos7">CentOS7</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/make">make</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/mysql">MySQL</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/nlp">NLP</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/html">HTML</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/css">CSS</a></li> 
+                     </ul>
+                </div>
+
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- Google Analytics Code Here! -->
+    <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-147997959-2"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-147997959-2');</script>
+
+    <footer class="footer">
+        <div class="wrap">
+            <ul class="footer-link">
+                <li><a href="#" class="link-item">利用規約</a></li>
+                <li><a href="#" class="link-item">お問い合わせ</a></li>
+            </ul>
+            <p class="footer-copy">&copy; Copyright 2020 ゆうぼうの書跡棚 All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
