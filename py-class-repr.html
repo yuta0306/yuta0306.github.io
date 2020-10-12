@@ -203,16 +203,16 @@ TypeError: (<span class="strings">'expect int or float, but {}'</span>, class <s
             self.data = data
         else:
             <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))<br>
-
-<pre><code>&lt;span class="reserved"&gt;def&lt;/span&gt; &lt;span class="function"&gt;__str__&lt;/span&gt;(self):
-    &lt;span class="reserved"&gt;return&lt;/span&gt; &lt;span class="strings"&gt;'Scalar({})'&lt;/span&gt;.&lt;span class="function"&gt;format&lt;/span&gt;(self.data)&lt;br&gt;
-</code></pre>
-<p><span class="reserved">if</span> <span class="builtins"><strong>name</strong></span> == <span class="strings">"<strong>main</strong>"</span>:
+    <span class="reserved">def</span> <span class="function">__str__</span>(self):
+        <span class="reserved">return</span> <span class="strings">'Scalar({})'</span>.<span class="function">format</span>(self.data)<br>
+<span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">"__main__"</span>:
     scalar = <span class="function">Scalar</span>(3)
     <span class="builtins">print</span>(scalar)
     scalar = <span class="function">Scalar</span>(3.0)
     <span class="builtins">print</span>(scalar)</code>
-</pre></p>
+</pre>
+
+
 <p>この出力結果はどうなるでしょうか......(ドキドキ??)</p>
 <pre><code>$ python scalar.py
 Scalar(3)
@@ -234,16 +234,16 @@ Scalar(3.0)
             self.data = data
         else:
             <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
-
-<pre><code>&lt;span class="reserved"&gt;def&lt;/span&gt; &lt;span class="function"&gt;__repr__&lt;/span&gt;(self):
-    &lt;span class="reserved"&gt;return&lt;/span&gt; &lt;span class="strings"&gt;'Scalar({})'&lt;/span&gt;.&lt;span class="function"&gt;format&lt;/span&gt;(self.data)&lt;br&gt;
-</code></pre>
-<p><span class="reserved">if</span> <span class="builtins"><strong>name</strong></span> == <span class="strings">"<strong>main</strong>"</span>:
+    <span class="reserved">def</span> <span class="function">__repr__</span>(self):
+        <span class="reserved">return</span> <span class="strings">'Scalar({})'</span>.<span class="function">format</span>(self.data)<br>
+<span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">"__main__"</span>:
     scalar = <span class="function">Scalar</span>(3)
     <span class="builtins">print</span>(scalar)
     scalar = <span class="function">Scalar</span>(3.0)
     <span class="builtins">print</span>(scalar)</code>
-</pre></p>
+</pre>
+
+
 </section>
 
                             <div class="post-tag">
