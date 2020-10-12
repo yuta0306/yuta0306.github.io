@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
 
-    <title>pickleでロードした時pandasがあるのに"No module ~~"で悩んだ件について</title>
+    <title>classの標準出力を特殊な文字列にしたい【\_\_str\_\_|\_\_reper\_\_】</title>
     <!-- OGP -->
-    <meta property="og:title" content="pickleでロードした時pandasがあるのに"No module ~~"で悩んだ件について" />
+    <meta property="og:title" content="classの標準出力を特殊な文字列にしたい【\_\_str\_\_|\_\_reper\_\_】" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/pandas-nomodule" />
-    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/py-class-repr" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/python.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="Macは普段使いなので、あまり情報収集に使いたくなかったために、常時Windowsのノートパソコンを情報収集ボットとしようとしました。その時コードの共有をDropboxを用いたのですが、なぜかいくらpandasを入れても"No module named 'pandas.core.internals.managers'; 'pandas.core.internals' is not a package"というエラーが。。。その原因がわかったのでそのお話をします。" />
+    <meta property="og:description" content="Pythonでクラスのインスタンスを生成して格納した変数を出力すると、class名とメモリ番地みたいなやつが出力されてしまいます。Pythonユーザーで機械学習とかで遊んでいる方はわかると思いますが、*numpy*はnp.ndarrayというクラスを持ちながら出力では行列が出力されます。線形代数計算ライブラリを自作している際、そのような特殊な出力にしたいことがありました。実際に行った方法をお話しします。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="Macは普段使いなので、あまり情報収集に使いたくなかったために、常時Windowsのノートパソコンを情報収集ボットとしようとしました。その時コードの共有をDropboxを用いたのですが、なぜかいくらpandasを入れても"No module named 'pandas.core.internals.managers'; 'pandas.core.internals' is not a package"というエラーが。。。その原因がわかったのでそのお話をします。" />
+    <meta name="description" content="Pythonでクラスのインスタンスを生成して格納した変数を出力すると、class名とメモリ番地みたいなやつが出力されてしまいます。Pythonユーザーで機械学習とかで遊んでいる方はわかると思いますが、*numpy*はnp.ndarrayというクラスを持ちながら出力では行列が出力されます。線形代数計算ライブラリを自作している際、そのような特殊な出力にしたいことがありました。実際に行った方法をお話しします。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -70,116 +70,189 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <h1 class="post-title">pickleでロードした時pandasがあるのに"No module ~~"で悩んだ件について</h1>
+                            <h1 class="post-title">classの標準出力を特殊な文字列にしたい【\_\_str\_\_|\_\_reper\_\_】</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-09-10">2020-09-10</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-10-12">2020-10-12</time></li>
                             </ul>
                         </header>
                         <div class="post-content" itemprop="text">
                             <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
+                                <img src="https://yuta0306.github.io/blog/theme/img/python.jpg" alt="">
                             </div>
                             <nav class="toc">
                                 <h2>目次</h2>
                                 <ol>
                                     <li>
-                                        <a href="#section1" class="link-item">"No module"エラーの発生!?</a>
+                                        <a href="#section1" class="link-item">やりたいこと</a>
                                     </li>
                                     <li>
-                                        <a href="#section2" class="link-item">再度データを作り直す</a>
+                                        <a href="#section2" class="link-item">Scalarクラスを作る</a>
                                     </li>
                                     <li>
-                                        <a href="#section3" class="link-item">前の環境を調べてinstallし直す</a>
+                                        <a href="#section3" class="link-item">【\_\_str\_\_】の出番</a>
                                     </li>
                                     <li>
-                                        <a href="#section4" class="link-item">前の環境にrequirements.txtを作成しておいて同じ環境を立てる</a>
+                                        <a href="#section4" class="link-item">今回のソースの推奨</a>
                                     </li>
                                 </ol>
                             </nav>
 
-                            <p>Macは普段使いなので、あまり情報収集に使いたくなかったために、常時Windowsのノートパソコンを情報収集ボットとしようとしました。</p>
-<p>その時コードの共有をDropboxを用いたのですが、なぜかいくらpandasを入れても<br />
-<em>"No module named 'pandas.core.internals.managers'; 'pandas.core.internals' is not a package"</em><br />
-というエラーが...</p>
-<p>その原因がわかったのでそのお話をします。</p>
+                            <p>Pythonでクラスのインスタンスを生成して格納した変数を出力すると、class名とメモリ番地みたいなやつが出力されてしまいます。Pythonユーザーで機械学習とかで遊んでいる方はわかると思いますが、<em>numpy</em>はnp.ndarrayというクラスを持ちながら出力では行列が出力されます。線形代数計算ライブラリを自作している際、そのような特殊な出力にしたいことがありました。実際に行った方法をお話しします。</p>
+<p>正直タイトルにあるように、出落ちなのですが......</p>
+<p><em>__str__</em>というPython独自の特殊メソッドを用いて、やりたいことを実現していきたいと思います。</p>
 <section id="section1">
-<h2>"No module"エラーの発生!?</h2>
-<p>前述したとおり、環境の違う状態でコードを共有したわけです。</p>
-<p>確認してみると、やはりpandasのバージョンが違っていました。他の記事でも採算を話をしていますが、機械学習によく使われるライブラリたちは特段アップデートが早く、さらに大幅な変更も多い印象です。</p>
-<p>実際に起こった原因は、<strong>pickleに入れたpandasとロード先のpandasのバージョンの違い</strong>でした。</p>
-<p>実際の僕のバージョンは以下でした。</p>
-<table>
-<thead>
-<tr>
-<th>対象</th>
-<th>pandasのバージョン</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>以前のpandas</td>
-<td>0.24.2</td>
-</tr>
-<tr>
-<td>移植先のpandas</td>
-<td>0.23.1</td>
-</tr>
-</tbody>
-</table>
-<p>そのバージョンが違うと次のようなエラーが出ることがあります。</p>
-<pre><code class="terminal">&quot;No module named 'pandas.core.internals.managers'; 'pandas.core.internals' is not a package&quot;
+<h2>やりたいこと</h2>
+<p>まずは、実際にやりたいことを明確にしていきます。<em>numpy</em>のような物を参考にしますが、今回は簡単のため、<em>Scalar</em>クラスを作ります。</p>
+<p>このクラスは、数値(intもしくはfloat)を受け取って、それを<em>data</em>として格納させます。</p>
+<p>求める最終形はこちらです。</p>
+<pre><code class="sh">&gt;&gt;&gt; scalar = Scalar(5)
+&gt;&gt;&gt; print(scalar)
+Scalar(5)
 </code></pre>
 
-<p>上のようなモジュールがないよ！！</p>
-<p>と怒られるわけです。</p>
-<p>なので、次の解決策を示します</p>
-<ul>
-<li>再度データを作り直す</li>
-<li>前の環境を調べてinstallし直す</li>
-<li>前の環境にrequirements.txtを作成しておいて同じ環境を立てる</li>
-</ul>
-<p>次のセクションでお話をします。</p>
+<p>本来であれば、<em>&lt;__main__.Scalar object at 0x7f85f3a00150&gt;</em>のように表されてしまいますが、<em>Scalar(5)</em>というような特殊文字列にします。</p>
 </section>
 <section id="section2">
-<h2>再度データを作り直す</h2>
-<p>このやり方はいうまでもないですが、もう一度作り直す方法です。</p>
-<p>前の環境がわからないなど、どうしようもない時はこの方法で太刀打ちすれば良いかと思います</p>
-<pre><code class="python">import pandas as pd
-import pickle
+<h2>Scalarクラスを作る</h2>
+<p>さて、これから<em>Scalar</em>クラスを作ります。</p>
+<p>初めは、最低限クラスとして機能するようなコードを書いていきます。</p>
+<p>Scalarクラスの仕様は以下とします。</p>
+<ul>
+<li>インスタンス生成時に<em>int</em>又は<em>float</em>を受け取る</li>
+<li>上の条件以外ならば、TypeErrorを発出</li>
+</ul>
+<p>これらの条件を満たすようにクラスを書いたのが以下になります。</p>
+<pre>
+<code class="python">
+<span class="reserved">class</span> Scalar:
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, data):
+        <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
+            self.data = data
+        else:
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))</code>
+</pre>
 
-df = pd.DataFrame()
-with open('sample.pickle', 'wb') as f:
-    pickle.load(df, f)
-</code></pre>
 
-<p>といったように、現状の環境で作り直す方法です。</p>
+<p>これでメインルーティンを書いていきます。</p>
+<p>以下を試してみます。</p>
+<ul>
+<li>intを入力</li>
+<li>floatを入力</li>
+<li>listを入力</li>
+</ul>
+<p>さて、書きたします。先ほどのクラスを書いたファイルを拡張していきます。</p>
+<pre>
+<code class="python">
+<span class="reserved">class</span> Scalar:
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, data):
+        <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
+            self.data = data
+        else:
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))<br>
+<span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">"__main__"</span>:
+    scalar = <span class="function">Scalar</span>(3)
+    <span class="builtins">print</span>(scalar)
+    scalar = <span class="function">Scalar</span>(3.0)
+    <span class="builtins">print</span>(scalar)
+    scalar = <span class="function">Scalar</span>([3])
+    <span class="builtins">print</span>(scalar)</code>
+</pre>
+
+<p>ターミナルで実行してみます。</p>
+<pre>
+<code class="sh">
+$ python scalar.py
+<__main__.Scalar object at 0x7fddd4300150>
+<__main__.Scalar object at 0x7fddd4300190>
+Traceback (most recent call last):
+  File <span class="strings">"scalar.py"</span>, line 13, <span class="reserved">in</span> <module>
+    scalar = <span class="function">Scalar</span>([3])
+  File <span class="strings">"scalar.py"</span>, line 6, <span class="reserved">in</span> __init__
+    raise <span class="function">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
+TypeError: (<span class="strings">'expect int or float, but {}'</span>, class <span class="strings">'list'</span>)</code>
+</pre>
+
+
+<p>3と3.0の入力は受け取れましたが、どうやら[3]の入力は期待した通りエラーを出してくれています。</p>
+<p>しかし、やはりこのままではクラスをそのまま出力してしまっています。</p>
 </section>
 <section id="section3">
-<h2>前の環境を調べてinstallし直す</h2>
-<p>前の環境でのバージョンが分かっていれば入れ直せば良いでしょう。</p>
-<pre><code class="terminal">$ pip install pandas=='your pandas version'
+<h2>【__str__】の出番</h2>
+<p>それでは、__str__という特殊メソッドを用いて、出力結果を変更していきます。</p>
+<p>先までのクラスを以下のように変えていきます。</p>
+<pre>
+<code class="python">
+<span class="reserved">class</span> Scalar:
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, data):
+        <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
+            self.data = data
+        else:
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
+
+    <span class="comment"># 以下を追加</span>
+    <span class="reserved">def</span> <span class="function">__str__</span>(self):
+        <span class="reserved">return</span> <span class="strings">'Scalar({})'</span>.<span class="function">format</span>(self.data)</code>
+</pre>
+
+<p>最後の2行を追加する感じです。</p>
+<p>それでは、<em>int</em>と<em>float</em>以外はエラーを出すことを確認しているのでメインルーティンも同時に変えて以下のファイルとして完成させましょう。</p>
+<pre>
+<code class="python">
+<span class="reserved">class</span> Scalar:
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, data):
+        <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
+            self.data = data
+        else:
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
+
+<pre><code>&lt;span class="comment"&gt;# 以下を追加&lt;/span&gt;
+&lt;span class="reserved"&gt;def&lt;/span&gt; &lt;span class="function"&gt;__str__&lt;/span&gt;(self):
+    &lt;span class="reserved"&gt;return&lt;/span&gt; &lt;span class="strings"&gt;'Scalar({})'&lt;/span&gt;.&lt;span class="function"&gt;format&lt;/span&gt;(self.data)&lt;br&gt;
+</code></pre>
+<p><span class="reserved">if</span> <span class="builtins"><strong>name</strong></span> == <span class="strings">"<strong>main</strong>"</span>:
+    scalar = <span class="function">Scalar</span>(3)
+    <span class="builtins">print</span>(scalar)
+    scalar = <span class="function">Scalar</span>(3.0)
+    <span class="builtins">print</span>(scalar)</code>
+</pre></p>
+<p>この出力結果はどうなるでしょうか......(ドキドキ??)</p>
+<pre><code>$ python scalar.py
+Scalar(3)
+Scalar(3.0)
 </code></pre>
 
-<p>これで特定のバージョンのpandasを入手できるはずです。</p>
+<p>期待した通りの結果ですね!!</p>
+<p>このように、クラスのインスタンスの出力を制御するには<strong><strong>str</strong></strong>という特殊メソッドを使うと良いみたいです。</p>
+<p>ただし、<strong>__repr</strong>というものもあります。今回のソースに関しては正直いうと、この<strong><strong>repr</strong></strong>の方が適している気がします。(evalを使えば可逆的に戻すことができるため)</p>
+<p>詳しくはこちらを参照されたい(<a href="https://docs.python.org/ja/3/reference/datamodel.html">https://docs.python.org/ja/3/reference/datamodel.html</a>)</p>
+<section id="section4"></section>
 </section>
-<section id="section4">
-<h2>前の環境にrequirements.txtを作成しておいて同じ環境を立てる</h2>
-<p>前の環境が目の前にあるならば、以下のようにして<em>requirements.txt</em>を作成してしまえば早いでしょう。</p>
-<pre><code class="terminal">$ pip freeze &gt; requirements.txt
-</code></pre>
+<h2>今回のソースの推奨</h2>
+<pre>
+<code class="python">
+<span class="reserved">class</span> Scalar:
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, data):
+        <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
+            self.data = data
+        else:
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
 
-<pre><code class="terminal"># 新しい環境にて
-$ pip install -r requirements.txt
+<pre><code>&lt;span class="reserved"&gt;def&lt;/span&gt; &lt;span class="function"&gt;__repr__&lt;/span&gt;(self):
+    &lt;span class="reserved"&gt;return&lt;/span&gt; &lt;span class="strings"&gt;'Scalar({})'&lt;/span&gt;.&lt;span class="function"&gt;format&lt;/span&gt;(self.data)&lt;br&gt;
 </code></pre>
-
-<p>これで以前と同じ環境が整うので、心配なく動くと思います。</p>
-</section>
+<p><span class="reserved">if</span> <span class="builtins"><strong>name</strong></span> == <span class="strings">"<strong>main</strong>"</span>:
+    scalar = <span class="function">Scalar</span>(3)
+    <span class="builtins">print</span>(scalar)
+    scalar = <span class="function">Scalar</span>(3.0)
+    <span class="builtins">print</span>(scalar)</code>
+</pre></p>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
                                 <ul class="tag-list">
                                     <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
-                                    <li><a href="https://yuta0306.github.io/blog/tag/pandas" class="link-item">Pandas</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/特殊メソッド" class="link-item">特殊メソッド</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/オブジェクト指向" class="link-item">オブジェクト指向</a></li>
                                 </ul>
                             </div>
 
@@ -188,22 +261,22 @@ $ pip install -r requirements.txt
                                 <h3>SHARE</h3>
                                 <ul>
                                     <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/pandas-nomodule" target="_blank" class="link-item">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/py-class-repr" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
                                         </a>
                                     </li>
                                     <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/pandas-nomodule" target="_blank" class="link-item">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/py-class-repr" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
                                         </a>
                                     </li>
                                     <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/pandas-nomodule" target="_blank" class="link-item">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/py-class-repr" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
                                         </a>
                                     </li>
                                     <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/pandas-nomodule" target="_blank" class="link-item">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/py-class-repr" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
                                         </a>
                                     </li>
