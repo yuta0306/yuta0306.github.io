@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
 
-    <title>Goはどうやら型を推論できるらしい話</title>
+    <title>classの標準出力を特殊な文字列にしたい【\_\_str\_\_|\_\_reper\_\_】</title>
     <!-- OGP -->
-    <meta property="og:title" content="Goはどうやら型を推論できるらしい話" />
+    <meta property="og:title" content="classの標準出力を特殊な文字列にしたい【\_\_str\_\_|\_\_reper\_\_】" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/go-type-inference" />
-    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/gopher.jpg" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/./go-type-inference" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/python.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="Goは静的型付言語でありながら、どうやら型を推論できるらしいですね。公式チュートリアルをみて知りましたが。ここでいくつか型を試してみたので、その実験結果を報告していきます。" />
+    <meta property="og:description" content="Pythonでクラスのインスタンスを生成して格納した変数を出力すると、class名とメモリ番地みたいなやつが出力されてしまいます。Pythonユーザーで機械学習とかで遊んでいる方はわかると思いますが、*numpy*はnp.ndarrayというクラスを持ちながら出力では行列が出力されます。線形代数計算ライブラリを自作している際、そのような特殊な出力にしたいことがありました。実際に行った方法をお話しします。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="Goは静的型付言語でありながら、どうやら型を推論できるらしいですね。公式チュートリアルをみて知りましたが。ここでいくつか型を試してみたので、その実験結果を報告していきます。" />
+    <meta name="description" content="Pythonでクラスのインスタンスを生成して格納した変数を出力すると、class名とメモリ番地みたいなやつが出力されてしまいます。Pythonユーザーで機械学習とかで遊んでいる方はわかると思いますが、*numpy*はnp.ndarrayというクラスを持ちながら出力では行列が出力されます。線形代数計算ライブラリを自作している際、そのような特殊な出力にしたいことがありました。実際に行った方法をお話しします。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -63,143 +63,196 @@
                                         </a>
                                     </li>
                                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog/category/go" itemprop="item" class="link-item">
-                                            <span class="link-to-category" itemprop="name">Go</span>
+                                        <a href="https://yuta0306.github.io/blog/category/python" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Python</span>
                                             <meta itemprop="position" content="2">
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
-                            <h1 class="post-title">Goはどうやら型を推論できるらしい話</h1>
+                            <h1 class="post-title">classの標準出力を特殊な文字列にしたい【\_\_str\_\_|\_\_reper\_\_】</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-10">2020-10-10</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-10-12">2020-10-12</time></li>
                             </ul>
                         </header>
                         <div class="post-content" itemprop="text">
                             <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/blog/theme/img/gopher.jpg" alt="">
+                                <img src="https://yuta0306.github.io/blog/theme/img/python.jpg" alt="">
                             </div>
                             <nav class="toc">
                                 <h2>目次</h2>
                                 <ol>
                                     <li>
-                                        <a href="#section1" class="link-item">静的型付らしい変数宣言</a>
+                                        <a href="#section1" class="link-item">やりたいこと</a>
                                     </li>
                                     <li>
-                                        <a href="#section2" class="link-item">型推論(Goチュートリアルより)</a>
+                                        <a href="#section2" class="link-item">Scalarクラスを作る</a>
                                     </li>
                                     <li>
-                                        <a href="#section3" class="link-item">推論できた型集</a>
+                                        <a href="#section3" class="link-item">【\_\_str\_\_】の出番</a>
                                     </li>
                                     <li>
-                                        <a href="#section4" class="link-item">追記</a>
+                                        <a href="#section4" class="link-item">今回のソースの推奨</a>
                                     </li>
                                 </ol>
                             </nav>
 
-                            <p>Goは静的型付言語でありながら、どうやら型を推論できるらしいですね。公式チュートリアルをみて知りましたが。ここでいくつか型を試してみたので、その実験結果を報告していきます。</p>
+                            <p>Pythonでクラスのインスタンスを生成して格納した変数を出力すると、class名とメモリ番地みたいなやつが出力されてしまいます。Pythonユーザーで機械学習とかで遊んでいる方はわかると思いますが、<em>numpy</em>はnp.ndarrayというクラスを持ちながら出力では行列が出力されます。線形代数計算ライブラリを自作している際、そのような特殊な出力にしたいことがありました。実際に行った方法をお話しします。</p>
+<p>正直タイトルにあるように、出落ちなのですが......</p>
+<p><em>__str__</em>というPython独自の特殊メソッドを用いて、やりたいことを実現していきたいと思います。</p>
 <section id="section1">
-<h2>静的型付らしい変数宣言</h2>
-<pre>
-<code class="go">
-<span class="reserved">var</span> i, j <span class="builtins">int</span> = 1, 2</code>
-</pre>
+<h2>やりたいこと</h2>
+<p>まずは、実際にやりたいことを明確にしていきます。<em>numpy</em>のような物を参考にしますが、今回は簡単のため、<em>Scalar</em>クラスを作ります。</p>
+<p>このクラスは、数値(intもしくはfloat)を受け取って、それを<em>data</em>として格納させます。</p>
+<p>求める最終形はこちらです。</p>
+<pre><code class="sh">&gt;&gt;&gt; scalar = Scalar(5)
+&gt;&gt;&gt; print(scalar)
+Scalar(5)
+</code></pre>
 
-
-<p>よくやる印象を持つのはこれですかね。(Cの方がGoより馴染んでいる状態だからかもしれないけど)</p>
-<p>とりあえず、<em>var variable type</em>で型宣言ができるという仕様なわけですね。</p>
+<p>本来であれば、<em>&lt;__main__.Scalar object at 0x7f85f3a00150&gt;</em>のように表されてしまいますが、<em>Scalar(5)</em>というような特殊文字列にします。</p>
 </section>
 <section id="section2">
-<h2>型推論(Goチュートリアルより)</h2>
-<p>Goのチュートリアルの中に「<a href="https://tour.golang.org/basics/14">型推論(type inferece)</a>」というセクションがありました。そこからコードを引用させていただきます。</p>
-<p>そこで紹介されていたコードがこちらです。</p>
+<h2>Scalarクラスを作る</h2>
+<p>さて、これから<em>Scalar</em>クラスを作ります。</p>
+<p>初めは、最低限クラスとして機能するようなコードを書いていきます。</p>
+<p>Scalarクラスの仕様は以下とします。</p>
+<ul>
+<li>インスタンス生成時に<em>int</em>又は<em>float</em>を受け取る</li>
+<li>上の条件以外ならば、TypeErrorを発出</li>
+</ul>
+<p>これらの条件を満たすようにクラスを書いたのが以下になります。</p>
 <pre>
-<code class="go">
-<span class="reserved">package</span> main<br>
-<span class="reserved">import</span> <span class="strings">"fmt"</span><br>
-<span class="reserved">func</span> <span class="function">main</span>() {
-    v := 42 // change me!
-    fmt.<span class="function">Printf</span>(<span class="strings">"v is of type %T\n"</span>, v)
-}<br></code>
+<code class="python">
+<span class="reserved">class</span> Scalar:
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, data):
+        <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
+            self.data = data
+        else:
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))</code>
 </pre>
 
-<p>これで得られる結果がこちらです。</p>
-<pre><code>v is of type int
-</code></pre>
 
-<p>型宣言は明示的には行っていませんが、int型であることを推論し認識したようです。</p>
-<p>それでは、次のセクションでは他に推論できた型を紹介していきます。</p>
+<p>これでメインルーティンを書いていきます。</p>
+<p>以下を試してみます。</p>
+<ul>
+<li>intを入力</li>
+<li>floatを入力</li>
+<li>listを入力</li>
+</ul>
+<p>さて、書きたします。先ほどのクラスを書いたファイルを拡張していきます。</p>
+<pre>
+<code class="python">
+<span class="reserved">class</span> Scalar:
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, data):
+        <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
+            self.data = data
+        else:
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))<br>
+<span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">"__main__"</span>:
+    scalar = <span class="function">Scalar</span>(3)
+    <span class="builtins">print</span>(scalar)
+    scalar = <span class="function">Scalar</span>(3.0)
+    <span class="builtins">print</span>(scalar)
+    scalar = <span class="function">Scalar</span>([3])
+    <span class="builtins">print</span>(scalar)</code>
+</pre>
+
+<p>ターミナルで実行してみます。</p>
+<pre>
+<code class="sh">
+$ python scalar.py
+<__main__.Scalar object at 0x7fddd4300150>
+<__main__.Scalar object at 0x7fddd4300190>
+Traceback (most recent call last):
+  File <span class="strings">"scalar.py"</span>, line 13, <span class="reserved">in</span> <module>
+    scalar = <span class="function">Scalar</span>([3])
+  File <span class="strings">"scalar.py"</span>, line 6, <span class="reserved">in</span> __init__
+    raise <span class="function">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
+TypeError: (<span class="strings">'expect int or float, but {}'</span>, class <span class="strings">'list'</span>)</code>
+</pre>
+
+
+<p>3と3.0の入力は受け取れましたが、どうやら[3]の入力は期待した通りエラーを出してくれています。</p>
+<p>しかし、やはりこのままではクラスをそのまま出力してしまっています。</p>
 </section>
 <section id="section3">
-<h2>推論できた型集</h2>
-<p>ソースコードにより紹介していきます。</p>
-<p>コード自体は先ほどの公式チュートリアルより引用させていただいたコードが元になっています。(Go使いではないので、慣習的によくない表現があれば教えていただきたいです。)</p>
-<p>コードがこちら。</p>
+<h2>【__str__】の出番</h2>
+<p>それでは、__str__という特殊メソッドを用いて、出力結果を変更していきます。</p>
+<p>先までのクラスを以下のように変えていきます。</p>
 <pre>
-<code class="go">
-<span class="reserved">package</span> main<br>
-<span class="reserved">import</span> <span class="strings">"fmt"</span><br>
-<span class="reserved">func</span> <span class="function">main</span>()  {
-    i := 3
-    i32 := <span class="strings">'3'</span>
-    f := 3.14
-    j := 1 + 1i
-    b := false
-    s := <span class="strings">"string"</span>
-    fmt.<span class="function">Printf</span>(<span class="strings">"i is of type %T\\n"</span>, i)
-    fmt.<span class="function">Printf</span>(<span class="strings">"i32 is of type %T\\n"</span>, i32)
-    fmt.<span class="function">Printf</span>(<span class="strings">"f is of type %T\\n"</span>, f)
-    fmt.<span class="function">Printf</span>(<span class="strings">"j is of type %T\\n"</span>, j)
-    fmt.<span class="function">Printf</span>(<span class="strings">"b is of type %T\\n"</span>, b)
-    fmt.<span class="function">Printf</span>(<span class="strings">"s is of type %T\\n"</span>, s)
-}</code>
+<code class="python">
+<span class="reserved">class</span> Scalar:
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, data):
+        <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
+            self.data = data
+        else:
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
+
+    <span class="comment"># 以下を追加</span>
+    <span class="reserved">def</span> <span class="function">__str__</span>(self):
+        <span class="reserved">return</span> <span class="strings">'Scalar({})'</span>.<span class="function">format</span>(self.data)</code>
 </pre>
 
-<p>上記のコードより得られる結果がこちらです。</p>
-<pre><code>i is of type int
-i32 is of type int32
-f is of type float64
-j is of type complex128
-b is of type bool
-s is of type string
-</code></pre>
-
-<p>個人的に詰まった？理解に苦しむのは<em>int32</em>ですかね。「''」と「""」が違った意味合いを持つのはPythonユーザからすると少しつまりますね。しかし、経験してしまえば覚えるので大丈夫ですね。</p>
-<p>とりあえず、Go初めて勉強3日間の僕が観測できた型推論はこれらになります。</p>
-<ul>
-<li>int</li>
-<li>int32</li>
-<li>float64</li>
-<li>complex128</li>
-<li>bool</li>
-<li>string</li>
-</ul>
-<p>他にもあったら教えていただきたいです。(Gopherの皆さんよろしくお願いします)</p>
-<p>なかなか使いやすい言語と言った所感なので、これからGoの勉強とこのブログによるアウトプットをゆっくりやって行こうかなと思います。(他の開発が最優先なので)</p>
-<p>今回は「<strong>Goの型の推論</strong>」についてお話ししました〜。それでは。</p>
-</section>
-<section id="section4">
-<h2>追記</h2>
-<p>uint8(unsigned int8)もできるみたいです。情報提供ありがとうございます。</p>
+<p>最後の2行を追加する感じです。</p>
+<p>それでは、<em>int</em>と<em>float</em>以外はエラーを出すことを確認しているのでメインルーティンも同時に変えて以下のファイルとして完成させましょう。</p>
 <pre>
-<code class="go">
-<span class="reserved">func</span> <span class="function">main</span>()  {
-    u := []byte{<span class="strings">'3'</span>}
-    fmt.<span class="function">Printf</span>(<span class="strings">"u is of type %T\\n"</span>, u)
-}</code>
-</pre>
+<code class="python">
+<span class="reserved">class</span> Scalar:
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, data):
+        <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
+            self.data = data
+        else:
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
 
-
-<p>出力は以下になります。</p>
-<pre><code>u is of type []uint8
+<pre><code>&lt;span class="comment"&gt;# 以下を追加&lt;/span&gt;
+&lt;span class="reserved"&gt;def&lt;/span&gt; &lt;span class="function"&gt;__str__&lt;/span&gt;(self):
+    &lt;span class="reserved"&gt;return&lt;/span&gt; &lt;span class="strings"&gt;'Scalar({})'&lt;/span&gt;.&lt;span class="function"&gt;format&lt;/span&gt;(self.data)&lt;br&gt;
+</code></pre>
+<p><span class="reserved">if</span> <span class="builtins"><strong>name</strong></span> == <span class="strings">"<strong>main</strong>"</span>:
+    scalar = <span class="function">Scalar</span>(3)
+    <span class="builtins">print</span>(scalar)
+    scalar = <span class="function">Scalar</span>(3.0)
+    <span class="builtins">print</span>(scalar)</code>
+</pre></p>
+<p>この出力結果はどうなるでしょうか......(ドキドキ??)</p>
+<pre><code>$ python scalar.py
+Scalar(3)
+Scalar(3.0)
 </code></pre>
 
+<p>期待した通りの結果ですね!!</p>
+<p>このように、クラスのインスタンスの出力を制御するには<strong><strong>str</strong></strong>という特殊メソッドを使うと良いみたいです。</p>
+<p>ただし、<strong>__repr</strong>というものもあります。今回のソースに関しては正直いうと、この<strong><strong>repr</strong></strong>の方が適している気がします。(evalを使えば可逆的に戻すことができるため)</p>
+<p>詳しくはこちらを参照されたい(<a href="https://docs.python.org/ja/3/reference/datamodel.html">https://docs.python.org/ja/3/reference/datamodel.html</a>)</p>
+<section id="section4"></section>
 </section>
+<h2>今回のソースの推奨</h2>
+<pre>
+<code class="python">
+<span class="reserved">class</span> Scalar:
+    <span class="reserved">def</span> <span class="function">__init__</span>(self, data):
+        <span class="reserved">if</span> <span class="builtins">isinstance</span>(data, int) <span class="reserved">or</span> <span class="builtins">isinstance</span>(data, float):
+            self.data = data
+        else:
+            <span class="reserved">raise</span> <span class="builtins">TypeError</span>(<span class="strings">'expect int or float, but {}'</span>, <span class="builtins">type</span>(data))
+
+<pre><code>&lt;span class="reserved"&gt;def&lt;/span&gt; &lt;span class="function"&gt;__repr__&lt;/span&gt;(self):
+    &lt;span class="reserved"&gt;return&lt;/span&gt; &lt;span class="strings"&gt;'Scalar({})'&lt;/span&gt;.&lt;span class="function"&gt;format&lt;/span&gt;(self.data)&lt;br&gt;
+</code></pre>
+<p><span class="reserved">if</span> <span class="builtins"><strong>name</strong></span> == <span class="strings">"<strong>main</strong>"</span>:
+    scalar = <span class="function">Scalar</span>(3)
+    <span class="builtins">print</span>(scalar)
+    scalar = <span class="function">Scalar</span>(3.0)
+    <span class="builtins">print</span>(scalar)</code>
+</pre></p>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
                                 <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/blog/tag/go" class="link-item">Go</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/特殊メソッド" class="link-item">特殊メソッド</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/オブジェクト指向" class="link-item">オブジェクト指向</a></li>
                                 </ul>
                             </div>
 
@@ -286,9 +339,11 @@ s is of type string
                 <div>
                     <h3>タグ一覧</h3>
                     <ul class="tags">
+                        <li><a href="https://yuta0306.github.io/blog/tag/python">Python</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/特殊メソッド">特殊メソッド</a></li> 
+                        <li><a href="https://yuta0306.github.io/blog/tag/オブジェクト指向">オブジェクト指向</a></li> 
                         <li><a href="https://yuta0306.github.io/blog/tag/go">Go</a></li> 
                         <li><a href="https://yuta0306.github.io/blog/tag/javascript">JavaScript</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/python">Python</a></li> 
                         <li><a href="https://yuta0306.github.io/blog/tag/tkinter">Tkinter</a></li> 
                         <li><a href="https://yuta0306.github.io/blog/tag/selenium">Selenium</a></li> 
                         <li><a href="https://yuta0306.github.io/blog/tag/pandas">Pandas</a></li> 
