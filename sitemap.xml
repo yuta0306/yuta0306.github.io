@@ -5,36 +5,43 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/blog/</loc>
-<lastmod>2020-10-12T23:15:19-00:00</lastmod>
+<lastmod>2020-10-15T12:34:55-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/blog/tags</loc>
-<lastmod>2020-10-12T23:15:19-00:00</lastmod>
+<lastmod>2020-10-15T12:34:55-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/blog/categories</loc>
-<lastmod>2020-10-12T23:15:19-00:00</lastmod>
+<lastmod>2020-10-15T12:34:55-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/blog/archives</loc>
-<lastmod>2020-10-12T23:15:19-00:00</lastmod>
+<lastmod>2020-10-15T12:34:55-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/blog/sitemap.html</loc>
-<lastmod>2020-10-12T23:15:19-00:00</lastmod>
+<lastmod>2020-10-15T12:34:55-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/py-sort-dict</loc>
+<lastmod>2020-10-15T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -271,7 +278,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/blog/category/python.html</loc>
-<lastmod>2020-10-12T00:00:00+09:19</lastmod>
+<lastmod>2020-10-15T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -292,7 +299,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/blog/tag/python.html</loc>
-<lastmod>2020-10-12T00:00:00+09:19</lastmod>
+<lastmod>2020-10-15T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -439,7 +446,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/blog/author/yuubou.html</loc>
-<lastmod>2020-10-12T00:00:00+09:19</lastmod>
+<lastmod>2020-10-15T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
