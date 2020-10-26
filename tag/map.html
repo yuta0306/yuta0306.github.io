@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
 
-    <title>sp仕様(スマホ)の時のみ改行したい!!</title>
+    <title>ゆうぼうの書跡棚</title>
     <!-- OGP -->
-    <meta property="og:title" content="sp仕様(スマホ)の時のみ改行したい!!" />
+    <meta property="og:title" content="ゆうぼうの書跡棚" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/only_sp_newline" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/tags/" />
     <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="スマホのように小さい画面になるとおかしなところで改行してみにくい。そんな時のCSSのTipsを紹介します。" />
+    <meta property="og:description" content="これはゆうぼうのテストサイトです" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="スマホのように小さい画面になるとおかしなところで改行してみにくい。そんな時のCSSのTipsを紹介します。" />
+    <meta name="description" content="これはゆうぼうのテストサイトです" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -56,114 +56,34 @@
     <div class="content">
         <div class="wrap">
             <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-                    <div class="inner-post">
-                        <header class="post-header">
-                            <nav class="breadcrumb">
-                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
-                                            <span class="link-to-home" itemprop="name">ホーム</span>
-                                            <meta itemprop="position" content="1">
-                                        </a>
-                                    </li>
-                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog/category/web" itemprop="item" class="link-item">
-                                            <span class="link-to-category" itemprop="name">Web</span>
-                                            <meta itemprop="position" content="2">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <h1 class="post-title">sp仕様(スマホ)の時のみ改行したい!!</h1>
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-10">2020-07-10</time></li>
+                <div class="archive-header">
+                    <div>
+                        <nav class="breadcrumb">
+                            <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                    <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
+                                        <span class="link-to-home" itemprop="name">ホーム</span>
+                                        <meta itemprop="position" content="1">
+                                    </a>
+                                </li>
                             </ul>
-                        </header>
-                        <div class="post-content" itemprop="text">
-                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                            </div>
-                            <nav class="toc">
-                                <h2>目次</h2>
-                                <ol>
-                                    <li>
-                                        <a href="#section1" class="link-item">改行する方法</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section2" class="link-item">スマホの時だけ改行する</a>
-                                    </li>
-                                </ol>
-                            </nav>
-
-                            <section id="section1">
-<h2>改行する方法</h2>
-<p>全パターンに対応するためのHTMLのタグは<strong><br></strong>タグです。</p>
-<p>実際にコードを書くとこんな感じです。</p>
-<pre><code>&lt;p&gt;テキストテキストテキストテキストテキス&lt;br&gt;テキストテキスト&lt;/p&gt;
-</code></pre>
-<p>しかしこのままでは、画面幅によって<br>以外のところで改行する可能性があります。</p>
-</section>
-<section id="section2">
-<h2>スマホの時だけ改行する</h2>
-<p>前のセクションの書き方ではうまくいかないことがあります。</p>
-<p>明示的に改行させたいタグにCSSを書いてあげましょう。</p>
-<p>するとこんな感じ。</p>
-<pre><code>&lt;p&gt;テキストテキストテキストテキストテキス&lt;br class="sp"&gt;テキストテキスト&lt;/p&gt;
-
-/* デフォルトでは表示しない */
-.sp {
-    display: none;
-}
-/* 768px以下の時だけbrを表示する */
-@media screen and (max-width: 768px) {
-    .sp {
-        display: block;
-    }
-}
-</code></pre>
-<p>たったこれだけで、画面幅に合わせた改行の管理ができました。</p>
-<p>是非頭の片隅に入れながらコーディングをしてみてください。</p>
-</section>
-
-                            <div class="post-tag">
-                                <h3>タグ</h3>
-                                <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/blog/tag/html" class="link-item">HTML</a></li>
-                                    <li><a href="https://yuta0306.github.io/blog/tag/css" class="link-item">CSS</a></li>
-                                </ul>
-                            </div>
-
-                        <div class="post-footer">
-                            <div class="share">
-                                <h3>SHARE</h3>
-                                <ul>
-                                    <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/only_sp_newline" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
-                                        </a>
-                                    </li>
-                                    <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/only_sp_newline" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
-                                        </a>
-                                    </li>
-                                    <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/only_sp_newline" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
-                                        </a>
-                                    </li>
-                                    <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/only_sp_newline" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>                            
-                        </div>
+                        </nav>
+                        <h1>タグ「map」記事一覧</h1>
                     </div>
-                </article>
+                </div>
+                <div class="card-wrapper">
+                    <a href="https://yuta0306.github.io/blog/py-map" class="card">
+                        <div class="card-header">
+                            <img src="https://yuta0306.github.io/blog/theme/img/python.jpg" alt="">
+                        </div>
+                        <div class="card-content">
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2020-10-26">2020-10-26</time></li>
+                            </ul>
+                            <h2>【map】を使って新たな配列を作る</h2>
+                        </div>
+                    </a>
+                </div>
                 
             </main>
             <aside class="aside">
