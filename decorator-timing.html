@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
 
-    <title>ロジスティック回帰でL1正則化を利用できない問題の解決法</title>
+    <title>Pythonのデコレータの挙動を実験してみた</title>
     <!-- OGP -->
-    <meta property="og:title" content="ロジスティック回帰でL1正則化を利用できない問題の解決法" />
+    <meta property="og:title" content="Pythonのデコレータの挙動を実験してみた" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/logistic-with-l1" />
-    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/decorator-timing" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/python.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="ロジスティック回帰をscikit-learnで実装していると、デフォルトはL2正則化でペナルティを与えています。そこで、もっとスパースにしてやろうとL1正則化を行おうとしたのだが、エラーを吐かれた。その時の解決策を共有します。" />
+    <meta property="og:description" content="Pythonにはデコレータというものがあるのですが、意外と初学者には知られていない存在で比較的不思議な挙動をする感じがします。関数を直接的に実行しなくともファイルを読み込んだ段階で実行されるようなので、挙動について実験してみました。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="ロジスティック回帰をscikit-learnで実装していると、デフォルトはL2正則化でペナルティを与えています。そこで、もっとスパースにしてやろうとL1正則化を行おうとしたのだが、エラーを吐かれた。その時の解決策を共有します。" />
+    <meta name="description" content="Pythonにはデコレータというものがあるのですが、意外と初学者には知られていない存在で比較的不思議な挙動をする感じがします。関数を直接的に実行しなくともファイルを読み込んだ段階で実行されるようなので、挙動について実験してみました。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -70,153 +70,124 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <h1 class="post-title">ロジスティック回帰でL1正則化を利用できない問題の解決法</h1>
+                            <h1 class="post-title">Pythonのデコレータの挙動を実験してみた</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-08-01">2020-08-01</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-10-26">2020-10-26</time></li>
                             </ul>
                         </header>
                         <div class="post-content" itemprop="text">
                             <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
+                                <img src="https://yuta0306.github.io/blog/theme/img/python.jpg" alt="">
                             </div>
                             <nav class="toc">
                                 <h2>目次</h2>
                                 <ol>
                                     <li>
-                                        <a href="#section1" class="link-item">エラーを吐かれた時のバージョン</a>
+                                        <a href="#section1" class="link-item">デコレータ活用例</a>
                                     </li>
                                     <li>
-                                        <a href="#section2" class="link-item">実装してみる</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section3" class="link-item">liblinearを指定する</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section4" class="link-item">まとめ</a>
+                                        <a href="#section2" class="link-item">デコレータの挙動を追う</a>
                                     </li>
                                 </ol>
                             </nav>
 
-                            <p>ロジスティック回帰をscikit-learnで実装していると、デフォルトはL2正則化でペナルティを与えています。</p>
-<p>そこで、もっとスパースにしてやろうとL1正則化を行おうとしたのだが、エラーを吐かれた。その時の解決策を共有します。</p>
+                            <p>Pythonには<strong>デコレータ</strong>というものがあるのですが、意外と初学者には知られていない存在で比較的不思議な挙動をする感じがします。関数を直接的に実行しなくともファイルを読み込んだ段階で実行されるようなので、挙動について実験してみました。</p>
 <section id="section1">
-<h2>エラーを吐かれた時のバージョン</h2>
-<p>一応最近開発が立て込んでいるので、Anacondaを使って開発環境を分けているのですが、</p>
-<pre><code>(base)$ conda activate ML
-(ML)$ conda list    (pip listでも行ける)
-......
-......
-scikit-learn           0.23.1    
-......
-</code></pre>
-<p>ということで、scikit-learnのバージョンは<em>0.23.1</em>でした。</p>
-</section>
-<section id="section2">
-<h2>実装してみる</h2>
-<p>それでは実装してみます。至ってシンプルなスクリプトで動く想定でやっていきます。こちらで変化させるハイパーパラメータは以下になります。</p>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C(正則化のつよさ)</td>
-<td>1(デフォルト)</td>
-</tr>
-<tr>
-<td>penalty</td>
-<td>L1正則化</td>
-</tr>
-<tr>
-<td>max_iter(イテレーションの上限)</td>
-<td>100000</td>
-</tr>
-</tbody>
-</table>
-<p>また、訓練データ(X_train, y_train)とテストデータ(X_test, y_test)に分けてあることにします。</p>
+<h2>デコレータ活用例</h2>
+<p>まずは、デコレータの活用例をお話しします。(Numpyから借用)</p>
+<p>Numpyにおいては、関数のモジュールを<em>numpy</em>に変更しており、override.pyか_override.pyだかに<em>set_module</em>関数が作られていたと思います(ちょっと曖昧)</p>
+<p>適当な関数を定義してモジュールを変更します。</p>
 <pre>
 <code class="python">
-<span class="reserved">from</span> sklearn.linear_model <span class="reserved">import</span> LogisticRegression
-
-lr_l1 = <span class="function">LogisticRegression</span>(penalty='l1', max_iter=100000).<span class="function">fit</span>(X_train, y_train)
-</code>
+<span class="reserved">def</span> <span class="function">set_module</span>(name):
+    <span class="reserved">def</span> <span class="function">decorator</span>(func):
+        func.__module__ = name
+        <span class="reserved">return</span> func
+    <span class="reserved">return</span> decorator<br>
+<span class="reserved">def</span> <span class="function">check_module</span>(func):
+    <span class="builtins">print</span>(func.__module__)<br>
+@<span class="function">set_module</span>(<span class="strings">'mylib'</span>)    <span class="comment"># module名書き換え</span>
+<span class="reserved">def</span> <span class="function">changed</span>():
+    <span class="reserved">pass</span><br>
+<span class="comment"># module名変更なし</span>
+<span class="reserved">def</span> <span class="function">not_changed</span>():
+    <span class="reserved">pass</span><br>
+<span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">'__main__'</span>:
+    <span class="function">check_module</span>(changed)
+    <span class="function">check_module</span>(not_changed)</code>
 </pre>
 
-<p>するとこんなエラーが返ってきます。</p>
-<pre><code>~/opt/anaconda3/envs/ML/lib/python3.6/site-packages/sklearn/linear_model/_logistic.py in fit(self, X, y, sample_weight)
-1302         The SAGA solver supports both float64 and float32 bit arrays.
-1303         """
--&gt; 1304         solver = _check_solver(self.solver, self.penalty, self.dual)
-1305 
-1306         if not isinstance(self.C, numbers.Number) or self.C &lt; 0:
 
-~/opt/anaconda3/envs/ML/lib/python3.6/site-packages/sklearn/linear_model/_logistic.py in _check_solver(solver, penalty, dual)
-441     if solver not in ['liblinear', 'saga'] and penalty not in ('l2', 'none'):
-442         raise ValueError("Solver %s supports only 'l2' or 'none' penalties, "
---&gt; 443                          "got %s penalty." % (solver, penalty))
-444     if solver != 'liblinear' and dual:
-445         raise ValueError("Solver %s supports only "
-
-ValueError: Solver lbfgs supports only 'l2' or 'none' penalties, got l1 penalty.
+<p>各関数の役割</p>
+<ul>
+<li>set_module<ul>
+<li>デコレータ</li>
+<li>関数のモジュール名を変更する</li>
+</ul>
+</li>
+<li>changed<ul>
+<li>モジュール名を変更される関数</li>
+</ul>
+</li>
+<li>not_changed<ul>
+<li>モジュール名を<strong>変更されない</strong>関数</li>
+</ul>
+</li>
+</ul>
+<p>これらの実行結果が以下になります。</p>
+<pre><code>mylib
+__main__
 </code></pre>
-<p>ファイルのありかは人それぞれですが、エラーは返ってきます。<br />
-デフォルトの<strong>Solverがlbfgs</strong>に変わっていたそうで、l2またはnoneしかペナルティをサポートしていないそうです。</p>
-<p>というわけで、Solverに<strong>liblinear</strong>を指定しないといけないようですね。</p>
-<section id="section3"></section>
+
+<p>変更された方は、期待した通りモジュール名が<em>mylib</em>に変わっていて、変更していない方はメインルーティンに入っていることになっています。</p>
 </section>
-<h2>liblinearを指定する</h2>
-<p>先ほどのエラーをなくすため、新たにパラメータを足します。</p>
-<table>
-<thead>
-<tr>
-<th>パラメータ</th>
-<th>値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C(正則化のつよさ)</td>
-<td>1(デフォルト)</td>
-</tr>
-<tr>
-<td>penalty</td>
-<td>L1正則化</td>
-</tr>
-<tr>
-<td>max_iter(イテレーションの上限)</td>
-<td>100000</td>
-</tr>
-<tr>
-<td>solver</td>
-<td>liblinear</td>
-</tr>
-</tbody>
-</table>
-<p>では足します。</p>
+<section id="section2">
+<h2>デコレータの挙動を追う</h2>
+<p>デコレータの挙動を追ってみます。基本的には動作がわかるように関数に機能はつけず、標準出力にて動作を確認していきます。</p>
+<p>実験するための関数を用意します。</p>
 <pre>
 <code class="python">
-<span class="reserved">from</span> sklearn.linear_model <span class="reserved">import</span> LogisticRegression
+<span class="reserved">def</span> <span class="function">deco</span>(name):
+    <span class="builtins">print</span>(name, <span class="strings">'開始'</span>)
+    <span class="reserved">def</span> <span class="function">decorator</span>(func):
+        <span class="builtins">print</span>(func.__name__, <span class="strings">'実行'</span>)
+        <span class="reserved">return</span> func
+    <span class="builtins">print</span>(name, <span class="strings">'終了'</span>)
+    <span class="reserved">return</span> decorator<br>
+@<span class="function">deco</span>(<span class="strings">'deco1'</span>)
+<span class="reserved">def</span> <span class="function">test1</span>():
+    <span class="reserved">pass</span><br>
+<span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">"__main__"</span>:
+    <span class="reserved">pass</span></code>
+</pre>
 
-<p>lr_l1 = <span class="function">LogisticRegression</span>(penalty='l1', solver='liblinear', max_iter=100000).<span class="function">fit</span>(X_train, y_train)
-</code>
-</pre></p>
-<p>これで無事動くようになりました!!!</p>
-<section id="section4">
-<h2>まとめ</h2>
-<p>まとめです。<br />
-scikit-learnを用いて、ロジスティック回帰を使う時、さらにL1正則化をかけたい時は<strong>solver='liblinear'</strong>を引数に追加しましょう。</p>
-<p>この周りは色々と変化が早いので、本を買う際にも初版等も確認しつつ買った方が良い気がしました。バージョン確認も大切に。</p>
+
+<p>特別難しいこともありません。ただ各タイミングで出力を待つデコレータです。</p>
+<p>実行結果が以下になります。</p>
+<pre><code>deco1 開始
+deco1 終了
+test1 実行
+</code></pre>
+
+<p>デコレータの外の関数を動かした後、デコレートされた(装飾された)関数が返されるという感じです。</p>
+<p>流れは以下になります。</p>
+<ol>
+<li>デコレータの発火</li>
+<li>デコレータにより関数を装飾</li>
+<li>装飾された関数が返ってくる</li>
+<li>あとは3の関数を使うだけ</li>
+</ol>
+<p>このような流れになっていきます。デコレータは関数を装飾するものなので、ちょっと特殊であまり使うことがない気もしますが...</p>
+<p>また、<strong>メインルーティンで何も動かしていないのにもかかわらず</strong>、出力されています。</p>
+<p>デコレータは読み込んだときに動くようです。その特徴がわかればそこまでデコレータは難しいものでもなさそうです。</p>
+<p>あとでまた多重デコレータに関する話をしたいと思います。</p>
 </section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
                                 <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/blog/tag/ml" class="link-item">ML</a></li>
                                     <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
-                                    <li><a href="https://yuta0306.github.io/blog/tag/scikit-learn" class="link-item">Scikit-learn</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/デコレータ" class="link-item">デコレータ</a></li>
                                 </ul>
                             </div>
 
@@ -225,22 +196,22 @@ scikit-learnを用いて、ロジスティック回帰を使う時、さらにL1
                                 <h3>SHARE</h3>
                                 <ul>
                                     <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/logistic-with-l1" target="_blank" class="link-item">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/decorator-timing" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
                                         </a>
                                     </li>
                                     <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/logistic-with-l1" target="_blank" class="link-item">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/decorator-timing" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
                                         </a>
                                     </li>
                                     <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/logistic-with-l1" target="_blank" class="link-item">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/decorator-timing" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
                                         </a>
                                     </li>
                                     <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/logistic-with-l1" target="_blank" class="link-item">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/decorator-timing" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
                                         </a>
                                     </li>
