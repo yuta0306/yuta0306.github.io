@@ -132,7 +132,6 @@ c = <span class="builtins">list</span>(<span class="function">map</span>(to_abs,
 </pre>
 
 
-
 <pre><code>[3, 2, 1, 0, 1, 2, 3]
 </code></pre>
 
@@ -148,7 +147,6 @@ c = <span class="builtins">list</span>(<span class="function">map</span>(<span c
 </pre>
 
 
-
 <pre><code>Traceback (most recent call last):
   File &quot;map.py&quot;, line 3, in &lt;module&gt;
     c = list(map(to_abs(x), a))
@@ -156,8 +154,8 @@ NameError: name 'x' is not defined
 </code></pre>
 
 <p>参照する<em>x</em>がないのでエラーが発生します。その点だけ注意しましょう。</p>
-<section id="section3"></section>
 </section>
+<section id="section3">
 <h2>mapでsetに応用</h2>
 <p>setについても同様に動作します</p>
 <pre>
@@ -173,6 +171,7 @@ d = <span class="builtins">set</span>(<span class="function">map</span>(to_abs, 
 <p>しっかりと集合として捉えられていますね。</p>
 <p>mapを使ってさせることはそこまで難しくないですが、処理速度的にはおそらく内包表記の方が速いと思われるので場合に合わせて導入するのが良いかもしれません。</p>
 <p>ただ、numpyやpandasでデータ分析をする際は、map関数がそれぞれで与えられていることもあるので、使えるに越したことはないでしょう。</p>
+</section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
