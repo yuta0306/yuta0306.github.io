@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
 
-    <title>JSで返り値にパラメータを複数設定する</title>
+    <title>conda createでpythonのバージョン指定忘れた！</title>
     <!-- OGP -->
-    <meta property="og:title" content="JSで返り値にパラメータを複数設定する" />
+    <meta property="og:title" content="conda createでpythonのバージョン指定忘れた！" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/js-return-mul" />
-    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/js.png" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/conda-miss-pythonv" />
+    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/python.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="PythonとかGoとかだとそのまま返り値を複数セットしてもしっかり戻るのですが(Pythonの場合はタプルで返る)、JavaScriptだとreturn a, b;のようなシンプルな書き方だと動作しません。少し特殊な書き方になるのですが、解決策を共有します。" />
+    <meta property="og:description" content="Anacondaは、GUIで操作ができてやりやすいですが、起動もかなりおそくCLIでどうにかならないか「conda create」コマンドを使って環境を立てる事があります。しかし、ノリでEnterを押してしまってPythonのバージョンを指定し忘れることが...。かなりの弊害を生み出します。その際の対処法を共有します。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="PythonとかGoとかだとそのまま返り値を複数セットしてもしっかり戻るのですが(Pythonの場合はタプルで返る)、JavaScriptだとreturn a, b;のようなシンプルな書き方だと動作しません。少し特殊な書き方になるのですが、解決策を共有します。" />
+    <meta name="description" content="Anacondaは、GUIで操作ができてやりやすいですが、起動もかなりおそくCLIでどうにかならないか「conda create」コマンドを使って環境を立てる事があります。しかし、ノリでEnterを押してしまってPythonのバージョンを指定し忘れることが...。かなりの弊害を生み出します。その際の対処法を共有します。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -68,96 +68,143 @@
                                         </a>
                                     </li>
                                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog/category/javascript" itemprop="item" class="link-item">
-                                            <span class="link-to-category" itemprop="name">JavaScript</span>
+                                        <a href="https://yuta0306.github.io/blog/category/python" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Python</span>
                                             <meta itemprop="position" content="2">
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
-                            <h1 class="post-title">JSで返り値にパラメータを複数設定する</h1>
+                            <h1 class="post-title">conda createでpythonのバージョン指定忘れた！</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-10">2020-10-10</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-11-01">2020-11-01</time></li>
                             </ul>
                         </header>
                         <div class="post-content" itemprop="text">
                             <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/blog/theme/img/js.png" alt="">
+                                <img src="https://yuta0306.github.io/blog/theme/img/python.jpg" alt="">
                             </div>
                             <nav class="toc">
                                 <h2>目次</h2>
                                 <ol>
                                     <li>
-                                        <a href="#section1" class="link-item">【解決策】return {}</a>
+                                        <a href="#section1" class="link-item">mapと無名関数</a>
                                     </li>
                                     <li>
-                                        <a href="#section2" class="link-item">【注意点】戻す変数名との対応</a>
+                                        <a href="#section2" class="link-item">mapと普段使いの関数</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section3" class="link-item">mapでsetに応用</a>
                                     </li>
                                 </ol>
                             </nav>
 
-                            <p>PythonとかGoとかだとそのまま返り値を複数セットしてもしっかり戻るのですが(Pythonの場合はタプルで返る)、JavaScriptだと<em>return a, b;</em>のようなシンプルな書き方だと動作しません。少し特殊な書き方になるのですが、解決策を共有します。</p>
+                            <p>Anacondaは、GUIで操作ができてやりやすいですが、起動もかなりおそくCLIでどうにかならないか<strong>conda create</strong>コマンドを使って環境を立てる事があります。しかし、ノリでEnterを押してしまってPythonのバージョンを指定し忘れることが...。かなりの弊害を生み出します。その際の対処法を共有します。</p>
 <section id="section1">
-<h2>【解決策】return</h2>
-<p>ここでは、簡単に与えた二つの変数に格納した値を交換するswapを行ってみましょう。</p>
-<pre>
-<code class="js">
-<span class="reserved">let</span> swap = (a, b) <span class="reserved">=></span> {
-    <span class="reserved">let</span> tmp = a;
-    a = b;
-    b = tmp;
-<br>
-    <span class="reserved">return</span> {a, b};
-}
-<br>
-<span class="reserved">var</span> a = 1, b = 2;
-<br>
-<span class="reserved">var</span> {a, b} = <span class="function">swap</span>(a, b)
-console.<span class="function">log</span>(`a: ${a}, b: ${b}`);
-</code>
-</pre>
-
-
-<p>この出力は<em>a: 2, b: 1</em>になります。(コードすごくくどくて無駄な処理しかないですが、ここでは言及しないでくださいww)</p>
-<p>ただし、この方法には注意点があります。</p>
-<p>次のセクションでお話しします。</p>
-</section>
-<section id="section2">
-<h2>【注意点】戻す変数名との対応</h2>
-<p>このコードで注意したいことは、戻す変数名との対応関係です。次のようにコードを書き換えてみましょう。</p>
-<pre>
-<code class="js">
-<span class="reserved">let</span> swap = (a, b) <span class="reserved">=></span> {
-    <span class="reserved">let</span> tmp = a;
-    a = b;
-    b = tmp;
-<br>
-    <span class="reserved">return</span> {a, b};
-}
-<br>
-<span class="reserved">var</span> a = 1, b = 2;
-<br>
-<span class="reserved">var</span> {b, a} = <span class="function">swap</span>(a, b)  // ここを変更
-console.<span class="function">log</span>(`b: ${b}, a: ${a}`);  // ここを変更
-</code>
-</pre>
-
-
-<p>ここで期待したい結果は<em>b: 2, a: 1</em>です。
-しかし、結果は以下のようになります。</p>
-<pre><code>b: 1, a: 2
+<h2>CLIでconda環境を作る方法</h2>
+<p>まずは、CLIで環境を作るコマンドの紹介です。</p>
+<pre><code>conda create -n your-env-name python=3.x
 </code></pre>
 
-<p>つまり、<strong>returnする変数名と戻す変数名は対応関係になっている</strong>という事になります。</p>
-<p>複数の返り値を設定できればかなりコードが裕福になると思います。Cとかだと複数あればポインタで処理しなければいけないので...</p>
-<p>これでJSで複数の返り値を設定することができました。是非活用してみてください。(詳しく調べてないけどこれはESの仕様...!?)</p>
-<p><em>{}</em>で囲むことを忘れずに。</p>
+<p>たったこれだけで環境を建てられます。</p>
+</section>
+<section id="section2">
+<h2>あ、やってしまった...python=3.x忘れた</h2>
+<p>僕がノリでガガガってコマンド打って最後にやり忘れるやつです。</p>
+<p>押してから気付くのです...<br />
+あ、やってしまった...python=3.xって打つの忘れた...と</p>
+<pre><code>conda create -n your-env-name
+</code></pre>
+
+<p>これやっちゃうとすごく焦るんですよね。なんでかっていうとですね</p>
+<pre><code>(base)$ conda create -n typo
+(base)$ conda activate typo
+(typo)$ pip list
+Traceback (most recent call last):
+  File &quot;/usr/local/bin/pip&quot;, line 6, in &lt;module&gt;
+    from pip._internal.cli.main import main
+ModuleNotFoundError: No module named 'pip._internal.cli.main'
+</code></pre>
+
+<p><em>pipがない</em>...だと...!?</p>
+<p>これは困りました。。。しかもこの環境でやると、そこまで自分好みにカスタマイズしていない方は<em>python2</em>がデフォになっていると思います。</p>
+<p>いやぁ困った。</p>
+</section>
+<section id="section3">
+<h2>【解決策】condaにPythonをインストール</h2>
+<p>condaに<em>Pythonのバージョンを明示した上で</em>インストールすればうまくいきます！！！</p>
+<p>今回は、現状でAnacondaが対応している最新版の<em>Python3.8</em>をインストールします。</p>
+<pre><code>(typo)$ conda install python==3.8
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /Users/slothyubo/opt/anaconda3/envs/blog-tweet
+
+  added / updated specs:
+    - python==3.8
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    certifi-2020.6.20          |     pyhd3eb1b0_3         155 KB
+    libffi-3.2.1               |    h0a44026_1007          43 KB
+    python-3.8.0               |       h359304d_2        18.8 MB
+    ------------------------------------------------------------
+                                           Total:        19.0 MB
+
+The following NEW packages will be INSTALLED:
+
+  ca-certificates    pkgs/main/osx-64::ca-certificates-2020.10.14-0
+  certifi            pkgs/main/noarch::certifi-2020.6.20-pyhd3eb1b0_3
+  libcxx             pkgs/main/osx-64::libcxx-10.0.0-1
+  libedit            pkgs/main/osx-64::libedit-3.1.20191231-h1de35cc_1
+  libffi             pkgs/main/osx-64::libffi-3.2.1-h0a44026_1007
+  ncurses            pkgs/main/osx-64::ncurses-6.2-h0a44026_1
+  openssl            pkgs/main/osx-64::openssl-1.1.1h-haf1e3a3_0
+  pip                pkgs/main/osx-64::pip-20.2.4-py38_0
+  python             pkgs/main/osx-64::python-3.8.0-h359304d_2
+  readline           pkgs/main/osx-64::readline-7.0-h1de35cc_5
+  setuptools         pkgs/main/osx-64::setuptools-50.3.0-py38h0dc7051_1
+  sqlite             pkgs/main/osx-64::sqlite-3.33.0-hffcf06c_0
+  tk                 pkgs/main/osx-64::tk-8.6.10-hb0a8c7a_0
+  wheel              pkgs/main/noarch::wheel-0.35.1-py_0
+  xz                 pkgs/main/osx-64::xz-5.2.5-h1de35cc_0
+  zlib               pkgs/main/osx-64::zlib-1.2.11-h1de35cc_3
+
+
+Proceed ([y]/n)? y  # &lt;== yでEnter
+
+Downloading and Extracting Packages
+python-3.8.0         | 18.8 MB   | ######################################################### | 100% 
+libffi-3.2.1         | 43 KB     | ######################################################### | 100% 
+certifi-2020.6.20    | 155 KB    | ######################################################### | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+</code></pre>
+
+<p>このようになり、インストールされました。</p>
+<p>また途中でpipも同時にインストールされており、これで無事にpipもインストールされるようになりました！</p>
+<p>確認</p>
+<pre><code>(typo)$ pip --version
+pip 20.0.2 from /Users/user/opt/anaconda3/envs/static-site/lib/python3.7/site-packages/pip (python 3.7)
+</code></pre>
+
+<p>上記は人によりますが、しっかりpipが使えますね</p>
+<p>それでは、もし<strong>conda create</strong>でPythonのバージョンを書き忘れたら、これで解決しましょう！</p>
 </section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
                                 <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/blog/tag/javascript" class="link-item">JavaScript</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/conda" class="link-item">conda</a></li>
                                 </ul>
                             </div>
 
@@ -166,22 +213,22 @@ console.<span class="function">log</span>(`b: ${b}, a: ${a}`);  // ここを変�
                                 <h3>SHARE</h3>
                                 <ul>
                                     <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/js-return-mul" target="_blank" class="link-item">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/conda-miss-pythonv" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
                                         </a>
                                     </li>
                                     <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/js-return-mul" target="_blank" class="link-item">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/conda-miss-pythonv" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
                                         </a>
                                     </li>
                                     <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/js-return-mul" target="_blank" class="link-item">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/conda-miss-pythonv" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
                                         </a>
                                     </li>
                                     <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/js-return-mul" target="_blank" class="link-item">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/conda-miss-pythonv" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
                                         </a>
                                     </li>
