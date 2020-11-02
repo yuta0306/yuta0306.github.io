@@ -5,36 +5,43 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/blog/</loc>
-<lastmod>2020-11-02T23:01:41-00:00</lastmod>
+<lastmod>2020-11-02T23:19:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/blog/tags</loc>
-<lastmod>2020-11-02T23:01:41-00:00</lastmod>
+<lastmod>2020-11-02T23:19:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/blog/categories</loc>
-<lastmod>2020-11-02T23:01:41-00:00</lastmod>
+<lastmod>2020-11-02T23:19:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/blog/archives</loc>
-<lastmod>2020-11-02T23:01:41-00:00</lastmod>
+<lastmod>2020-11-02T23:19:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/blog/sitemap.html</loc>
-<lastmod>2020-11-02T23:01:41-00:00</lastmod>
+<lastmod>2020-11-02T23:19:36-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/blog/apache-error-srvroot</loc>
+<lastmod>2020-11-02T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
