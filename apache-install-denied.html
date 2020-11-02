@@ -100,7 +100,7 @@
 <section id="section1">
 <h2>エラーの確認</h2>
 <p>現在、Windows PowerShellにて、コマンドを実行しています。</p>
-<pre><code>PS C:/Users/user&gt; httpd -k install
+<pre><code>PS C:\Users\User&gt; httpd -k install
 (OS 5)アクセスが拒否されました。  : AH00369: Failed to open the Windows service manager, perhaps you forgot to log in as Adminstrator?
 </code></pre>
 
@@ -116,7 +116,8 @@
 <p>これらのキーを押すと以下のようなものが画面下部に表示されます。</p>
 <p><a href="./theme/img/article/admin-prompt-taskbar.png">!管理者用コマンドプロンプト</a></p>
 <p><em>コマンドプロンプト（管理者）（A）</em>と書かれたところをクリックすると、目的のコマンドプロンプトが出現します。そこに対して再度以下を打ち込み、httpdをインストールします。</p>
-<pre><code>PS C:/Users/user&gt; httpd -k install
+<p>(多分起動時にデフォルトになるカレントディレクトリがいつもと違うと思う。)</p>
+<pre><code>C: \WINDOWS\system32&gt; httpd -k install
 </code></pre>
 
 <p>これでインストールは完了。</p>
