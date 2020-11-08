@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
 
-    <title>invalid literal for int() with base 10: でint型のパースでエラーが！</title>
+    <title>ゆうぼうの書跡棚</title>
     <!-- OGP -->
-    <meta property="og:title" content="invalid literal for int() with base 10: でint型のパースでエラーが！" />
+    <meta property="og:title" content="ゆうぼうの書跡棚" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/parse-int-base10" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/tags/" />
     <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="データ収集中にint型に文字列をパースすることがあったのですが、みるからに数値なのにエラーが返ってきました。これは何気にドツボでした。" />
+    <meta property="og:description" content="これはゆうぼうのテストサイトです" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="データ収集中にint型に文字列をパースすることがあったのですが、みるからに数値なのにエラーが返ってきました。これは何気にドツボでした。" />
+    <meta name="description" content="これはゆうぼうのテストサイトです" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -56,140 +56,34 @@
     <div class="content">
         <div class="wrap">
             <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-                    <div class="inner-post">
-                        <header class="post-header">
-                            <nav class="breadcrumb">
-                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
-                                            <span class="link-to-home" itemprop="name">ホーム</span>
-                                            <meta itemprop="position" content="1">
-                                        </a>
-                                    </li>
-                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog/category/python" itemprop="item" class="link-item">
-                                            <span class="link-to-category" itemprop="name">Python</span>
-                                            <meta itemprop="position" content="2">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <h1 class="post-title">invalid literal for int() with base 10: でint型のパースでエラーが！</h1>
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-09-11">2020-09-11</time></li>
+                <div class="archive-header">
+                    <div>
+                        <nav class="breadcrumb">
+                            <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                    <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
+                                        <span class="link-to-home" itemprop="name">ホーム</span>
+                                        <meta itemprop="position" content="1">
+                                    </a>
+                                </li>
                             </ul>
-                        </header>
-                        <div class="post-content" itemprop="text">
-                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/blog/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                            </div>
-                            <nav class="toc">
-                                <h2>目次</h2>
-                                <ol>
-                                    <li>
-                                        <a href="#section1" class="link-item">ValueErrorの発生</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section2" class="link-item">【原因】文字列が小数だった</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section3" class="link-item">改善策</a>
-                                    </li>
-                                </ol>
-                            </nav>
-
-                            <p>データ収集中にint型に文字列をパースすることがあったのですが、みるからに数値なのにエラーが返ってきました。これは何気にドツボでした。</p>
-<section id="section1">
-<h2>ValueErrorの発生</h2>
-<p>エラーを招いたコードの例がこちら</p>
-<pre>
-<code class="python">
-a = np.<span class="function">array</span>([<span class="strings">'1.0'</span>, <span class="strings">'2.0'</span>]).<span class="function">astype</span>(<span class="strings">'int16'</span>)
-</code>
-</pre>
-
-
-<p>実際に出たエラーがこちらです。</p>
-<pre><code class="python">ValueError: invalid literal for int() with base 10:
-</code></pre>
-
-<p>エラー読んでもいまいち理解できませんでした。</p>
-<p>正しくないリテラル...どういうこっちゃ!?</p>
-</section>
-<section id="section2">
-<h2>【原因】文字列が小数だった</h2>
-<p>原因は意外にもシンプルで、文字列の形が<strong>小数</strong>だったからみたいです...</p>
-<p>他のコードで確認してみると</p>
-<pre>
-<code class="python">
-a = np.<span class="function">array</span>([<span class="strings">'1'</span>, <span class="strings">'2'</span>]).<span class="function">astype</span>(<span class="strings">'int16'</span>)
-
-<p><span class="comment"># >> array([1, 2], dtype=int16</span>
-</code>
-</pre>
-</p>
-<pre>
-<code class="python">
-a = np.<span class="function">array</span>([<span class="strings">'1.0'</span>, <span class="strings">'2.0'</span>]).<span class="function">astype</span>(<span class="strings">'float32'</span>)
-
-<p><span class="comment"># >> array([1, 2], dtype=float32)</span>
-</code>
-</pre>
-</p>
-<p>小数であった時、floatへの変換はうまくいっているようです。</p>
-</section>
-<section id="section3">
-<h2>改善策</h2>
-<p>いったんfloatに変換してから、intに変換するとできます。遠回りですが。</p>
-<pre>
-<code class="python">
-a = np.<span class="function">array</span>([<span class="strings">'1.0'</span>, <span class="strings">'2.0'</span>]).<span class="function">astype</span>(<span class="strings">'float32'</span>).<span class="function">astype</span>(<span class="strings">'int16'</span>)
-
-<span class="comment"># >> array([1, 2], dtype=int16)</span>
-</code>
-</pre>
-
-<p>このようなエラーに直面したら、<strong>配列の中身の文字列が少数になっていないか</strong>確認してみましょう!!</p>
-</section>
-
-                            <div class="post-tag">
-                                <h3>タグ</h3>
-                                <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
-                                </ul>
-                            </div>
-
-                        <div class="post-footer">
-                            <div class="share">
-                                <h3>SHARE</h3>
-                                <ul>
-                                    <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/parse-int-base10" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
-                                        </a>
-                                    </li>
-                                    <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/parse-int-base10" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
-                                        </a>
-                                    </li>
-                                    <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/parse-int-base10" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
-                                        </a>
-                                    </li>
-                                    <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/parse-int-base10" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>                            
-                        </div>
+                        </nav>
+                        <h1>タグ「Flask」記事一覧</h1>
                     </div>
-                </article>
+                </div>
+                <div class="card-wrapper">
+                    <a href="https://yuta0306.github.io/blog/flask-json-parse-err" class="card">
+                        <div class="card-header">
+                            <img src="https://yuta0306.github.io/blog/theme/img/python.jpg" alt="">
+                        </div>
+                        <div class="card-content">
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2020-11-08">2020-11-08</time></li>
+                            </ul>
+                            <h2>conda createでpythonのバージョン指定忘れた！</h2>
+                        </div>
+                    </a>
+                </div>
                 
             </main>
             <aside class="aside">
