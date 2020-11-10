@@ -104,7 +104,8 @@
 <section id="section1">
 <h2>subpocessモジュールを利用</h2>
 <p>今回の用件を満たすのに必要なのは、「<strong>subprocessモジュール</strong>」になります。Python3.5から<em>subprocess.run()</em>というメソッドでサブプロセスをつなげて、コマンドを走らせるという方法が推奨されているみたい...</p>
-<p>というわけで、ビルトインの<strong>subprocessモジュール</strong>を使用していきます。</p>
+<p>os.systemとかos.spawn*の代用だそうですね</p>
+<p>というわけで、<strong>subprocessモジュール</strong>を使用していきます。</p>
 <p>インポートはそのままです。</p>
 <pre>
 <code class="python">
@@ -160,6 +161,23 @@ res = subprocess.<span class="function">run</span>(
 <p>という結果に...</p>
 <p>プログラムが期待通り終了した場合、0が返ってきます。</p>
 <p>ただ、標準出力、標準エラーには<em>None</em>が返ってきていますね。どこにも結果がないのだけど...</p>
+</section>
+<section id="section3">
+<h2>実行結果をみる!!</h2>
+<p>実は、subprocess.run()には、出力をキャプチャする引数があったみたいです。それが<strong>capture_output</strong>。これをTrueにすると出力が保存されます。</p>
+<pre>
+<code class="python">
+<span class="reserved">import</span> subprocess<br>
+res = subprocess.<span class="function">run</span>([<span class="strings">'ls'</span>], capture_output=True)<br>
+<span class="builtins">print</span>(res)
+<span class="comment"># >>> CompletedProcess(args=['ls'], returncode=0,</span>
+stdout=b<span class="strings">'Applications\nLibrary\nSystem\nUsers\nVolumes\nbin\ncores\ndev\netc\nhome\nopt\nprivate\nsbin\ntmp\nusr\nvar\n'</span>,
+stderr=b<span class="strings">''</span>)</code>
+</pre>
+
+<p>これで出力をみることができました。</p>
+<p>他にもコマンドを使うことができるので、必要に応じてsubprocessモジュールを使ってみてください。</p>
+<p>今回はこれにて終了！</p>
 </section>
 
                             <div class="post-tag">
