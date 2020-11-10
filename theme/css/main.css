@@ -659,7 +659,7 @@ html, body {
         font-size: 1.05rem;
     }
     .post-content li {
-        font-size: 1.1em;
+        font-size: 1rem;
     }
     .post-title {
         font-size: 1.3rem;
@@ -677,7 +677,7 @@ html, body {
         font-size: 1rem;
     }
     .post-content section li {
-        font-size: 1.1em;
+        font-size: 1rem;
     }
     /* TOC */
     .toc h2 {
