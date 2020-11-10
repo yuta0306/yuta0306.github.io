@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="HandheldFriendly" content="True" />
 
-    <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
-    <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
+    <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/main.css">
+    <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/highlight.css">
 
     <title>MySQLで困った!カラム追加したい</title>
     <!-- OGP -->
     <meta property="og:title" content="MySQLで困った!カラム追加したい" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/mysql-add-column" />
-    <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/database.jpg" />
+    <meta property="og:url" content="https://yuta0306.github.io/mysql-add-column" />
+    <meta property="og:image" content="https://yuta0306.github.io/theme/img/database.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
     <meta property="og:description" content="MySQL触ってて、他のコードの変更とか方針の変更に応じてテーブルのカラムを挿入したくなることってあるよね。(自分があった)ので、テーブルにカラムを挿入する方法を共有します。" />
 
@@ -26,9 +26,9 @@
     <meta name="description" content="MySQL触ってて、他のコードの変更とか方針の変更に応じてテーブルのカラムを挿入したくなることってあるよね。(自分があった)ので、テーブルにカラムを挿入する方法を共有します。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
-    <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
-    <link rel="apple-touch-icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="https://yuta0306.github.io/blog/theme/img/favicons/icon-192x192.png">
+    <link rel="icon" href="https://yuta0306.github.io/theme/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" type="image/png" href="https://yuta0306.github.io/theme/img/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="https://yuta0306.github.io/theme/img/favicons/icon-192x192.png">
     <!-- /Favicon -->
 
     <!-- Google Adsense -->
@@ -39,20 +39,20 @@
 <body ontouchstart="">
     <header class="header">
         <div class="inner-header wrap">
-            <a class="logo link-item" href="https://yuta0306.github.io/blog">
+            <a class="logo link-item" href="https://yuta0306.github.io">
                 <span class="logo-text">ゆうぼうの書跡棚</span>
             </a>
         </div>
         <div class="navbar-wrapper">
             <ul class="navbar wrap">
-                <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/cloud" class="link-item">Cloud</a></li>
-                <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/go" class="link-item">Go</a></li>
-                <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/javascript" class="link-item">JavaScript</a></li>
-                <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/linux" class="link-item">Linux</a></li>
-                <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/ml" class="link-item">ML</a></li>
-                <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/python" class="link-item">Python</a></li>
-                <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/sql" class="link-item">SQL</a></li>
-                <li class="navbar-item"><a href="https://yuta0306.github.io/blog/category/web" class="link-item">Web</a></li>
+                <li class="navbar-item"><a href="https://yuta0306.github.io/category/cloud" class="link-item">Cloud</a></li>
+                <li class="navbar-item"><a href="https://yuta0306.github.io/category/go" class="link-item">Go</a></li>
+                <li class="navbar-item"><a href="https://yuta0306.github.io/category/javascript" class="link-item">JavaScript</a></li>
+                <li class="navbar-item"><a href="https://yuta0306.github.io/category/linux" class="link-item">Linux</a></li>
+                <li class="navbar-item"><a href="https://yuta0306.github.io/category/ml" class="link-item">ML</a></li>
+                <li class="navbar-item"><a href="https://yuta0306.github.io/category/python" class="link-item">Python</a></li>
+                <li class="navbar-item"><a href="https://yuta0306.github.io/category/sql" class="link-item">SQL</a></li>
+                <li class="navbar-item"><a href="https://yuta0306.github.io/category/web" class="link-item">Web</a></li>
             </ul>
         </div>
     </header>    
@@ -65,13 +65,13 @@
                             <nav class="breadcrumb">
                                 <ul itemscope itemtype="http://schema.org/BreadcrumbList">
                                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog" itemprop="item" class="link-item">
+                                        <a href="https://yuta0306.github.io" itemprop="item" class="link-item">
                                             <span class="link-to-home" itemprop="name">ホーム</span>
                                             <meta itemprop="position" content="1">
                                         </a>
                                     </li>
                                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/blog/category/sql" itemprop="item" class="link-item">
+                                        <a href="https://yuta0306.github.io/category/sql" itemprop="item" class="link-item">
                                             <span class="link-to-category" itemprop="name">SQL</span>
                                             <meta itemprop="position" content="2">
                                         </a>
@@ -85,7 +85,7 @@
                         </header>
                         <div class="post-content" itemprop="text">
                             <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/blog/theme/img/database.jpg" alt="">
+                                <img src="https://yuta0306.github.io/theme/img/database.jpg" alt="">
                             </div>
                             <nav class="toc">
                                 <h2>目次</h2>
@@ -213,7 +213,7 @@ Records: 0  Duplicates: 0  Warnings: 0
                             <div class="post-tag">
                                 <h3>タグ</h3>
                                 <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/blog/tag/mysql" class="link-item">MySQL</a></li>
+                                    <li><a href="https://yuta0306.github.io/tag/mysql" class="link-item">MySQL</a></li>
                                 </ul>
                             </div>
 
@@ -222,23 +222,23 @@ Records: 0  Duplicates: 0  Warnings: 0
                                 <h3>SHARE</h3>
                                 <ul>
                                     <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/mysql-add-column" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/mysql-add-column" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/twitter.svg" alt="share for twitter">
                                         </a>
                                     </li>
                                     <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/mysql-add-column" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/mysql-add-column" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/facebook.svg" alt="share for facebook">
                                         </a>
                                     </li>
                                     <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/mysql-add-column" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/mysql-add-column" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/hatena.svg" alt="share for hatenablog">
                                         </a>
                                     </li>
                                     <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/mysql-add-column" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/mysql-add-column" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/pocket.svg" alt="share for getpocket">
                                         </a>
                                     </li>
                                 </ul>
@@ -253,7 +253,7 @@ Records: 0  Duplicates: 0  Warnings: 0
                 <div class="bio" itemprop="author" itemscope itemtype="http://schema.org/Person">
                     <div class="bio-header">
                         <div class="bio-img">
-                            <img class="bio-img" src="https://yuta0306.github.io/blog/theme/img/bio.jpeg" alt="ゆうぼうの画像">
+                            <img class="bio-img" src="https://yuta0306.github.io/theme/img/bio.jpeg" alt="ゆうぼうの画像">
                         </div>
                         <h3 class="bio-name" itemprop="name">ゆうぼう</h3>
                     </div>
@@ -279,7 +279,7 @@ Records: 0  Duplicates: 0  Warnings: 0
                     <div class="social-content">
                         <ul>
                             <li><a href="https://twitter.com/Sloth65557166" target="_blank">
-                                <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="ゆうぼうのtwitter">
+                                <img src="https://yuta0306.github.io/theme/img/icons/twitter.svg" alt="ゆうぼうのtwitter">
                             </a></li>
                         </ul>
                     </div>
@@ -287,49 +287,49 @@ Records: 0  Duplicates: 0  Warnings: 0
                 <div>
                     <h3>カテゴリー一覧</h3>
                     <ul class="categories">
-                       <li><a href="https://yuta0306.github.io/blog/category/cloud">Cloud</a></li> 
-                       <li><a href="https://yuta0306.github.io/blog/category/go">Go</a></li> 
-                       <li><a href="https://yuta0306.github.io/blog/category/javascript">JavaScript</a></li> 
-                       <li><a href="https://yuta0306.github.io/blog/category/linux">Linux</a></li> 
-                       <li><a href="https://yuta0306.github.io/blog/category/ml">ML</a></li> 
-                       <li><a href="https://yuta0306.github.io/blog/category/python">Python</a></li> 
-                       <li><a href="https://yuta0306.github.io/blog/category/sql">SQL</a></li> 
-                       <li><a href="https://yuta0306.github.io/blog/category/web">Web</a></li> 
+                       <li><a href="https://yuta0306.github.io/category/cloud">Cloud</a></li> 
+                       <li><a href="https://yuta0306.github.io/category/go">Go</a></li> 
+                       <li><a href="https://yuta0306.github.io/category/javascript">JavaScript</a></li> 
+                       <li><a href="https://yuta0306.github.io/category/linux">Linux</a></li> 
+                       <li><a href="https://yuta0306.github.io/category/ml">ML</a></li> 
+                       <li><a href="https://yuta0306.github.io/category/python">Python</a></li> 
+                       <li><a href="https://yuta0306.github.io/category/sql">SQL</a></li> 
+                       <li><a href="https://yuta0306.github.io/category/web">Web</a></li> 
                     </ul>
                 </div>
 
                 <div>
                     <h3>タグ一覧</h3>
                     <ul class="tags">
-                        <li><a href="https://yuta0306.github.io/blog/tag/aws">AWS</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/python">Python</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/subprocess">subprocess</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/json">JSON</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/flask">Flask</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/apache">Apache</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/conda">conda</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/デコレータ">デコレータ</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/map">map</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/特殊メソッド">特殊メソッド</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/オブジェクト指向">オブジェクト指向</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/go">Go</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/javascript">JavaScript</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/tkinter">Tkinter</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/selenium">Selenium</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/pandas">Pandas</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/mac">Mac</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/zsh">zsh</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/scikit-learn">Scikit-learn</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/mecab">MeCab</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/ml">ML</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/appium">Appium</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/node.js">node.js</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/centos7">CentOS7</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/make">make</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/mysql">MySQL</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/nlp">NLP</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/html">HTML</a></li> 
-                        <li><a href="https://yuta0306.github.io/blog/tag/css">CSS</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/aws">AWS</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/python">Python</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/subprocess">subprocess</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/json">JSON</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/flask">Flask</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/apache">Apache</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/conda">conda</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/デコレータ">デコレータ</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/map">map</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/特殊メソッド">特殊メソッド</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/オブジェクト指向">オブジェクト指向</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/go">Go</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/javascript">JavaScript</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/tkinter">Tkinter</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/selenium">Selenium</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/pandas">Pandas</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/mac">Mac</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/zsh">zsh</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/scikit-learn">Scikit-learn</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/mecab">MeCab</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/ml">ML</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/appium">Appium</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/node.js">node.js</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/centos7">CentOS7</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/make">make</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/mysql">MySQL</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/nlp">NLP</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/html">HTML</a></li> 
+                        <li><a href="https://yuta0306.github.io/tag/css">CSS</a></li> 
                      </ul>
                 </div>
 
@@ -344,7 +344,7 @@ Records: 0  Duplicates: 0  Warnings: 0
     <footer class="footer">
         <div class="wrap">
             <ul class="footer-link">
-                <li><a href="https://yuta0306.github.io/blog/privacy-policy" class="link-item">プライバシーポリシー</a></li>
+                <li><a href="https://yuta0306.github.io/privacy-policy" class="link-item">プライバシーポリシー</a></li>
                 <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdgyok9pi697ZJvVizRNEw0qghDWz517k1FrbcRmfvvERlraA/viewform" class="link-item">お問い合わせ</a></li>
             </ul>
             <p class="footer-copy">&copy; Copyright 2020 ゆうぼうの書跡棚 All rights reserved.</p>
