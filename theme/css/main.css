@@ -6,8 +6,7 @@
     --bgcolor-main: #58a9ef;
     --bgcolor-second: #e68eff;
     --txt-main: #ffffff;
-    font-family: "Helvetica Neue",
-    Arial,
+    font-family: Arial,
     "Hiragino Kaku Gothic ProN",
     "Hiragino Sans",
     Meiryo,
@@ -624,6 +623,7 @@ html, body {
         font-size: 2.4rem;
     }
     .navbar {
+        padding: 0 30px;
         overflow-x: scroll;
     }
     /* Content */
@@ -674,7 +674,7 @@ html, body {
         font-size: 1rem;
     }
     .post-content section li {
-        font-size: 1.05rem;
+        font-size: 1.2rem;
     }
     /* TOC */
     .toc h2 {
