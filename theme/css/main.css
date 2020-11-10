@@ -6,6 +6,12 @@
     --bgcolor-main: #58a9ef;
     --bgcolor-second: #e68eff;
     --txt-main: #ffffff;
+    font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
 }
 html, body {
     margin: 0;
@@ -656,16 +662,19 @@ html, body {
         font-size: 1.3rem;
     }
     .post-content section h2 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
     .post-content section h3 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     .post-content section p {
         font-size: 1.05rem;
     }
     .post-content section pre {
-        font-size: .95rem;
+        font-size: 1rem;
+    }
+    .post-content section li {
+        font-size: 1.05rem;
     }
     /* TOC */
     .toc h2 {
