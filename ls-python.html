@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/blog/theme/css/highlight.css">
 
-    <title>【map】を使って新たな配列を作る</title>
+    <title>PythonからUNIXコマンド発出【ls編】</title>
     <!-- OGP -->
-    <meta property="og:title" content="【map】を使って新たな配列を作る" />
+    <meta property="og:title" content="PythonからUNIXコマンド発出【ls編】" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/blog/py-map" />
+    <meta property="og:url" content="https://yuta0306.github.io/blog/ls-python" />
     <meta property="og:image" content="https://yuta0306.github.io/blog/theme/img/python.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="Pythonにもmap関数があり、容易に配列から新たな配列を生み出すことができます。lambdaを用いて無名関数を使うなど、いくつか応用方があるので備忘録がてらまとめていこうと思います。" />
+    <meta property="og:description" content="PythonからUNIXコマンドを使いたい。そんな時があると思います!(多分滅多にないと思うけど)今回は、「ls」コマンドをPythonスクリプトから実行していこうと思います。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="Pythonにもmap関数があり、容易に配列から新たな配列を生み出すことができます。lambdaを用いて無名関数を使うなど、いくつか応用方があるので備忘録がてらまとめていこうと思います。" />
+    <meta name="description" content="PythonからUNIXコマンドを使いたい。そんな時があると思います!(多分滅多にないと思うけど)今回は、「ls」コマンドをPythonスクリプトから実行していこうと思います。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/blog/theme/img/favicons/favicon.ico">
@@ -76,9 +76,9 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <h1 class="post-title">【map】を使って新たな配列を作る</h1>
+                            <h1 class="post-title">PythonからUNIXコマンド発出【ls編】</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-26">2020-10-26</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-11-01">2020-11-01</time></li>
                             </ul>
                         </header>
                         <div class="post-content" itemprop="text">
@@ -89,96 +89,84 @@
                                 <h2>目次</h2>
                                 <ol>
                                     <li>
-                                        <a href="#section1" class="link-item">mapと無名関数</a>
+                                        <a href="#section1" class="link-item">CLIでconda環境を作る方法</a>
                                     </li>
                                     <li>
-                                        <a href="#section2" class="link-item">mapと普段使いの関数</a>
+                                        <a href="#section2" class="link-item">あ、やってしまった...python=3.x忘れた</a>
                                     </li>
                                     <li>
-                                        <a href="#section3" class="link-item">mapでsetに応用</a>
+                                        <a href="#section3" class="link-item">【解決策】condaにPythonをインストール</a>
                                     </li>
                                 </ol>
                             </nav>
 
-                            <p>Pythonにも<strong>map関数</strong>があり、容易に配列から新たな配列を生み出すことができます。<em>lambda</em>を用いて無名関数を使うなど、いくつか応用方があるので備忘録がてらまとめていこうと思います。</p>
-<p>簡単のため、<em>ある配列の全ての要素の絶対値をとる</em>スクリプトで試します。</p>
+                            <p><strong>PythonからUNIXコマンドを使いたい</strong>。そんな時があると思います!(多分滅多にないと思うけど)今回は、「ls」コマンドをPythonスクリプトから実行していこうと思います。</p>
 <section id="section1">
-<h2>mapと無名関数</h2>
-<p>新たに配列から配列を作るために忘れてはいけないのは、<strong>mapオブジェクトをlistで囲むこと</strong>です。</p>
-<p>その点を考慮しつつ、新たな配列を生み出していきます。まずは、無名関数<em>lambda</em>を使います。</p>
+<h2>subpocessモジュールを利用</h2>
+<p>今回の用件を満たすのに必要なのは、「<strong>subprocessモジュール</strong>」になります。Python3.5から<em>subprocess.run()</em>というメソッドでサブプロセスをつなげて、コマンドを走らせるという方法が推奨されているみたい...</p>
+<p>というわけで、ビルトインの<strong>subprocessモジュール</strong>を使用していきます。</p>
+<p>インポートはそのままです。</p>
 <pre>
 <code class="python">
-a = [-3, -2, -1, 0, 1, 2, 3]
-to_abs = <span class="reserved">lambda</span> x: <span class="builtins">abs</span>(x)<br>
-b = <span class="builtins">list</span>(<span class="function">map</span>(to_abs, a))
-<span class="builtins">print</span>(b)</code>
+<span class="reserved">import</span> subprocess</code>
 </pre>
 
-
-
-<pre><code>[3, 2, 1, 0, 1, 2, 3]
-</code></pre>
-
-<p>無名関数<em>to_abs</em>により、渡される各関数の値の絶対値を返します。</p>
 </section>
 <section id="section2">
-<h2>mapと普段使いの関数</h2>
-<p>普段通りの関数宣言でも動きます。</p>
+<h2>subprocess.run()で実際に走らせる</h2>
+<p>それでは早速「ls」コマンドを走らせてみましょう。(実行結果はディレクトリ構造に依存するので、人により異なります)</p>
 <pre>
 <code class="python">
-<span class="reserved">def</span> <span class="function">to_abs</span>(x):
-    <span class="reserved">return</span> <span class="builtins">abs</span>(x)<br>
-c = <span class="builtins">list</span>(<span class="function">map</span>(to_abs, a))
-<span class="builtins">print</span>(c)</code>
+<span class="reserved">import</span> subprocess<br>
+res = subprocess.<span class="function">run</span>(
+    [<span class="strings">'ls'</span>]
+)<br>
+<span class="builtins">print</span>(res)</code>
 </pre>
 
-
-<pre><code>[3, 2, 1, 0, 1, 2, 3]
+<p>この実行結果は以下になります。</p>
+<pre><code>CompletedProcess(args=['ls'], returncode=0)
 </code></pre>
 
-<p>普通に動きますが、ここで注意したいのは<strong>mapに渡す関数に直接的に引数を与えないこと</strong>です。</p>
-<p>そうすることで難なく動きます。</p>
-<p>引数を渡してみるとどうなるでしょうか。</p>
-<pre>
-<code class="python">
-<span class="reserved">def</span> <span class="function">to_abs</span>(x):
-    <span class="reserved">return</span> <span class="builtins">abs</span>(x)<br>
-c = <span class="builtins">list</span>(<span class="function">map</span>(<span class="function">to_abs</span>(x), a))
-<span class="builtins">print</span>(c)</code>
-</pre>
-
-
-<pre><code>Traceback (most recent call last):
-  File &quot;map.py&quot;, line 3, in &lt;module&gt;
-    c = list(map(to_abs(x), a))
-NameError: name 'x' is not defined
-</code></pre>
-
-<p>参照する<em>x</em>がないのでエラーが発生します。その点だけ注意しましょう。</p>
+<p>特段注意すべきは、コマンドをリスト又はタプルで入力することでしょうか。基本的にスペースを入れることはできません。引数やフラグを足す際に、スペースが必要ならば、リストやタプルにカンマ(,)で区切りましょう。</p>
+<p>と言いますか...ん？？</p>
+<p>ディレクトリ群出てこないんですけど...<br />
+というのも、あくまで返ってくるのは<strong>subprocess.CompletedProcess</strong>クラスだからですね。</p>
 </section>
 <section id="section3">
-<h2>mapでsetに応用</h2>
-<p>setについても同様に動作します</p>
+<h2>CompletedProcessをいじってみる</h2>
+<p>実行出来たはずなのに、結果が帰って来ないようじゃ意味がないので中身を開けていきましょう。</p>
+<p>CompletedProcessクラスには以下のメソッドや変数が存在しています。</p>
+<ul>
+<li>.args</li>
+<li>.returncode</li>
+<li>.stdout</li>
+<li>.check_returncode()</li>
+<li>.stderr</li>
+</ul>
+<p>これから先のチェックは、さきのプログラムの続き。returnされたものは<em>res</em>に入っている。</p>
 <pre>
 <code class="python">
-d = <span class="builtins">set</span>(<span class="function">map</span>(to_abs, a))
-<span class="builtins">print</span>(d)</code>
+<span class="builtins">print</span>(res.args)
+<span class="comment"># >>> ['ls']</span><br>
+<span class="builtins">print</span>(res.returncode)
+<span class="comment"># >>> 0</span><br>
+<span class="builtins">print</span>(res.stdout)
+<span class="comment"># >>> None</span><br>
+<span class="builtins">print</span>(res.stderr)
+<span class="comment"># >>> None</span></code>
 </pre>
 
-
-<pre><code>{0, 1, 2, 3}
-</code></pre>
-
-<p>しっかりと集合として捉えられていますね。</p>
-<p>mapを使ってさせることはそこまで難しくないですが、処理速度的にはおそらく内包表記の方が速いと思われるので場合に合わせて導入するのが良いかもしれません。</p>
-<p>ただ、numpyやpandasでデータ分析をする際は、map関数がそれぞれで与えられていることもあるので、使えるに越したことはないでしょう。</p>
+<p>という結果に...</p>
+<p>プログラムが期待通り終了した場合、0が返ってきます。</p>
+<p>ただ、標準出力、標準エラーには<em>None</em>が返ってきていますね。どこにも結果がないのだけど...</p>
 </section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
                                 <ul class="tag-list">
                                     <li><a href="https://yuta0306.github.io/blog/tag/python" class="link-item">Python</a></li>
-                                    <li><a href="https://yuta0306.github.io/blog/tag/map" class="link-item">map</a></li>
+                                    <li><a href="https://yuta0306.github.io/blog/tag/subprocess" class="link-item">subprocess</a></li>
                                 </ul>
                             </div>
 
@@ -187,22 +175,22 @@ d = <span class="builtins">set</span>(<span class="function">map</span>(to_abs, 
                                 <h3>SHARE</h3>
                                 <ul>
                                     <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/py-map" target="_blank" class="link-item">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/blog/ls-python" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/twitter.svg" alt="share for twitter">
                                         </a>
                                     </li>
                                     <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/py-map" target="_blank" class="link-item">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/blog/ls-python" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/facebook.svg" alt="share for facebook">
                                         </a>
                                     </li>
                                     <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/py-map" target="_blank" class="link-item">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/blog/ls-python" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/hatena.svg" alt="share for hatenablog">
                                         </a>
                                     </li>
                                     <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/py-map" target="_blank" class="link-item">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/blog/ls-python" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/blog/theme/img/icons/pocket.svg" alt="share for getpocket">
                                         </a>
                                     </li>
