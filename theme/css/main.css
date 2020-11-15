@@ -104,11 +104,10 @@ html, body {
 .navbar {
     margin: 0 auto;
     padding: 0;
-    /* display: flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center; */
-    display: block;
+    justify-content: center;
     list-style-type: none;
 }
 .navbar-item {
@@ -628,6 +627,7 @@ html, body {
     }
     .navbar {
         padding: 0 30px;
+        justify-content: left;
     }
     /* Content */
     .content .wrap .main {
