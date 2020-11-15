@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/highlight.css">
 
-    <title>Pythonのデコレータの挙動を実験してみた</title>
+    <title>JSで欲しい所だけを印刷するのすごく簡単だったってお話</title>
     <!-- OGP -->
-    <meta property="og:title" content="Pythonのデコレータの挙動を実験してみた" />
+    <meta property="og:title" content="JSで欲しい所だけを印刷するのすごく簡単だったってお話" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/decorator-timing" />
-    <meta property="og:image" content="https://yuta0306.github.io/theme/img/python.jpg" />
+    <meta property="og:url" content="https://yuta0306.github.io/js-print" />
+    <meta property="og:image" content="https://yuta0306.github.io/theme/img/js.png" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="Pythonにはデコレータというものがあるのですが、意外と初学者には知られていない存在で比較的不思議な挙動をする感じがします。関数を直接的に実行しなくともファイルを読み込んだ段階で実行されるようなので、挙動について実験してみました。" />
+    <meta property="og:description" content="画面をプリントしたいときとかって、無駄な情報があってそれを排除してプリントしたり保存したりしたい時ってあるんですよね。そこの広告いらないから...みたいな。JavaScriptから簡単に操作して画面をPDF保存とかできたのでその共有をします。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="Pythonにはデコレータというものがあるのですが、意外と初学者には知られていない存在で比較的不思議な挙動をする感じがします。関数を直接的に実行しなくともファイルを読み込んだ段階で実行されるようなので、挙動について実験してみました。" />
+    <meta name="description" content="画面をプリントしたいときとかって、無駄な情報があってそれを排除してプリントしたり保存したりしたい時ってあるんですよね。そこの広告いらないから...みたいな。JavaScriptから簡単に操作して画面をPDF保存とかできたのでその共有をします。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/theme/img/favicons/favicon.ico">
@@ -71,131 +71,81 @@
                                         </a>
                                     </li>
                                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/category/python" itemprop="item" class="link-item">
-                                            <span class="link-to-category" itemprop="name">Python</span>
+                                        <a href="https://yuta0306.github.io/category/javascript" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">JavaScript</span>
                                             <meta itemprop="position" content="2">
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
-                            <h1 class="post-title">Pythonのデコレータの挙動を実験してみた</h1>
+                            <h1 class="post-title">JSで欲しい所だけを印刷するのすごく簡単だったってお話</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-26">2020-10-26</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-11-15">2020-11-15</time></li>
                             </ul>
                         </header>
                         <div class="post-content" itemprop="text">
                             <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
+                                <img src="https://yuta0306.github.io/theme/img/js.png" alt="">
                             </div>
                             <nav class="toc">
                                 <h2>目次</h2>
                                 <ol>
                                     <li>
-                                        <a href="#section1" class="link-item">デコレータ活用例</a>
+                                        <a href="#section1" class="link-item">window.print() これだけでよかった</a>
                                     </li>
                                     <li>
-                                        <a href="#section2" class="link-item">デコレータの挙動を追う</a>
+                                        <a href="#section2" class="link-item">いらないタグ一旦消してしまえ!!(終わったら勿論戻す)</a>
                                     </li>
                                 </ol>
                             </nav>
 
-                            <p>Pythonには<strong>デコレータ</strong>というものがあるのですが、意外と初学者には知られていない存在で比較的不思議な挙動をする感じがします。関数を直接的に実行しなくともファイルを読み込んだ段階で実行されるようなので、挙動について実験してみました。</p>
+                            <p>画面をプリントしたいときとかって、無駄な情報があってそれを排除してプリントしたり保存したりしたい時ってあるんですよね。そこの広告いらないから...みたいな。JavaScriptから簡単に操作して画面をPDF保存とかできたのでその共有をします。</p>
 <section id="section1">
-<h2>デコレータ活用例</h2>
-<p>まずは、デコレータの活用例をお話しします。(Numpyから借用)</p>
-<p>Numpyにおいては、関数のモジュールを<em>numpy</em>に変更しており、override.pyか_override.pyだかに<em>set_module</em>関数が作られていたと思います(ちょっと曖昧)</p>
-<p>適当な関数を定義してモジュールを変更します。</p>
-<pre>
-<code class="python">
-<span class="reserved">def</span> <span class="function">set_module</span>(name):
-    <span class="reserved">def</span> <span class="function">decorator</span>(func):
-        func.__module__ = name
-        <span class="reserved">return</span> func
-    <span class="reserved">return</span> decorator<br>
-<span class="reserved">def</span> <span class="function">check_module</span>(func):
-    <span class="builtins">print</span>(func.__module__)<br>
-@<span class="function">set_module</span>(<span class="strings">'mylib'</span>)    <span class="comment"># module名書き換え</span>
-<span class="reserved">def</span> <span class="function">changed</span>():
-    <span class="reserved">pass</span><br>
-<span class="comment"># module名変更なし</span>
-<span class="reserved">def</span> <span class="function">not_changed</span>():
-    <span class="reserved">pass</span><br>
-<span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">'__main__'</span>:
-    <span class="function">check_module</span>(changed)
-    <span class="function">check_module</span>(not_changed)</code>
-</pre>
-
-
-<p>各関数の役割</p>
-<ul>
-<li>set_module<ul>
-<li>デコレータ</li>
-<li>関数のモジュール名を変更する</li>
-</ul>
-</li>
-<li>changed<ul>
-<li>モジュール名を変更される関数</li>
-</ul>
-</li>
-<li>not_changed<ul>
-<li>モジュール名を<strong>変更されない</strong>関数</li>
-</ul>
-</li>
-</ul>
-<p>これらの実行結果が以下になります。</p>
-<pre><code>mylib
-__main__
+<h2>window.print() これだけでよかった</h2>
+<p>Webで開いている画面を印刷もしくはPDF文書として保存するときは、とても簡単。</p>
+<pre><code>window.print()
 </code></pre>
 
-<p>変更された方は、期待した通りモジュール名が<em>mylib</em>に変わっていて、変更していない方はメインルーティンに入っていることになっています。</p>
+<p>この関数を使うだけで簡単に実行できました。</p>
+<p>とは言っても、この関数を使ってできることは今ある全てのDOM構造を反映してしまうことですかね。いらん情報消したいなぁぁ......。</p>
 </section>
 <section id="section2">
-<h2>デコレータの挙動を追う</h2>
-<p>デコレータの挙動を追ってみます。基本的には動作がわかるように関数に機能はつけず、標準出力にて動作を確認していきます。</p>
-<p>実験するための関数を用意します。</p>
+<h2>いらないタグ一旦消してしまえ!!(終わったら勿論戻す)</h2>
+<p>さあ、そういうわけでいらない情報を消してしまお〜〜〜〜(暴論)</p>
+<p>ただし、<em>window.print()</em>したあとは戻してあげます。</p>
+<p>サンプルコードが以下です。</p>
 <pre>
-<code class="python">
-<span class="reserved">def</span> <span class="function">deco</span>(name):
-    <span class="builtins">print</span>(name, <span class="strings">'開始'</span>)
-    <span class="reserved">def</span> <span class="function">decorator</span>(func):
-        <span class="builtins">print</span>(func.__name__, <span class="strings">'実行'</span>)
-        <span class="reserved">return</span> func
-    <span class="builtins">print</span>(name, <span class="strings">'終了'</span>)
-    <span class="reserved">return</span> decorator<br>
-@<span class="function">deco</span>(<span class="strings">'deco1'</span>)
-<span class="reserved">def</span> <span class="function">test1</span>():
-    <span class="reserved">pass</span><br>
-<span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">"__main__"</span>:
-    <span class="reserved">pass</span></code>
+<code class="js">
+<span class="reserved">let</span> printer = () <span class="reserved">=></span> {
+    <span class="reserved">let</span> body = document.<span class="function">getElementsByTagName</span>(<span class="strings">'body'</span>)[0]
+    <span class="reserved">let</span> content = document.<span class="function">querySelector</span>(<span class="strings">"#target"</span>)
+    <span class="reserved">for</span> (let child <span class="reserved">of</span> body.children) {
+        child.style.visibility = <span class="strings">'hidden'</span>
+    }
+    content.style.visibility = <span class="strings">'visible'</span>
+    window.<span class="function">print</span>()
+    <span class="reserved">for</span> (let child <span class="reserved">of</span> body.children) {
+        child.style.visibility = <span class="strings">'visible'</span>
+    }
+}</code>
 </pre>
 
-
-<p>特別難しいこともありません。ただ各タイミングで出力を待つデコレータです。</p>
-<p>実行結果が以下になります。</p>
-<pre><code>deco1 開始
-deco1 終了
-test1 実行
-</code></pre>
-
-<p>デコレータの外の関数を動かした後、デコレートされた(装飾された)関数が返されるという感じです。</p>
-<p>流れは以下になります。</p>
+<p>これで欲しい部分だけ、基本的には印刷対象にできます。(例外はあると思う)</p>
+<p>フローはこんな感じ</p>
 <ol>
-<li>デコレータの発火</li>
-<li>デコレータにより関数を装飾</li>
-<li>装飾された関数が返ってくる</li>
-<li>あとは3の関数を使うだけ</li>
+<li>bodyと自分の欲しい所だけ押さえる</li>
+<li>bodyタグの下にあるやつを全部<em>visibility: hidden</em>に</li>
+<li>欲しかったやつだけ<em>visibility: visible</em>に</li>
+<li><strong>window.print()</strong>で印刷</li>
+<li>全部<em>visibility: visible</em>に戻してあげる</li>
 </ol>
-<p>このような流れになっていきます。デコレータは関数を装飾するものなので、ちょっと特殊であまり使うことがない気もしますが...</p>
-<p>また、<strong>メインルーティンで何も動かしていないのにもかかわらず</strong>、出力されています。</p>
-<p>デコレータは読み込んだときに動くようです。その特徴がわかればそこまでデコレータは難しいものでもなさそうです。</p>
-<p>あとでまた多重デコレータに関する話をしたいと思います。</p>
+<p>他にも良い方法があるかもしれませんけど、今回はこれで。</p>
 </section>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
                                 <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/tag/python" class="link-item">Python</a></li>
-                                    <li><a href="https://yuta0306.github.io/tag/デコレータ" class="link-item">デコレータ</a></li>
+                                    <li><a href="https://yuta0306.github.io/tag/javascript" class="link-item">JavaScript</a></li>
                                 </ul>
                             </div>
 
@@ -204,22 +154,22 @@ test1 実行
                                 <h3>SHARE</h3>
                                 <ul>
                                     <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/decorator-timing" target="_blank" class="link-item">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/js-print" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/theme/img/icons/twitter.svg" alt="share for twitter">
                                         </a>
                                     </li>
                                     <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/decorator-timing" target="_blank" class="link-item">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/js-print" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/theme/img/icons/facebook.svg" alt="share for facebook">
                                         </a>
                                     </li>
                                     <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/decorator-timing" target="_blank" class="link-item">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/js-print" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/theme/img/icons/hatena.svg" alt="share for hatenablog">
                                         </a>
                                     </li>
                                     <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/decorator-timing" target="_blank" class="link-item">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/js-print" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/theme/img/icons/pocket.svg" alt="share for getpocket">
                                         </a>
                                     </li>
