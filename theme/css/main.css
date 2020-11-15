@@ -104,10 +104,11 @@ html, body {
 .navbar {
     margin: 0 auto;
     padding: 0;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: center; */
+    display: block;
     list-style-type: none;
 }
 .navbar-item {
