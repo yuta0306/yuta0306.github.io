@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/highlight.css">
 
-    <title>ゆうぼうの書跡棚 2020 archives</title>
+    <title>dictionary changed size during iterationの原因特定した</title>
     <!-- OGP -->
-    <meta property="og:title" content="ゆうぼうの書跡棚" />
+    <meta property="og:title" content="dictionary changed size during iterationの原因特定した" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io" />
-    <meta property="og:image" content="https://yuta0306.github.io/theme/img/default_thumbnail.png" />
+    <meta property="og:url" content="https://yuta0306.github.io/py-dict-iter-err" />
+    <meta property="og:image" content="https://yuta0306.github.io/theme/img/python.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="これはゆうぼうの技術ブログです。日々学んだことを備忘録がてら残しています。主に、PythonやらJSやらを触っています。" />
+    <meta property="og:description" content="Pythonで中身をpopで削除したいなーと思った時、なぜか「dictionary changed size during iteration」とのメッセージが。これは意外と出てきたら原因がパッとしないので、2度と同じことを起こさないように記録しておきます。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="これはゆうぼうの技術ブログです。日々学んだことを備忘録がてら残しています。主に、PythonやらJSやらを触っています。" />
+    <meta name="description" content="Pythonで中身をpopで削除したいなーと思った時、なぜか「dictionary changed size during iteration」とのメッセージが。これは意外と出てきたら原因がパッとしないので、2度と同じことを起こさないように記録しておきます。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/theme/img/favicons/favicon.ico">
@@ -59,92 +59,144 @@
     <div class="content">
         <div class="wrap">
             <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-                <h1>Archives for 2020</h1>
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/category/python" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Python</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">dictionary changed size during iterationの原因特定した</h1>
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2020-10-18">2020-10-18</time></li>
+                            </ul>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">やりたいこと</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section2" class="link-item">Scalarクラスを作る</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section3" class="link-item">【__str__】の出番</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section4" class="link-item">今回のソースの推奨</a>
+                                    </li>
+                                </ol>
+                            </nav>
 
-                <dl>
-                    <dt>2020年 11月 15日</dt>
-                    <dd><a href="https://yuta0306.github.io/js-print">JSで欲しい所だけを印刷するのすごく簡単だったってお話</a></dd>
-                    <dt>2020年 11月 10日</dt>
-                    <dd><a href="https://yuta0306.github.io/aws-memo-11-10">AWSオンラインセミナーメモ【11/10】</a></dd>
-                    <dt>2020年 11月 10日</dt>
-                    <dd><a href="https://yuta0306.github.io/ls-python">PythonからUNIXコマンド発出【ls編】</a></dd>
-                    <dt>2020年 11月 08日</dt>
-                    <dd><a href="https://yuta0306.github.io/flask-json-parse-err">【Flask】フロントでUnexpected token!?</a></dd>
-                    <dt>2020年 11月 02日</dt>
-                    <dd><a href="https://yuta0306.github.io/apache-error-srvroot">ApacheのSRVROOTが合わない問題</a></dd>
-                    <dt>2020年 11月 02日</dt>
-                    <dd><a href="https://yuta0306.github.io/apache-install-denied">httpd -k installでアクセス拒否</a></dd>
-                    <dt>2020年 11月 01日</dt>
-                    <dd><a href="https://yuta0306.github.io/conda-miss-pythonv">conda createでpythonのバージョン指定忘れた！</a></dd>
-                    <dt>2020年 10月 26日</dt>
-                    <dd><a href="https://yuta0306.github.io/decorator-timing">Pythonのデコレータの挙動を実験してみた</a></dd>
-                    <dt>2020年 10月 26日</dt>
-                    <dd><a href="https://yuta0306.github.io/py-map">【map】を使って新たな配列を作る</a></dd>
-                    <dt>2020年 10月 19日</dt>
-                    <dd><a href="https://yuta0306.github.io/defaultdict-usage">【defaultdict】で辞書型の初期化をサボる</a></dd>
-                    <dt>2020年 10月 18日</dt>
-                    <dd><a href="https://yuta0306.github.io/py-dict-iter-err">dictionary changed size during iterationの原因特定した</a></dd>
-                    <dt>2020年 10月 15日</dt>
-                    <dd><a href="https://yuta0306.github.io/py-sort-dict">Pythonで【辞書型】をソートする</a></dd>
-                    <dt>2020年 10月 12日</dt>
-                    <dd><a href="https://yuta0306.github.io/py-class-repr">classの標準出力を特殊な文字列にしたい【__str__|__repr__】</a></dd>
-                    <dt>2020年 10月 12日</dt>
-                    <dd><a href="https://yuta0306.github.io/py-trans-matrix">簡単に転置行列求めてみた</a></dd>
-                    <dt>2020年 10月 12日</dt>
-                    <dd><a href="https://yuta0306.github.io/weakref">【weakref】弱い参照によってメモリ管理をする</a></dd>
-                    <dt>2020年 10月 10日</dt>
-                    <dd><a href="https://yuta0306.github.io/go-type-inference">Goはどうやら型を推論できるらしい話</a></dd>
-                    <dt>2020年 10月 10日</dt>
-                    <dd><a href="https://yuta0306.github.io/js-return-mul">JSで返り値にパラメータを複数設定する</a></dd>
-                    <dt>2020年 10月 10日</dt>
-                    <dd><a href="https://yuta0306.github.io/sort-mularr-by-str">【JS】多次元配列を文字列に合わせてソートしたい!</a></dd>
-                    <dt>2020年 10月 07日</dt>
-                    <dd><a href="https://yuta0306.github.io/tk-entry-default">【Python】tkinterでEntryにデフォルト値を入れたい</a></dd>
-                    <dt>2020年 10月 05日</dt>
-                    <dd><a href="https://yuta0306.github.io/go-hello">GoでHello, world!</a></dd>
-                    <dt>2020年 10月 05日</dt>
-                    <dd><a href="https://yuta0306.github.io/go-install">Goのインストールが楽すぎた話</a></dd>
-                    <dt>2020年 09月 26日</dt>
-                    <dd><a href="https://yuta0306.github.io/selenium-click-by-js">Seleniumからクリックができない...そうだ、JSからクリックしよう</a></dd>
-                    <dt>2020年 09月 11日</dt>
-                    <dd><a href="https://yuta0306.github.io/parse-int-base10">invalid literal for int() with base 10: でint型のパースでエラーが！</a></dd>
-                    <dt>2020年 09月 10日</dt>
-                    <dd><a href="https://yuta0306.github.io/pandas-nomodule">pickleでロードした時pandasがあるのに"No module ~~"で悩んだ件について</a></dd>
-                    <dt>2020年 09月 03日</dt>
-                    <dd><a href="https://yuta0306.github.io/python-add-path">自作のモジュールを他のディレクトリから持ってきたい!!</a></dd>
-                    <dt>2020年 08月 21日</dt>
-                    <dd><a href="https://yuta0306.github.io/zsh-compinit">突然Macのターミナル起動時に"zsh compinit: insecure directories"が現れた!?</a></dd>
-                    <dt>2020年 08月 18日</dt>
-                    <dd><a href="https://yuta0306.github.io/groupfold-groups">Scikit-learnのGroupKFoldでgroups配列でWarning発生!!</a></dd>
-                    <dt>2020年 08月 05日</dt>
-                    <dd><a href="https://yuta0306.github.io/heroku-mecab">HerokuにMecCabインストールで困った!!</a></dd>
-                    <dt>2020年 08月 01日</dt>
-                    <dd><a href="https://yuta0306.github.io/logistic-with-l1">ロジスティック回帰でL1正則化を利用できない問題の解決法</a></dd>
-                    <dt>2020年 07月 29日</dt>
-                    <dd><a href="https://yuta0306.github.io/appium-install">Appiumをインストールする!!</a></dd>
-                    <dt>2020年 07月 29日</dt>
-                    <dd><a href="https://yuta0306.github.io/centos-v7-make">CentOS7にmakeコマンドをインストールする</a></dd>
-                    <dt>2020年 07月 21日</dt>
-                    <dd><a href="https://yuta0306.github.io/mysql-add-column">MySQLで困った!カラム追加したい</a></dd>
-                    <dt>2020年 07月 21日</dt>
-                    <dd><a href="https://yuta0306.github.io/prefer-to-make_blobs">scikit-learnのmake_blobsに乗り換えよう!!</a></dd>
-                    <dt>2020年 07月 18日</dt>
-                    <dd><a href="https://yuta0306.github.io/mysql-drop-user">MySQLでユーザーの権限を削除する</a></dd>
-                    <dt>2020年 07月 18日</dt>
-                    <dd><a href="https://yuta0306.github.io/mysql-remote-setup">MySQL8.0.xでリモート接続のセットアップをする!</a></dd>
-                    <dt>2020年 07月 14日</dt>
-                    <dd><a href="https://yuta0306.github.io/show_tables-mysql-python">mysql-connector-pythonで'SHOW ~~~'に困ったのでその対処法</a></dd>
-                    <dt>2020年 07月 13日</dt>
-                    <dd><a href="https://yuta0306.github.io/connect-to-mysql-python">mysql-connector-pythonでローカルDBに接続する</a></dd>
-                    <dt>2020年 07月 12日</dt>
-                    <dd><a href="https://yuta0306.github.io/mysql-version">MySQLでバージョンを確認する</a></dd>
-                    <dt>2020年 07月 11日</dt>
-                    <dd><a href="https://yuta0306.github.io/corpus">自然言語処理(NLP)のコーパスって何なん？</a></dd>
-                    <dt>2020年 07月 10日</dt>
-                    <dd><a href="https://yuta0306.github.io/only_sp_newline">sp仕様(スマホ)の時のみ改行したい!!</a></dd>
-                    <dt>2020年 07月 10日</dt>
-                    <dd><a href="https://yuta0306.github.io/touch-device-hover">スマホにも:hoverを対応させてみる</a></dd>
-                </dl>
+                            <p>Pythonで中身をpopで削除したいなーと思った時、なぜか「<em>dictionary changed size during iteration</em>」とのメッセージが。これは意外と出てきたら原因がパッとしないので、2度と同じことを起こさないように記録しておきます。</p>
+<section id="section1">
+<h2>直感的にイテレーションしてpopしていく</h2>
+<p>ここでは、直感的に初心者が思いつきそうな感じのイテレーションを用いてループを回し、popで辞書を消していきます。</p>
+<pre>
+<code class="python">
+dictionary = {
+    <span class="strings">'a'</span>: 0,
+    <span class="strings">'b'</span>: 1,
+    <span class="strings">'c'</span>: 2,
+}<br>
+<span class="reserved">for</span> key <span class="reserved">in</span> dictionary.<span class="function">keys</span>():
+    dictionary.<span class="function">pop</span>(key)</code>
+</pre>
+
+<p>結果はこんな感じに...</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 6, in &lt;module&gt;
+RuntimeError: dictionary changed size during iteration
+</code></pre>
+
+<p>は？<em>RuntimeError</em>だと...!?</p>
+<p><strong>イテレーション中に辞書のサイズ変わったんですけど</strong>と怒られたわけです。</p>
+<p>ということは、<strong>keys()を使っていながら、ループの内部で辞書をいじってはいけない</strong>ということになりますね。</p>
+</section>
+<section id="section1">
+<h2>keys()をリストとして先に確保してしまえ!!</h2>
+<p>さて、解決していきます。</p>
+<p>イテレーション中の辞書を書き換えてはいけなかったので、<em>list()</em>にしてしまお〜〜<br />
+ということで、キーのイテレータは配列として別物と扱わせます。</p>
+<p>少しだけ変えた奴が下。</p>
+<pre>
+<code class="python">
+dictionary = {
+    <span class="strings">'a'</span>: 0,
+    <span class="strings">'b'</span>: 1,
+    <span class="strings">'c'</span>: 2,
+}<br>
+<span class="reserved">for</span> key <span class="reserved">in</span> list(dictionary.<span class="function">keys</span>()):    <span class="strings"><=変えるのはここ</span>
+    dictionary.<span class="function">pop</span>(key)</code>
+</pre>
+
+<p>これで、出力も足してみます。</p>
+<pre><code>print(a)
+</code></pre>
+
+<p>結果が以下になります。</p>
+<pre><code>1
+</code></pre>
+
+<p>お〜動きましたね。</p>
+<p>というわけで、辞書型でイテレーションを用いて何かするときは、配列とかで切り離して使ってあげるとエラーなくコードが動きますよ〜</p>
+<p>今後は僕も気をつけたいと思います。</p>
+</section>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/tag/python" class="link-item">Python</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/py-dict-iter-err" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/py-dict-iter-err" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/py-dict-iter-err" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/py-dict-iter-err" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
+                        </div>
+                    </div>
+                </article>
                 
             </main>
             <aside class="aside">
