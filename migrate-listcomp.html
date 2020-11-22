@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/highlight.css">
 
-    <title>ゆうぼうの書跡棚</title>
+    <title>内包表記でパフォーマンスをあげるのだ！</title>
     <!-- OGP -->
-    <meta property="og:title" content="ゆうぼうの書跡棚" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yuta0306.github.io" />
-    <meta property="og:image" content="https://yuta0306.github.io/theme/img/default_thumbnail.png" />
+    <meta property="og:title" content="内包表記でパフォーマンスをあげるのだ！" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://yuta0306.github.io/migrate-listcomp" />
+    <meta property="og:image" content="https://yuta0306.github.io/theme/img/python.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="これはゆうぼうの技術ブログです。日々学んだことを備忘録がてら残しています。主に、PythonやらJSやらを触っています。" />
+    <meta property="og:description" content="Pythonで他にはない特殊な書き方といえば、内包表記ですかね。Haskellでもかけるみたいな話聞いたことあるけど。実際内包表記は読みやすく、たいてい高速に動くので推奨される書き方と思います。ベンチマークを測ってみたので参考になればと。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="これはゆうぼうの技術ブログです。日々学んだことを備忘録がてら残しています。主に、PythonやらJSやらを触っています。" />
+    <meta name="description" content="Pythonで他にはない特殊な書き方といえば、内包表記ですかね。Haskellでもかけるみたいな話聞いたことあるけど。実際内包表記は読みやすく、たいてい高速に動くので推奨される書き方と思います。ベンチマークを測ってみたので参考になればと。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/theme/img/favicons/favicon.ico">
@@ -39,11 +39,9 @@
 <body ontouchstart="">
     <header class="header">
         <div class="inner-header wrap">
-            <h1 class="h1">
-                <a class="logo link-item" href="https://yuta0306.github.io">
-                    <span class="logo-text">ゆうぼうの書跡棚</span>
-                </a>
-            </h1>
+            <a class="logo link-item" href="https://yuta0306.github.io">
+                <span class="logo-text">ゆうぼうの書跡棚</span>
+            </a>
         </div>
         <div class="navbar-wrapper">
             <ul class="navbar wrap">
@@ -61,145 +59,146 @@
     <div class="content">
         <div class="wrap">
             <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-                <div class="card-wrapper">
-                    <a href="https://yuta0306.github.io/pandas-nomodule" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/category/python" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Python</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">内包表記でパフォーマンスをあげるのだ！</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-09-10">2020-09-10</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-10-22">2020-10-22</time></li>
                             </ul>
-                            <h2>pickleでロードした時pandasがあるのに"No module ~~"で悩んだ件について</h2>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">直感的にイテレーションしてpopしていく</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section2" class="link-item">keys()をリストとして先に確保してしまえ!!</a>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <p>Pythonで他にはない特殊な書き方といえば、<strong>内包表記</strong>*ですかね。Haskellでもかけるみたいな話聞いたことあるけど。実際内包表記は読みやすく、たいてい高速に動くので推奨される書き方と思います。ベンチマークを測ってみたので参考になればと。</p>
+<section id="section1">
+<h2>今回のコード</h2>
+<p>今回速さを測るための指標となるコードは以下になります。</p>
+<p>至ってシンプルなforループが以下です。</p>
+<pre>
+<code class="python">
+symbols = <span class="strings">'$¢£¥€¤'</span>
+<span class="reserved">def</span> <span class="function">non_ascii</span>(c):
+    <span class="reserved">return</span> c > 127<br>
+codes = []
+<span class="reserved">for</span> s <span class="reserved">in</span> symbols:
+    <span class="reserved">if</span> <span class="builtins">ord</span>(s) > 127:
+        codes.<span class="function">append</span>(<span class="function">ord</span>(s))</code>
+</pre>
+
+<p>これを下に複数の書き方に対して処理速度を測ります。</p>
+</section>
+<section id="section1">
+<h2>いざ実験</h2>
+<p>今回試すものが以下になります。</p>
+<ol>
+<li>ただのforループ</li>
+<li>内包表記</li>
+<li>内包表記 + 自作関数(non_adcii)</li>
+<li>filter + lambda</li>
+<li>filter + 自作関数(non_ascii)</li>
+</ol>
+<p>これらに関して測ってみます。
+コードが以下になります。</p>
+<pre>
+<code class="python">
+<span class="reserved">import</span> timeit<br>
+TIMES = 10000<br>
+SETUP = <span class="strings">""</span>"
+symbols = '$¢£¥€¤'
+<span class="reserved">def</span> <span class="function">non_ascii</span>(c):
+    <span class="reserved">return</span> c > 127
+<span class="strings">"</span><span class="strings">""</span><br>
+<span class="reserved">def</span> <span class="function">clock</span>(label, cmd):
+    res = timeit.<span class="function">repeat</span>(cmd, setup=SETUP, number=TIMES)
+    <span class="builtins">print</span>(label, *(<span class="strings">'{:.3f}'</span>.<span class="function">format</span>(x) <span class="reserved">for</span> x <span class="reserved">in</span> res))<br>
+<span class="reserved">if</span> <span class="builtins">__name__</span> == <span class="strings">"__main__"</span>:
+    <span class="function">clock</span>(<span class="strings">'for-loop        :'</span>, <span class="strings">'codes = []\nfor s in symbols:\n\tif ord(s) > 127: codes.append(ord(s))\ncodes'</span>)
+    <span class="function">clock</span>(<span class="strings">'listcomp        :'</span>, <span class="strings">'[ord(s) for s in symbols if ord(s) > 127]'</span>)
+    <span class="function">clock</span>(<span class="strings">'listcomp + func :'</span>, <span class="strings">'[ord(s) for s in symbols if non_ascii(ord(s))]'</span>)
+    <span class="function">clock</span>(<span class="strings">'filter + lambda :'</span>, <span class="strings">'list(filter(lambda c: c > 127, map(ord, symbols)))'</span>)
+    <span class="function">clock</span>(<span class="strings">'filter + func   :'</span>, <span class="strings">'list(filter(non_ascii, map(ord, symbols)))'</span>)</code>
+</pre>
+
+<p>これらから得られる結果がこんな感じです。(人による)</p>
+<pre><code>for-loop        : 0.009 0.009 0.009 0.009 0.009
+listcomp        : 0.008 0.008 0.008 0.008 0.008
+listcomp + func : 0.012 0.013 0.013 0.012 0.012
+filter + lambda : 0.011 0.013 0.012 0.011 0.013
+filter + func   : 0.014 0.014 0.014 0.014 0.013
+</code></pre>
+
+<p>これはまだループも小さいので差はありませんが、安定して早く動いているのは<strong>内包表記</strong>ですね。</p>
+<p>読みやすく、高速に動くことが多い内包表記でした。実際に導入してみてはいかがでしょか。</p>
+<p>今回は実験だけ示して終わります〜〜.</p>
+</section>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/tag/python" class="link-item">Python</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/migrate-listcomp" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/migrate-listcomp" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/migrate-listcomp" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/migrate-listcomp" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
                         </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/python-add-path" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-09-03">2020-09-03</time></li>
-                            </ul>
-                            <h2>自作のモジュールを他のディレクトリから持ってきたい!!</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/zsh-compinit" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/terminal.png" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-08-21">2020-08-21</time></li>
-                            </ul>
-                            <h2>突然Macのターミナル起動時に"zsh compinit: insecure directories"が現れた!?</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/groupfold-groups" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-08-18">2020-08-18</time></li>
-                            </ul>
-                            <h2>Scikit-learnのGroupKFoldでgroups配列でWarning発生!!</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/heroku-mecab" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-08-05">2020-08-05</time></li>
-                            </ul>
-                            <h2>HerokuにMecCabインストールで困った!!</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/logistic-with-l1" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-08-01">2020-08-01</time></li>
-                            </ul>
-                            <h2>ロジスティック回帰でL1正則化を利用できない問題の解決法</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/appium-install" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-29">2020-07-29</time></li>
-                            </ul>
-                            <h2>Appiumをインストールする!!</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/centos-v7-make" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/linux.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-29">2020-07-29</time></li>
-                            </ul>
-                            <h2>CentOS7にmakeコマンドをインストールする</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/mysql-add-column" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/database.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-21">2020-07-21</time></li>
-                            </ul>
-                            <h2>MySQLで困った!カラム追加したい</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/prefer-to-make_blobs" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-21">2020-07-21</time></li>
-                            </ul>
-                            <h2>scikit-learnのmake_blobsに乗り換えよう!!</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/mysql-drop-user" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/database.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-18">2020-07-18</time></li>
-                            </ul>
-                            <h2>MySQLでユーザーの権限を削除する</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/mysql-remote-setup" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/database.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-18">2020-07-18</time></li>
-                            </ul>
-                            <h2>MySQL8.0.xでリモート接続のセットアップをする!</h2>
-                        </div>
-                    </a>
-                    <div class="paginator-wrapper">
-                        <a href="index2.html" class="paginator previous">Previous</a>
-                        <a href="index4.html" class="paginator next">Next</a>
                     </div>
-                </div>
-                    
+                </article>
                 
             </main>
             <aside class="aside">
