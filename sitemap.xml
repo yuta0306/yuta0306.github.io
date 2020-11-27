@@ -5,36 +5,43 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/</loc>
-<lastmod>2020-11-22T15:33:24-00:00</lastmod>
+<lastmod>2020-11-27T14:18:22-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/tags</loc>
-<lastmod>2020-11-22T15:33:24-00:00</lastmod>
+<lastmod>2020-11-27T14:18:22-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/categories</loc>
-<lastmod>2020-11-22T15:33:24-00:00</lastmod>
+<lastmod>2020-11-27T14:18:22-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/archives</loc>
-<lastmod>2020-11-22T15:33:24-00:00</lastmod>
+<lastmod>2020-11-27T14:18:22-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/sitemap.html</loc>
-<lastmod>2020-11-22T15:33:24-00:00</lastmod>
+<lastmod>2020-11-27T14:18:22-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/mul-list-ref</loc>
+<lastmod>2020-11-27T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -369,7 +376,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/category/python.html</loc>
-<lastmod>2020-11-22T00:00:00+09:19</lastmod>
+<lastmod>2020-11-27T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -390,7 +397,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/tag/python.html</loc>
-<lastmod>2020-11-22T00:00:00+09:19</lastmod>
+<lastmod>2020-11-27T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -593,7 +600,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/author/yuubou.html</loc>
-<lastmod>2020-11-22T00:00:00+09:19</lastmod>
+<lastmod>2020-11-27T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

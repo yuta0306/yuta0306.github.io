@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/highlight.css">
 
-    <title>ゆうぼうの書跡棚</title>
+    <title>【Python】多次元の不用意な*演算には注意!!</title>
     <!-- OGP -->
-    <meta property="og:title" content="ゆうぼうの書跡棚" />
+    <meta property="og:title" content="【Python】多次元の不用意な*演算には注意!!" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io" />
-    <meta property="og:image" content="https://yuta0306.github.io/theme/img/default_thumbnail.png" />
+    <meta property="og:url" content="https://yuta0306.github.io/mul-list-ref" />
+    <meta property="og:image" content="https://yuta0306.github.io/theme/img/python.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="これはゆうぼうの技術ブログです。日々学んだことを備忘録がてら残しています。主に、PythonやらJSやらを触っています。" />
+    <meta property="og:description" content="今回は、多次元配列で\*演算には注意しないと、バグが起こるよってことを話します。1年Pythonを描き続けましたが知らなかったので、これは共有させていただきますね。Pythonは、ポインタだの参照だのを意識しなくても良い言語だと思うんですが、これは知っておくべきです。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="これはゆうぼうの技術ブログです。日々学んだことを備忘録がてら残しています。主に、PythonやらJSやらを触っています。" />
+    <meta name="description" content="今回は、多次元配列で\*演算には注意しないと、バグが起こるよってことを話します。1年Pythonを描き続けましたが知らなかったので、これは共有させていただきますね。Pythonは、ポインタだの参照だのを意識しなくても良い言語だと思うんですが、これは知っておくべきです。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/theme/img/favicons/favicon.ico">
@@ -59,158 +59,149 @@
     <div class="content">
         <div class="wrap">
             <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-                <div class="archive-header">
-                    <div>
-                        <nav class="breadcrumb">
-                            <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                    <a href="https://yuta0306.github.io" itemprop="item" class="link-item">
-                                        <span class="link-to-home" itemprop="name">ホーム</span>
-                                        <meta itemprop="position" content="1">
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <h1>カテゴリー「Python」記事一覧</h1>
-                    </div>
-                </div>
-                <div class="card-wrapper">
-                    <a href="https://yuta0306.github.io/mul-list-ref" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/category/python" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Python</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">【Python】多次元の不用意な*演算には注意!!</h1>
                             <ul class="post-meta">
                                 <li class="date published"><time itemprop="published" datetime="2020-11-27">2020-11-27</time></li>
                             </ul>
-                            <h2>【Python】多次元の不用意な*演算には注意!!</h2>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">実験方法</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section2" class="link-item">シンプルに定義</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section3" class="link-item">+演算で定義</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section4" class="link-item">\*演算で定義</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section5" class="link-item">\*演算に注意!!!</a>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <p>今回は、<strong>多次元配列で*演算には注意しないと、バグが起こるよ</strong>ってことを話します。1年Pythonを描き続けましたが知らなかったので、これは共有させていただきますね。Pythonは、ポインタだの参照だのを意識しなくても良い言語だと思うんですが、これは知っておくべきです。</p>
+<section id="section1">
+<h2>実験方法</h2>
+<p>各配列がどの参照をしているかを注目してみましょう。今回の実験は、以下の流れをとります。</p>
+<ol>
+<li>2次元配列を定義 &lt;- 様々な方法をとります</li>
+<li>中の配列の0番目append(0)をする</li>
+<li>実験結果の確認</li>
+</ol>
+<p>それでは早速実験です。対話モードにて行います。</p>
+</section>
+<section id="section2">
+<h2>シンプルに定義</h2>
+<pre>
+<code class="python">
+>>> l = [[], [], []]
+>>> l[0].<span class="function">append</span>(0)<br>
+>>> l<br>
+[[0], [], []]</code>
+</pre>
+
+<p>これはおそらく考えていた通りですね。問題なし。</p>
+</section>
+<section id="section3">
+<h2>+演算で定義</h2>
+<pre>
+<code class="python">
+>>> l = [[]] + [[]] + [[]]
+>>> l[0].<span class="function">append</span>(0)<br>
+>>> l<br>
+[[0], [], []]</code>
+</pre>
+
+<p>これも想定した通り。問題なし。</p>
+</section>
+<section id="section4">
+<h2>*演算で定義</h2>
+<pre>
+<code class="python">
+>>> l = [[]] * 3
+>>> l[0].<span class="function">append</span>(0)<br>
+>>> l<br>
+[[0], [0], [0]]</code>
+</pre>
+
+<p>......ん？？？？</p>
+<p>全ての要素配列に0が足してありますね...これは知らんかったやつ...</p>
+</section>
+<section id="section5">
+<h2>*演算に注意!!!</h2>
+<p>*演算で配列を定義する際には注意しましょう。</p>
+<p>シンプルに定義した場合や+によって定義した配列は、それぞれの配列は別のものとして定義されています。</p>
+<p>しかし、*によって定義されたものは、演算対象となった配列の参照そのものさえもコピーされて作られてしまいます。</p>
+<p>まとまった挙動を示して欲しいのであれば問題ないですが、大きなくくりの配列にある要素配列に対しては別々に動いて欲しい場合はかなり注意が必要です。</p>
+<p>このことを知っておくだけでもバグが出た時に冷静に対処できると思うので、ぜひ覚えておきましょう。</p>
+</section>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/tag/python" class="link-item">Python</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/mul-list-ref" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/mul-list-ref" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/mul-list-ref" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/mul-list-ref" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
                         </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/migrate-listcomp" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-11-22">2020-11-22</time></li>
-                            </ul>
-                            <h2>内包表記でパフォーマンスをあげるのだ！</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/ls-python" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-11-10">2020-11-10</time></li>
-                            </ul>
-                            <h2>PythonからUNIXコマンド発出【ls編】</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/flask-json-parse-err" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-11-08">2020-11-08</time></li>
-                            </ul>
-                            <h2>【Flask】フロントでUnexpected token!?</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/conda-miss-pythonv" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-11-01">2020-11-01</time></li>
-                            </ul>
-                            <h2>conda createでpythonのバージョン指定忘れた！</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/decorator-timing" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-26">2020-10-26</time></li>
-                            </ul>
-                            <h2>Pythonのデコレータの挙動を実験してみた</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/py-map" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-26">2020-10-26</time></li>
-                            </ul>
-                            <h2>【map】を使って新たな配列を作る</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/defaultdict-usage" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-19">2020-10-19</time></li>
-                            </ul>
-                            <h2>【defaultdict】で辞書型の初期化をサボる</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/py-dict-iter-err" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-18">2020-10-18</time></li>
-                            </ul>
-                            <h2>dictionary changed size during iterationの原因特定した</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/py-sort-dict" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-15">2020-10-15</time></li>
-                            </ul>
-                            <h2>Pythonで【辞書型】をソートする</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/py-class-repr" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-12">2020-10-12</time></li>
-                            </ul>
-                            <h2>classの標準出力を特殊な文字列にしたい【__str__|__repr__】</h2>
-                        </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/py-trans-matrix" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-10-12">2020-10-12</time></li>
-                            </ul>
-                            <h2>簡単に転置行列求めてみた</h2>
-                        </div>
-                    </a>
-                    <div class="paginator-wrapper">
-                        <a href="category/python2.html" class="paginator next">Next</a>
                     </div>
-                </div>
+                </article>
                 
             </main>
             <aside class="aside">
