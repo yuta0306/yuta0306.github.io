@@ -558,12 +558,14 @@ html, body {
     margin-right: -5px;
 }
 /* Affiliates */
-.affiliates iframe {
-    margin: 10px;
+.affiliates {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+}
+.affiliates iframe {
+    margin: 10px;
 }
 /* Social */
 .social {
