@@ -557,6 +557,11 @@ html, body {
 .bio-footer .link-item:hover {
     margin-right: -5px;
 }
+/* Affiliates */
+.affiliates iframe {
+    width: 100%;
+    height: auto;
+}
 /* Social */
 .social {
     margin: 30px 0;
