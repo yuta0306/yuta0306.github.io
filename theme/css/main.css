@@ -561,6 +561,10 @@ html, body {
 .affiliates iframe {
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 /* Social */
 .social {
