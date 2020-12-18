@@ -33,44 +33,6 @@
 
     <!-- Google Adsense -->
     <!-- /Google Adsense -->
-    <script>
-        (function(doc, win) {
-            function main() {
-                // GoogleAdSense読込み
-                var ad = doc.createElement('script');
-                ad.type = 'text/javascript';
-                ad.async = true;
-                ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-                var sc = doc.getElementsByTagName('script')[0];
-                sc.parentNode.insertBefore(ad, sc);
-            }
-
-            // 遅延読込み
-            var lazyLoad = false;
-            function onLazyLoad() {
-                if (lazyLoad === false) {
-                // 複数呼び出し回避 + イベント解除
-                lazyLoad = true;
-                win.removeEventListener('scroll', onLazyLoad);
-                win.removeEventListener('mousemove', onLazyLoad);
-                win.removeEventListener('mousedown', onLazyLoad);
-                win.removeEventListener('touchstart', onLazyLoad);
-
-                main();
-                }
-            }
-            win.addEventListener('scroll', onLazyLoad);
-            win.addEventListener('mousemove', onLazyLoad);
-            win.addEventListener('mousedown', onLazyLoad);
-            win.addEventListener('touchstart', onLazyLoad);
-            win.addEventListener('load', function() {
-                // ドキュメント途中（更新時 or ページ内リンク）
-                if (doc.documentElement.scrollTop != 0 || doc.body.scrollTop != 0) {
-                onLazyLoad();
-                }
-            });
-            })(document, window);
-    </script>
 </head>
 <body ontouchstart="">
     <header class="header">
@@ -353,5 +315,43 @@ filter + func   : 0.014 0.014 0.014 0.014 0.013
     for (let image of images) {
         image.setAttribute('loading', 'lazy');
     }
+</script>
+<script>
+    (function(doc, win) {
+        function main() {
+            // GoogleAdSense読込み
+            var ad = doc.createElement('script');
+            ad.type = 'text/javascript';
+            ad.async = true;
+            ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+            var sc = doc.getElementsByTagName('script')[0];
+            sc.parentNode.insertBefore(ad, sc);
+        }
+
+        // 遅延読込み
+        var lazyLoad = false;
+        function onLazyLoad() {
+            if (lazyLoad === false) {
+            // 複数呼び出し回避 + イベント解除
+            lazyLoad = true;
+            win.removeEventListener('scroll', onLazyLoad);
+            win.removeEventListener('mousemove', onLazyLoad);
+            win.removeEventListener('mousedown', onLazyLoad);
+            win.removeEventListener('touchstart', onLazyLoad);
+
+            main();
+            }
+        }
+        win.addEventListener('scroll', onLazyLoad);
+        win.addEventListener('mousemove', onLazyLoad);
+        win.addEventListener('mousedown', onLazyLoad);
+        win.addEventListener('touchstart', onLazyLoad);
+        win.addEventListener('load', function() {
+            // ドキュメント途中（更新時 or ページ内リンク）
+            if (doc.documentElement.scrollTop != 0 || doc.body.scrollTop != 0) {
+            onLazyLoad();
+            }
+        });
+        })(document, window);
 </script>
 </html>
