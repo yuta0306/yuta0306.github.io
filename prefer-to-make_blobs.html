@@ -33,6 +33,13 @@
 
     <!-- Google Adsense -->
     <!-- /Google Adsense -->
+    <script async>
+        // Lazy loading
+        let images = document.getElementsByTagName('img');
+        for (let image of images) {
+            image.setAttribute('loading', 'lazy');
+        }
+    </script>
 </head>
 <body ontouchstart="">
     <header class="header">
@@ -365,11 +372,4 @@ X, y = <span class="function">make_blobs</span>()    <span class="comment"># mak
         </div>
     </footer>
 </body>
-<script>
-    // Lazy loading
-    let images = document.getElementsByTagName('img');
-    for (let image of images) {
-        image.setAttribute('loading', 'lazy');
-    }
-</script>
 </html>

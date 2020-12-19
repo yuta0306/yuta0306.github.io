@@ -33,6 +33,13 @@
 
     <!-- Google Adsense -->
     <!-- /Google Adsense -->
+    <script async>
+        // Lazy loading
+        let images = document.getElementsByTagName('img');
+        for (let image of images) {
+            image.setAttribute('loading', 'lazy');
+        }
+    </script>
 </head>
 <body ontouchstart="">
     <header class="header">
@@ -348,11 +355,4 @@ scores = <span class="function">cross_val_score</span>(logreg, X, y, groups=grou
         </div>
     </footer>
 </body>
-<script>
-    // Lazy loading
-    let images = document.getElementsByTagName('img');
-    for (let image of images) {
-        image.setAttribute('loading', 'lazy');
-    }
-</script>
 </html>

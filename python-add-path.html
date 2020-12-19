@@ -33,6 +33,13 @@
 
     <!-- Google Adsense -->
     <!-- /Google Adsense -->
+    <script async>
+        // Lazy loading
+        let images = document.getElementsByTagName('img');
+        for (let image of images) {
+            image.setAttribute('loading', 'lazy');
+        }
+    </script>
 </head>
 <body ontouchstart="">
     <header class="header">
@@ -336,11 +343,4 @@ sys.path.<span class="function">append</span>(os.<span class="function">getcwd</
         </div>
     </footer>
 </body>
-<script>
-    // Lazy loading
-    let images = document.getElementsByTagName('img');
-    for (let image of images) {
-        image.setAttribute('loading', 'lazy');
-    }
-</script>
 </html>

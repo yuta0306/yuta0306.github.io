@@ -33,6 +33,13 @@
 
     <!-- Google Adsense -->
     <!-- /Google Adsense -->
+    <script async>
+        // Lazy loading
+        let images = document.getElementsByTagName('img');
+        for (let image of images) {
+            image.setAttribute('loading', 'lazy');
+        }
+    </script>
 </head>
 <body ontouchstart="">
     <header class="header">
@@ -409,11 +416,4 @@ scikit-learnを用いて、ロジスティック回帰を使う時、さらにL1
         </div>
     </footer>
 </body>
-<script>
-    // Lazy loading
-    let images = document.getElementsByTagName('img');
-    for (let image of images) {
-        image.setAttribute('loading', 'lazy');
-    }
-</script>
 </html>
