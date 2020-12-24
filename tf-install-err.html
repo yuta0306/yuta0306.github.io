@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/highlight.css">
 
-    <title>ゆうぼうの書跡棚</title>
+    <title>tensorflowインストール時 No such file or directory: ~/site-packages/google_pasta-0.2.0.dist-info/METADATA</title>
     <!-- OGP -->
-    <meta property="og:title" content="ゆうぼうの書跡棚" />
+    <meta property="og:title" content="tensorflowインストール時 No such file or directory: ~/site-packages/google_pasta-0.2.0.dist-info/METADATA" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/tags/" />
-    <meta property="og:image" content="https://yuta0306.github.io/theme/img/default_thumbnail.png" />
+    <meta property="og:url" content="https://yuta0306.github.io/tf-install-err" />
+    <meta property="og:image" content="https://yuta0306.github.io/theme/img/python.jpg" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="これはゆうぼうの技術ブログです。日々学んだことを備忘録がてら残しています。主に、PythonやらJSやらを触っています。" />
+    <meta property="og:description" content="pip install tensorflowでtensorflowをインストールしてディープラーニングをやろうとした矢先の事、パッケージが足りないだと...。その時の解決策がとても簡単だったのですが、この手の問題はtensorflowに限らず起こりそうなので、記録しておきます。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="これはゆうぼうの技術ブログです。日々学んだことを備忘録がてら残しています。主に、PythonやらJSやらを触っています。" />
+    <meta name="description" content="pip install tensorflowでtensorflowをインストールしてディープラーニングをやろうとした矢先の事、パッケージが足りないだと...。その時の解決策がとても簡単だったのですが、この手の問題はtensorflowに限らず起こりそうなので、記録しておきます。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/theme/img/favicons/favicon.ico">
@@ -64,47 +64,123 @@
     <div class="content">
         <div class="wrap">
             <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-                <div class="archive-header">
-                    <div>
-                        <nav class="breadcrumb">
-                            <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                    <a href="https://yuta0306.github.io" itemprop="item" class="link-item">
-                                        <span class="link-to-home" itemprop="name">ホーム</span>
-                                        <meta itemprop="position" content="1">
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <h1>タグ「HTML」記事一覧</h1>
-                    </div>
-                </div>
-                <div class="card-wrapper">
-                    <a href="https://yuta0306.github.io/only_sp_newline" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
+                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+                    <div class="inner-post">
+                        <header class="post-header">
+                            <nav class="breadcrumb">
+                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io" itemprop="item" class="link-item">
+                                            <span class="link-to-home" itemprop="name">ホーム</span>
+                                            <meta itemprop="position" content="1">
+                                        </a>
+                                    </li>
+                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                        <a href="https://yuta0306.github.io/category/python" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Python</span>
+                                            <meta itemprop="position" content="2">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <h1 class="post-title">tensorflowインストール時 No such file or directory: ~/site-packages/google_pasta-0.2.0.dist-info/METADATA</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-10">2020-07-10</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2020-12-24">2020-12-24</time></li>
                             </ul>
-                            <h2>sp仕様(スマホ)の時のみ改行したい!!</h2>
+                        </header>
+                        <div class="post-content" itemprop="text">
+                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                <img src="https://yuta0306.github.io/theme/img/python.jpg" alt="">
+                            </div>
+                            <nav class="toc">
+                                <h2>目次</h2>
+                                <ol>
+                                    <li>
+                                        <a href="#section1" class="link-item">実験方法</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section2" class="link-item">シンプルに定義</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section3" class="link-item">+演算で定義</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section4" class="link-item">*演算で定義</a>
+                                    </li>
+                                    <li>
+                                        <a href="#section5" class="link-item">*演算に注意!!!</a>
+                                    </li>
+                                </ol>
+                            </nav>
+
+                            <p><em>pip install tensorflow</em>でtensorflowをインストールしてディープラーニングをやろうとした矢先の事、パッケージが足りないだと...。その時の解決策がとても簡単だったのですが、この手の問題はtensorflowに限らず起こりそうなので、記録しておきます。</p>
+<section id="section1">
+<h2>発生したエラー No such file or directory</h2>
+<p>今回はなぜかインストールに必要なパッケージのメタファイルがなくて、「No such file or directory」と怒られたわけです。</p>
+<p>そして、今回足りなかったパケージが<strong>google_pasta-0.2.0.dist-info/METADATA</strong>でした。</p>
+<p>実際のエラーが以下になります。</p>
+<pre><code>ERROR: Could not install packages due to an EnvironmentError:
+[Errno 2] No such file or directory:
+'/Users/usr/opt/anaconda3/envs/myenv/lib/python3.7/site-packages/google_pasta-0.2.0.dist-info/METADATA'
+</code></pre>
+
+</section>
+<section id="section2">
+<h2>【解決策】もうtouchでファイル作っちゃえ!!</h2>
+<p>よくわからないエラーだし、本当になんでこうなったかの経緯が掴めないのですが、<br />
+ファイルがないとかディレクトリがないとか言っているのでとりあえず<em>もうファイル作っちゃえ!!</em></p>
+<p>という事で<strong>touch</strong>でファイル作っちゃいます(笑)</p>
+<p>'''
+$ touch /Users/usr/opt/anaconda3/envs/myenv/lib/python3.7/site-packages/google_pasta-0.2.0.dist-info/METADATA
+$ # 上のファイルパスはエラー文のコピペ
+$
+$ pip install tensorflow
+'''</p>
+<p>さっきまでのエラーが原因であれば、これでインストールが完了しているはずです!</p>
+<p>まあ、今回はconda環境で起こった問題なので、何かしらcondaの中でやってはいけないコマンドか何かがあったのかなって感じです。</p>
+<p>とにかくこのエラーが出たらどうにかなるということで、これからは対処できそうです。</p>
+<p>クリスマスイヴの投稿でした \o/<br />
+それでは、楽しく機械学習をハックしていきましょう!!</p>
+</section>
+
+                            <div class="post-tag">
+                                <h3>タグ</h3>
+                                <ul class="tag-list">
+                                    <li><a href="https://yuta0306.github.io/tag/python" class="link-item">Python</a></li>
+                                    <li><a href="https://yuta0306.github.io/tag/tensorflow" class="link-item">tensorflow</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="post-footer">
+                            <div class="share">
+                                <h3>SHARE</h3>
+                                <ul>
+                                    <li class="share-tw">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/tf-install-err" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/twitter.svg" alt="share for twitter">
+                                        </a>
+                                    </li>
+                                    <li class="share-fb">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/tf-install-err" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/facebook.svg" alt="share for facebook">
+                                        </a>
+                                    </li>
+                                    <li class="share-htb">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/tf-install-err" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/hatena.svg" alt="share for hatenablog">
+                                        </a>
+                                    </li>
+                                    <li class="share-pkt">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/tf-install-err" target="_blank" class="link-item">
+                                            <img src="https://yuta0306.github.io/theme/img/icons/pocket.svg" alt="share for getpocket">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>                            
                         </div>
-                    </a>
-                    <a href="https://yuta0306.github.io/touch-device-hover" class="card">
-                        <div class="card-header">
-                            <img src="https://yuta0306.github.io/theme/img/default_thumbnail.png" alt="empty thumbnail">
-                        </div>
-                        <div class="card-content">
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-10">2020-07-10</time></li>
-                            </ul>
-                            <h2>スマホにも:hoverを対応させてみる</h2>
-                        </div>
-                    </a>
-                    <div class="paginator-wrapper">
                     </div>
-                </div>
+                </article>
                 
             </main>
             <aside class="aside">
