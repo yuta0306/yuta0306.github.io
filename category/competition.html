@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/highlight.css">
 
-    <title>MySQLでユーザーの権限を削除する</title>
+    <title>ゆうぼうの書跡棚</title>
     <!-- OGP -->
-    <meta property="og:title" content="MySQLでユーザーの権限を削除する" />
+    <meta property="og:title" content="ゆうぼうの書跡棚" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/mysql-drop-user" />
-    <meta property="og:image" content="https://yuta0306.github.io/theme/img/database.jpg" />
+    <meta property="og:url" content="https://yuta0306.github.io" />
+    <meta property="og:image" content="https://yuta0306.github.io/theme/img/default_thumbnail.png" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="結構初歩的なのだけど、ユーザー権限を削除したくなって構文を覚えたので共有します。" />
+    <meta property="og:description" content="これはゆうぼうの技術ブログです。日々学んだことを備忘録がてら残しています。主に、PythonやらJSやらを触っています。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="結構初歩的なのだけど、ユーザー権限を削除したくなって構文を覚えたので共有します。" />
+    <meta name="description" content="これはゆうぼうの技術ブログです。日々学んだことを備忘録がてら残しています。主に、PythonやらJSやらを触っています。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/theme/img/favicons/favicon.ico">
@@ -65,137 +65,36 @@
     <div class="content">
         <div class="wrap">
             <main class="main" role="main" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
-                <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-                    <div class="inner-post">
-                        <header class="post-header">
-                            <nav class="breadcrumb">
-                                <ul itemscope itemtype="http://schema.org/BreadcrumbList">
-                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io" itemprop="item" class="link-item">
-                                            <span class="link-to-home" itemprop="name">ホーム</span>
-                                            <meta itemprop="position" content="1">
-                                        </a>
-                                    </li>
-                                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/category/sql" itemprop="item" class="link-item">
-                                            <span class="link-to-category" itemprop="name">SQL</span>
-                                            <meta itemprop="position" content="2">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <h1 class="post-title">MySQLでユーザーの権限を削除する</h1>
-                            <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-18">2020-07-18</time></li>
+                <div class="archive-header">
+                    <div>
+                        <nav class="breadcrumb">
+                            <ul itemscope itemtype="http://schema.org/BreadcrumbList">
+                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                                    <a href="https://yuta0306.github.io" itemprop="item" class="link-item">
+                                        <span class="link-to-home" itemprop="name">ホーム</span>
+                                        <meta itemprop="position" content="1">
+                                    </a>
+                                </li>
                             </ul>
-                        </header>
-                        <div class="post-content" itemprop="text">
-                            <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/theme/img/database.jpg" alt="">
-                            </div>
-                            <nav class="toc">
-                                <h2>目次</h2>
-                                <ol>
-                                    <li>
-                                        <a href="#section1" class="link-item">MySQLにアクセス</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section2" class="link-item">とりあえずユーザー名とホストを調べる</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section3" class="link-item">ユーザーを削除する</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section4" class="link-item">ホストを与えないで削除してみる</a>
-                                    </li>
-                                </ol>
-                            </nav>
-
-                            <p>root権限で何でもかんでも行うのはすごく怖かったので、新たにユーザーを登録していました。しかし、登録したはいいものの削除したくもなるわけです。</p>
-<p>そこで今回は登録されているユーザーを削除する流れを紹介していきます。</p>
-<section id="section1">
-<h2>MySQLにアクセス</h2>
-<p>最初に、MySQLにアクセスして対話モードを実行していきましょう。</p>
-<pre><code>$~ mysql -u root -p    #root権限で入ってみる
-Enter password: **********
-~~ 以下略 ~~
-
-mysql&gt;
-</code></pre>
-<p>まずはコレで準備OK</p>
-</section>
-<section id="section2">
-<h2>とりあえずユーザー名とホストを調べる</h2>
-<p>ユーザー名とホスト名を調べましょう。ユーザー名が同じものがいくつかあることもありますので、同時にホストも調べておきます。<br />
-消したいユーザーを念のためみておきます。</p>
-<pre><code>mysql&gt; SELECT user, host FROM mysql.user
-+------------------+-----------+
-| user             | host      |
-+------------------+-----------+
-| usr              | localhost |
-| mysql.infoschema | localhost |
-| mysql.session    | localhost |
-| mysql.sys        | localhost |
-| root             | localhost |
-+------------------+-----------+
-5 rows in set (0.00 sec)
-</code></pre>
-<p>コレで確認ができましたね。下の4つは基本的に最初から入っているやつだと思います。
-今回は、一番上の<em>usr</em>というユーザーのパーミッションを削除してやろうと思います。</p>
-</section>
-<section id="section3">
-<h2>ユーザーを削除する</h2>
-<p>実際に削除していきます。コマンドは以下のようになります。</p>
-<pre><code>mysql&gt; DROP USER usr@localhost;
-</code></pre>
-<p>これでとりあえず削除は完了。上では、ユーザー名構文に則って削除しました。<br />
-<strong>ユーザー名</strong>@<strong>ホスト</strong>ということですね。</p>
-</section>
-<section id="section4">
-<h2>ホストを与えないで削除してみる</h2>
-<p>先ほどは、<strong>ユーザー名</strong>@<strong>ホスト</strong>の形式で削除しましたが、ホスト名を明記しなくても消すことはできます。</p>
-<pre><code>mysql&gt; DROP USER usr;
-</code></pre>
-<p>こんな感じです。こうすると明記する場合でいう「usr@'%'」と同値になります。</p>
-</section>
-
-                            <div class="post-tag">
-                                <h3>タグ</h3>
-                                <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/tag/mysql" class="link-item">MySQL</a></li>
-                                </ul>
-                            </div>
-
-                        <div class="post-footer">
-                            <div class="share">
-                                <h3>SHARE</h3>
-                                <ul>
-                                    <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/mysql-drop-user" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/theme/img/icons/twitter.svg" alt="share for twitter">
-                                        </a>
-                                    </li>
-                                    <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/mysql-drop-user" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/theme/img/icons/facebook.svg" alt="share for facebook">
-                                        </a>
-                                    </li>
-                                    <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/mysql-drop-user" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/theme/img/icons/hatena.svg" alt="share for hatenablog">
-                                        </a>
-                                    </li>
-                                    <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/mysql-drop-user" target="_blank" class="link-item">
-                                            <img src="https://yuta0306.github.io/theme/img/icons/pocket.svg" alt="share for getpocket">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>                            
-                        </div>
+                        </nav>
+                        <h1>カテゴリー「Competition」記事一覧</h1>
                     </div>
-                </article>
+                </div>
+                <div class="card-wrapper">
+                    <a href="https://yuta0306.github.io/atmacup10-feedback" class="card">
+                        <div class="card-header">
+                            <img src="https://yuta0306.github.io/theme/img/atma#10.png" alt="">
+                        </div>
+                        <div class="card-content">
+                            <ul class="post-meta">
+                                <li class="date published"><time itemprop="published" datetime="2021-03-14">2021-03-14</time></li>
+                            </ul>
+                            <h2>atmaCup#10大反省会(Public: 137位/Private: 130位)</h2>
+                        </div>
+                    </a>
+                    <div class="paginator-wrapper">
+                    </div>
+                </div>
                 
             </main>
             <aside class="aside">
