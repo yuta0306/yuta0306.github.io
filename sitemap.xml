@@ -5,36 +5,43 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/</loc>
-<lastmod>2020-12-24T23:49:22-00:00</lastmod>
+<lastmod>2021-03-14T15:32:48-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/tags</loc>
-<lastmod>2020-12-24T23:49:22-00:00</lastmod>
+<lastmod>2021-03-14T15:32:48-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/categories</loc>
-<lastmod>2020-12-24T23:49:22-00:00</lastmod>
+<lastmod>2021-03-14T15:32:48-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/archives</loc>
-<lastmod>2020-12-24T23:49:22-00:00</lastmod>
+<lastmod>2021-03-14T15:32:48-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://yuta0306.github.io/sitemap.html</loc>
-<lastmod>2020-12-24T23:49:22-00:00</lastmod>
+<lastmod>2021-03-14T15:32:48-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/atmacup10-feedback</loc>
+<lastmod>2021-03-14T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -389,6 +396,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://yuta0306.github.io/category/python-competition.html</loc>
+<lastmod>2021-03-14T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://yuta0306.github.io/category/sql.html</loc>
 <lastmod>2020-07-21T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
@@ -404,7 +418,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/tag/python.html</loc>
-<lastmod>2020-12-24T00:00:00+09:19</lastmod>
+<lastmod>2021-03-14T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/tag/detafen-xi.html</loc>
+<lastmod>2021-03-14T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://yuta0306.github.io/tag/atmacup.html</loc>
+<lastmod>2021-03-14T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -614,7 +642,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://yuta0306.github.io/author/yuubou.html</loc>
-<lastmod>2020-12-24T00:00:00+09:19</lastmod>
+<lastmod>2021-03-14T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

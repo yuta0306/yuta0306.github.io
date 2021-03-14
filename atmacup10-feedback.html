@@ -9,21 +9,21 @@
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/main.css">
     <link rel="stylesheet" href="https://yuta0306.github.io/theme/css/highlight.css">
 
-    <title>mysql-connector-pythonでローカルDBに接続する</title>
+    <title>atmaCup#10大反省会(Public: 137位/Private: 130位)</title>
     <!-- OGP -->
-    <meta property="og:title" content="mysql-connector-pythonでローカルDBに接続する" />
+    <meta property="og:title" content="atmaCup#10大反省会(Public: 137位/Private: 130位)" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://yuta0306.github.io/connect-to-mysql-python" />
-    <meta property="og:image" content="https://yuta0306.github.io/theme/img/database.jpg" />
+    <meta property="og:url" content="https://yuta0306.github.io/atmacup10-feedback" />
+    <meta property="og:image" content="https://yuta0306.github.io/theme/img/atma#10.png" />
     <meta property="og:site_name" content="ゆうぼうの書跡棚" />
-    <meta property="og:description" content="Pythonのライブラリ「mysql-connector-python」を使って、ローカルのMySQLデータベースに接続します。" />
+    <meta property="og:description" content="atmaCup#10に参加しました。しっかりとコンペにフルコミットしたのは今回が初めてなので、ほぼ初参加と言っていいでしょう。しかし、結果はPublic: 137位でPrivate: 130位(+7)というクソ雑魚結果に...。これは大反省会をして次に生かすことに他ならないということで久々にブログに記します。誰かのお役に立てれば嬉しいかなと思いながら、大反省をしていきます。" />
 
     <!-- ※Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <!-- /OGP -->
     <meta name="robots" content="index, follow" />
     <meta name="generator" content="Pelican" />
-    <meta name="description" content="Pythonのライブラリ「mysql-connector-python」を使って、ローカルのMySQLデータベースに接続します。" />
+    <meta name="description" content="atmaCup#10に参加しました。しっかりとコンペにフルコミットしたのは今回が初めてなので、ほぼ初参加と言っていいでしょう。しかし、結果はPublic: 137位でPrivate: 130位(+7)というクソ雑魚結果に...。これは大反省会をして次に生かすことに他ならないということで久々にブログに記します。誰かのお役に立てれば嬉しいかなと思いながら、大反省をしていきます。" />
     <meta name="author" content="ゆうぼう" />
     <!-- Favicon -->
     <link rel="icon" href="https://yuta0306.github.io/theme/img/favicons/favicon.ico">
@@ -77,182 +77,239 @@
                                         </a>
                                     </li>
                                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                        <a href="https://yuta0306.github.io/category/python" itemprop="item" class="link-item">
-                                            <span class="link-to-category" itemprop="name">Python</span>
+                                        <a href="https://yuta0306.github.io/category/python, competition" itemprop="item" class="link-item">
+                                            <span class="link-to-category" itemprop="name">Python, Competition</span>
                                             <meta itemprop="position" content="2">
                                         </a>
                                     </li>
                                 </ul>
                             </nav>
-                            <h1 class="post-title">mysql-connector-pythonでローカルDBに接続する</h1>
+                            <h1 class="post-title">atmaCup#10大反省会(Public: 137位/Private: 130位)</h1>
                             <ul class="post-meta">
-                                <li class="date published"><time itemprop="published" datetime="2020-07-13">2020-07-13</time></li>
+                                <li class="date published"><time itemprop="published" datetime="2021-03-14">2021-03-14</time></li>
                             </ul>
                         </header>
                         <div class="post-content" itemprop="text">
                             <div class="post-thumbnail" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                                <img src="https://yuta0306.github.io/theme/img/database.jpg" alt="">
+                                <img src="https://yuta0306.github.io/theme/img/atma#10.png" alt="">
                             </div>
                             <nav class="toc">
                                 <h2>目次</h2>
                                 <ol>
                                     <li>
-                                        <a href="#section1" class="link-item">mysql-connector-pythonのインストール</a>
+                                        <a href="#section1" class="link-item">発生したエラー No such file or directory</a>
                                     </li>
                                     <li>
-                                        <a href="#section2" class="link-item">まずはconnectorをインポート</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section3" class="link-item">接続と切断</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section4" class="link-item">connectの引数の内容を辞書にまとめておく</a>
-                                    </li>
-                                    <li>
-                                        <a href="#section5" class="link-item">まとめ</a>
+                                        <a href="#section2" class="link-item">【解決策】もうtouchでファイル作っちゃえ!!</a>
                                     </li>
                                 </ol>
                             </nav>
 
-                            <p>MySQLのデータベースを扱う際に、Pythonスクリプトから接続したくなったので、Pythonからの接続方法を紹介します。</p>
+                            <p>atmaCup#10に参加しました。しっかりとコンペにフルコミットしたのは今回が初めてなので、ほぼ初参加と言っていいでしょう。しかし、結果はPublic: 137位でPrivate: 130位(+7)というクソ雑魚結果に...。</p>
+<p>これは大反省会をして次に生かすことに他ならないということで久々にブログに記します。誰かのお役に立てれば嬉しいかなと思いながら、大反省をしていきます。</p>
 <section id="section1">
-<h2>mysql-connector-pythonのインストール</h2>
-<p>まずは、mysql-connector-pythonのインストールを行っていきます。</p>
-<p>今回は、pipを使ってインストールしていきます。</p>
-<pre><code>$~ pip install mysql-connector-python
-</code></pre>
-<p>これでエラーが出ずに進めばインストールできているはずです。とりあえずこれで準備は完了。</p>
-</section>
-<section id="section2">
-<h2>まずはconnectorをインポート</h2>
-<p>まずは接続するためのメソッドをインポートしないと使えないので、インポートしましょう。</p>
-<pre>
-<code class="python">
-<span class="reserved">import</span> mysql.connector
-</code>
-</pre>
-
-<p>これで準備はOK!!</p>
-</section>
-<section id="section3">
-<h2>接続と切断</h2>
-<p>それではここまで完成できていれば、あとは接続の処理を書くだけです。</p>
-<p>今回の例では、以下の情報を前提にしてみます。</p>
+<h2>とりあえず結果から</h2>
 <table>
 <thead>
 <tr>
-<th>user</th>
-<th>host</th>
-<th>password</th>
-<th>database</th>
+<th></th>
+<th>RANKING</th>
+<th>RMSLE SCORE</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>root</td>
-<td>127.0.0.1</td>
-<td><strong><em>*</em></strong>***</td>
-<td>example</td>
+<td>Public</td>
+<td>137</td>
+<td>1.0213</td>
+</tr>
+<tr>
+<td>Private</td>
+<td>130(+7)</td>
+<td>1.0354(-0.0141)</td>
 </tr>
 </tbody>
 </table>
-<p>さて、早速接続の処理を書いてみましょう。</p>
-<pre>
-<code class="python">
-<span class="reserved">import</span> mysql.connectorcnx = mysql.connecor.<span class="function">connect</span>(
-        user='root',
-        host='127.0.0.1',
-        password='**********',
-        database='example',
-    )
-</code>
-</pre>
-
-<p>これだけで接続は完了です。（パスワード等が全て正しければ）</p>
-<p>他の処理等も終わったら、しっかり切断しておきましょう。</p>
-<pre><code>cnx.close()
-</code></pre>
-<p>これで接続と切断の処理は完了です。</p>
-<p>また、hostが127.0.0.1であることは、他のポートとぶつかっているために人為的にローカルホストやポート番号を変えていなければ、デフォルトの位置になっているはずなので、以下でも実行可能です。</p>
-<pre>
-<code class="python">
-<span class="reserved">import</span> mysql.connectorcnx = mysql.connecor.<span class="function">connect</span>(
-        user='root',
-        host='127.0.0.1',
-        password='**********',
-        database='example',
-    cnx = mysql.connecor.<span class="function">connect</span>(
-        user='root',
-        password='**********',
-        database='example',
-    )
-</code>
-</pre>
-
+<p>詳細な結果はご覧の通りです。</p>
+<p>めっちゃクソ雑魚すぎて...。反省点は永遠に出てきそうですが、</p>
+<ul>
+<li>どこで負けたのか。敗因はなんなのか？</li>
+<li>参考になったディスカッション</li>
+<li>これから対策すること</li>
+</ul>
+<p>この辺に沿って大反省をしていこうと思います。</p>
+</section>
+<section id="section2">
+<h2>MyModel</h2>
+<h3>モデル</h3>
+<p>反省するために、自分のモデルと特徴量を整理していきます。</p>
+<p>まず、僕の作成したモデルが以下になっています。</p>
+<ul>
+<li>Model: LightGBM (10 FoldのAverage)</li>
+<li>KFold: Stratified 10-Fold</li>
+<li>parameters:<ul>
+<li>'boosting_type': 'gbdt',</li>
+<li>'feature_pre_filter': False,</li>
+<li>'lambda_l1': 0.00024503835566927994,</li>
+<li>'lambda_l2': 9.900190817327861e-07,</li>
+<li>'num_leaves': 56,</li>
+<li>'feature_fraction': 0.8999999999999999,</li>
+<li>'bagging_fraction': 1.0,</li>
+<li>'bagging_freq': 0,</li>
+<li>'min_child_samples': 20,</li>
+<li>'num_iterations': 100000,</li>
+<li>'early_stopping_round': 200,</li>
+<li>'learning_rate': 0.02,</li>
+</ul>
+</li>
+</ul>
+<p>上記パラメータはoptunaでチューニングしました。チューニングで上がったCVスコアは<em>0.002</em>くらいでしたね(笑)</p>
+<p>ほとんど寄与していないですが、気持ちチューニングしたって感じです。</p>
+<h3>特徴量</h3>
+<p>使用した特徴量をまとめます。<br />
+一応効いた順に並べていきます。</p>
+<table>
+<thead>
+<tr>
+<th>特徴量</th>
+<th>寄与度</th>
+<th>労力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>collection, techniques, material<br>のWord2Vec =&gt; PCA2次元</td>
+<td><strong>絶大</strong></td>
+<td><a href="https://www.guruguru.science/competitions/16/discussions/2fafef06-5a26-4d33-b535-a94cc9549ac4/">アライさんのディスカッション</a>により小</td>
+</tr>
+<tr>
+<td>principal_makerのカテゴリ</td>
+<td><strong>絶大</strong></td>
+<td>astype('category)なので小</td>
+</tr>
+<tr>
+<td>subtitle =&gt; W,H,T,D</td>
+<td><strong>絶大</strong></td>
+<td>中</td>
+</tr>
+<tr>
+<td>subtitle =&gt; WxH</td>
+<td>大</td>
+<td>中</td>
+</tr>
+<tr>
+<td>more_title, titleのTF-IDF =&gt; PCA2次元</td>
+<td>大</td>
+<td>大</td>
+</tr>
+<tr>
+<td>principal_makerの出現回数</td>
+<td>大</td>
+<td>小</td>
+</tr>
+<tr>
+<td>datingのUNIX時間 / 1E6</td>
+<td>大</td>
+<td>中</td>
+</tr>
+<tr>
+<td>aquisition_dating - year_late</td>
+<td>大</td>
+<td>中</td>
+</tr>
+<tr>
+<td>dating_timeのカテゴリ変数化</td>
+<td>大</td>
+<td>小</td>
+</tr>
+<tr>
+<td>その他諸のカテゴリ変数</td>
+<td>皆無</td>
+<td>大</td>
+</tr>
+<tr>
+<td>paletteの平均,分散,Top色</td>
+<td>ほぼなし</td>
+<td><strong>絶大</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>テキスト系</strong>の特徴量がとても効いていたという印象があります。カラー系はそもそも絵画ということから、テーブルデータであることから離れて考えて、色々仮説は立てましたが、ほぼほぼ意味なかったというね。。。(笑)</p>
+<p>色系統で立てた仮説は、こんな感じでした。</p>
+<ul>
+<li>色の統一感があった方が印象が一定? (分散を見ればわかるのでは)</li>
+<li>割合上位色の平均とか分散に依存するのでは?</li>
+<li>逆に割合下位色は差し色として効果があるのでは?</li>
+</ul>
+<p>どれも工夫して結構特徴量に入れたのですが、ほとんどが効いていなくて半ば泣きそうでした(笑)</p>
+<p>後半にディスカッションからピックアップしてきたテキスト系がうまいこと効いてくれて、最後の最後にスコアがなんと<strong>0.02</strong>も飛躍するということに...。</p>
+<p>「おい、なんでお前はテキスト系にdeadline前日に目をつけてるんだよ」とかいうお気持ちになりましたが(笑)</p>
+<p>ま、それはそれで良い経験でした。</p>
+</section>
+<section id="section3">
+<h2>敗因と今後の展望</h2>
+<p>悲惨な結果になりましたので、ここでしっかり敗因を考えていこうと思います。</p>
+<p>とにかく敗因は多いと思うので、列挙していこうと思います。この辺は同じような結果の人なら同じこと考えているんじゃないかな。。。</p>
+<ul>
+<li>自分なりのパイプラインがない(Kaggle routine的な)</li>
+<li>実験管理が甘々(ファイル管理雑 =&gt; 前やったこととCV,LBがわからん)</li>
+<li>関数とかクラスを用意しないから再利用生にかける</li>
+<li>EDAが雑雑雑雑......</li>
+<li>仮説と実験、立証の思考が浅い(仮説が正しくない時の次がない)</li>
+<li><strong>テキスト特徴量</strong>の効果に気づいたのが前日の金曜日()</li>
+<li>ディスカッションをみた後実装すぐしない</li>
+<li>単純に経験と学習量が足りない</li>
+</ul>
+<p>無限に出てきそうですが、とりあえず主要な原因は上記にあると思います。</p>
+<p>最後の単純に経験と学習量に関しては気持ち程度の言い訳で、自分よりも経験が浅いだろう人は上位にたくさんいるので、やり方が悪いとしか思えません。というわけで、最も敗因になったであろうことを深ぼってみようと思います。</p>
+<h3>EDAが雑</h3>
+<p>EDAって一番地味だけど、仮説立てたり、相関をみつたりと各情報の作用を考える最も重要な時間になります。</p>
+<p>今回はEDAが大事ということを肝に銘じた上でEDAを行ったつもりでしたが、それも「つもり」で終わってしまったような気がします。</p>
+<p>色々変換したりグラフ化したりしてみましたが、今回はリレーショナルな情報が多かったです。例えば、principal_makerとかmaterialとか。メインのデータにあった特徴量や数値、時間と言った数値の連続値に変換しやすいデータに関しては結構データを読み込んだ感じでした。</p>
+<p>しかし、テキストなどスパースで離散的なデータに関しては実験ベースでしっかり分析できていなかったです。特に、それを感じたのがこれもまた<em>アライさんのディスカッション</em>でした。<a href="https://www.guruguru.science/competitions/16/discussions/f463dac2-4233-42d2-8629-ca99a9689987/">タイトルの言語判定特徴</a>ってやつですね。こんな情報まで気づくというのは、しっかり時間かけてEDAしているんだろうなぁ。自分は浅はかな分析しかできていないじゃないか。と思ったわけです。</p>
+<p>YouTube講座第二回の時にも、RainCloudとかいうのもありましたし、もっと詳しく直感的なEDAをしていかないといけません。今回それができなかったのが大きな敗因でした。</p>
+<h3>パイプライン的なのがない</h3>
+<p>パイプライン的な物を持っていないというのが敗因というよりは、ライブラリを知らないという方がこの反省には近いかもしれません。</p>
+<p>パイプラインはこれから作ろうと思いますし、今回のディスカッションの中でも今後パイプラインとなりうるのが沢山見つかっているので、これからそれらを自分の懐に隠していこうと思います(笑)</p>
+<p>ライブラリの使い方、なければ自分なりのモジュールを作る、それらを一連の流れとして蓄える。</p>
+<p>このフローを身につければ、労力がだんだん少なくなっていき、より深い思考フェーズに時間を割けるのだろうなと感じました。</p>
+<h3>実験管理が甘々</h3>
+<p>僕はとりわけ記憶力にかけているのにもかかわらず、特にメモもせずにおおよそ一つのnotebookで管理していました。</p>
+<p>そりゃぁごっちゃになるに決まってるよ...。</p>
+<p>管理の仕方は人それぞれだと思いますし、やりながら身につけていかなければならないでしょう。しかし、意識してやらないとベストプラクティスは見つからないわけで。。。</p>
+<p>参考になるディスカッションがあったので、<a href="https://www.guruguru.science/competitions/16/discussions/cc793380-410d-413e-bac4-f46d4aa836fd/">こちら</a>を参考に自分なりの手法を探るのが近道な気がします。</p>
+<p>ちなみに、昨日atmaCup#10が終わり、新しくコンペに参戦していますが、<br />
+tokaiさんの<code>自分も1実験1ノートブックで、それぞれの実験に番号をつけてます。また特徴量にも番号をつけています。Google スプレッドシートでスコア管理していて、その際に、①model、②使用した特徴量（番号）③スコアを入力しています。</code>というコメントを参考にしています。</p>
+<p>やりながら探っていこうと思います。</p>
+<h3><strong>テキスト特徴量</strong>の効果に気づいたのが前日の金曜日</h3>
+<p>これはいうまでもなくディスカッションをしっかりやらなかった自分が悪いです。</p>
+<p>閉会式でもおっしゃられていましたが、<strong>とにかくディスカッションは参考にやってみる</strong>というのは確かにそうだなと思いました。</p>
+<p>自分の仮説に拘るよりも、他の人が見つけた良い特徴量を試してみて、その後自分のやるもいいし、ディスカッションの中身を魔改造するもいいし、<br />
+まずはディスカッションをやってみるのはベターな考え方だなと感心しました。</p>
+<p>次からそうしよっと。</p>
 </section>
 <section id="section4">
-<h2>connectの引数の内容を辞書にまとめておく</h2>
-<p>先ほど、引数に入力した情報を辞書にまとめて接続することもできます。
-以下のようなスクリプトになります。</p>
-<pre>
-<code class="python">
-<span class="reserved">import</span> mysql.connector
-
-    config = {
-        user: 'root',
-        host: '127.0.0.1',
-        password: '**********',
-        database: 'example',
-    }
-    cnx = mysql.connector.<span class="function">connect</span>(**config)
-
-    cnx.<span class="function">close</span>()
-</code>
-</pre>
-
-<p>configは辞書型なので、「**」でアンパックすることも忘れないようにしましょう。</p>
-<section id="section5"></section>
+<h2>これから意識することとは</h2>
+<p>ここまで大反省会をしてきて(記事を書きながら自分の中のモヤモヤを精査する中で)、自分に足りない物が多すぎるということに直面しました。</p>
+<p>ただ、それでもやるべきことは決まってきたので、良い経験になったと思います。自分の課題は自分だけのものではないと思いますので、意識することをまた列挙していきます(ただ面倒臭くなっただけ)(笑)</p>
+<ul>
+<li>EDAはとにかく丁寧に。モデリングなんて二の次でいいくらい</li>
+<li>実験管理をしよう!!! (とりあえずGoogle SpreadSheet試す)</li>
+<li>ディスカッションの内容はなるだけ拾い上げる!</li>
+<li>ベストプラクティスを見つけたら、すぐパイプライン化する</li>
+</ul>
+<p>当面コンペに対して、経験を身に付けるまでは上記の内容を自然とできるように意識的に取り組んでいきます。</p>
+<p>そして、これから意識することは多分この記事をみてくださった方にも共通することもあると思いますので、皆さんの反省会にも影響を与えられたらという淡い期待を持ちながら反省会を締めたいと思います。</p>
+<p>とても楽しく学びになるコンペを設計してくださったことに感謝しつつ、次のatmaCupもすごく期待しております。</p>
+<p>atmaCupの開催ありがとうございました、そして参加者のみなさまお疲れ様でした!!!!!<strong>((感謝 + 労り) * inf)</strong></p>
 </section>
-<h2>まとめ</h2>
-<p>最終的にまとめると、流れはこんな感じです。</p>
-<h3>辞書使わない</h3>
-<pre>
-<code class="python">
-<span class="reserved">import</span> mysql.connector
-
-cnx = mysql.connecor.<span class="function">connect</span>(
-    user=<span class="strings">'root'</span>,
-    host=<span class="strings">'127.0.0.1'</span>,
-    password=<span class="strings">'**********'</span>,
-    database=<span class="strings">'example'</span>,
-)
-
-<p>cnx.<span class="function">close</span>()
-</code>
-</pre></p>
-<h3>辞書型</h3>
-<pre>
-<code class="python">
-<span class="reserved">import</span> mysql.connector
-
-config = {
-    user: <span class="strings">'root'</span>,
-    host: <span class="strings">'127.0.0.1'</span>,
-    password: <span class="strings">'**********'</span>,
-    database: <span class="strings">'example'</span>,
-}
-cnx = mysql.connector.<span class="function">connect</span>(**config)
-
-<p>cnx.<span class="function">close</span>()
-</code>
-</pre></p>
-<p>後ほど、テーブルを実際に作ったり、インサートしたりの方法を紹介しようと思います。</p>
 
                             <div class="post-tag">
                                 <h3>タグ</h3>
                                 <ul class="tag-list">
-                                    <li><a href="https://yuta0306.github.io/tag/mysql" class="link-item">MySQL</a></li>
                                     <li><a href="https://yuta0306.github.io/tag/python" class="link-item">Python</a></li>
+                                    <li><a href="https://yuta0306.github.io/tag/データ分析" class="link-item">データ分析</a></li>
+                                    <li><a href="https://yuta0306.github.io/tag/atmacup" class="link-item">atmaCup</a></li>
                                 </ul>
                             </div>
 
@@ -261,22 +318,22 @@ cnx = mysql.connector.<span class="function">connect</span>(**config)
                                 <h3>SHARE</h3>
                                 <ul>
                                     <li class="share-tw">
-                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/connect-to-mysql-python" target="_blank" class="link-item">
+                                        <a href="https://twitter.com/share?url=https://yuta0306.github.io/atmacup10-feedback" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/theme/img/icons/twitter.svg" alt="share for twitter">
                                         </a>
                                     </li>
                                     <li class="share-fb">
-                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/connect-to-mysql-python" target="_blank" class="link-item">
+                                        <a href="https://www.facebook.com/share.php?u=https://yuta0306.github.io/atmacup10-feedback" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/theme/img/icons/facebook.svg" alt="share for facebook">
                                         </a>
                                     </li>
                                     <li class="share-htb">
-                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/connect-to-mysql-python" target="_blank" class="link-item">
+                                        <a href="http://b.hatena.ne.jp/entry/https://yuta0306.github.io/atmacup10-feedback" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/theme/img/icons/hatena.svg" alt="share for hatenablog">
                                         </a>
                                     </li>
                                     <li class="share-pkt">
-                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/connect-to-mysql-python" target="_blank" class="link-item">
+                                        <a href="http://getpocket.com/edit?url=https://yuta0306.github.io/atmacup10-feedback" target="_blank" class="link-item">
                                             <img src="https://yuta0306.github.io/theme/img/icons/pocket.svg" alt="share for getpocket">
                                         </a>
                                     </li>
