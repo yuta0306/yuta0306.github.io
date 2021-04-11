@@ -1,0 +1,49 @@
+@import "../styles/global.module.scss";
+
+.container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &__inner {
+        width: 95%;
+        max-width: 1000px;
+        display: flex;
+        justify-content: left;
+        align-items: baseline;
+    }
+}
+.header {
+    margin: 0;
+    padding: 0;
+    &__title {
+        color: $text-dark;
+        font-size: 1.6rem;
+        font-weight: 500;
+        display: block;
+        margin: 0 1.3rem 0 0;
+        padding: .5rem 2rem .5rem 0;
+    }
+}
+.nav {
+    font-size: 1.3rem;
+    color: $text-light;
+    &__list {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+    &__item {
+        padding: 0 1.4rem;
+        &:hover {
+            color: $text-dark-blur;
+        }
+        &_active {
+            padding: 0 1.4rem;
+            color: $text-dark;
+            border-bottom: 2px solid $border-dark;
+        }
+    }
+}

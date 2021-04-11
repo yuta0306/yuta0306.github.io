@@ -1,0 +1,29 @@
+@import "../styles/global.module.scss";
+
+.footer {
+    margin: 0;
+    padding: 2.4rem 0 1rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid $border-light;
+    &__inner{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    &__title {
+        color: $text-dark;
+        font-size: 1.4rem;
+    }
+    &__small {
+        color: $text-light;
+        font-size: .9rem;
+        &__link {
+            color: $text-dark-blur;
+            font-size: 1rem;
+        }
+    }
+}
