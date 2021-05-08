@@ -1,9 +1,8 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import path from 'path'
 
 import {getMd2Html} from '../lib/md2html'
-import { author } from '../global'
+import { author } from '../global.d'
 
 import Header from '../components/header'
 import Footer from '../components/footer'

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { siteName } from '../global'
+import { siteName } from '../global.d'
 import styles from './header.module.scss'
 
 export default function Header(is_index: string) {
@@ -19,7 +19,7 @@ export default function Header(is_index: string) {
                 <nav className={styles.nav}>
                     <ul className={styles.nav__list}>
                         <li className={styles.nav__item}>
-                            <Link href="about">
+                            <Link href="/about">
                                 <a>About</a>
                             </Link>
                         </li>

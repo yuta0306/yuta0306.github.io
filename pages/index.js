@@ -32,7 +32,8 @@ export default function Home({ allPostData }) {
       <Main 
         content={
           <>
-          {allPostData.map(({slug, content}) => {
+          {allPostData.map(data => {
+            let {slug, content} = data
             return <Card slug={slug} content={content} />
           })}
           </>

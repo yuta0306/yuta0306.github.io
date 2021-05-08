@@ -8,7 +8,7 @@ export default function Card({slug, content} : {
     content: any
 }) {
     return (
-        <Link href={`/${slug}`}>
+        <Link href={slug}>
             <a>
                 <div className={styles.card}>
                     <div className={styles.card__thumbnail}>

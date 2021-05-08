@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import styles from './footer.module.scss'
-import { siteName, author, authorLink } from '../global'
+import { siteName, author, authorLink } from '../global.d'
 
 export default function Footer() {
     return (
