@@ -1,5 +1,4 @@
 
-
 export default function Sidebar({ children, className }:
     {
         children: any,
@@ -7,8 +6,10 @@ export default function Sidebar({ children, className }:
     }) {
     return (
         <div className={className}>
-            <p>ここサイドバーですね</p>
             {children}
+            <div id='TOC'>
+                
+            </div>
         </div>
     )
 }

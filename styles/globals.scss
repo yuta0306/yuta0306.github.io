@@ -33,6 +33,7 @@ a {
 // Blog記事用のCSS
 // これがベースのため，その他の場面ではoverrideして使います．
 code {
+  font-size: .9rem;
   white-space: pre;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -43,10 +44,44 @@ code {
 
 strong {
   background: linear-gradient(transparent 70%, rgba($marker-color, .7) 30%);
+  font-size: .9rem;
 }
 
+h1 {
+  font-size: 1.6rem;
+}
 h2 {
   margin-top: 3rem;
   width: 100%;
   border-bottom: 1px dashed rgba($border-primary, .6);
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  font-size: .9rem;
+}
+
+li {
+  font-size: .9rem;
+}
+.TOC {
+  padding: 0;
+  list-style-position: inside;
+  &__container {
+    margin-top: 3rem;
+  }
+  &__header {
+    margin: 0;
+    padding: 0;
+  }
+  &--h1 {
+    list-style-type: "+";
+  }
+  &--h2 {
+    padding: .5rem 0 0 1rem;
+    list-style-type: "++";
+  }
 }

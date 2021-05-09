@@ -22,15 +22,20 @@
     min-height: 1000px;
     &__grid {
         width: 700px;
-        min-height: 1200px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-        grid-auto-rows: 350px;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 2rem;
+        & > a {
+            border-bottom: 1px dashed rgba($border-primary, .2);
+        }
+        
     }
 }
 .sidebar {
     width: 280px;
     max-height: 500px;
-    background-color: rgb(200, 50, 50);
+    p {
+        font-size: .9rem;
+    }
 }

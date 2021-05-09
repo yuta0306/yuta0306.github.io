@@ -7,6 +7,9 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Main from '../components/main'
 import Card from '../components/partial/card'
+import ShortBio from '../components/partial/shortbio'
+
+import {bio, author} from '../global.d'
 
 export async function getStaticProps() {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
@@ -32,7 +35,7 @@ export default function Home({ allPostData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header categories={categories} />
+      <Header categories={categories} index="index" />
 
       <Main 
         content={
@@ -45,7 +48,9 @@ export default function Home({ allPostData }) {
         }
         sidebar={
           <>
-          <p>ここにサイドバーを書き加えていきます</p>
+          {bio &&
+            <ShortBio bio={bio} author={author} />
+          }
           </>
         }
         grid_layout={true}

@@ -8,7 +8,10 @@ import {getMd2Html} from '../lib/md2html'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Main from '../components/main'
+import ShortBio from '../components/partial/shortbio'
 import styles from '../styles/Home.module.css'
+
+import {bio, author} from '../global.d'
 
 export async function getStaticProps({ params }) {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
@@ -67,23 +70,29 @@ export default function Blog({ postData }) {
         style={{marginTop: '4rem'}} />
     </>
   )
+  console.log(bio)
+  console.log(author)
   
   return (
     <div className={styles.container}>
       <Head>
         <title>{postData.Title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <script src='/js/toc.js'></script>
       </Head>
 
-      <Header />
+      <Header index='blog' />
 
-      <Main content={
-        content
-      }
+      <Main
+        content={
+          content
+        }
         sidebar={
-            <>
-            <p>ここにもサイドバー</p>
-            </>
+          <>
+          {bio &&
+            <ShortBio bio={bio} author={author} />
+          }
+          </>
         }
       >
           

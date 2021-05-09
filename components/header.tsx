@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { siteName } from '../global.d'
+import { siteName, contactForm } from '../global.d'
 import styles from './header.module.scss'
 
 export default function Header({index='blog', categories=[]}:
@@ -15,7 +15,7 @@ export default function Header({index='blog', categories=[]}:
                 <header className={styles.header}>
                     <Link href="/">
                         <a>
-                            {index == 'blog'
+                            {index == 'index'
                                 ? <h1 className={styles.header__title}>{siteName}</h1>
                                 : <div className={styles.header__title}>{siteName}</div>
                             }
@@ -29,13 +29,13 @@ export default function Header({index='blog', categories=[]}:
                                 <a>About</a>
                             </Link>
                         </li>
-                        <li className={index == 'blog' ? styles.nav__item_active : styles.nav__item} key='blog'> 
+                        <li className={index == 'blog' || index == 'index' ? styles.nav__item_active : styles.nav__item} key='blog'> 
                             <Link href="/">
                                 <a>Blog</a>
                             </Link>
                         </li>
                         <li className={index == 'contact' ? styles.nav__item_active : styles.nav__item} key='contact'>
-                            <Link href="/">
+                            <Link href={contactForm ? contactForm : "/"}>
                                 <a>Contact</a>
                             </Link>
                         </li>
@@ -49,7 +49,7 @@ export default function Header({index='blog', categories=[]}:
                     return (
                         <Link href="/">
                             <a className={styles.category__item}>
-                                <li>{category}</li>
+                                <li key={category}>{category}</li>
                             </a>
                         </Link>
                     )
