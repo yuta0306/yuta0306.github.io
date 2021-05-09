@@ -24,17 +24,17 @@ export default function Header({index='blog', categories=[]}:
                 </header>
                 <nav className={styles.nav}>
                     <ul className={styles.nav__list}>
-                        <li className={index == 'about' ? styles.nav__item_active : styles.nav__item}>
+                        <li className={index == 'about' ? styles.nav__item_active : styles.nav__item} key='about'>
                             <Link href="/about">
                                 <a>About</a>
                             </Link>
                         </li>
-                        <li className={index == 'blog' ? styles.nav__item_active : styles.nav__item}> 
+                        <li className={index == 'blog' ? styles.nav__item_active : styles.nav__item} key='blog'> 
                             <Link href="/">
                                 <a>Blog</a>
                             </Link>
                         </li>
-                        <li className={index == 'contact' ? styles.nav__item_active : styles.nav__item}>
+                        <li className={index == 'contact' ? styles.nav__item_active : styles.nav__item} key='contact'>
                             <Link href="/">
                                 <a>Contact</a>
                             </Link>

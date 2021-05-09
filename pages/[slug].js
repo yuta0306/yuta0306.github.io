@@ -51,7 +51,7 @@ export default function Blog({ postData }) {
         }}>
           {postData.Thumbnail &&
             <Image src={postData.Thumbnail} alt={postData.Title}
-              width={400} height={200} layout='responsive' />
+              layout='fill' quality={50} loading='lazy' objectFit='contain' />
           }
         </div>
       </div>
