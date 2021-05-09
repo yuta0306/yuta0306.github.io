@@ -21,7 +21,7 @@ export default function Card({slug, content} : {
                         {content.Thumbnail &&
                             <Image src={content.Thumbnail}  alt={content.Title}
                                 layout='fill' objectFit='cover' objectPosition='50% 50%'
-                                className={styles.card__thumbnail__inner} />
+                                quality={50} loading='lazy' />
                         }
                     </div>
                     <div>

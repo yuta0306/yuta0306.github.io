@@ -42,24 +42,29 @@ export default function Blog({ postData }) {
   const content = (
     <>
       <div style={{
-        background: 'rgb(40, 40, 40)',
+        background: `url(${postData.Thumbnail})`,
+        overflow: 'hidden'
       }}>
         <div style={{
-          margin: 'auto',
-          maxWidth: '500px',
-          maxHeight: '250px'
+          position: 'relative',
+          width: '100%',
+          height: '40vh',
+          maxHeight: '280px',
+          backdropFilter: 'blur(3rem)'
         }}>
           {postData.Thumbnail &&
             <Image src={postData.Thumbnail} alt={postData.Title}
-              layout='fill' quality={50} loading='lazy' objectFit='contain' />
+              layout='fill' quality={50} loading='lazy' objectFit='contain'
+              objectPosition='50% 50%' />
           }
         </div>
       </div>
       
+      <time dateTime={postData.Date} style={{color: 'rgb(144, 144, 144)'}}>{postData.Date}</time>
       <h1>{postData.Title}</h1>
-      <time dateTime={postData.Date}>{postData.Date}</time>
-
-      <article dangerouslySetInnerHTML={{__html: postData.contentHtml}} />
+      
+      <article dangerouslySetInnerHTML={{__html: postData.contentHtml}}
+        style={{marginTop: '4rem'}} />
     </>
   )
   
