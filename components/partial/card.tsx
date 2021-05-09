@@ -18,7 +18,10 @@ export default function Card({slug, content} : {
             <a>
                 <div className={styles.card}>
                     <div className={styles.card__thumbnail}>
-
+                        {content.Thumbnail &&
+                            <Image src={content.Thumbnail}  alt={content.Title}
+                                width={400} height={200} layout='responsive' />
+                        }
                     </div>
                     <div>
                         <div className={styles.card__meta}>
@@ -34,7 +37,7 @@ export default function Card({slug, content} : {
                                 <span>{content.Author || author}</span>
                             }
                         </div>
-                        <h2>{content.Title}</h2>
+                        <h2 className={styles.card__title}>{content.Title}</h2>
                     </div>
                 
                 </div>

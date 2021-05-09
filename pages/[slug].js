@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import fs from 'fs'
 import path from 'path'
 
@@ -40,6 +41,21 @@ export async function getStaticPaths() {
 export default function Blog({ postData }) {
   const content = (
     <>
+      <div style={{
+        background: 'rgb(40, 40, 40)',
+      }}>
+        <div style={{
+          margin: 'auto',
+          maxWidth: '500px',
+          maxHeight: '250px'
+        }}>
+          {postData.Thumbnail &&
+            <Image src={postData.Thumbnail} alt={postData.Title}
+              width={400} height={200} layout='responsive' />
+          }
+        </div>
+      </div>
+      
       <h1>{postData.Title}</h1>
       <time dateTime={postData.Date}>{postData.Date}</time>
 

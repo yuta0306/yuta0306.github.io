@@ -7,6 +7,7 @@ $bg-primary: rgb(18, 18, 18);
 $text-primary: rgb(220, 220, 220);
 $text-second: rgb(144, 144, 144);
 $border-primary: rgb(240, 240, 240);
+$marker-color: rgb(255, 0, 255);
 
 @mixin title() {
     background-image: linear-gradient(-125deg,rgb(0, 170, 255),rgb(0, 128, 255),rgb(255, 0, 255));

@@ -14,6 +14,11 @@ body {
   color: $text-primary;
   background: $bg-primary;
   overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 a {
@@ -25,6 +30,23 @@ a {
   box-sizing: border-box;
 }
 
+// Blog記事用のCSS
+// これがベースのため，その他の場面ではoverrideして使います．
 code {
   white-space: pre;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+strong {
+  background: linear-gradient(transparent 70%, rgba($marker-color, .7) 30%);
+}
+
+h2 {
+  margin-top: 3rem;
+  width: 100%;
+  border-bottom: 1px dashed rgba($border-primary, .6);
 }

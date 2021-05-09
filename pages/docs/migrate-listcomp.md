@@ -6,7 +6,7 @@ Tags: Python
 Author: ゆうぼう
 Summary: Pythonで他にはない特殊な書き方といえば、内包表記ですかね。Haskellでもかけるみたいな話聞いたことあるけど。実際内包表記は読みやすく、たいてい高速に動くので推奨される書き方と思います。ベンチマークを測ってみたので参考になればと。
 Slug: migrate-listcomp
-THUMBNAIL: python.jpg
+Thumbnail: /../public/images/python.jpg
 Description: Pythonで他にはない特殊な書き方といえば、内包表記ですかね。Haskellでもかけるみたいな話聞いたことあるけど。実際内包表記は読みやすく、たいてい高速に動くので推奨される書き方と思います。ベンチマークを測ってみたので参考になればと。
 Published_date: '2020-11-22'
 Toc: 今回のコード,いざ実験

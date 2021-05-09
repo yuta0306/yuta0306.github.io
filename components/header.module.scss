@@ -64,6 +64,12 @@
     align-items: center;
     justify-content: center;
     list-style-type: none;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
     &__item {
         padding: .5rem 2rem;
         border-right: 1px solid rgba($border-primary, .6);
