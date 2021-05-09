@@ -20,6 +20,11 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostData }) {
+  let categories = allPostData.map(data => {
+    let {content} = data
+    return content.Category
+  })
+  categories = [...new Set(categories)]
   return (
     <>
       <Head>
@@ -27,7 +32,7 @@ export default function Home({ allPostData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      <Header categories={categories} />
 
       <Main 
         content={

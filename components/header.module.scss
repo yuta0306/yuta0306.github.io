@@ -3,9 +3,12 @@
 .container {
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 100vw;
     display: flex;
+    font-style: italic;
     justify-content: center;
+    background: $bg-header;
+    border-bottom: .5px solid rgba($border-primary, .3);
     &__inner {
         width: 95%;
         max-width: 1000px;
@@ -18,18 +21,21 @@
     margin: 0;
     padding: 0;
     &__title {
-        color: $text-dark;
+        color: $text-primary;
         font-size: 1.6rem;
-        font-weight: 500;
+        font-weight: 200;
         display: block;
         margin: 0 1.3rem 0 0;
         padding: .5rem 2rem .5rem 0;
+        @include title();
     }
 }
 .nav {
     font-size: 1.3rem;
-    color: $text-light;
+    color: $text-second;
+    font-weight: 300;
     &__list {
+        margin: 0;
         list-style-type: none;
         display: flex;
         justify-content: center;
@@ -38,12 +44,33 @@
     &__item {
         padding: 0 1.4rem;
         &:hover {
-            color: $text-dark-blur;
+            color: $text-primary;
         }
         &_active {
             padding: 0 1.4rem;
-            color: $text-dark;
-            border-bottom: 2px solid $border-dark;
+            color: $text-primary;
+        }
+    }
+}
+.category {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    background: $bg-header;
+    box-shadow: 0 0 0 .2px rgba($border-primary, .6);
+    font-style: italic;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    &__item {
+        padding: .5rem 2rem;
+        border-right: 1px solid rgba($border-primary, .6);
+        border-left: 1px solid rgba($border-primary, .6);
+        box-sizing: content-box;
+        &:hover {
+            background: rgba(0, 128, 255, .6);
         }
     }
 }

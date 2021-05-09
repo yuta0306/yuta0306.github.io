@@ -35,7 +35,7 @@ export default function About({ aboutData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      <Header index='about' />
 
       <Main content={
         content

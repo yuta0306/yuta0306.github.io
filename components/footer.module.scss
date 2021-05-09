@@ -3,10 +3,12 @@
 .footer {
     margin: 0;
     padding: 2.4rem 0 1rem 0;
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: center;
-    border-top: 1px solid $border-light;
+    font-style: italic;
+    background: $bg-footer;
+    box-shadow: 0 0 0 .3px rgba($border-primary, .6);
     &__inner{
         display: flex;
         flex-direction: column;
@@ -15,14 +17,14 @@
     }
     
     &__title {
-        color: $text-dark;
         font-size: 1.4rem;
+        @include title();
     }
     &__small {
-        color: $text-light;
+        color: $text-second;
         font-size: .9rem;
         &__link {
-            color: $text-dark-blur;
+            color: $text-primary;
             font-size: 1rem;
         }
     }

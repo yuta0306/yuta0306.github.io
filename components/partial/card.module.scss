@@ -1,13 +1,18 @@
 @import "../styles/global.module.scss";
 
 .card {
-    background-color: rgb(222, 222, 222);
-    border-radius: 8px;
     display: grid;
     grid-template-areas: "tumbnail"
                          "detail";
     grid-template-rows: 1.3fr 1fr;
+    &__meta {
+        color: $text-second;
+        time {
+            margin-right: 1rem;
+        }
+    }
     &__thumbnail {
+        border-radius: 10px;
         background-color: #424242;
     }
 }
