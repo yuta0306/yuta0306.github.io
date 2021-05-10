@@ -8,8 +8,9 @@ import Footer from '../components/footer'
 import Main from '../components/main'
 import Card from '../components/partial/card'
 import ShortBio from '../components/partial/shortbio'
+import FollowMe from '../components/partial/followme'
 
-import {bio, author} from '../global.d'
+import {bio, author, socials} from '../global.d'
 
 export async function getStaticProps() {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
@@ -50,6 +51,9 @@ export default function Home({ allPostData }) {
           <>
           {bio &&
             <ShortBio bio={bio} author={author} />
+          }
+          {socials &&
+            <FollowMe  socials={socials} />
           }
           </>
         }

@@ -21,17 +21,18 @@ Subは多少経験がある程度で、使用する必要があれば使いま�
 - Python
 - JavaScript
 - HTML5
-- CSS3
+- CSS3 / SCSS
 
 ### Sub
 
 - C / C++ / C#
 - Go
 - TypeScript
+- PHP
 
 ## Frame Works
 
 - Flask (**Flask大好き芸人やってます**)
-- Pytorch (torchのPythonラッパー)
+- Pytorch
 - Pelican (Python製静的サイトジェネレータ)
-- React / Next.js
+- React / Next.js (このブログで使っている)

@@ -65,13 +65,15 @@ export default function Blog({ postData }) {
       
       <time dateTime={postData.Date} style={{color: 'rgb(144, 144, 144)'}}>{postData.Date}</time>
       <h1>{postData.Title}</h1>
+
+      <div id='TOC__mobile'>
+          
+      </div>
       
       <article dangerouslySetInnerHTML={{__html: postData.contentHtml}}
         style={{marginTop: '4rem'}} />
     </>
   )
-  console.log(bio)
-  console.log(author)
   
   return (
     <div className={styles.container}>

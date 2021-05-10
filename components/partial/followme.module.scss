@@ -1,0 +1,18 @@
+@import "../../styles/global.module.scss";
+
+.container {
+    margin-top: 4rem;
+    width: 100%;
+    text-align: center;
+    &__header {
+        font-size: 1.3rem;
+        font-style: italic;
+    }
+    &__links {
+        margin: auto;
+        width: 70%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+}
