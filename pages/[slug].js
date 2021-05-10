@@ -9,9 +9,11 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Main from '../components/main'
 import ShortBio from '../components/partial/shortbio'
+import FollowMe from '../components/partial/followme'
+import SocialShare from '../components/partial/socialshare'
 import styles from '../styles/Home.module.css'
 
-import {bio, author} from '../global.d'
+import {bio, author, socials, shareSNS, siteUrl} from '../global.d'
 
 export async function getStaticProps({ params }) {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
@@ -42,6 +44,9 @@ export async function getStaticPaths() {
   }
 
 export default function Blog({ postData }) {
+  let baseUrl
+  if (!(siteUrl[-1] == '/')) baseUrl = siteUrl + '/'
+  else baseUrl = siteUrl
   const content = (
     <>
       <div style={{
@@ -67,11 +72,12 @@ export default function Blog({ postData }) {
       <h1>{postData.Title}</h1>
 
       <div id='TOC__mobile'>
-          
+
       </div>
       
       <article dangerouslySetInnerHTML={{__html: postData.contentHtml}}
         style={{marginTop: '4rem'}} />
+      <SocialShare socials={shareSNS} url={baseUrl + postData.Slug} />
     </>
   )
   
@@ -93,6 +99,9 @@ export default function Blog({ postData }) {
           <>
           {bio &&
             <ShortBio bio={bio} author={author} />
+          }
+          {socials &&
+            <FollowMe socials={socials} />
           }
           </>
         }
