@@ -47,7 +47,7 @@ export default function Header({index='blog', categories=[]}:
             {
                 categories.map(category => {
                     return (
-                        <Link href="/">
+                        <Link href={`/category/${category}`}>
                             <a className={styles.category__item}>
                                 <li key={category}>{category}</li>
                             </a>

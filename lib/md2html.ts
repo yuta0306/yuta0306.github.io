@@ -23,7 +23,7 @@ export async function getMd2Html(fileName: string) {
     }
 }
 
-function _getMd2Html(fileName: string) {
+export function _getMd2Html(fileName: string) {
     const fileContent: string = fs.readFileSync(fileName, 'utf8')
     const matterResult: matter.GrayMatterFile<string> = matter(fileContent)
 
@@ -48,8 +48,8 @@ export async function getAllPosts(dirName: string) {
         const content = _getMd2Html(fullPath)
 
         return {
-        slug,
-        content,
+            slug,
+            content,
         }
     })
 
