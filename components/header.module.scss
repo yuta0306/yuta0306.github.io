@@ -34,16 +34,40 @@
     font-size: 1.3rem;
     color: $text-second;
     font-weight: 300;
+    &__closed {
+        font-size: 1.3rem;
+        color: $text-second;
+        font-weight: 300;
+        @media (max-width: 700px) {
+            display: none;
+        }
+    }
+    @media (max-width: 700px) {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        z-index: 10;
+    }
     &__list {
         margin: 0;
         list-style-type: none;
         display: flex;
         justify-content: center;
         flex-direction: row;
+        @media (max-width: 700px) {
+            padding: .5rem;
+            flex-direction: column;
+            align-items: flex-end;
+            background: $bg-header;
+        }
     }
     &__item {
         font-size: 1.3rem;
         padding: 0 1.4rem;
+        @media (max-width: 700px) {
+            padding: .4rem;
+            border-bottom: 1px dashed rgba($border-primary, .6);
+        }
         &:hover {
             color: $text-primary;
         }
@@ -51,9 +75,30 @@
             font-size: 1.3rem;
             padding: 0 1.4rem;
             color: $text-primary;
+            @media (max-width: 700px) {
+                padding: .4rem;
+                border-bottom: 1.5px solid rgba($border-primary, .6);
+            }
         }
     }
 }
+.hamburger {
+    display: none;
+    @media (max-width: 700px) {
+        display: block;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        right: 1rem;
+    }
+}
+#hamburger__toggle {
+    display: none;
+    &:checked {
+        padding: 100px;
+    }
+}
+
 .category {
     margin: 0;
     padding: 0;

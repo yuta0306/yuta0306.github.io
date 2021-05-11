@@ -26,16 +26,18 @@ export default function Card({slug, content} : {
                     </div>
                     <div>
                         <div className={styles.card__meta}>
-                            <time dateTime={content.Date}>{content.Date}</time>
+                            <time dateTime={content.Date} itemProp='published'>{content.Date}</time>
                             {
                                 sameAuthor ?
                                 <Link href="/about">
-                                    <a>
-                                        <span>{content.Author || author}</span>
+                                    <a itemScope={true} role='author' itemType='http://schema.org/Person'>
+                                        <span itemProp='name'>{content.Author || author}</span>
                                     </a>
                                 </Link>
                                 :
-                                <span>{content.Author || author}</span>
+                                <span itemScope={true} role='author'
+                                    itemType='http://schema.org/Person'
+                                    itemProp='name'>{content.Author || author}</span>
                             }
                         </div>
                         <h2 className={styles.card__title}>{content.Title}</h2>

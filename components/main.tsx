@@ -10,13 +10,14 @@ export default function Main({ content, sidebar=null, grid_layout=false }:
         grid_layout?: boolean
     }) {
     return (
-        <main className={styles.main}>
+        <div className={styles.main}>
             <div className={!sidebar ? styles.main__container_about : styles.main__container}>
-                <div className={styles.main__container__inner}>
+                <main className={styles.main__container__inner} role='main' itemProp='mainContentOfPage'
+                    itemScope={true} itemType='http://schema.org/Blog'>
                     <Content className={grid_layout ? styles.content__grid : styles.content}>
                         {content}
                     </Content>
-                </div>
+                </main>
                 {
                     sidebar &&
                     <Sidebar className={styles.sidebar}>
@@ -24,6 +25,6 @@ export default function Main({ content, sidebar=null, grid_layout=false }:
                     </Sidebar>
                 }
             </div>
-        </main>
+        </div>
     )
 }

@@ -10,7 +10,7 @@ import Card from '../components/partial/card'
 import ShortBio from '../components/partial/shortbio'
 import FollowMe from '../components/partial/followme'
 
-import {bio, author, socials} from '../global.d'
+import {bio, author, socials, siteName} from '../global.d'
 
 export async function getStaticProps() {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
@@ -32,7 +32,7 @@ export default function Home({ allPostData }) {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>{siteName}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -59,7 +59,6 @@ export default function Home({ allPostData }) {
         }
         grid_layout={true}
       />
-          
 
       <Footer />
     </>

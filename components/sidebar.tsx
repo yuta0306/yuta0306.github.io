@@ -5,11 +5,11 @@ export default function Sidebar({ children, className }:
         className: any
     }) {
     return (
-        <div className={className}>
+        <aside className={className}>
             {children}
             <div id='TOC'>
                 
             </div>
-        </div>
+        </aside>
     )
 }

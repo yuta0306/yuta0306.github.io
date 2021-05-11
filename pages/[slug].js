@@ -47,7 +47,7 @@ export default function Blog({ postData }) {
   if (!(siteUrl[-1] == '/')) baseUrl = siteUrl + '/'
   else baseUrl = siteUrl
   const content = (
-    <>
+    <div itemScope={true} itemType='http://schema.org/BlogPosting'>
       <div style={{
         background: `url(${postData.Thumbnail})`,
         overflow: 'hidden'
@@ -58,7 +58,7 @@ export default function Blog({ postData }) {
           height: '40vh',
           maxHeight: '280px',
           backdropFilter: 'blur(3rem)'
-        }}>
+        }} itemScope={true} itemProp='image' itemType='https://schema.org/ImageObject'>
           {postData.Thumbnail &&
             <Image src={postData.Thumbnail} alt={postData.Title}
               layout='fill' quality={50} loading='lazy' objectFit='contain'
@@ -75,9 +75,9 @@ export default function Blog({ postData }) {
       </div>
       
       <article dangerouslySetInnerHTML={{__html: postData.contentHtml}}
-        style={{marginTop: '4rem'}} />
+        style={{marginTop: '4rem'}} itemScope={true} itemProp='text' />
       <SocialShare socials={shareSNS} url={baseUrl + postData.Slug} />
-    </>
+    </div>
   )
   
   return (
