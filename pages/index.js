@@ -9,6 +9,8 @@ import Main from '../components/main'
 import Card from '../components/partial/card'
 import ShortBio from '../components/partial/shortbio'
 import FollowMe from '../components/partial/followme'
+import Categories from '../components/partial/categories'
+import Tags from '../components/partial/tags'
 
 import {bio, author, socials, siteName} from '../global.d'
 
@@ -28,7 +30,19 @@ export default function Home({ allPostData }) {
     let {content} = data
     return content.Category
   })
+  let tags = []
+  allPostData.map(data => {
+    let {content} = data
+    let tag = content.Tags
+    if (Array.isArray(tag)) {
+      tags.push(...tag)
+    } else if (typeof(tag) == 'string') {
+      tags.push(tag)
+    }
+  })
   categories = [...new Set(categories)]
+  tags = [...new Set(tags)]
+
   return (
     <>
       <Head>
@@ -54,6 +68,12 @@ export default function Home({ allPostData }) {
           }
           {socials &&
             <FollowMe  socials={socials} />
+          }
+          {categories &&
+            <Categories categories={categories} />
+          }
+          {tags &&
+            <Tags tags={tags} />
           }
           </>
         }

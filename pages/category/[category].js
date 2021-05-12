@@ -11,10 +11,11 @@ import Main from '../../components/main'
 import ShortBio from '../../components/partial/shortbio'
 import FollowMe from '../../components/partial/followme'
 import Card from '../../components/partial/card'
+import Categories from '../../components/partial/categories'
+import Tags from '../../components/partial/tags'
 import styles from '../../styles/Home.module.css'
 
 import {bio, author, socials} from '../../global.d'
-import { data } from 'remark'
 
 export async function getStaticProps({ params }) {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
@@ -31,16 +32,25 @@ export async function getStaticProps({ params }) {
       return postData
     }
   })
-  let categories = allPost.map((data) => {
+  let categories = [], tags = []
+  allPost.map((data) => {
     let {postData} = data
-    return postData.Category
+    categories.push(postData.Category)
+    const tag = postData.Tags
+    if (Array.isArray(tag)) {
+      tags.push(...tag)
+    } else if (typeof(tag) == 'string') {
+      tags.push(tag)
+    }
   })
   categories = [...new Set(categories)]
+  tags = [...new Set(tags)]
 
   return {
       props: {
           CategoricalPostData,
-          categories
+          categories,
+          tags
       }
   }
 }
@@ -68,7 +78,7 @@ export async function getStaticPaths() {
   return { paths: paths, fallback: false }
 }
 
-export default function Category({ CategoricalPostData, categories }) {
+export default function Category({ CategoricalPostData, categories, tags }) {
   return (
     <>
       <Head>
@@ -93,6 +103,12 @@ export default function Category({ CategoricalPostData, categories }) {
           }
           {socials &&
             <FollowMe  socials={socials} />
+          }
+          {categories &&
+            <Categories categories={categories} />
+          }
+          {tags &&
+            <Tags tags={tags} />
           }
           </>
         }

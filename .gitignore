@@ -32,3 +32,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+.global.d.ts
+next-env.d.ts
+next.config.js
+tsconfig.json
+/pages

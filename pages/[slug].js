@@ -14,15 +14,39 @@ import SocialShare from '../components/partial/socialshare'
 import styles from '../styles/Home.module.css'
 
 import {bio, author, socials, shareSNS, siteUrl} from '../global.d'
+import Categories from '../components/partial/categories'
+import Tags from '../components/partial/tags'
 
 export async function getStaticProps({ params }) {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
   const fullPath = path.join(dirName, `${params.slug}.md`)
   const postData = await getMd2Html(fullPath)
 
+  // Categories and Tags
+  const files = fs.readdirSync(dirName)
+  const fullPaths = files.map(file => {
+    return path.join(dirName, file)
+  })
+  let categories = [], tags = []
+  await Promise.all(fullPaths.map(async (file) => {
+    const anyPostData = await getMd2Html(file)
+    const category = anyPostData.Category
+    const tag = anyPostData.Tags
+    categories.push(category)
+    if (Array.isArray(tag)) {
+      tags.push(...tag)
+    } else if (typeof(tag) == 'string') {
+      tags.push(tag)
+    }
+  }))
+  categories = [...new Set(categories)]
+  tags = [...new Set(tags)]
+
   return {
       props: {
-          postData
+          postData,
+          categories,
+          tags
       }
   }
 }
@@ -42,7 +66,7 @@ export async function getStaticPaths() {
     return { paths: paths, fallback: false }
   }
 
-export default function Blog({ postData }) {
+export default function Blog({ postData, categories, tags }) {
   let baseUrl
   if (!(siteUrl[-1] == '/')) baseUrl = siteUrl + '/'
   else baseUrl = siteUrl
@@ -101,6 +125,12 @@ export default function Blog({ postData }) {
           }
           {socials &&
             <FollowMe socials={socials} />
+          }
+          {categories &&
+            <Categories categories={categories} />
+          }
+          {tags &&
+            <Tags tags={tags} />
           }
           </>
         }

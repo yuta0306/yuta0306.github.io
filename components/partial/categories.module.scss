@@ -1,0 +1,26 @@
+@import '../../styles/global.module.scss';
+
+.container {
+    margin-top: 4rem;
+    width: 100%;
+    text-align: center;
+    &__header {
+        font-size: 1.3rem;
+        font-style: italic;
+    }
+    &__links {
+        text-align: left;
+    }
+    &__link {
+        padding: 0.3rem;
+        display: inline-block;
+        color: rgb(0, 170, 255);
+        font-style: italic;
+        border: 1px solid rgba($border-primary, .6);
+        border-radius: .3rem;
+        &:hover {
+            border: 1px solid rgba($border-primary, .8);
+            background: rgba(255, 0, 255, .2);
+        }
+    }
+}
