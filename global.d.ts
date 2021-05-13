@@ -1,5 +1,6 @@
 export const siteName: string = 'ゆうぼうの書跡棚'
 export const siteUrl: string = 'https://yuta0306.github.io'
+export const siteDescription = ''
 export const author: string = 'ゆうぼう'
 export const authorLink: string = 'https://twitter.com/Sloth65557166'
 export const bio: string = `

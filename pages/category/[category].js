@@ -15,7 +15,7 @@ import Categories from '../../components/partial/categories'
 import Tags from '../../components/partial/tags'
 import styles from '../../styles/Home.module.css'
 
-import {bio, author, socials} from '../../global.d'
+import {bio, author, socials, siteName} from '../../global.d'
 
 export async function getStaticProps({ params }) {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
@@ -49,6 +49,7 @@ export async function getStaticProps({ params }) {
   return {
       props: {
           CategoricalPostData,
+          category: params.category,
           categories,
           tags
       }
@@ -78,11 +79,11 @@ export async function getStaticPaths() {
   return { paths: paths, fallback: false }
 }
 
-export default function Category({ CategoricalPostData, categories, tags }) {
+export default function Category({ CategoricalPostData, category, categories, tags }) {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>{category}の一覧 | {siteName}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

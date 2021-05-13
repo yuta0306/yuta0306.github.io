@@ -13,7 +13,7 @@ import FollowMe from '../components/partial/followme'
 import SocialShare from '../components/partial/socialshare'
 import styles from '../styles/Home.module.css'
 
-import {bio, author, socials, shareSNS, siteUrl} from '../global.d'
+import {bio, author, socials, shareSNS, siteUrl, siteName} from '../global.d'
 import Categories from '../components/partial/categories'
 import Tags from '../components/partial/tags'
 
@@ -107,9 +107,23 @@ export default function Blog({ postData, categories, tags }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>{postData.Title}</title>
+        <title>{postData.Title} | {siteName}</title>
+        {postData.Description &&
+          <meta name="description" content={postData.Description} />
+        }
+        {postData.Author &&
+          <meta name="author" content={postData.Author} />
+        }
+
+        <meta property="og:title" content={postData.Title} />
+        <meta property="og:url" content={`${siteUrl}/${postData.Slug}`} />
         <link rel="icon" href="/favicon.ico" />
         <script src='/js/toc.js'></script>
+
+        {/* If Draft */}
+        {!postData.Published &&
+          <meta name="robots" content="noindex, nofollow" />
+        }
       </Head>
 
       <Header index='blog' />
