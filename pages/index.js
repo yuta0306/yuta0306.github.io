@@ -47,7 +47,6 @@ export default function Home({ allPostData }) {
     <>
       <Head>
         <title>{siteName}</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header categories={categories} index="index" />

@@ -117,7 +117,6 @@ export default function Blog({ postData, categories, tags }) {
 
         <meta property="og:title" content={postData.Title} />
         <meta property="og:url" content={`${siteUrl}/${postData.Slug}`} />
-        <link rel="icon" href="/favicon.ico" />
         <script src='/js/toc.js'></script>
 
         {/* If Draft */}

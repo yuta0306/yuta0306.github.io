@@ -84,7 +84,6 @@ export default function Category({ CategoricalPostData, category, categories, ta
     <>
       <Head>
         <title>{category}の一覧 | {siteName}</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header categories={categories} index="index" />
