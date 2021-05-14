@@ -1,0 +1,33 @@
+@import '../../styles/global.module.scss';
+
+.container {
+    width: 100%;
+    margin: 2rem auto;
+    display: block;
+    &__pagers {
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        list-style-type: none;
+    }
+    &__pager {
+        padding: .3rem;
+        border: 1px solid $border-primary;
+        &__page {
+            font-style: italic;
+            font-weight: 400;
+        }
+        &_deactive {
+            padding: .3rem;
+            border: 1px solid $border-primary;
+            color: rgba($text-primary, .5);
+        }
+        &_active {
+            padding: .3rem;
+            border: 1px solid $border-primary;
+            background: rgba(0, 128, 255, .8)
+        }
+    }
+}

@@ -12,7 +12,7 @@ export default function Categories({categories} : {
                 {
                     categories.map(category => {
                         return (
-                            <Link href={`/category/${category}`}>
+                            <Link href={`/category/${category}/1`}>
                                 <a className={styles.container__link}>
                                     {category}
                                 </a>

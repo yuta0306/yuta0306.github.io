@@ -3,6 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import html from 'remark-html'
+import remarkGfm from 'remark-gfm'
 
 let highlight = require('remark-highlight.js')
 
@@ -11,6 +12,7 @@ export async function getMd2Html(fileName: string) {
     const matterResult: matter.GrayMatterFile<string> = matter(fileContent)
 
     const processedContent = await remark()
+        .use(remarkGfm)
         .use(highlight)
         .use(html)
         .process(matterResult.content)
@@ -28,6 +30,7 @@ export function _getMd2Html(fileName: string) {
     const matterResult: matter.GrayMatterFile<string> = matter(fileContent)
 
     const processedContent = remark()
+    .use(remarkGfm)
         .use(highlight)
         .use(html)
         .process(matterResult.content)

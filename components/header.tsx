@@ -55,19 +55,21 @@ export default function Header({index='blog', categories=[]}:
                 </nav>
             </div>
         </div>
-        <ul className={styles.category}>
-            {
-                categories.map(category => {
-                    return (
-                        <Link href={`/category/${category}`}>
-                            <a className={styles.category__item}>
-                                <li key={category}>{category}</li>
-                            </a>
-                        </Link>
-                    )
-                })
-            }
-        </ul>
+        <div className={styles.category}>
+            <ul className={styles.category__items}>
+                {
+                    categories.map(category => {
+                        return (
+                            <Link href={`/category/${category}/1`}>
+                                <a className={styles.category__item}>
+                                    <li key={category}>{category}</li>
+                                </a>
+                            </Link>
+                        )
+                    })
+                }
+            </ul>
+        </div>
         </>
     )
 }

@@ -22,3 +22,5 @@ export const shareSNS: Array<Array<string>> = [
     ['Facebook', 'https://www.facebook.com/share.php?u=', '/icons/facebook.png'],
     ['はてなブログ', 'http://b.hatena.ne.jp/entry/', '/icons/hatenablog.png'],
 ]
+export const postPerPage = 2
+export const adsensePerPage = 2

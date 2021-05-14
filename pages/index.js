@@ -11,12 +11,17 @@ import ShortBio from '../components/partial/shortbio'
 import FollowMe from '../components/partial/followme'
 import Categories from '../components/partial/categories'
 import Tags from '../components/partial/tags'
+import Paginager from '../components/partial/paginager'
 
-import {bio, author, socials, siteName} from '../global.d'
+import {bio, author, socials, siteName, postPerPage} from '../global.d'
 
 export async function getStaticProps() {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
-  const allPostData = await getAllPosts(dirName)
+  const rawPostData = await getAllPosts(dirName)
+  const allPostData = rawPostData.sort((a, b) => {
+    if (a.content.Date < b.content.Date) return 1
+    else return -1
+  })
 
   return {
     props: {
@@ -43,6 +48,8 @@ export default function Home({ allPostData }) {
   categories = [...new Set(categories)]
   tags = [...new Set(tags)]
 
+  const pages = Math.ceil(allPostData.length / postPerPage)
+
   return (
     <>
       <Head>
@@ -54,10 +61,16 @@ export default function Home({ allPostData }) {
       <Main 
         content={
           <>
-          {allPostData.map(data => {
+          {allPostData.slice(0, postPerPage).map(data => {
             let {slug, content} = data
             return <Card slug={slug} content={content} />
           })}
+          {allPostData.length % 2 == 1 && allPostData.length < postPerPage &&
+            <div className=''></div>
+          }
+          <div style={{gridColumn: '1/3'}}>
+            <Paginager top='/post' pages={pages} page={1} />
+          </div>
           </>
         }
         sidebar={

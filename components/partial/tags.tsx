@@ -12,7 +12,7 @@ export default function Tags({tags} : {
                 {
                     tags.map(category => {
                         return (
-                            <Link href={`/tag/${category}`}>
+                            <Link href={`/tag/${category}/1`}>
                                 <a className={styles.container__link}>
                                     {category}
                                 </a>
