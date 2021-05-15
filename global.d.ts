@@ -1,6 +1,6 @@
 export const siteName: string = 'ゆうぼうの書跡棚'
 export const siteUrl: string = 'https://yuta0306.github.io'
-export const siteDescription = ''
+export const siteDescription = 'スキルや知識をつけて将来ナマケモノになるまでの技術ブログです．主に，データ分析関連やPython, JavaScriptによる開発についてまとめます．'
 export const author: string = 'ゆうぼう'
 export const authorLink: string = 'https://twitter.com/Sloth65557166'
 export const bio: string = `

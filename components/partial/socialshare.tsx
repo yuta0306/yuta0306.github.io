@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 import styles from './socialshare.module.scss'
 
@@ -18,7 +17,7 @@ export default function SocialShare({socials, url} : {
                     return (
                         <Link href={link}>
                             <a target='_blank'>
-                                <Image src={image} width={60} height={60} quality={80}
+                                <img src={image}
                                     loading='lazy' alt={`${url}を${media}に共有する`} />
                             </a>
                         </Link>

@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "export": "next export"
+    "ssg-check": "next build && next export && cd out && npx http-server"
   },
   "dependencies": {
     "@types/next": "^9.0.0",

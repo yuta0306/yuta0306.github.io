@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import fs from 'fs'
 import path from 'path'
 
@@ -84,9 +83,8 @@ export default function Blog({ postData, categories, tags }) {
           backdropFilter: 'blur(3rem)'
         }} itemScope={true} itemProp='image' itemType='https://schema.org/ImageObject'>
           {postData.Thumbnail &&
-            <Image src={postData.Thumbnail} alt={postData.Title}
-              layout='fill' quality={50} loading='lazy' objectFit='contain'
-              objectPosition='50% 50%' />
+            <img src={postData.Thumbnail} alt={postData.Title} loading='lazy' 
+              style={{height: '100%', width: 'auto', margin: '0 auto', display: 'block'}} />
           }
         </div>
       </div>

@@ -4,7 +4,19 @@
     display: grid;
     grid-template-areas: "tumbnail"
                          "detail";
-    grid-template-rows: 1.3fr 1fr;
+    grid-template-rows: 150px 1fr;
+    font-style: normal;
+    @media (max-width: 700px) {
+        margin: 0 auto;
+        width: 85%;
+        min-width: 280px;
+    }
+    &__container {
+        border-bottom: 1px dashed rgba($border-primary, .6);
+    }
+    a {
+        text-decoration: none;
+    }
     &__meta {
         color: $text-second;
         font-size: .9rem;
@@ -28,6 +40,13 @@
         position: relative;
         border-radius: 10px;
         overflow: hidden;
+        &__img {
+            position: absolute;
+            left: -5%;
+            top: -5%;
+            width: 110%;
+            height: auto;
+        }
     }
     &__title {
         margin-top: 1rem;

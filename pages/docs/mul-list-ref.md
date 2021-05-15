@@ -4,17 +4,14 @@ Date: '2020-11-27'
 Category: Python
 Tags: Python
 Authors: ゆうぼう
-Summary: 今回は、多次元配列で\*演算には注意しないと、バグが起こるよってことを話します。1年Pythonを描き続けましたが知らなかったので、これは共有させていただきますね。Pythonは、ポインタだの参照だのを意識しなくても良い言語だと思うんですが、これは知っておくべきです。
 Slug: mul-list-ref
-THUMBNAIL: python.jpg
+Thumbnail: /images/thumbnails/python.jpg
 Description: 今回は、多次元配列で\*演算には注意しないと、バグが起こるよってことを話します。1年Pythonを描き続けましたが知らなかったので、これは共有させていただきますね。Pythonは、ポインタだの参照だのを意識しなくても良い言語だと思うんですが、これは知っておくべきです。
-Published_date: '2020-11-27'
-TOC: 実験方法,シンプルに定義,+演算で定義,*演算で定義,*演算に注意!!!
+Published: true
 ---
 
 今回は、**多次元配列で\*演算には注意しないと、バグが起こるよ**ってことを話します。1年Pythonを描き続けましたが知らなかったので、これは共有させていただきますね。Pythonは、ポインタだの参照だのを意識しなくても良い言語だと思うんですが、これは知っておくべきです。
 
-<section markdown=1 id="section1">
 ## 実験方法
 
 各配列がどの参照をしているかを注目してみましょう。今回の実験は、以下の流れをとります。
@@ -25,56 +22,47 @@ TOC: 実験方法,シンプルに定義,+演算で定義,*演算で定義,*演�
 
 それでは早速実験です。対話モードにて行います。
 
-</section>
-
-<section markdown=1 id="section2">
 ## シンプルに定義
 
-<pre>
-<code class="python">
+~~~python
 >>> l = [[], [], []]
->>> l[0].<span class="function">append</span>(0)<br>
->>> l<br>
-[[0], [], []]</code>
-</pre>
+>>> l[0].append(0)
+
+>>> l
+
+[[0], [], []]
+~~~
 
 これはおそらく考えていた通りですね。問題なし。
 
-</section>
-
-<section markdown=1 id="section3">
 ## +演算で定義
 
-<pre>
-<code class="python">
+~~~python
 >>> l = [[]] + [[]] + [[]]
->>> l[0].<span class="function">append</span>(0)<br>
->>> l<br>
-[[0], [], []]</code>
-</pre>
+>>> l[0].append(0)
+
+>>> l
+
+[[0], [], []]
+~~~
 
 これも想定した通り。問題なし。
 
-</section>
-
-<section markdown=1 id="section4">
 ## *演算で定義
 
-<pre>
-<code class="python">
+~~~python
 >>> l = [[]] * 3
->>> l[0].<span class="function">append</span>(0)<br>
->>> l<br>
-[[0], [0], [0]]</code>
-</pre>
+>>> l[0].append(0)
+
+>>> l
+
+[[0], [0], [0]]
+~~~
 
 ......ん？？？？
 
 全ての要素配列に0が足してありますね...これは知らんかったやつ...
 
-</section>
-
-<section markdown=1 id="section5">
 ## *演算に注意!!!
 
 \*演算で配列を定義する際には注意しましょう。
@@ -86,6 +74,3 @@ TOC: 実験方法,シンプルに定義,+演算で定義,*演算で定義,*演�
 まとまった挙動を示して欲しいのであれば問題ないですが、大きなくくりの配列にある要素配列に対しては別々に動いて欲しい場合はかなり注意が必要です。
 
 このことを知っておくだけでもバグが出た時に冷静に対処できると思うので、ぜひ覚えておきましょう。
-
-
-</section>

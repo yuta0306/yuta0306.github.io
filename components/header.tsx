@@ -31,7 +31,7 @@ export default function Header({index='blog', categories=[]}:
                 </header>
                 <div className={styles.hamburger} onClick={() => menuToggle()}>
                     <div>
-                        <Image src='/icons/hamburger.png' width={60} height={60} quality={80} />
+                        <img src='/icons/hamburger.png' />
                     </div>
                     </div>
                 <nav className={openMenu ? styles.nav : styles.nav__closed}>

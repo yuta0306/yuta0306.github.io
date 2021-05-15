@@ -13,7 +13,7 @@ import Categories from '../components/partial/categories'
 import Tags from '../components/partial/tags'
 import Paginager from '../components/partial/paginager'
 
-import {bio, author, socials, siteName, postPerPage} from '../global.d'
+import {bio, author, socials, siteName, postPerPage, siteDescription} from '../global.d'
 
 export async function getStaticProps() {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
@@ -66,11 +66,9 @@ export default function Home({ allPostData }) {
             return <Card slug={slug} content={content} />
           })}
           {allPostData.length % 2 == 1 && allPostData.length < postPerPage &&
-            <div className=''></div>
+            <div></div>
           }
-          <div style={{gridColumn: '1/3'}}>
-            <Paginager top='/post' pages={pages} page={1} />
-          </div>
+          <Paginager top='/post' pages={pages} page={1} />
           </>
         }
         sidebar={

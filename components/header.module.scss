@@ -9,6 +9,9 @@
     justify-content: center;
     background: $bg-header;
     border-bottom: .5px solid rgba($border-primary, .3);
+    a {
+        text-decoration: none;
+    }
     &__inner {
         width: 95%;
         max-width: 1000px;
@@ -34,6 +37,9 @@
     font-size: 1.3rem;
     color: $text-second;
     font-weight: 300;
+    a {
+        text-decoration: none;
+    }
     &__closed {
         font-size: 1.3rem;
         color: $text-second;
@@ -108,6 +114,9 @@
     scrollbar-width: none;
     &::-webkit-scrollbar {
         display: none;
+    }
+    a {
+        text-decoration: none;
     }
     &__items {
         margin: auto;

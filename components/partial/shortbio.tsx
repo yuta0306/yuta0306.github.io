@@ -1,7 +1,5 @@
 import styles from './shortbio.module.scss'
 
-import Image from 'next/image'
-
 export default function ShortBio({bio, author} : {
     bio: string,
     author: string
@@ -13,8 +11,7 @@ export default function ShortBio({bio, author} : {
         <div className={styles.container}  itemScope={true} itemProp='author'
             itemType='http://schema.org/Person'>
             <div className={styles.container__image}>
-                <Image src='/images/profile.jpeg' alt={author} layout='fill' 
-                    objectFit='cover' objectPosition='50% 50%' quality={100} loading='lazy' />
+                <img src='/images/profile.jpeg' alt={author} loading='lazy' />
             </div>
             <h3 className={styles.author} itemScope={true} itemProp='name'>{author}</h3>
             {paragraphs}

@@ -1,5 +1,6 @@
 var TOC = () => {
     const windowWidth = window.innerWidth;
+    const blog = document.getElementsByTagName('main')[0];
     let Toc;
     if (windowWidth > 1000) {
         Toc = document.getElementById('TOC');
@@ -8,8 +9,9 @@ var TOC = () => {
     }
     Toc.classList.toggle('active');
     
-    const blogTitle = document.getElementsByTagName('h1')[0];
-    const blogSection = document.getElementsByTagName('h2');
+    const blogTitle = blog.getElementsByTagName('h1')[0];
+    const blogSection = blog.getElementsByTagName('h2');
+    const blogMiniSection = blog.getElementsByTagName('h3');
     
     blogTitle.id = blogTitle.textContent;
     let sectionDOM = ''

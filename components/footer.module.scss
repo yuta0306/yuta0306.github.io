@@ -9,6 +9,9 @@
     font-style: italic;
     background: $bg-footer;
     box-shadow: 0 0 0 .3px rgba($border-primary, .6);
+    a {
+        text-decoration: none;
+    }
     &__inner{
         display: flex;
         flex-direction: column;
