@@ -84,6 +84,9 @@ img {
 .TOC {
   padding: 0;
   list-style-position: inside;
+  & > li > a {
+    text-decoration: none;
+  }
   &__container {
     margin-top: 0;
   }
