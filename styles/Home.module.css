@@ -120,3 +120,17 @@
     flex-direction: column;
   }
 }
+
+
+.thumbnail {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  max-height: 280px;
+  backdrop-filter: blur(3rem);
+}
+@media (max-width: 700px) {
+  .thumbnail {
+    max-height: 150px;
+  }
+}

@@ -75,13 +75,7 @@ export default function Blog({ postData, categories, tags }) {
         background: `url(${postData.Thumbnail})`,
         overflow: 'hidden'
       }}>
-        <div style={{
-          position: 'relative',
-          width: '100%',
-          height: '40vh',
-          maxHeight: '280px',
-          backdropFilter: 'blur(3rem)'
-        }} itemScope={true} itemProp='image' itemType='https://schema.org/ImageObject'>
+        <div className={styles.thumbnail} itemScope={true} itemProp='image' itemType='https://schema.org/ImageObject'>
           {postData.Thumbnail &&
             <img src={postData.Thumbnail} alt={postData.Title} loading='lazy' 
               style={{height: '100%', width: 'auto', margin: '0 auto', display: 'block'}} />
