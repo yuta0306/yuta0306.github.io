@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "ssg-check": "next build && next export && cd out && npx http-server"
+    "ssg-check": "next build && node utils/routine.js && next export && cd out && npx http-server"
   },
   "dependencies": {
     "@types/next": "^9.0.0",
