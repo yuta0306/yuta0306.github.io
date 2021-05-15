@@ -6,7 +6,7 @@ export default function Tags({tags} : {
     tags: Array<string>
 }) {
     const sortedTags: Array<string> = tags.sort((a, b) => {
-        if (a < b) return -1
+        if (a.toLowerCase() < b.toLowerCase()) return -1
         else return 1
     })
     return (
