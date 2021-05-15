@@ -40,7 +40,7 @@ ${pages
 `
     fs.writeFileSync(path.join(out, 'sitemap.xml'), sitemap)
 
-    return path.join(out, 'sitemap.xml')
+    return path.join(siteUrl, 'sitemap.xml')
 }
 
 const getChildren = (currentDir) => {
