@@ -15,6 +15,7 @@ export default function Header({index='blog', categories=[]}:
     const menuToggle = () => {
         setOpenMenu(!openMenu)
     }
+    
     return (
         <>
         <div className={styles.container}>

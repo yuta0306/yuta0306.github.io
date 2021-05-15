@@ -5,6 +5,10 @@ import styles from './tags.module.scss'
 export default function Tags({tags} : {
     tags: Array<string>
 }) {
+    const sortedTags: Array<string> = tags.sort((a, b) => {
+        if (a < b) return -1
+        else return 1
+    })
     return (
         <div className={styles.container}>
                 <h3 className={styles.container__header}>Tags</h3>
