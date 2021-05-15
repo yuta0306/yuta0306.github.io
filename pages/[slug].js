@@ -114,6 +114,9 @@ export default function Blog({ postData, categories, tags }) {
         }
 
         <meta property="og:title" content={postData.Title} />
+        {postData.Thumbnail &&
+          <meta property="og:image" content={`${siteUrl}/${postData.Thumbnail.slice(1, postData.Thumbnail.length)}`} />
+        }
         <meta property="og:url" content={`${siteUrl}/${postData.Slug}`} />
         <script src='/js/toc.js'></script>
 
