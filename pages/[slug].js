@@ -101,7 +101,10 @@ export default function Blog({ postData, categories, tags }) {
       <Head>
         <title>{postData.Title} | {siteName}</title>
         {postData.Description &&
+          <>
           <meta name="description" content={postData.Description} />
+          <meta name="og:description" content={postData.Description} />
+          </>
         }
         {postData.Author &&
           <meta name="author" content={postData.Author} />
