@@ -15,7 +15,7 @@ import Categories from '../../../components/partial/categories'
 import Tags from '../../../components/partial/tags'
 import Paginager from '../../../components/partial/paginager'
 
-import {bio, author, socials, siteName, postPerPage} from '../../../global.d'
+import {bio, author, socials, siteName, postPerPage, adsensePerPage} from '../../../global.d'
 
 export async function getStaticProps({ params }) {
     const dirName = path.join(process.cwd(), 'pages', 'docs')
@@ -34,7 +34,7 @@ export async function getStaticProps({ params }) {
         return null
       }
     }).filter(v => v)
-    const pages = Math.ceil(filteredPost.length / postPerPage)
+    const pages = Math.ceil(filteredPost.length / (postPerPage - adsensePerPage))
 
     let categories = [], tags = []
     allPost.map((data) => {
@@ -94,7 +94,7 @@ export async function getStaticPaths() {
     tags = [...new Set(tags)]
     const taggedPages = tags.map(tag => {
         const filteredPost = allPost.filter(data => data.postData.Tags == tag || data.postData.Tags.includes(tag))
-        return Math.ceil(filteredPost.length / postPerPage)
+        return Math.ceil(filteredPost.length / (postPerPage - adsensePerPage))
     })
 
     let paths = []
@@ -124,10 +124,26 @@ export default function TagPage({ TaggedPostData, tag, categories, tags, pages, 
       <Main 
         content={
           <>
-          {TaggedPostData.slice(postPerPage * (page-1), postPerPage * page).map(content => {
-            return <Card slug={content.Slug} content={content} />
+          {TaggedPostData.slice((postPerPage - adsensePerPage) * (page-1), (postPerPage - adsensePerPage) * page)
+            .map((content, i) => {
+              if ( (i + 1) % Math.floor(postPerPage / adsensePerPage) == Math.floor(postPerPage / adsensePerPage) - 1 ) {
+                return (
+                  <>
+                  <Card slug={content.Slug} content={content} />
+                  <AdSense.Google
+                    client='ca-pub-4998278830587376'
+                    slot='3060159795'
+                    style={{ display: 'block', borderBottom: '1px dashed rgba(240, 240, 240, 0.6)' }}
+                    format='auto'
+                    responsive='true'
+                  />
+                  </>
+                )
+              } else {
+                return <Card slug={content.Slug} content={content} />
+              }
           })}
-          {TaggedPostData.length - postPerPage*(page - 1) % 2 == 1 &&
+          {(TaggedPostData.length - postPerPage*(page - 1)) % 2 == 1 &&
             <div></div>
           }
           <Paginager top={`/tag/${tag}`} pages={pages} page={page} minPage={1} />

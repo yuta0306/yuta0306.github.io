@@ -15,7 +15,7 @@ import Categories from '../../components/partial/categories'
 import Tags from '../../components/partial/tags'
 import Paginater from '../../components/partial/paginager'
 
-import {bio, author, socials, siteName, postPerPage} from '../../global.d'
+import {bio, author, socials, siteName, postPerPage, adsensePerPage} from '../../global.d'
 
 export async function getStaticProps({ params }) {
   const dirName = path.join(process.cwd(), 'pages', 'docs')
@@ -37,7 +37,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
     const dirName = path.join(process.cwd(), 'pages', 'docs')
     const available = fs.readdirSync(dirName)
-    const pages = Math.ceil(available.length / postPerPage)
+    const pages = Math.ceil(available.length / (postPerPage - adsensePerPage))
     const paths = [...Array(pages)].map((v, k) => {
         return {
             params: {
@@ -67,7 +67,7 @@ export default function Home({ allPostData, page }) {
   categories = [...new Set(categories)]
   tags = [...new Set(tags)]
 
-  const pages = Math.ceil(allPostData.length / postPerPage)
+  const pages = Math.ceil(allPostData.length / (postPerPage - adsensePerPage))
 
   return (
     <>
@@ -80,11 +80,27 @@ export default function Home({ allPostData, page }) {
       <Main 
         content={
           <>
-          {allPostData.slice(postPerPage * (page-1), postPerPage * page).map(data => {
+          {allPostData.slice((postPerPage - adsensePerPage) * (page-1), (postPerPage - adsensePerPage) * page)
+            .map((data, i) => {
             let {slug, content} = data
-            return <Card slug={slug} content={content} />
+            if ( (i + 1) % Math.floor(postPerPage / adsensePerPage) == Math.floor(postPerPage / adsensePerPage) - 1 ) {
+              return (
+                <>
+                <Card slug={slug} content={content} />
+                <AdSense.Google
+                  client='ca-pub-4998278830587376'
+                  slot='3060159795'
+                  style={{ display: 'block', borderBottom: '1px dashed rgba(240, 240, 240, 0.6)' }}
+                  format='auto'
+                  responsive='true'
+                />
+                </>
+              )
+            } else {
+              return <Card slug={slug} content={content} />
+            }
           })}
-          {allPostData.length - postPerPage*(page - 1) % 2 == 1 &&
+          {(allPostData.length - postPerPage*(page - 1)) % 2 == 1 &&
             <div></div>
           }
           <Paginater top='/post' pages={pages} page={page} minPage={1} />

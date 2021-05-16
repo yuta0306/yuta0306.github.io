@@ -23,4 +23,4 @@ export const shareSNS: Array<Array<string>> = [
     ['はてなブログ', 'http://b.hatena.ne.jp/entry/', '/icons/hatenablog.png'],
 ]
 export const postPerPage = 20
-export const adsensePerPage = 4
+export const adsensePerPage = 3

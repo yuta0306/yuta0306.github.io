@@ -62,17 +62,21 @@ export default function Home({ allPostData }) {
       <Main 
         content={
           <>
-          {allPostData.slice(0, postPerPage).map((data, i) => {
+          {allPostData.slice(0, postPerPage - adsensePerPage).map((data, i) => {
             let {slug, content} = data
-            if ( (i + 1) % Math.ceil(postPerPage / adsensePerPage) == 0 ) {
+            console.log(i)
+            if ( (i + 1) % Math.floor(postPerPage / adsensePerPage) == Math.floor(postPerPage / adsensePerPage) - 1 ) {
               return (
+                <>
+                <Card slug={slug} content={content} />
                 <AdSense.Google
                   client='ca-pub-4998278830587376'
-                  slot='8978700883'
+                  slot='3060159795'
                   style={{ display: 'block', borderBottom: '1px dashed rgba(240, 240, 240, 0.6)' }}
                   format='auto'
                   responsive='true'
                 />
+                </>
               )
             } else {
               return <Card slug={slug} content={content} />
