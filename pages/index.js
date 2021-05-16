@@ -64,7 +64,6 @@ export default function Home({ allPostData }) {
           <>
           {allPostData.slice(0, postPerPage - adsensePerPage).map((data, i) => {
             let {slug, content} = data
-            console.log(i)
             if ( (i + 1) % Math.floor(postPerPage / adsensePerPage) == Math.floor(postPerPage / adsensePerPage) - 1 ) {
               return (
                 <>

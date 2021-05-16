@@ -18,8 +18,11 @@ export default function Card({slug, content} : {
                 <a>
                     <div className={styles.card}>
                         <div className={styles.card__thumbnail}>
-                            {content.Thumbnail &&
+                            {content.Thumbnail ?
                                 <img src={content.Thumbnail}  alt={content.Title}
+                                    className={styles.card__thumbnail__img} loading='lazy' />
+                                :
+                                <img src='/images/default.png'  alt={content.Title}
                                     className={styles.card__thumbnail__img} loading='lazy' />
                             }
                         </div>

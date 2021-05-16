@@ -70,17 +70,16 @@ export default function Blog({ postData, categories, tags }) {
   let baseUrl
   if (!(siteUrl[-1] == '/')) baseUrl = siteUrl + '/'
   else baseUrl = siteUrl
+  const thumbnail = postData.Thumbnail ? postData.Thumbnail : '/images/default.png'
   const content = (
     <div itemScope={true} itemType='http://schema.org/BlogPosting'>
       <div style={{
-        background: `url(${postData.Thumbnail})`,
+        background: `url(${thumbnail})`,
         overflow: 'hidden'
       }}>
         <div className={styles.thumbnail} itemScope={true} itemProp='image' itemType='https://schema.org/ImageObject'>
-          {postData.Thumbnail &&
-            <img src={postData.Thumbnail} alt={postData.Title} loading='lazy' 
-              style={{height: '100%', width: 'auto', margin: '0 auto', display: 'block'}} />
-          }
+          <img src={thumbnail} alt={postData.Title} loading='lazy' 
+            style={{height: '100%', width: 'auto', margin: '0 auto', display: 'block'}} />
         </div>
       </div>
       
