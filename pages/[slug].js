@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import fs from 'fs'
 import path from 'path'
+import AdSense from 'react-adsense'
 
 import {getMd2Html} from '../lib/md2html'
 
@@ -137,12 +138,26 @@ export default function Blog({ postData, categories, tags }) {
           {socials &&
             <FollowMe socials={socials} />
           }
+          <AdSense.Google
+            client='ca-pub-4998278830587376'
+            slot='8978700883'
+            style={{ display: 'block' }}
+            format='auto'
+            responsive='true'
+          />
           {categories &&
             <Categories categories={categories} />
           }
           {tags &&
             <Tags tags={tags} />
           }
+          <AdSense.Google
+            client='ca-pub-4998278830587376'
+            slot='8978700883'
+            style={{ display: 'block' }}
+            format='auto'
+            responsive='true'
+          />
           </>
         }
       >
