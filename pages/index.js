@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import path from 'path'
+import AdSense from 'react-adsense'
 
 import { getAllPosts } from '../lib/md2html'
 
@@ -79,12 +80,26 @@ export default function Home({ allPostData }) {
           {socials &&
             <FollowMe  socials={socials} />
           }
+          <AdSense.Google
+            client='ca-pub-4998278830587376'
+            slot='8978700883'
+            style={{ display: 'block' }}
+            format='auto'
+            responsive='true'
+          />
           {categories &&
             <Categories categories={categories} />
           }
           {tags &&
             <Tags tags={tags} />
           }
+          <AdSense.Google
+            client='ca-pub-4998278830587376'
+            slot='8978700883'
+            style={{ display: 'block' }}
+            format='auto'
+            responsive='true'
+          />
           </>
         }
         grid_layout={true}
