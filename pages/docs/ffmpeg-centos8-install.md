@@ -1,6 +1,6 @@
 ---
 Title: CentOS8にffmpegインストール; パッケージには気を付けよう
-Date: '2021-5-18'
+Date: '2021-05-18'
 Category: Linux
 Tags: [Linux, CentOS8, ffmpeg]
 Authors: ゆうぼう
