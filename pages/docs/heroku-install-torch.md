@@ -5,6 +5,7 @@ Category: Python
 Tags: ['Heroku']
 Authors: ゆうぼう
 Slug: heroku-install-torch
+Thumbnail: /images/thumbnails/heroku-install-torch.jpg
 Description: 対話システムをサーバ上で動かせる体制を作るために，pytorchやら何やらをHerokuでinstallさせる必要があったのですが，pytorchちょっとデカすぎませんか？という状態でエラーが出てしまいました．その時の解消法です．
 Published: true
 ---
