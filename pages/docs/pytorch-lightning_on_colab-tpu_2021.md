@@ -89,7 +89,7 @@ pipでのインストール分割していたり，--quit(-q)をつけている�
 
 おそらく以下のようなエラーは起きますが，特に動作に影響はなさそうでした．あまり不安がらなくても良さそうです．
 
-```
+```shell
 ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
 earthengine-api 0.1.284 requires google-api-python-client<2,>=1.12.1, but you have google-api-python-client 1.8.0 which is incompatible.
 ```
@@ -107,7 +107,8 @@ import pytorch_lightning as pl
 少し時間がかかりますが，待ちましょう．
 
 *pytorch-xla 1.9*
-~~~
+
+~~~shell
 WARNING:root:Waiting for TPU to be start up with version pytorch-1.9...
 WARNING:root:Waiting for TPU to be start up with version pytorch-1.9...
 WARNING:root:Waiting for TPU to be start up with version pytorch-1.9...
