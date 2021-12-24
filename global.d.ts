@@ -5,11 +5,11 @@ export const author: string = 'ゆうぼう'
 export const authorLink: string = 'https://twitter.com/Sloth65557166'
 export const bio: string = `
 地方国立大学B3のナマケモノです．
-最近は機械学習にお熱です．
-好きな技術は，FlaskとPytorchです．このブログはNext.jsで書いていて，Next.jsもハマりつつあります．
+最近ユーモア検出の研究を始めました(NLP)．
+最終的には対話システムに応用していく研究をしていく予定です．
+好きな技術は，FlaskとPytorchです．このブログはNext.jsで書いていて，Next.jsもスキ．
 
-スクレイピングが大好きなので，依頼があれば是非．
-またKaggle等のデータ分析コンペも一緒に楽しみたいです．
+Kaggle等のデータ分析コンペも一緒に楽しみたいです．
 `
 export const contactForm: string = 'https://docs.google.com/forms/d/e/1FAIpQLSdgyok9pi697ZJvVizRNEw0qghDWz517k1FrbcRmfvvERlraA/viewform'
 export const socials: Array<Array<string>> = [
