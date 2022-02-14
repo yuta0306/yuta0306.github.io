@@ -1,20 +1,23 @@
 import fs from 'fs'
-import path from 'path'
 import matter from 'gray-matter'
-import remark from 'remark'
-import html from 'remark-html'
+import path from 'path'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
-
-let highlight = require('remark-highlight.js')
+import remarkParse from 'remark-parse'
+import remark2rehype from 'remark-rehype'
+import unified from 'unified'
 
 export async function getMd2Html(fileName: string) {
     const fileContent: string = fs.readFileSync(fileName, 'utf8')
     const matterResult: matter.GrayMatterFile<string> = matter(fileContent)
 
-    const processedContent = await remark()
+    const processedContent = await unified()
+        .use(remarkParse)
         .use(remarkGfm)
-        .use(highlight)
-        .use(html)
+        .use(remark2rehype)
+        .use(rehypeHighlight)
+        .use(rehypeStringify)
         .process(matterResult.content)
 
     const contentHtml: string = processedContent.toString()
@@ -29,10 +32,12 @@ export function _getMd2Html(fileName: string) {
     const fileContent: string = fs.readFileSync(fileName, 'utf8')
     const matterResult: matter.GrayMatterFile<string> = matter(fileContent)
 
-    const processedContent = remark()
-    .use(remarkGfm)
-        .use(highlight)
-        .use(html)
+    const processedContent = unified()
+        .use(remarkParse)
+        .use(remarkGfm)
+        .use(remark2rehype)
+        .use(rehypeHighlight)
+        .use(rehypeStringify)
         .process(matterResult.content)
 
     const contentHtml: string = processedContent.toString()

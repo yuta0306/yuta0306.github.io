@@ -1,11 +1,13 @@
-import '../styles/globals.scss'
 import 'highlight.js/styles/vs2015.css'
-
-// Google Analytics
-import React from 'react'
-import { useEffect } from 'react'
+import Head from 'next/head'
 import router from 'next/router'
+// Google Analytics
+import React, { useEffect } from 'react'
+import { siteName } from '../global.d'
 import * as gtag from '../lib/gtag'
+import '../styles/globals.scss'
+
+
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -23,7 +25,17 @@ function MyApp({ Component, pageProps }) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        {/* Default Title */}
+        <title>{siteName}</title>
+        {/* Meta Viewport */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default MyApp

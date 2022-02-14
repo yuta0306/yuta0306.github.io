@@ -55,13 +55,23 @@ h1 {
   font-weight: 500;
 }
 h2 {
-  margin-top: 3rem;
+  margin-top: 4rem;
   width: 100%;
-  border-bottom: 1px dashed rgba($border-primary, .6);
+  border-bottom: 2px solid rgba($border-primary, .6);
   font-size: 1.4rem;
   font-weight: 300;
 }
 h3 {
+  margin-top: 3rem;
+  width: 100%;
+  border-bottom: 1px dashed rgba($border-primary, .6);
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+h4 {
+  margin-top: 2.4rem;
+  width: 100%;
+  border-bottom: 1px dotted rgba($border-primary, .6);
   font-size: 1.2rem;
   font-weight: 300;
 }
@@ -78,6 +88,18 @@ li {
 
 img {
   width: 100%;
+}
+
+table, th, td {
+  font-size: 1rem;
+  border: 1.4px solid rgba($border-primary, .9);
+  border-collapse: collapse;
+}
+thead {
+  background: rgba($border-primary, .1);
+}
+td {
+  padding: .3rem;
 }
 
 // 目次

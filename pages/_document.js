@@ -1,5 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { author, siteName, siteUrl, siteDescription } from '../global.d'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
+import { author, siteDescription, siteName, siteUrl } from '../global.d'
 import { existsGaId, GA_ID } from '../lib/gtag'
 
 class MyDocument extends Document {
@@ -8,19 +8,16 @@ class MyDocument extends Document {
       <Html lang='ja' prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
         <Head>
           {/* meta view */}
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="HandheldFriendly" content="True" />
 
-          {/* Default Title */}
-          <title>{siteName}</title>
           {/* Default description */}
           {siteDescription &&
-              <meta name="description" content={siteDescription} />
+            <meta name="description" content={siteDescription} />
           }
           {/* Default Author */}
           {author &&
-                <meta name="author" content={author} />
+            <meta name="author" content={author} />
           }
 
           {/* OGP */}
@@ -30,14 +27,14 @@ class MyDocument extends Document {
           <meta property="og:image" content={`${siteUrl}/images/default.png`} />
           <meta property="og:site_name" content={siteName} />
           {siteDescription &&
-              <meta property="og:description" content={siteDescription} />
+            <meta property="og:description" content={siteDescription} />
           }
           {/* OGP > Twitter */}
           <meta name="twitter:card" content="summary_large_image" />
 
           {/* Robot crawling: Default > index & follow */}
           <meta name="robots" content="index, follow" />
-          
+
           {/* This SSG Generator */}
           <meta name="generator" content="Next.js" />
 
