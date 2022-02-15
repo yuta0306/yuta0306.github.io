@@ -102,6 +102,13 @@ td {
   padding: .3rem;
 }
 
+blockquote {
+  border-left: 3px solid $quote-color;
+}
+blockquote p {
+  padding-left: 1rem;
+}
+
 // 目次
 .TOC {
   padding: 0;
