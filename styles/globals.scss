@@ -27,6 +27,9 @@ a {
   font-weight: 200;
   font-style: italic;
   text-decoration: none;
+  :hover {
+    cursor: pointer;
+  }
 }
 
 * {
@@ -120,7 +123,6 @@ blockquote {
 blockquote p {
   padding-left: 1rem;
 }
-
 
 // 目次
 .TOC {
