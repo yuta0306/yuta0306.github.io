@@ -85,6 +85,11 @@ p {
     display: block;
     font-size: 1.4rem;
     text-align: center;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 
