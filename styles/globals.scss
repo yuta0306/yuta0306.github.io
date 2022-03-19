@@ -49,8 +49,10 @@ code {
 }
 
 strong {
-  background: linear-gradient(transparent 70%, rgba($marker-color, .7) 30%);
+  background: linear-gradient(transparent 70%, rgba($marker-color, .5) 30%);
   font-size: .9rem;
+  font-weight: 800;
+  color: $text-primary;
 }
 
 h1 {
@@ -58,30 +60,35 @@ h1 {
   font-weight: 500;
 }
 h2 {
-  margin-top: 4rem;
+  padding: 1rem 0 .5rem 0;
   width: 100%;
   border-bottom: 2px solid rgba($border-primary, .6);
   font-size: 1.4rem;
-  font-weight: 300;
+  font-weight: 700;
+  line-height: 1.5;
 }
 h3 {
-  margin-top: 3rem;
+  padding: 1rem 0 .5rem 0;
   width: 100%;
   border-bottom: 1px dashed rgba($border-primary, .6);
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 700;
+  line-height: 1.5;
 }
 h4 {
-  margin-top: 2.4rem;
+  padding: 1rem 0 .5rem 0;
   width: 100%;
   border-bottom: 1px dotted rgba($border-primary, .6);
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 p {
   font-size: .9rem;
   font-weight: 300;
+  line-height: 1.9;
+  color: rgba($text-primary, .95);
   // Katex
   .math {
     width: 100%;
@@ -99,6 +106,8 @@ p {
 li {
   font-size: .9rem;
   font-weight: 300;
+  color: rgba($text-primary, .95);
+  list-style-type: "✔︎ ";
 }
 
 img {
@@ -107,6 +116,7 @@ img {
 
 table, th, td {
   font-size: 1rem;
+  color: rgba($text-primary, .95);
   border: 1.4px solid rgba($border-primary, .9);
   border-collapse: collapse;
 }
@@ -122,6 +132,7 @@ blockquote {
 }
 blockquote p {
   padding-left: 1rem;
+  color: $text-second;
 }
 
 // 目次
@@ -130,6 +141,7 @@ blockquote p {
   list-style-position: inside;
   & > li > a {
     text-decoration: none;
+    color: $text-primary;
   }
   &__container {
     margin-top: 0;
