@@ -5,8 +5,8 @@ export const author: string = 'ゆうぼう'
 export const authorLink: string = 'https://twitter.com/Sloth65557166'
 export const bio: string = `
 地方国立大学B4のナマケモノです．
-最近ユーモア検出の研究を始めました(NLP)．
-最終的には対話システムに応用していく研究をしていく予定です．
+ユーモア検出の研究を行っています(NLP)．
+来年からは対話システムの研究をします．
 好きな技術はFlaskとPytorchです．このブログはNext.jsで書いていて，Next.jsもスキ．
 
 Kaggle等のデータ分析コンペも一緒に楽しみたいです．
