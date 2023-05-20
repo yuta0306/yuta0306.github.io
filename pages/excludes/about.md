@@ -4,35 +4,97 @@ title: About Me
 
 ## Bio
 
-現在大学B3です。専攻はまだ決まっていません。
+I am a graduate student at Tokyo Institute of Technology.  
+I would like to research into human-like dialogue systems, and build my career to develop the society where humans and AI cooperate with each other.
 
-興味のある分野は自然言語処理ですが、パワー勝負の世界になっている気がしてならないので、専攻にするかはまだ迷っています。
+(日本語)  
+東京工業大学で大学院生をしています．  
+human-likeな対話システムの研究に従事し，人間とAIの共生社会の構築に人生を捧げたいと考えています．
+
+## Research Interest
+
+- Dialogue System (対話システム)
+- Multi-modal Dialogue System (マルチモーダル対話システム)
+- Speech Dialogue System (音声対話システム)
+- Humor Recognition (ユーモア検出)
+- Knowledge-Intensive NLP (知識に基づく自然言語処理？)
+
+## Publication
+
+### International Conference
+
+1. DEXA 2023
+   - Details to be confirmed with co-authors.
+
+### Domestic Conference (Japanese)
+
+1. DEIM 2023
+   - Details to be confirmed with co-authors.
+2. DEIM 2023
+   - Details to be confirmed with the main author.
+3. NLP 2023
+   - Details to be confirmed with co-authors.
+
+## Education
+
+2023.4 - **Present**  
+**Master of Tokyo Institute of Technology, Tokyo, Japan**  
+*School of Engineering Department of Information and Communications Engineering*  
+**東京工業大学**  
+*工学院 情報通信系*
+
+2019.4 - 2023.3  
+**Bachelor of Iwate University, Iwate, Japan**  
+*School of Computer, Intelligence and Media Technology, Department of Systems Innovation Engineering, Faculty of Science and Engineering*  
+**岩手大学**  
+*理工学部 システム創成工学科 知能メディア・情報コース*
+
+## Scholorship
+
+1. 岩手大学理工学部修学支援奨学金 (令和3年4月 - 令和4年3月)
+
+## Certification
+
+- TOEIC® Listening & Reading Test: 865 / 990
+- Python3 エンジニア認定基礎試験合格者
+- Python3 エンジニア認定データ分析試験合格者
+
+## Job Experience
+
+Comming soon...
+
+## Internship
+
+Comming soon...
 
 ## Skills
 
-僕が使える技術言語たちです。
-
-Mainに書いてあるものは、普段から使用している技術で、基本的にファーストチョイスになっています。特段新しいことに挑戦しない限りは、リファレンスがなくとも扱えます。
-
-Subは多少経験がある程度で、使用する必要があれば使います。リファレンスを常に片手に必要とする技術です。
-
-### Main
+### Main Language (> 3 years)
 
 - Python
 - JavaScript
 - HTML5
 - CSS3 / SCSS
 
-### Sub
+### Sub Language (< 3 years)
 
 - C / C++ / C#
 - Go
 - TypeScript
 - PHP
 
-## Frame Works
+### Frameworks
 
-- Flask (**Flask大好き芸人やってます**)
-- Pytorch
-- Pelican (Python製静的サイトジェネレータ)
-- React / Next.js (このブログで使っている)
+- Flask
+- Pytorch / Pytorch Lightning
+- Pelican (SSG with Python)
+- React / Next.js (These framework are used in this blog)
+
+## Contact
+
+Email: yubo1336[at]lr.pi.titech.ac.jp  
+Twitter: [@Sloth65557166](https://twitter.com/Sloth65557166)  
+GitHub: [@yuta0306](https://github.com/yuta0306)  
+Kaggle: [@yutasasaki](https://www.kaggle.com/yutasasaki)  
+LinkedIn: [Yuta SASAKI](https://www.linkedin.com/in/yuta-sasaki-170472226/)  
+Blog: [ゆうぼうの書跡棚](https://yuta0306.github.io/)
