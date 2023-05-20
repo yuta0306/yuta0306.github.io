@@ -1,6 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import { author, siteDescription, siteName, siteUrl } from '../global.d'
-import { existsGaId, GA_ID } from '../lib/gtag'
+import { GA_ID, existsGaId } from '../lib/gtag'
 
 class MyDocument extends Document {
   render() {
@@ -30,7 +30,7 @@ class MyDocument extends Document {
             <meta property="og:description" content={siteDescription} />
           }
           {/* OGP > Twitter */}
-          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:card" content="summary" />
 
           {/* Robot crawling: Default > index & follow */}
           <meta name="robots" content="index, follow" />
