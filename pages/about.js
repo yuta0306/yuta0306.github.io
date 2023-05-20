@@ -45,10 +45,8 @@ export default function About({ aboutData }) {
           {content}
           {socials &&
             <FollowMe socials={socials} />}
-          <Link href='/'>
-            <a style={{ fontSize: '.9rem' }}>
-              &lt;&lt;&nbsp;ブログに戻る
-            </a>
+          <Link href='/' style={{ fontSize: '.9rem' }}>
+            &lt;&lt;&nbsp;ブログに戻る
           </Link>
         </>
       }>

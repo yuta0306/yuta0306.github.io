@@ -15,11 +15,9 @@ export default function SocialShare({ socials, url }: {
                         let [media, format, image] = data;
                         let link = format + url
                         return (
-                            <Link href={link} key={media}>
-                                <a target='_blank'>
-                                    <img src={image}
-                                        loading='lazy' alt={`${url}を${media}に共有する`} />
-                                </a>
+                            <Link href={link} key={media} target='_blank'>
+                                <img src={image}
+                                    loading='lazy' alt={`${url}を${media}に共有する`} />
                             </Link>
                         )
                     })
