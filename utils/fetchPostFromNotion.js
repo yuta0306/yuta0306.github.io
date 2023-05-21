@@ -156,6 +156,9 @@ const aggregateTexts = (texts) => {
 export const importPostFromNotion = async (out = 'pages/docs') => {
     const client = initializeClient()
     console.log(client)
+    console.log(process.env.DATABASEID)
+    const database = await retrieveDatabase(client, process.env.DATABASEID)
+    console.log(database)
     const pages = await retrievePublishedPages(client, process.env.DATABASEID)
     for (let page of tqdm(pages.results)) {
         const { content, title } = await notionToMarkdown(client, page.id)
