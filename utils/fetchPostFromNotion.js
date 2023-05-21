@@ -5,7 +5,6 @@ import path from 'path'
 import tqdm from 'tqdm'
 config()
 
-console.log(process.env)
 const initializeClient = () => {
     console.log(process.env.NOTION_API_KEY)
     const notion = new Client({
