@@ -1,5 +1,5 @@
 ---
-Title: 【論文まとめ】Multimodal Humor Dataset\: Predicting Laughter tracks for Sitcoms
+Title: 【論文まとめ】Multimodal Humor Dataset&#58; Predicting Laughter tracks for Sitcoms
 Date: '2023-05-21'
 Category: 論文
 Tags: humor detection,multi-modal
