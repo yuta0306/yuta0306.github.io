@@ -32,6 +32,10 @@ jobs:
       - name: install
         run: npm install --frozen-lockfile
 
+      # 論文まとめをNotionからインポートする
+      - name: import papers
+        run: node utils/fetchPostFromNotion.js
+
       # Next.jsアプリをビルド&エクスポートする
       # プロジェクトルート直下に.nextディレクトリができる
       - name: build
