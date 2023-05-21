@@ -154,6 +154,7 @@ const aggregateTexts = (texts) => {
 }
 
 export const importPostFromNotion = async (out = 'pages/docs') => {
+    console.log(process.env.NOTION_API_KEY)
     const client = initializeClient()
     console.log(client)
     console.log(process.env.DATABASEID)

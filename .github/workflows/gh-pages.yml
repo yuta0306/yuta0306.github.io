@@ -7,11 +7,6 @@ on:
     branches:
       - master
 
-env:
-  NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-  DATABASEID: ${{ secrets.DATABASEID }}
-  NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }}
-
 jobs:
   build-deploy:
     # ubuntu OS を仮想マシン上に用意する
@@ -41,11 +36,16 @@ jobs:
       # 論文まとめをNotionからインポートする
       - name: import papers
         run: node utils/fetchPostFromNotion.js
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          DATABASEID: ${{ secrets.DATABASEID }}
 
       # Next.jsアプリをビルド&エクスポートする
       # プロジェクトルート直下に.nextディレクトリができる
       - name: build
         run: npm run build
+        env:
+          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }}
 
       # update sitemap
       - name: update sitemap
