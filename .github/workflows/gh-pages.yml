@@ -36,15 +36,15 @@ jobs:
       # 論文まとめをNotionからインポートする
       - name: import papers
         env:
-          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-          DATABASEID: ${{ secrets.DATABASEID }}
+          NOTION_API_KEY: "${{ secrets.NOTION_API_KEY }}"
+          DATABASEID: "${{ secrets.DATABASEID }}"
         run: node utils/fetchPostFromNotion.js
 
       # Next.jsアプリをビルド&エクスポートする
       # プロジェクトルート直下に.nextディレクトリができる
       - name: build
         env:
-          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }}
+          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: "${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }}"
         run: npm run build
 
       # update sitemap
