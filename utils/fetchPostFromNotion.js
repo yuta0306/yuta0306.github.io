@@ -77,6 +77,15 @@ const retrieveBlock = async (client, blockId) => {
     }
 }
 
+const retrieveChildren = async (client, blockId) => {
+    try {
+        const response = await client.blocks.children.list({ block_id: blockId, page_size: 100 })
+        return response
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const notionToMarkdown = async (client, pageId) => {
     try {
         const page = await retrievePage(client, pageId)
@@ -89,12 +98,12 @@ const notionToMarkdown = async (client, pageId) => {
             title += text.plain_text
         }
         const tags = props['キーワード'].multi_select.map(res => res.name)
-        content += `Title: ${title}\n`
+        content += `Title: 【論文まとめ】${title}\n`
         content += `Date: '${page.last_edited_time.slice(0, 10)}'\n`
-        content += 'Category: 論文\n'
+        content += 'Category: 論文まとめ\n'
         content += `Tags: ${tags.join(',')}\n`
         content += 'Authos: ゆうぼう\n'
-        content += `Slug: ${title.replace(/\s/, '-')}\n`
+        content += `Slug: ${title.replace(/\s/g, '-')}\n`
         if (page.cover) {
             content += `Thumbnail: ${page.cover.file.url}\n`
         }
@@ -104,61 +113,75 @@ const notionToMarkdown = async (client, pageId) => {
 
         // construct main content
         const blocks = await retrieveBlocks(client, page.id)
-        for (let block of tqdm(blocks.results)) {
-            const res = await retrieveBlock(client, block.id)
-            if (res.type == 'heading_2') {
-                content += `## ${aggregateTexts(res.heading_2.rich_text)}\n\n`
-            } else if (res.type == 'heading_3') {
-                content += `### ${aggregateTexts(res.heading_3.rich_text)}\n\n`
-            } else if (res.type == 'paragraph') {
-                content += `${aggregateTexts(res.paragraph.rich_text)}\n\n`
-            } else if (res.type == 'image') {
-                content += `![${res.image.caption}](${res.image.file.url})\n\n`
-            }
-        }
+        content = await constructBlocks(client, blocks, content)
+        console.log(content)
+
         return { 'content': content, 'title': title }
     } catch (error) {
         console.error(error)
     }
 }
 
+const constructBlocks = async (client, blocks, prefix = '', content = '') => {
+    for (let block of tqdm(blocks.results)) {
+        const res = await retrieveBlock(client, block.id)
+        if (res.type == 'heading_2') {
+            content += `## ${aggregateTexts(res.heading_2.rich_text)}\n\n`
+        } else if (res.type == 'heading_3') {
+            content += `### ${aggregateTexts(res.heading_3.rich_text)}\n\n`
+        } else if (res.type == 'paragraph') {
+            content += `${prefix}${aggregateTexts(res.paragraph.rich_text)}\n\n`
+        } else if (res.type == 'image') {
+            content += `![${res.image.caption}](${res.image.file.url})\n\n`
+        }
+        if (res.has_children) {
+            const children = await retrieveChildren(client, res.id)
+            content = await constructBlocks(client, children, prefix = '&nbsp;&nbsp;', content = content)
+        }
+    }
+    return content
+}
+
 const aggregateTexts = (texts) => {
     let ret = ''
     let text = ''
     for (let res of texts) {
-        text = res.text.content
-        if (res.text.link) {
-            text = `[${text}](${res.text.link.url})`
+        if (res.type == 'text') {
+            text = res.text.content
+
+            if (res.text.link) {
+                text = `[${text}](${res.text.link.url})`
+            }
+            if (res.annotations.bold) {
+                text = `**${text}**`
+            }
+            if (res.annotations.italic) {
+                text = `*${text}*`
+            }
+            if (res.annotations.strikethrough) {
+                text = `~~${text}~~`
+            }
+            if (res.annotations.underline) {
+                text = `<ins>${text}</ins>`
+            }
+            if (res.annotations.code) {
+                text = `\`${text}\``
+            }
+            if (res.annotations.color != 'default') {
+                text = `<span style="color: ${res.annotations.color};">${text}</span>`
+            }
+        } else if (res.type == 'equation') {
+            text = res.equation.expression
+            text = `\$${text}\$`
         }
-        if (res.annotations.bold) {
-            text = `**${text}**`
-        }
-        if (res.annotations.italic) {
-            text = `*${text}*`
-        }
-        if (res.annotations.strikethrough) {
-            text = `~~${text}~~`
-        }
-        if (res.annotations.underline) {
-            text = `<ins>${text}</ins>`
-        }
-        if (res.annotations.code) {
-            text = `\`${text}\``
-        }
-        if (res.annotations.color != 'default') {
-            text = `<span style="color: ${res.annotations.color};">${text}</span>`
-        }
+
         ret += text
     }
     return ret
 }
 
 export const importPostFromNotion = async (out = 'pages/docs') => {
-    console.log(process.env.NOTION_API_KEY)
     const client = initializeClient()
-    console.log(process.env.DATABASEID)
-    const database = await retrieveDatabase(client, process.env.DATABASEID)
-    console.log(database)
     const pages = await retrievePublishedPages(client, process.env.DATABASEID)
     for (let page of tqdm(pages.results)) {
         const { content, title } = await notionToMarkdown(client, page.id)
