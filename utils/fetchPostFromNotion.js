@@ -99,16 +99,16 @@ const notionToMarkdown = async (client, pageId) => {
             title += text.plain_text
         }
         const tags = props['キーワード'].multi_select.map(res => res.name)
-        meta += `Title: 【論文まとめ】${title.replace(':', '&#58;')}\n`
+        meta += `Title: '【論文まとめ】${title}'\n`
         meta += `Date: '${page.last_edited_time.slice(0, 10)}'\n`
         meta += 'Category: 論文\n'
         meta += `Tags: ${tags.join(',')}\n`
         meta += 'Authos: ゆうぼう\n'
-        meta += `Slug: ${title.replace(/\s/g, '-')}\n`
+        meta += `Slug: ${title.replace(/\s|/g, '-').replace(':', '')}\n`
         if (page.cover) {
             meta += `Thumbnail: ${page.cover.file.url}\n`
         }
-        meta += `Description: ${title}のまとめ\n`
+        meta += `Description: '${title}のまとめ'\n`
         meta += 'Published: true\n'
         meta += '---\n\n'
 

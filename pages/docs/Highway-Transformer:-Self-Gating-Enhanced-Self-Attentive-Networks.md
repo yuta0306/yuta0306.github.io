@@ -1,12 +1,12 @@
 ---
-Title: 【論文まとめ】Highway Transformer&#58; Self-Gating Enhanced Self-Attentive Networks
+Title: '【論文まとめ】Highway Transformer: Self-Gating Enhanced Self-Attentive Networks'
 Date: '2023-05-21'
 Category: 論文
 Tags: transformer,Highway Transformer,Gating Mechanism,Self-Dependency-Units (SDU)
 Authos: ゆうぼう
-Slug: Highway-Transformer:-Self-Gating-Enhanced-Self-Attentive-Networks
+Slug: Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks
 Thumbnail: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c1d2b55a-8e61-4918-8a5e-bee7f61e9f4d/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-08-26_12.58.57.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180536Z&X-Amz-Expires=3600&X-Amz-Signature=3a2649aaae274fbabf93cde0b58588663b3b7e6a951c5a628fb5bbca202a7140&X-Amz-SignedHeaders=host&x-id=GetObject
-Description: Highway Transformer: Self-Gating Enhanced Self-Attentive Networksのまとめ
+Description: 'Highway Transformer: Self-Gating Enhanced Self-Attentive Networksのまとめ'
 Published: true
 ---
 

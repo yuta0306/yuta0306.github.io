@@ -1,12 +1,12 @@
 ---
-Title: 【論文まとめ】Multimodal Humor Dataset&#58; Predicting Laughter tracks for Sitcoms
+Title: '【論文まとめ】Multimodal Humor Dataset: Predicting Laughter tracks for Sitcoms'
 Date: '2023-05-21'
 Category: 論文
 Tags: humor detection,multi-modal
 Authos: ゆうぼう
-Slug: Multimodal-Humor-Dataset:-Predicting-Laughter-tracks-for-Sitcoms
+Slug: Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms
 Thumbnail: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9d8a6445-fdde-46c8-b0b9-72b1f53e4491/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-10-08_21.44.00.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180328Z&X-Amz-Expires=3600&X-Amz-Signature=47425b16d3accc25b1ca817eec4d5bf1148e6cf566a7737adf14227c8da0f921&X-Amz-SignedHeaders=host&x-id=GetObject
-Description: Multimodal Humor Dataset: Predicting Laughter tracks for Sitcomsのまとめ
+Description: 'Multimodal Humor Dataset: Predicting Laughter tracks for Sitcomsのまとめ'
 Published: true
 ---
 
