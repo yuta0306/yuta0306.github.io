@@ -102,9 +102,9 @@ const notionToMarkdown = async (client, pageId) => {
         meta += `Title: '【論文まとめ】${title}'\n`
         meta += `Date: '${page.last_edited_time.slice(0, 10)}'\n`
         meta += 'Category: 論文\n'
-        meta += `Tags: ${tags.join(',')}\n`
+        meta += `Tags: [${tags.join(',')}]\n`
         meta += 'Authos: ゆうぼう\n'
-        meta += `Slug: ${title.replace(/\s|/g, '-').replace(':', '')}\n`
+        meta += `Slug: ${title.replace(/\s/g, '-').replace(':', '')}\n`
         if (page.cover) {
             meta += `Thumbnail: ${page.cover.file.url}\n`
         }
