@@ -1,4 +1,5 @@
 import { generateRobotsTxt } from './generateRobots.js'
+import { generateSitemap } from './generateSitemap.js'
 
 // Main Routine
 console.log('Generate some files before the build...')
