@@ -1,8 +1,8 @@
-import 'highlight.js/styles/vs2015.css'
+import 'highlight.js/scss/base16/dracula.scss'
 import Head from 'next/head'
 import router from 'next/router'
 // Google Analytics
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { siteName } from '../global.d'
 import * as gtag from '../lib/gtag'
 import '../styles/globals.scss'
