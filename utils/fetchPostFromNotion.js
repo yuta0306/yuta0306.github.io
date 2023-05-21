@@ -6,7 +6,6 @@ import tqdm from 'tqdm'
 config()
 
 const initializeClient = () => {
-    console.log(process.env.NOTION_API_KEY)
     const notion = new Client({
         auth: process.env.NOTION_API_KEY,
     })
@@ -156,6 +155,7 @@ const aggregateTexts = (texts) => {
 
 export const importPostFromNotion = async (out = 'pages/docs') => {
     const client = initializeClient()
+    console.log(client)
     const pages = await retrievePublishedPages(client, process.env.DATABASEID)
     for (let page of tqdm(pages.results)) {
         const { content, title } = await notionToMarkdown(client, page.id)

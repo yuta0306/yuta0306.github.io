@@ -8,8 +8,9 @@ on:
       - master
 
 env:
-  NOTION_API_KEY: ${{secrets.NOTION_API_KEY}}
-  DATABASEID: ${{secrets.DATABASEID}}
+  NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+  DATABASEID: ${{ secrets.DATABASEID }}
+  NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }}
 
 jobs:
   build-deploy:
@@ -22,7 +23,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: "18.x"
 
       # npm install の際にキャッシュを使うよう設定
       - name: Cache dependencies
