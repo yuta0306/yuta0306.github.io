@@ -3,7 +3,7 @@ import path from 'path'
 
 export function generateSitemap(
     siteUrl,
-    top = '.next/server/pages',
+    top = '.next/server/pages/',
     out = 'public',
     excludes = [],
 ) {
@@ -20,7 +20,7 @@ export function generateSitemap(
 
     pages = pages.filter(page => !excludes.includes(page))
     pages = pages.filter(page => page.match(/(\.html)$/))
-    pages = pages.map(page => path.join(siteUrl, page.replace(top, '')))
+    pages = pages.map(page => `${siteUrl}/${page.replace(top, '')}`)
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">   

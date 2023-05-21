@@ -37,6 +37,10 @@ jobs:
       - name: build
         run: npm run build
 
+      # update sitemap
+      - name: update sitemap
+        run: node utils/routine.js
+
       # しかしGitHub Pagesの仕様として_から始まるディレクトリが見えず404となる
       # つまりHTMLからJSを読み込めない
       # これを回避するために.nojekyllファイルをoutディレクトリに作る
