@@ -7,6 +7,7 @@ config()
 
 
 const initializeClient = () => {
+    console.log(process.env.NOTION_API_KEY)
     const notion = new Client({
         auth: process.env.NOTION_API_KEY,
     })
