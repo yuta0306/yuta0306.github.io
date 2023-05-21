@@ -1,12 +1,12 @@
 ---
-Title: 【論文まとめ】Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Survey
+Title: '【論文まとめ】Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Survey'
 Date: '2023-05-21'
 Category: 論文
 Tags: dialogue system,survey,DST
 Authos: ゆうぼう
-Slug: Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems:-A-Survey
+Slug: Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey
 Thumbnail: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6a13b44c-3197-4abe-af23-58fa95611f92/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-03-22_17.46.56.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T182049Z&X-Amz-Expires=3600&X-Amz-Signature=2b0d0e3c914b0fdbd1d6d8962774ef2c2250c83acfcf5074b114e8b8f0b2cc52&X-Amz-SignedHeaders=host&x-id=GetObject
-Description: Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Surveyのまとめ
+Description: 'Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Surveyのまとめ'
 Published: true
 ---
 

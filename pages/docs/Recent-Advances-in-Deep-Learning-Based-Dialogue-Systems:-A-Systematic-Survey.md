@@ -1,12 +1,12 @@
 ---
-Title: 【論文まとめ】Recent Advances in Deep Learning Based Dialogue Systems: A Systematic Survey
+Title: '【論文まとめ】Recent Advances in Deep Learning Based Dialogue Systems: A Systematic Survey'
 Date: '2023-05-21'
 Category: 論文
 Tags: survey,dialogue system
 Authos: ゆうぼう
-Slug: Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems:-A-Systematic-Survey
+Slug: Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey
 Thumbnail: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b6eb260b-8c7f-4cb6-877b-7844cd677787/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-03-22_17.44.29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T182245Z&X-Amz-Expires=3600&X-Amz-Signature=f6e89f39c9b418b4e2739829b4e0f51e33f3a393bf7a3b2e11fb2d03f2343cc5&X-Amz-SignedHeaders=host&x-id=GetObject
-Description: Recent Advances in Deep Learning Based Dialogue Systems: A Systematic Surveyのまとめ
+Description: 'Recent Advances in Deep Learning Based Dialogue Systems: A Systematic Surveyのまとめ'
 Published: true
 ---
 
