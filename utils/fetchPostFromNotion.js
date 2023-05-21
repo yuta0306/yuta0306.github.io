@@ -1,4 +1,5 @@
 import { Client } from '@notionhq/client'
+import { execSync } from 'child_process'
 import { config } from 'dotenv'
 import fs from 'fs'
 import path from 'path'
@@ -89,7 +90,7 @@ const retrieveChildren = async (client, blockId) => {
 const notionToMarkdown = async (client, pageId) => {
     try {
         const page = await retrievePage(client, pageId)
-        let content = '---\n'
+        let meta = '---\n'
         const props = page.properties
 
         // construct metadata
@@ -98,33 +99,46 @@ const notionToMarkdown = async (client, pageId) => {
             title += text.plain_text
         }
         const tags = props['キーワード'].multi_select.map(res => res.name)
-        content += `Title: 【論文まとめ】${title}\n`
-        content += `Date: '${page.last_edited_time.slice(0, 10)}'\n`
-        content += 'Category: 論文\n'
-        content += `Tags: ${tags.join(',')}\n`
-        content += 'Authos: ゆうぼう\n'
-        content += `Slug: ${title.replace(/\s/g, '-')}\n`
+        meta += `Title: 【論文まとめ】${title}\n`
+        meta += `Date: '${page.last_edited_time.slice(0, 10)}'\n`
+        meta += 'Category: 論文\n'
+        meta += `Tags: ${tags.join(',')}\n`
+        meta += 'Authos: ゆうぼう\n'
+        meta += `Slug: ${title.replace(/\s/g, '-')}\n`
         if (page.cover) {
-            content += `Thumbnail: ${page.cover.file.url}\n`
+            meta += `Thumbnail: ${page.cover.file.url}\n`
         }
-        content += `Description: ${title}のまとめ\n`
-        content += 'Published: true\n'
-        content += '---\n\n'
+        meta += `Description: ${title}のまとめ\n`
+        meta += 'Published: true\n'
+        meta += '---\n\n'
 
         // construct main content
         const blocks = await retrieveBlocks(client, page.id)
+        let content = ''
         content = await constructBlocks(client, blocks, content)
-        console.log(content)
+        content = meta + content
 
-        return { 'content': content, 'title': title }
+        return content
     } catch (error) {
         console.error(error)
     }
 }
 
-const constructBlocks = async (client, blocks, prefix = '', content = '') => {
-    for (let block of tqdm(blocks.results)) {
+const constructBlocks = async (client, blocks, prefix = '', depth = 0) => {
+    // console.log(blocks.results.length, prefix, depth)
+    let content = ''
+    let number = 0
+    for await (let block of tqdm(blocks.results)) {
         const res = await retrieveBlock(client, block.id)
+        // console.log(prefix, res.type)
+        // console.log(prefix, depth, res)
+
+        if (res.type == 'numbered_list_item') {
+            number += 1
+        } else {
+            number = 0
+        }
+
         if (res.type == 'heading_2') {
             content += `## ${aggregateTexts(res.heading_2.rich_text)}\n\n`
         } else if (res.type == 'heading_3') {
@@ -133,11 +147,22 @@ const constructBlocks = async (client, blocks, prefix = '', content = '') => {
             content += `${prefix}${aggregateTexts(res.paragraph.rich_text)}\n\n`
         } else if (res.type == 'image') {
             content += `![${res.image.caption}](${res.image.file.url})\n\n`
+        } else if (res.type == 'numbered_list_item') {
+            content += `${prefix}${number}. ${aggregateTexts(res.numbered_list_item.rich_text)}\n`
+        } else if (res.type == 'bulleted_list_item') {
+            content += `${prefix}- ${aggregateTexts(res.bulleted_list_item.rich_text)}\n`
         }
+        // console.log(content)
+
         if (res.has_children) {
             const children = await retrieveChildren(client, res.id)
-            content = await constructBlocks(client, children, prefix = '&nbsp;&nbsp;', content = content)
+            if ((res.type == 'numbered_list_item') || (res.type == 'bulleted_list_item')) {
+                content += await constructBlocks(client, children, '', depth + 1)
+            } else {
+                content += await constructBlocks(client, children, '', depth + 1)
+            }
         }
+        execSync('sleep 0.1')
     }
     return content
 }
@@ -183,9 +208,22 @@ const aggregateTexts = (texts) => {
 export const importPostFromNotion = async (out = 'pages/docs') => {
     const client = initializeClient()
     const pages = await retrievePublishedPages(client, process.env.DATABASEID)
-    for (let page of tqdm(pages.results)) {
-        const { content, title } = await notionToMarkdown(client, page.id)
-        fs.writeFileSync(path.join(out, `${title}.md`), content)
+    for await (let page of tqdm(pages.results, { sameLine: true })) {
+        let title = ''
+        for (let text of page.properties['タイトル'].title) {
+            title += text.plain_text
+        }
+        title = title.replace(/\s/g, '-')
+        let file = path.join(out, `${title}.md`)
+        let date = page.last_edited_time.slice(0, 10)
+        if ((!fs.existsSync(file)) || (!fs.readFileSync(file).toString().slice(0, 200).match(date))) {
+            const content = await notionToMarkdown(client, page.id)
+            fs.writeFileSync(file, content)
+        } else {
+            console.log(`${title}.md exists.`)
+        }
+        execSync('sleep 2')
+        // break
     }
 }
 
