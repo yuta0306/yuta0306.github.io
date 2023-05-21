@@ -98,6 +98,7 @@ const notionToMarkdown = async (client, pageId) => {
         for (let text of props['タイトル'].title) {
             title += text.plain_text
         }
+        title = title.replace(':', '\:')
         const tags = props['キーワード'].multi_select.map(res => res.name)
         meta += `Title: 【論文まとめ】${title}\n`
         meta += `Date: '${page.last_edited_time.slice(0, 10)}'\n`
