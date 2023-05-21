@@ -100,7 +100,7 @@ const notionToMarkdown = async (client, pageId) => {
         const tags = props['キーワード'].multi_select.map(res => res.name)
         content += `Title: 【論文まとめ】${title}\n`
         content += `Date: '${page.last_edited_time.slice(0, 10)}'\n`
-        content += 'Category: 論文まとめ\n'
+        content += 'Category: 論文\n'
         content += `Tags: ${tags.join(',')}\n`
         content += 'Authos: ゆうぼう\n'
         content += `Slug: ${title.replace(/\s/g, '-')}\n`
