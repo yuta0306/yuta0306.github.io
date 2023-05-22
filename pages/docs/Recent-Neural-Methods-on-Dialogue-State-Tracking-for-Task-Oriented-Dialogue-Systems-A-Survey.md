@@ -2,10 +2,10 @@
 Title: '【論文まとめ】Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Survey'
 Date: '2023-05-21'
 Category: 論文
-Tags: dialogue system,survey,DST
+Tags: [dialogue system,survey,DST]
 Authos: ゆうぼう
 Slug: Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey
-Thumbnail: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6a13b44c-3197-4abe-af23-58fa95611f92/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-03-22_17.46.56.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T182049Z&X-Amz-Expires=3600&X-Amz-Signature=2b0d0e3c914b0fdbd1d6d8962774ef2c2250c83acfcf5074b114e8b8f0b2cc52&X-Amz-SignedHeaders=host&x-id=GetObject
+Thumbnail: /images/thumbnails/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey.png
 Description: 'Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Surveyのまとめ'
 Published: true
 ---
@@ -25,9 +25,9 @@ Data State Tracking (以下DST) on Task-Oriented Dialogue Systemに焦点を当�
 本論文では，二つのDSTモデルをしっかり区別する．
 
 - static ontology DST models
-- 固定された対話状況集合を予測する
+	- 固定された対話状況集合を予測する
 - dynamic ontology DST models
-- オントロジーが変化した時でも対話状況を予測する
+	- オントロジーが変化した時でも対話状況を予測する
 
 
 Definition of ontology
@@ -131,22 +131,22 @@ $s_t = \{(FOOD, ITALIAN), (AREA, CENTRE)\}$のようになる
 slotのタイプは二つ
 
 1. informable
-対話から得られる→FOODやAREA
+		対話から得られる→FOODやAREA
 
 2. requestable
-システムが与える→ADRRESSやPHONE
+		システムが与える→ADRRESSやPHONE
 
-
+		
 
 ### Dialogue State Tracker
 
 1. turn-level prediction
-各ターンで与えられるslot-valueを予測
+	各ターンで与えられるslot-valueを予測
 
 2. dialogue-level prediction
-各ターンでの完全な対話状況を予測
+	各ターンでの完全な対話状況を予測
 
-
+	
 
 ### Turn-level prediction
 
@@ -174,7 +174,7 @@ learning to updateの場合は，turn-levelの予測を入力として，対話�
 
 ## Datasets
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a3d38be7-a154-45ca-9eb7-dc64ccd44191/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2021-10-23_12.28.45.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T182159Z&X-Amz-Expires=3600&X-Amz-Signature=be99eaffa376611036e3852a993c51417d9054fc0b4c4be95800e3134f000e4e&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/4stb497n.png)
 
 - Dialog State Tracking Challenge (DSTC)
 - DSTC2 and DSTC3
@@ -197,7 +197,7 @@ learning to updateの場合は，turn-levelの予測を入力として，対話�
 
 ## Static Ontology DST Models
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/98ee8408-1d36-4b00-9e5c-86a78778e553/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2021-10-24_10.52.45.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T182211Z&X-Amz-Expires=3600&X-Amz-Signature=2bb62448f566678805c24acd66257c26107c4ea7751669c254cfe7b3dda92772&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/672om8je.png)
 
 slot-valueは事前に定義されている
 
@@ -206,12 +206,12 @@ slot-valueは事前に定義されている
 output layerは
 
 - feed-forward layer
-- slotとvalueが固定なので，それらはembeddingされているため可能
+		- slotとvalueが固定なので，それらはembeddingされているため可能
 - softmax
-- 全てのslot-valueのペアの確率を求める
+		- 全てのslot-valueのペアの確率を求める
 - sigmoid
-- それぞれのslot-valueの確率を求める
-
+		- それぞれのslot-valueの確率を求める
+		
 
 ### Delexicalization
 
@@ -271,7 +271,7 @@ BERTなどを使うことで，捕捉できるslot valueが増えた
 
 下図は2種のアプローチを合わせたアーキテクチャ
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8d86f101-492b-4c69-a759-25fad9a9c727/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2021-10-24_10.57.18.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T182238Z&X-Amz-Expires=3600&X-Amz-Signature=a7930e45f7f862a03d3af11a21c6394584c56203546ecd6458f51c3888f48268&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/rdiiezxm.png)
 
 
 

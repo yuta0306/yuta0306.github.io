@@ -2,10 +2,10 @@
 Title: '【論文まとめ】Multimodal Humor Dataset: Predicting Laughter tracks for Sitcoms'
 Date: '2023-05-21'
 Category: 論文
-Tags: humor detection,multi-modal
+Tags: [humor detection,multi-modal]
 Authos: ゆうぼう
 Slug: Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms
-Thumbnail: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9d8a6445-fdde-46c8-b0b9-72b1f53e4491/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-10-08_21.44.00.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180328Z&X-Amz-Expires=3600&X-Amz-Signature=47425b16d3accc25b1ca817eec4d5bf1148e6cf566a7737adf14227c8da0f921&X-Amz-SignedHeaders=host&x-id=GetObject
+Thumbnail: /images/thumbnails/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms.png
 Description: 'Multimodal Humor Dataset: Predicting Laughter tracks for Sitcomsのまとめ'
 Published: true
 ---
@@ -26,11 +26,11 @@ Published: true
 
 ## 提案手法
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e9dbc394-bcf4-4316-8d7d-26b3a8df346a/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-10-09_9.54.11.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180341Z&X-Amz-Expires=3600&X-Amz-Signature=5b27ee778b4b52d926cc58b26a85b63ef0e845ca327755aed28fb3059d42d555&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/5ji863cp.png)
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f4ba132d-d530-41ca-8574-543ce3f59b7b/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-10-09_9.53.14.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180344Z&X-Amz-Expires=3600&X-Amz-Signature=9e5f87561ac85c1eda997f5e70d3637833b25116e77abd2a6af1f01e4400a41c&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/a6ag5ffd.png)
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/90a64f3d-7b08-4725-abe3-c1a208d7ef88/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-10-09_9.54.31.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180348Z&X-Amz-Expires=3600&X-Amz-Signature=2af88be8e09237c755126c35e5078a9639502857fb07a760c48c50037aa5448d&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/kb3cn377.png)
 
 ### データセットのこと
 
@@ -51,7 +51,7 @@ Attributes
 5. Dialogue Turns
 6. Dialogue Start/End time
 7. Humor Start/End time
-対話のチャンクに複数のlaughter tracksがある場合，最後のみ適用
+		対話のチャンクに複数のlaughter tracksがある場合，最後のみ適用
 
 データ分析の結果はFig 3.を参照のこと
 
@@ -59,7 +59,7 @@ Attributes
 
 ### モデルのこと
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/2362b493-1c85-4602-ba74-d181ad8ced3d/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-10-09_10.01.01.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180414Z&X-Amz-Expires=3600&X-Amz-Signature=4b9c37202b1c79aa7b8c8fd0daf1a02543384956e8839ea12043668fb8886f60&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/p09uor5z.png)
 
 ## 新規性
 
@@ -84,11 +84,11 @@ Accuracy, ROC, F1
 
 ## まとめ
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/28252124-9d19-4422-a8a3-b60fc13c8c83/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-10-09_10.08.22.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180430Z&X-Amz-Expires=3600&X-Amz-Signature=13d483e8c4cbfb256f50730b13afc36c6da8e156ebac43d3fd7feb7ac6ceadde&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/l2i7725o.png)
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5652a72f-b61e-4e35-9a75-8acc0515616b/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-10-09_10.05.11.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180432Z&X-Amz-Expires=3600&X-Amz-Signature=1265762aa3394b65c75eddd17c718fd880950065f9214246790590ceae6008ce&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/ybppt6oq.png)
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/97772d42-0cc9-4b9e-bdbe-e76c5fcc5514/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-10-09_10.05.24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180433Z&X-Amz-Expires=3600&X-Amz-Signature=c5470ae7c6d1c7389fa4ff5c3a966286463bf12e37511a2ab1e73d215e2c8f01&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/ouy806vu.png)
 
 提案手法のMSAMが強い
 
@@ -108,10 +108,10 @@ Accuracy, ROC, F1
 
 - 良いモデルはテキストと視覚的な特徴量の重みづけの仕方を正しく考慮しなければならない
 - 失敗例への対策
-- よりlong tailなユーモアにロバストにならなければいけない
-- 例）Sheldonは滅多にブランケットを羽織らない→羽織った時面白くなる
-- 知識ベースの弱さへの改善
-- sitcomsは皮肉での笑いが多い（知識がないと伝わらないことがある
+	- よりlong tailなユーモアにロバストにならなければいけない
+		- 例）Sheldonは滅多にブランケットを羽織らない→羽織った時面白くなる
+	- 知識ベースの弱さへの改善
+		- sitcomsは皮肉での笑いが多い（知識がないと伝わらないことがある
 ## その他（なぜ通ったか？等）
 
 

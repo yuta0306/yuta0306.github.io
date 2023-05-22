@@ -1,12 +1,12 @@
 ---
-Title: 【論文まとめ】Prompt-Tuning による個性を持った対話システムの構築
+Title: '【論文まとめ】Prompt-Tuning による個性を持った対話システムの構築'
 Date: '2023-05-21'
 Category: 論文
-Tags: dialogue system,persona,Prompt-Tuning
+Tags: [dialogue system,persona,Prompt-Tuning]
 Authos: ゆうぼう
 Slug: Prompt-Tuning-による個性を持った対話システムの構築
-Thumbnail: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/281f5c65-6042-478c-80e0-855ec035a28e/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-07-23_10.33.59.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T181052Z&X-Amz-Expires=3600&X-Amz-Signature=42d5012d0a794690f0bfbe583b0ba3e2d5a8874792c495151041c28896a46666&X-Amz-SignedHeaders=host&x-id=GetObject
-Description: Prompt-Tuning による個性を持った対話システムの構築のまとめ
+Thumbnail: /images/thumbnails/Prompt-Tuning-による個性を持った対話システムの構築.png
+Description: 'Prompt-Tuning による個性を持った対話システムの構築のまとめ'
 Published: true
 ---
 
@@ -22,7 +22,7 @@ Prompt-Tuningを行うことで，Fine-Tuningに比べて学習時間と計算�
 
 ## 提案手法
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5204ea56-cdd0-4764-9119-4e01ccbdd8e9/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-07-23_10.33.59.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T181058Z&X-Amz-Expires=3600&X-Amz-Signature=9000cf45f4c2f5bc1893ecbe2b371c404cf14bd2d6185517226cf873ae642995&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Prompt-Tuning-による個性を持った対話システムの構築/pgu1fn6t.png)
 
 ペルソナ情報を埋め込むトークン（Persona Info Token）用のEmbedding層を追加したTransformerモデルを提案
 
@@ -62,13 +62,13 @@ Prompt-Tuningを行うことで，Fine-Tuningに比べて学習時間と計算�
 
 ## まとめ
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/64a67a7e-011f-4829-86fc-534126a929d4/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-07-23_10.41.44.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T181118Z&X-Amz-Expires=3600&X-Amz-Signature=414ca00d2b367d75c01e95e7d3ad1350b2f8ff68726e58ebf74e1e5acbd53018&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Prompt-Tuning-による個性を持った対話システムの構築/wbqh213c.png)
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/04a389d8-4c52-4b93-8330-dc464f804940/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-07-23_10.42.02.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T181119Z&X-Amz-Expires=3600&X-Amz-Signature=f920535862f71043abb8de9459991598219daa8a0285d8f5aeec99fa4ca6f888&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Prompt-Tuning-による個性を持った対話システムの構築/fvhj0xjf.png)
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1fd80b4c-baff-4875-a6e0-b27a3c507e72/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-07-23_10.42.24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T181123Z&X-Amz-Expires=3600&X-Amz-Signature=b1a7ecd128436d08db90ed6703a0b820633c28d840f5b4c09add36e8b1609652&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Prompt-Tuning-による個性を持った対話システムの構築/eywga7bo.png)
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b3b0d288-dd48-4dfd-8ccb-48dc133197c3/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-07-23_10.42.42.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T181135Z&X-Amz-Expires=3600&X-Amz-Signature=0c264e7f7a5f808279d8d71f1f7ef93dc0ebb954e182912cf98dd9f27c435bb4&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/Prompt-Tuning-による個性を持った対話システムの構築/025fptos.png)
 
 自動評価時：distinct-{1, 2}
 

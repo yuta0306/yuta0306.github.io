@@ -1,12 +1,12 @@
 ---
-Title: 【論文まとめ】分類モデルBERTによる不整合生成文の検出について
+Title: '【論文まとめ】分類モデルBERTによる不整合生成文の検出について'
 Date: '2023-05-21'
 Category: 論文
-Tags: dialogue system,NLI
+Tags: [dialogue system,NLI]
 Authos: ゆうぼう
 Slug: 分類モデルBERTによる不整合生成文の検出について
-Thumbnail: https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3dfb04c2-e744-465a-aeed-9cab4ad06729/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-07-24_11.31.54.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180829Z&X-Amz-Expires=3600&X-Amz-Signature=3eb2d8fada149e2992803f25c3b6af6c39cb3b56c227b78ec05b99f4d1fbd5f8&X-Amz-SignedHeaders=host&x-id=GetObject
-Description: 分類モデルBERTによる不整合生成文の検出についてのまとめ
+Thumbnail: /images/thumbnails/分類モデルBERTによる不整合生成文の検出について.png
+Description: '分類モデルBERTによる不整合生成文の検出についてのまとめ'
 Published: true
 ---
 
@@ -20,9 +20,9 @@ Published: true
 
 ## 提案手法
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1ed54194-49ae-452a-bf7d-f6347059b77d/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-07-24_11.31.54.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180835Z&X-Amz-Expires=3600&X-Amz-Signature=3313f664bedc7bbe7770df24928aa928875a8fceda3a3a68226c86a486b594df&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/分類モデルBERTによる不整合生成文の検出について/3yvc34dk.png)
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b4af1da4-7869-4522-b00c-01a2ee36936b/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2022-07-24_11.32.42.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230521%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230521T180836Z&X-Amz-Expires=3600&X-Amz-Signature=bbc96bd6864d164e79750b72b8df5dcf30bb6d7f70817a46fae2e49769f3ca0a&X-Amz-SignedHeaders=host&x-id=GetObject)
+![](/images/article/分類モデルBERTによる不整合生成文の検出について/uawznug3.png)
 
 特に数値データに対してロバストなモデルになるよう学習するため，知識に数値が含まれる「料金情報」「アクセス情報」「営業時間情報」の3カテゴリに絞って学習に用いる
 

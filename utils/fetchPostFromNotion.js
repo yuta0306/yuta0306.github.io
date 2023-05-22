@@ -99,14 +99,26 @@ const notionToMarkdown = async (client, pageId) => {
             title += text.plain_text
         }
         const tags = props['キーワード'].multi_select.map(res => res.name)
+        const slug = title.replace(/\s/g, '-').replace(/:/g, '')
+        if (fs.existsSync(`public/images/article/${slug}`)) {
+            fs.rmdirSync(`public/images/article/${slug}`, { recursive: true })
+        }
+        fs.mkdirSync(`public/images/article/${slug}`)
         meta += `Title: '【論文まとめ】${title}'\n`
         meta += `Date: '${page.last_edited_time.slice(0, 10)}'\n`
         meta += 'Category: 論文\n'
         meta += `Tags: [${tags.join(',')}]\n`
         meta += 'Authos: ゆうぼう\n'
-        meta += `Slug: ${title.replace(/\s/g, '-').replace(':', '')}\n`
+        meta += `Slug: ${slug}\n`
         if (page.cover) {
-            meta += `Thumbnail: ${page.cover.file.url}\n`
+            let ext;
+            if (page.cover.file.url.match(/\.png/)) {
+                ext = 'png'
+            } else {
+                ext = 'jpg'
+            }
+            execSync(`curl '${page.cover.file.url}' -o public/images/thumbnails/${slug}.${ext}`)
+            meta += `Thumbnail: /images/thumbnails/${slug}.${ext}\n`
         }
         meta += `Description: '${title}のまとめ'\n`
         meta += 'Published: true\n'
@@ -115,7 +127,7 @@ const notionToMarkdown = async (client, pageId) => {
         // construct main content
         const blocks = await retrieveBlocks(client, page.id)
         let content = ''
-        content = await constructBlocks(client, blocks, content)
+        content = await constructBlocks(client, blocks, slug)
         content = meta + content
 
         return content
@@ -124,7 +136,7 @@ const notionToMarkdown = async (client, pageId) => {
     }
 }
 
-const constructBlocks = async (client, blocks, prefix = '', depth = 0) => {
+const constructBlocks = async (client, blocks, slug, prefix = '', depth = 0) => {
     // console.log(blocks.results.length, prefix, depth)
     let content = ''
     let number = 0
@@ -146,7 +158,15 @@ const constructBlocks = async (client, blocks, prefix = '', depth = 0) => {
         } else if (res.type == 'paragraph') {
             content += `${prefix}${aggregateTexts(res.paragraph.rich_text)}\n\n`
         } else if (res.type == 'image') {
-            content += `![${res.image.caption}](${res.image.file.url})\n\n`
+            const cover = Math.random().toString(36).slice(-8)
+            let ext;
+            if (res.image.file.url.match(/\.png/)) {
+                ext = 'png'
+            } else {
+                ext = 'jpg'
+            }
+            execSync(`curl '${res.image.file.url}' -o public/images/article/${slug}/${cover}.${ext}`)
+            content += `![${res.image.caption}](/images/article/${slug}/${cover}.${ext})\n\n`
         } else if (res.type == 'numbered_list_item') {
             content += `${prefix}${number}. ${aggregateTexts(res.numbered_list_item.rich_text)}\n`
         } else if (res.type == 'bulleted_list_item') {
@@ -157,9 +177,9 @@ const constructBlocks = async (client, blocks, prefix = '', depth = 0) => {
         if (res.has_children) {
             const children = await retrieveChildren(client, res.id)
             if ((res.type == 'numbered_list_item') || (res.type == 'bulleted_list_item')) {
-                content += await constructBlocks(client, children, '', depth + 1)
+                content += await constructBlocks(client, children, slug, '\t'.repeat(depth + 1), depth + 1)
             } else {
-                content += await constructBlocks(client, children, '', depth + 1)
+                content += await constructBlocks(client, children, slug, '', depth + 1)
             }
         }
         execSync('sleep 0.1')
@@ -213,17 +233,19 @@ export const importPostFromNotion = async (out = 'pages/docs') => {
         for (let text of page.properties['タイトル'].title) {
             title += text.plain_text
         }
-        title = title.replace(/\s/g, '-')
+        console.log('collecting', title)
+        title = title.replace(/\s/g, '-').replace(/:/g, '')
         let file = path.join(out, `${title}.md`)
         let date = page.last_edited_time.slice(0, 10)
         if ((!fs.existsSync(file)) || (!fs.readFileSync(file).toString().slice(0, 200).match(date))) {
+            // if (true) {
             const content = await notionToMarkdown(client, page.id)
+            // console.log(content)
             fs.writeFileSync(file, content)
         } else {
             console.log(`${title}.md exists.`)
         }
         execSync('sleep 2')
-        // break
     }
 }
 
