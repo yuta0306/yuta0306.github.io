@@ -138,42 +138,6 @@ Accuracy, ROC, F1
 
 ## 次読みたい論文
 
-
-
-Here is a summary of the paper based on the web search results:
-
-## Title: Multimodal Humor Dataset: Predicting Laughter tracks for Sitcoms
-URL: [https://ieeexplore.ieee.org/document/9423266](https://ieeexplore.ieee.org/document/9423266)
-Conference or Journal: 2021 IEEE Winter Conference on Applications of Computer Vision (WACV)
-Published at: 14 June 2021
-Keywords: multimodal humor, laughter prediction, sitcoms, Big Bang Theory, self-attention
-Cited by: 0 (as of 27 April 2023)
-
-The paper aims to automate the task of adding laughter tracks to sitcoms by annotating an existing sitcom (Big Bang Theory) and evaluating various state-of-the-art baselines. The paper also proposes a novel multimodal self-attention based model that outperforms other models.
-
-The paper introduces a new dataset and task of predicting laughter tracks for sitcoms, which is a challenging semantic and practical problem. The paper also proposes a novel multimodal self-attention based model that leverages both text and video modalities.
-
-The proposed method consists of three main components: a multimodal encoder, a self-attention layer, and a binary classifier. The multimodal encoder encodes the text and video features separately using LSTM and CNN respectively, and then concatenates them. The self-attention layer computes the attention weights for each modality and each time step, and then applies them to the encoded features. The binary classifier takes the attended features as input and outputs a probability of laughter for each time step.
-
-The paper conducts experiments on the Big Bang Theory dataset, which contains 10 episodes from season 1 with manual annotations of laughter tracks. The paper compares the proposed method with several baselines, including LSTM, BERT, CNN-LSTM, and CNN-BERT. The paper uses accuracy, precision, recall, F1-score, and ROC-AUC as evaluation metrics.
-
-The paper reports that the proposed method achieves the best performance on all metrics, followed by CNN-LSTM and CNN-BERT. The paper also shows that using both text and video modalities improves the performance over using only one modality. The paper further analyzes the attention weights and finds that they are able to capture some humorous cues in the text and video.
-
-The paper concludes that predicting laughter tracks for sitcoms is a novel and interesting task that requires multimodal understanding of humor. The paper also concludes that the proposed multimodal self-attention based model is effective and interpretable for this task.
-
-Some possible papers to read next are:
-
-- Humor Recognition using Deep Learning by Weller et al., 2019
-- A Multimodal Dataset for Authoring and Editing Jokes by Chakrabarty et al., 2020
-- Multimodal Transformer Networks for End-to-End Video-Grounded Dialogue Systems by Le et al., 2019
-ソース: Bing との会話 2023/4/27(1) Multimodal Humor Dataset: Predicting Laughter tracks for .... [https://ieeexplore.ieee.org/document/9423266](https://ieeexplore.ieee.org/document/9423266) アクセス日時 2023/4/27.
-(2) Multimodal humor dataset: Predicting laughter tracks for sitcoms. [https://researchportal.bath.ac.uk/en/publications/multimodal-humor-dataset-predicting-laughter-tracks-for-sitcoms](https://researchportal.bath.ac.uk/en/publications/multimodal-humor-dataset-predicting-laughter-tracks-for-sitcoms) アクセス日時 2023/4/27.
-(3) Multimodal Humor Dataset: Predicting Laughter Tracks for .... [https://openaccess.thecvf.com/content/WACV2021/html/Patro_Multimodal_Humor_Dataset_Predicting_Laughter_Tracks_for_Sitcoms_WACV_2021_paper.html](https://openaccess.thecvf.com/content/WACV2021/html/Patro_Multimodal_Humor_Dataset_Predicting_Laughter_Tracks_for_Sitcoms_WACV_2021_paper.html) アクセス日時 2023/4/27.
-(4) Multimodal Humor Dataset: Predicting Laughter tracks for .... [https://www.semanticscholar.org/paper/Multimodal-Humor-Dataset%3A-Predicting-Laughter-for-Patro-Lunayach/a8cd2a93dc7f798e0c5280f2e7bc3fdc66bc4c22](https://www.semanticscholar.org/paper/Multimodal-Humor-Dataset%3A-Predicting-Laughter-for-Patro-Lunayach/a8cd2a93dc7f798e0c5280f2e7bc3fdc66bc4c22) アクセス日時 2023/4/27.
-
-
-
-
 ## 引用
 
 > @INPROCEEDINGS{9423266, author={Patro, Badri N. and Lunayach, Mayank and Srivastava, Deepankar and Sarvesh, Sarvesh and Singh, Hunar and Namboodiri, Vinay P.}, booktitle={2021 IEEE Winter Conference on Applications of Computer Vision (WACV)}, title={Multimodal Humor Dataset: Predicting Laughter tracks for Sitcoms}, year={2021}, volume={}, number={}, pages={576-585}, doi={10.1109/WACV48630.2021.00062}}
