@@ -10,6 +10,26 @@ Description: 'Multimodal Humor Dataset: Predicting Laughter tracks for Sitcoms�
 Published: true
 ---
 
+本記事において使用される図表は，原著論文内の図表を引用しています．
+
+また，本記事の内容は，著者が論文を読み，メモとして短くまとめたものになります．必ずしも内容が正しいとは限らないこと，ご了承ください．
+
+## 論文情報
+
+タイトル: Multimodal Humor Dataset: Predicting Laughter tracks for Sitcoms
+
+研究会: WACV
+
+年度: 2021
+
+キーワード: humor detection, multi-modal
+
+URL: [https://openaccess.thecvf.com/content/WACV2021/papers/Patro_Multimodal_Humor_Dataset_Predicting_Laughter_Tracks_for_Sitcoms_WACV_2021_paper.pdf](https://openaccess.thecvf.com/content/WACV2021/papers/Patro_Multimodal_Humor_Dataset_Predicting_Laughter_Tracks_for_Sitcoms_WACV_2021_paper.pdf)
+
+DOI: [http://dx.doi.org/10.1109/WACV48630.2021.00062](http://dx.doi.org/10.1109/WACV48630.2021.00062)
+
+データセット: MHD (Multimodal Humor Dataset)
+
 ## 概要
 
 マルチモダールなユーモアデータセット(**MHD; Multimodal Humor Dataset**)（The Big Bang Theoryを使用）を構築
@@ -26,11 +46,11 @@ Published: true
 
 ## 提案手法
 
-![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/5ji863cp.png)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/w0i199qh.png)
 
-![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/a6ag5ffd.png)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/ak7naea6.png)
 
-![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/kb3cn377.png)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/sl4l2p5h.png)
 
 ### データセットのこと
 
@@ -59,7 +79,7 @@ Attributes
 
 ### モデルのこと
 
-![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/p09uor5z.png)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/ve5n04t6.png)
 
 ## 新規性
 
@@ -84,11 +104,11 @@ Accuracy, ROC, F1
 
 ## まとめ
 
-![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/l2i7725o.png)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/nlp8wlr7.png)
 
-![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/ybppt6oq.png)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/flj6yume.png)
 
-![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/ouy806vu.png)
+![](/images/article/Multimodal-Humor-Dataset-Predicting-Laughter-tracks-for-Sitcoms/rizjcdv5.png)
 
 提案手法のMSAMが強い
 
@@ -153,3 +173,7 @@ Some possible papers to read next are:
 
 
 
+
+## 引用
+
+> @INPROCEEDINGS{9423266, author={Patro, Badri N. and Lunayach, Mayank and Srivastava, Deepankar and Sarvesh, Sarvesh and Singh, Hunar and Namboodiri, Vinay P.}, booktitle={2021 IEEE Winter Conference on Applications of Computer Vision (WACV)}, title={Multimodal Humor Dataset: Predicting Laughter tracks for Sitcoms}, year={2021}, volume={}, number={}, pages={576-585}, doi={10.1109/WACV48630.2021.00062}}

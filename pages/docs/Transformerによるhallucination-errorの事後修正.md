@@ -10,6 +10,24 @@ Description: 'Transformerによるhallucination errorの事後修正のまとめ
 Published: true
 ---
 
+本記事において使用される図表は，原著論文内の図表を引用しています．
+
+また，本記事の内容は，著者が論文を読み，メモとして短くまとめたものになります．必ずしも内容が正しいとは限らないこと，ご了承ください．
+
+## 論文情報
+
+タイトル: Transformerによるhallucination errorの事後修正
+
+研究会: NLP
+
+年度: 2022
+
+キーワード: dialogue system
+
+URL: [https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/B2-5.pdf](https://www.anlp.jp/proceedings/annual_meeting/2022/pdf_dir/B2-5.pdf)
+
+データセット: 
+
 ## 概要
 
 文生成時に与えた外部知識と異なる内容の発話文を生成してしまうhallucination errorが課題
@@ -20,7 +38,7 @@ Published: true
 
 ## 提案手法
 
-![](/images/article/Transformerによるhallucination-errorの事後修正/mcv9xkpt.png)
+![](/images/article/Transformerによるhallucination-errorの事後修正/seiwj31o.png)
 
 一つの発話文と知識源のペアをテンプレートとして複数のデータを疑似的に作成することで，各知識とカテゴリごとに40000件の発話ぶんと知識源のペアを作成
 
@@ -58,9 +76,9 @@ Faithfulness／BLEU-4 score
 
 ## まとめ
 
-![](/images/article/Transformerによるhallucination-errorの事後修正/k7qacfo8.png)
+![](/images/article/Transformerによるhallucination-errorの事後修正/kl305xy2.png)
 
-![](/images/article/Transformerによるhallucination-errorの事後修正/0zm11j0x.png)
+![](/images/article/Transformerによるhallucination-errorの事後修正/76t0zx7b.png)
 
 BLEU-4は「数値が異なる」みたいな単純なhallucination errorは正しく評価できていないのでは？
 
@@ -68,7 +86,7 @@ BARTとTransformerの大きな精度差はおそらくパラメータ数と事�
 
 
 
-![](/images/article/Transformerによるhallucination-errorの事後修正/3osmf6lo.png)
+![](/images/article/Transformerによるhallucination-errorの事後修正/p9noavar.png)
 
 知識源に出現するエンティティの順序とモデルの主直に出現するエンティティの順序が同じ
 
@@ -88,3 +106,7 @@ HE修正学習データセットの基となるデータの収集
 
 ## 次読みたい論文
 
+
+## 引用
+
+> 

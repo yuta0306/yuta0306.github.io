@@ -10,6 +10,26 @@ Description: 'Multi-Hop Transformer for Document-Level Machine Translationのま
 Published: true
 ---
 
+本記事において使用される図表は，原著論文内の図表を引用しています．
+
+また，本記事の内容は，著者が論文を読み，メモとして短くまとめたものになります．必ずしも内容が正しいとは限らないこと，ご了承ください．
+
+## 論文情報
+
+タイトル: Multi-Hop Transformer for Document-Level Machine Translation
+
+研究会: NAACL
+
+年度: 2021
+
+キーワード: MT, transformer, Multi-Hop Transformer
+
+URL: [https://aclanthology.org/2021.naacl-main.309.pdf](https://aclanthology.org/2021.naacl-main.309.pdf)
+
+DOI: [http://dx.doi.org/10.18653/v1/2021.naacl-main.309](http://dx.doi.org/10.18653/v1/2021.naacl-main.309)
+
+データセット: TED Talk, OpenSubtitles, Europarl7
+
 ## 概要
 
 Document-level neural machine translationにおいて，Multi-Hopなアーキテクチャを導入することにより，従来手法と比べて精度の高い文脈を考慮した機械翻訳を実現
@@ -20,7 +40,7 @@ Document-level neural machine translationにおいて，Multi-Hopなアーキテ
 
 ## 提案手法
 
-![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/m53mefg3.png)
+![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/p7s4t8vi.png)
 
 アーキテクチャ周りのこと
 
@@ -80,19 +100,19 @@ CADec
 
 ## まとめ
 
-![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/ttppissj.png)
+![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/am19iape.png)
 
 large-scaleな事前学習済み言語モデルを使用することなく，SoTA翻訳クオリティを達成
 
 
 
-![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/5tcp1vq8.png)
+![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/z4jm21k3.png)
 
 contextを付与するためのAttentionの構造は，ConcatやHierarchicalよりもMulti-HopなAttentionが効果があり
 
 
 
-![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/02f89lfl.png)
+![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/tito19hb.png)
 
 contextを考慮する幅のwindow sizeは大きくするほど効果が上がるわけではなく．3が最も良かった
 
@@ -100,13 +120,13 @@ contextを考慮する幅のwindow sizeは大きくするほど効果が上が�
 
 
 
-![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/0ea5zzmc.png)
+![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/pc76zuqn.png)
 
 contextにおいてreasoningするときの方向は，一般的な読み順の通りleft-to-rightで順方向にreasoningさせた方が結果は良かった
 
 
 
-![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/dxq6ycal.png)
+![](/images/article/Multi-Hop-Transformer-for-Document-Level-Machine-Translation/bx5z85gj.png)
 
 訓練時と推論時にtarget draftに与える文章が異なる問題への対処に関する実験結果
 
@@ -124,3 +144,24 @@ Draftの方が結果がよく，pre-trained MT systemの生成結果をtarget dr
 
 
 
+
+## 引用
+
+> @inproceedings{zhang-etal-2021-multi,
+title = "Multi-Hop Transformer for Document-Level Machine Translation",
+author = "Zhang, Long and
+Zhang, Tong and
+Zhang, Haibo and
+Yang, Baosong and
+Ye, Wei and
+Zhang, Shikun",
+booktitle = "Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+month = jun,
+year = "2021",
+address = "Online",
+publisher = "Association for Computational Linguistics",
+url = "[https://aclanthology.org/2021.naacl-main.309](https://aclanthology.org/2021.naacl-main.309)",
+doi = "10.18653/v1/2021.naacl-main.309",
+pages = "3953--3963",
+abstract = "Document-level neural machine translation (NMT) has proven to be of profound value for its effectiveness on capturing contextual information. Nevertheless, existing approaches 1) simply introduce the representations of context sentences without explicitly characterizing the inter-sentence reasoning process; and 2) feed ground-truth target contexts as extra inputs at the training time, thus facing the problem of exposure bias. We approach these problems with an inspiration from human behavior {--} human translators ordinarily emerge a translation draft in their mind and progressively revise it according to the reasoning in discourse. To this end, we propose a novel Multi-Hop Transformer (MHT) which offers NMT abilities to explicitly model the human-like draft-editing and reasoning process. Specifically, our model serves the sentence-level translation as a draft and properly refines its representations by attending to multiple antecedent sentences iteratively. Experiments on four widely used document translation tasks demonstrate that our method can significantly improve document-level translation performance and can tackle discourse phenomena, such as coreference error and the problem of polysemy.",
+}

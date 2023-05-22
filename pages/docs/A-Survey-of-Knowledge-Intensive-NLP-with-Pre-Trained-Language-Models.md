@@ -10,6 +10,26 @@ Description: 'A Survey of Knowledge-Intensive NLP with Pre-Trained Language Mode
 Published: true
 ---
 
+本記事において使用される図表は，原著論文内の図表を引用しています．
+
+また，本記事の内容は，著者が論文を読み，メモとして短くまとめたものになります．必ずしも内容が正しいとは限らないこと，ご了承ください．
+
+## 論文情報
+
+タイトル: A Survey of Knowledge-Intensive NLP with Pre-Trained Language Models
+
+研究会: arxiv
+
+年度: 2022
+
+キーワード: survey, NLP, knowledge-base, PLMKE, commonsense, encyclopedic, Knowledge-Intensive NLP
+
+URL: [https://arxiv.org/pdf/2202.08772.pdf](https://arxiv.org/pdf/2202.08772.pdf)
+
+DOI: [https://doi.org/10.48550/arXiv.2202.08772](https://doi.org/10.48550/arXiv.2202.08772)
+
+データセット: 
+
 まとめること
 
 1. Knowledge-Intensive NLPの概要
@@ -106,7 +126,7 @@ commonsenseもtripletsで表現される
 
 ### Knowledge Sourcesの特徴
 
-![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/uthim0s7.png)
+![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/gcgqsmdk.png)
 
 large-scaleでdiverse
 
@@ -142,7 +162,7 @@ ATOMICやASERはある特定のタイプのcommonsenseにフォーカスした�
 
 Knowledge-intensive NLP taskは必要とする知識ソースの種類で2つに分けられ，さらに詳細に分けることができる
 
-![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/gqzadptj.png)
+![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/ju1lqjam.png)
 
 - encyclopedic knowledge-intensive NLP task
 	encyclopedicの知識ソースを利用する
@@ -150,7 +170,7 @@ Knowledge-intensive NLP taskは必要とする知識ソースの種類で2つに
 	- open-domain QA
 	- fact verification
 	- entity linking
-![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/62ojprnq.png)
+![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/kr89pm58.png)
 
 - commonsense knowledge-intensive NLP task
 	commonsenseの知識ソースを利用する
@@ -189,7 +209,7 @@ Knowledge-intensive NLP taskは必要とする知識ソースの種類で2つに
 
 ### Pre-Fusion Methods
 
-![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/kb8yzih8.png)
+![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/z4lvh39q.png)
 
 pre-trainingのステージで知識を統合する手法
 
@@ -211,7 +231,7 @@ Zhang et al. 2019 | Agarwal et al. 2021 を参照（必要になれば読む
 
 ### Post-Fusion Methods
 
-![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/m33733t8.png)
+![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/bshr899d.png)
 
 まず，関連知識をキャプチャする
 
@@ -223,7 +243,7 @@ Zhang et al. 2019 | Agarwal et al. 2021 を参照（必要になれば読む
 
 ### Hybrid-Fusion Methods
 
-![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/6xhcy94c.png)
+![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/1yg24grj.png)
 
 pre-trainingとfine-tuningの両方のステージで知識を統合する
 
@@ -239,9 +259,9 @@ retrieval-augmented pre-trainingでhybrid-fusionが広く使われている
 
 ### 代表的なモデル
 
-![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/codzwuzx.png)
+![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/xh93uokd.png)
 
-![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/myiyapki.png)
+![](/images/article/A-Survey-of-Knowledge-Intensive-NLP-with-Pre-Trained-Language-Models/cl36oka6.png)
 
 Table4/5はSOTAモデルを示す
 
@@ -261,3 +281,85 @@ pre-fusionは，知識を事前学習のパラメータに暗示的に保存数�
 
 知識の引き出しや利用の難しさが増す
 
+post-fusionは，明示的で具体的なテキストの知識を推論できる
+
+post-fusionの利点は，commonsense knolwedge-intensive taskでは欠点になりうる
+
+
+
+commonsenseはたいていテキストの中に暗示的に置かれていて，commonsenseの知識ソースのカバー範囲はencyclopedicの知識ソースのカバー範囲に比べればとても小さい
+
+large-scaleなcommonsenseのソースの利用がたとえ有用だとしても，日常生活で使われる大半のcommonsenseを見落としがちなまま
+
+→commonsenseにおいて，post-fusionがあまり効かないのはそのためなのでは？
+
+
+
+## Challenges and Future Directions
+
+### Unified PLMKEs Across Tasks and Domains
+
+task-specificなモデリングでは進展がある
+
+post-fusionとhybrid-fusionはencyclopedicで適用されているが，commonsenseでは採用できておらず恩恵が得られていない
+
+
+
+異なるタスク間でのPLMKEsはユニークであるため，各タスク間で互換性がない
+
+biomedicalやlegalの知識に関するknowledge-intensive NLP taskまで拡張されている
+
+
+
+最近では，異なる時間や地域に存在する知識の多様性に対しても重要度を割り当てている
+
+
+
+タスク間やdomain間でのunified PLMKEsの必要性がましている
+
+
+
+### Reliability of Kowledge Sources
+
+知識ソースの信頼性に関して
+
+多くのlarge-scaleな知識ソースは自動的な知識獲得アルゴリズムで構築されている
+
+→スケールと正確性はトレードオフになってしまう
+
+
+
+PLMKEsにおけるバイアスの増幅はバイアスのある知識ソースによって構築されてしまう
+
+
+
+知識獲得アルゴリズムの見直しや使う前の知識ソースの注意深い精査が必要である
+
+
+
+### Reasoning Module Design
+
+Reasoningはknowledge-intensive NLP taskを解く上で重要なステップである
+
+
+
+commonsenseを考えるときは手順を踏んで，複雑な状況を把握する
+
+e.g. <Someone spilled the food all over the floor>
+
+まず，床が綺麗でないことを把握
+
+こぼした食べ物を踏んで他の人の靴が汚くなったのだろうと考える
+
+↑上記状況を踏まえて，モップをかける意図が生まれる
+
+
+
+人間のような日々の状況を認識する能力を獲得するには，multi-hopなreasoning moduleが必要になる（上の例みたいな形
+
+
+
+
+## 引用
+
+> 

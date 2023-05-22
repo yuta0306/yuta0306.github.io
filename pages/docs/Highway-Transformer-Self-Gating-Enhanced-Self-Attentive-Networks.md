@@ -10,6 +10,28 @@ Description: 'Highway Transformer: Self-Gating Enhanced Self-Attentive Networks�
 Published: true
 ---
 
+本記事において使用される図表は，原著論文内の図表を引用しています．
+
+また，本記事の内容は，著者が論文を読み，メモとして短くまとめたものになります．必ずしも内容が正しいとは限らないこと，ご了承ください．
+
+## 論文情報
+
+タイトル: Highway Transformer: Self-Gating Enhanced Self-Attentive Networks
+
+研究会: ACL
+
+年度: 2020
+
+キーワード: transformer, Highway Transformer, Gating Mechanism, Self-Dependency-Units (SDU)
+
+URL: [https://aclanthology.org/2020.acl-main.616.pdf](https://aclanthology.org/2020.acl-main.616.pdf)
+
+DOI: [http://dx.doi.org/10.18653/v1/2020.acl-main.616](http://dx.doi.org/10.18653/v1/2020.acl-main.616)
+
+コード: [https://github.com/cyk1337/Highway-Transformer](https://github.com/cyk1337/Highway-Transformer)
+
+データセット: Penn Tree Bank (PTB), enwik8
+
 ## 概要
 
 LSTM-styleなSDUを提案
@@ -18,7 +40,7 @@ LSTM-styleなSDUを提案
 
 ## 提案手法
 
-![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/8k6bi4pv.png)
+![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/qrpajdel.png)
 
 ### Self-Dependency Units (SDU)
 
@@ -55,23 +77,23 @@ sigmoidとtanhを実験
 
 ## まとめ
 
-![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/wkvb0w3b.png)
+![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/op874d4u.png)
 
-![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/78a3mp9o.png)
+![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/e99q8luh.png)
 
-![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/44cjh1ml.png)
+![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/4xk5l3fv.png)
 
-![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/pyc6iyml.png)
+![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/gen0ole9.png)
 
-![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/pn7oohqa.png)
+![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/bjrucnwe.png)
 
-![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/jq3ijo8p.png)
+![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/4fv3x3v3.png)
 
 
 
-![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/jqxalgb9.png)
+![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/c6hfqjx9.png)
 
-![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/w2x338gk.png)
+![](/images/article/Highway-Transformer-Self-Gating-Enhanced-Self-Attentive-Networks/aptzk9jc.png)
 
 sigmoidによるSDUが安定しているが，データとタスクによってはtanhの方がoutperformすることがある
 
@@ -91,3 +113,21 @@ SDUで計算量が増えるが，そこまで差はなかった
 
 ## 次読みたい論文
 
+
+## 引用
+
+> @inproceedings{chai-etal-2020-highway,
+    title = "Highway Transformer: Self-Gating Enhanced Self-Attentive Networks",
+    author = "Chai, Yekun  and
+      Jin, Shuo  and
+      Hou, Xinwen",
+    booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+    month = jul,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2020.acl-main.616",
+    doi = "10.18653/v1/2020.acl-main.616",
+    pages = "6887--6900",
+    abstract = "Self-attention mechanisms have made striking state-of-the-art (SOTA) progress in various sequence learning tasks, standing on the multi-headed dot product attention by attending to all the global contexts at different locations. Through a pseudo information highway, we introduce a gated component self-dependency units (SDU) that incorporates LSTM-styled gating units to replenish internal semantic importance within the multi-dimensional latent space of individual representations. The subsidiary content-based SDU gates allow for the information flow of modulated latent embeddings through skipped connections, leading to a clear margin of convergence speed with gradient descent algorithms. We may unveil the role of gating mechanism to aid in the context-based Transformer modules, with hypothesizing that SDU gates, especially on shallow layers, could push it faster to step towards suboptimal points during the optimization process.",
+}

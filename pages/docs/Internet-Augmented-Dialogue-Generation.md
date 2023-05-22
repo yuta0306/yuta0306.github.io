@@ -10,6 +10,26 @@ Description: 'Internet-Augmented Dialogue Generationのまとめ'
 Published: true
 ---
 
+本記事において使用される図表は，原著論文内の図表を引用しています．
+
+また，本記事の内容は，著者が論文を読み，メモとして短くまとめたものになります．必ずしも内容が正しいとは限らないこと，ご了承ください．
+
+## 論文情報
+
+タイトル: Internet-Augmented Dialogue Generation
+
+研究会: ACL
+
+年度: 2022
+
+キーワード: dialogue system, Internet-Augmented
+
+URL: [https://aclanthology.org/2022.acl-long.579.pdf](https://aclanthology.org/2022.acl-long.579.pdf)
+
+DOI: [http://dx.doi.org/10.18653/v1/2022.acl-long.579](http://dx.doi.org/10.18653/v1/2022.acl-long.579)
+
+データセット: Topical-Chat, Wizard of Wikipedia
+
 ## 概要
 
 検索クエリを生成し，Bing検索の結果をもとに応答生成を行うことで，大規模言語モデルの抱えるhallucinationの問題を軽減しつつ，up-to-the-minute relavent informationを導入した生成を可能にする．
@@ -80,15 +100,15 @@ Knowledge F1 (KF1)
 
 KF1が高く，F1が低いと知識には富んでいるが，会話能力は低
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/lt8850nl.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/l7s7sphq.png)
 
 Table 3からBART-largeを全てのモデルのPLMベースとして採用
 
 ## まとめ
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/tbyqxztp.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/ixgpnink.png)
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/wyjx5nat.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/128zhnye.png)
 
 
 
@@ -98,11 +118,11 @@ Table 3からBART-largeを全てのモデルのPLMベースとして採用
 
 ### Datasetの概要
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/icteiwo8.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/c1e96cpy.png)
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/mbvtnn6p.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/upaxz8vo.png)
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/spel8pnl.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/w6dyemsg.png)
 
 
 
@@ -120,21 +140,39 @@ Apprenticeはペルソナを選び，そのもとでチャット
 
 ### データ収集インターフェース
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/22i3jadd.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/z4f9ivph.png)
 
 ### 対話例
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/7mtbmihj.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/xaxs9n1p.png)
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/cnh8ewk2.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/7wk8s9an.png)
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/rl5n1b19.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/gktrd3cq.png)
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/isojpxom.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/5onmd3g5.png)
 
-![](/images/article/Internet-Augmented-Dialogue-Generation/ku1jmqb4.png)
+![](/images/article/Internet-Augmented-Dialogue-Generation/el45rvtq.png)
 
 
 
 ## 次読みたい論文
 
+
+## 引用
+
+> @inproceedings{komeili-etal-2022-internet,
+title = "{I}nternet-Augmented Dialogue Generation",
+author = "Komeili, Mojtaba and
+Shuster, Kurt and
+Weston, Jason",
+booktitle = "Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+month = may,
+year = "2022",
+address = "Dublin, Ireland",
+publisher = "Association for Computational Linguistics",
+url = "[https://aclanthology.org/2022.acl-long.579](https://aclanthology.org/2022.acl-long.579)",
+doi = "10.18653/v1/2022.acl-long.579",
+pages = "8460--8478",
+abstract = "The largest store of continually updating knowledge on our planet can be accessed via internet search. In this work we study giving access to this information to conversational agents. Large language models, even though they store an impressive amount of knowledge within their weights, are known to hallucinate facts when generating dialogue (Shuster et al., 2021); moreover, those facts are frozen in time at the point of model training. In contrast, we propose an approach that learns to generate an internet search query based on the context, and then conditions on the search results to finally generate a response, a method that can employ up-to-the-minute relevant information. We train and evaluate such models on a newly collected dataset of human-human conversations whereby one of the speakers is given access to internet search during knowledgedriven discussions in order to ground their responses. We find that search-query based access of the internet in conversation provides superior performance compared to existing approaches that either use no augmentation or FAISS-based retrieval (Lewis et al., 2020b).",
+}

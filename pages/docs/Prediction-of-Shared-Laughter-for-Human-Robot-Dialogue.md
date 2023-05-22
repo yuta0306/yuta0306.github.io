@@ -10,13 +10,33 @@ Description: 'Prediction of Shared Laughter for Human-Robot Dialogueのまとめ
 Published: true
 ---
 
+本記事において使用される図表は，原著論文内の図表を引用しています．
+
+また，本記事の内容は，著者が論文を読み，メモとして短くまとめたものになります．必ずしも内容が正しいとは限らないこと，ご了承ください．
+
+## 論文情報
+
+タイトル: Prediction of Shared Laughter for Human-Robot Dialogue
+
+研究会: ICMI
+
+年度: 2020
+
+キーワード: laughter, shared laughter
+
+URL: [http://sap.ist.i.kyoto-u.ac.jp/lab/bib/intl/LAL-ICMI20.pdf](http://sap.ist.i.kyoto-u.ac.jp/lab/bib/intl/LAL-ICMI20.pdf)
+
+DOI: [https://doi.org/10.1145/3395035.3425265](https://doi.org/10.1145/3395035.3425265)
+
+データセット: 
+
 ## 提案手法
 
 会話ロボットがshared laughterを自動生成することを目的にする
 
 ### Shared Laughter Model
 
-![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/ubc1bfll.png)
+![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/ktkpx7fr.png)
 
 ユーザの最初の笑いを検知して，システムが笑うモデル
 
@@ -45,9 +65,9 @@ teleoperateしたのは女性
 			1. 笑い単体で起こる笑い
 2. speech laugh
 			1. 話しながら起こる笑い
-![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/xjk3e31y.png)
+![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/ztqx5kie.png)
 
-![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/tlll3y5c.png)
+![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/pncunm6h.png)
 
 集まったデータの中で，1206件のinitial laughが確認
 
@@ -79,15 +99,15 @@ LR／SVM
 
 ## 評価方法
 
-![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/9wovt6te.png)
+![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/1mjd5yfi.png)
 
 オフラインとオンラインの二つのタイプで評価
 
 
 
-![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/uj5g5yqc.png)
+![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/my7ehxxr.png)
 
-![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/hgmm1f5x.png)
+![](/images/article/Prediction-of-Shared-Laughter-for-Human-Robot-Dialogue/5m9f1ed7.png)
 
 特徴量としてlaughter typeを加えることでrecallが改善する傾向
 
@@ -115,3 +135,23 @@ shared laughterのタイミングについてはかけた研究である
 
 
 
+
+## 引用
+
+> *@inproceedings{10.1145/3395035.3425265,
+author = {Lala, Divesh and Inoue, Koji and Kawahara, Tatsuya},
+title = {Prediction of Shared Laughter for Human-Robot Dialogue},
+year = {2020},
+isbn = {9781450380027},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3395035.3425265},
+doi = {10.1145/3395035.3425265},
+abstract = {Shared laughter is a phenomenon in face-to-face human dialogue which increases engagement and rapport, and so should be considered for conversation robots and agents. Our aim is to create a model of shared laughter generation for conversational robots. As part of this system, we train models which predict if shared laughter will occur, given that the user has laughed. Models trained using combinations of acoustic, prosodic features and laughter type were compared with online versions considered to better quantify their performance in a real system. We find that these models perform better than the random chance, with the multimodal combination of acoustic and prosodic features performing the best.},
+booktitle = {Companion Publication of the 2020 International Conference on Multimodal Interaction},
+pages = {62–66},
+numpages = {5},
+keywords = {shared laughter, machine learning, human-robot dialogue, conversation},
+location = {Virtual Event, Netherlands},
+series = {ICMI '20 Companion}
+}*

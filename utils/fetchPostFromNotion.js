@@ -60,9 +60,14 @@ const retrievePage = async (client, pageId) => {
     }
 }
 
-const retrieveBlocks = async (client, pageId) => {
+const retrieveBlocks = async (client, pageId, start_cursor = undefined) => {
     try {
-        const response = await client.blocks.children.list({ block_id: pageId, page_size: 100 })
+        let response = await client.blocks.children.list({ block_id: pageId, page_size: 100, start_cursor: start_cursor })
+        if (response.has_more) {
+            const response_old = response
+            response = await retrieveBlocks(client, pageId, start_cursor = response_old.next_cursor)
+            response.results = response_old.results.concat(response.results)
+        }
         return response
     } catch (error) {
         console.error(error)
@@ -99,7 +104,10 @@ const notionToMarkdown = async (client, pageId) => {
             title += text.plain_text
         }
         const tags = props['キーワード'].multi_select.map(res => res.name)
+        const datasets = props.Datasets.multi_select.map(res => res.name)
         const slug = title.replace(/\s/g, '-').replace(/:/g, '')
+        const conferences = props['研究会'].multi_select.map(res => res.name)
+        const year = aggregateTexts(props.Year.rich_text)
         if (fs.existsSync(`public/images/article/${slug}`)) {
             fs.rmdirSync(`public/images/article/${slug}`, { recursive: true })
         }
@@ -124,11 +132,29 @@ const notionToMarkdown = async (client, pageId) => {
         meta += 'Published: true\n'
         meta += '---\n\n'
 
+        meta += '本記事において使用される図表は，原著論文内の図表を引用しています．\n\n'
+        meta += 'また，本記事の内容は，著者が論文を読み，メモとして短くまとめたものになります．'
+        meta += '必ずしも内容が正しいとは限らないこと，ご了承ください．\n\n'
+
+        meta += '## 論文情報\n\n'
+        meta += `タイトル: ${title}\n\n`
+        meta += `研究会: ${conferences.join(' ')}\n\n`
+        meta += `年度: ${year}\n\n`
+        meta += `キーワード: ${tags.join(', ')}\n\n`
+        if (props.PDF.url) meta += `URL: [${props.PDF.url}](${props.PDF.url})\n\n`
+        if (props.doi.url) meta += `DOI: [${props.doi.url}](${props.doi.url})\n\n`
+        if (props.Code.url) meta += `コード: [${props.Code.url}](${props.Code.url})\n\n`
+        meta += `データセット: ${datasets.join(', ')}\n\n`
+
+
         // construct main content
         const blocks = await retrieveBlocks(client, page.id)
         let content = ''
         content = await constructBlocks(client, blocks, slug)
         content = meta + content
+
+        const bibtex = aggregateTexts(props.BibTex.rich_text)
+        content += `\n## 引用\n\n> ${bibtex}\n`
 
         return content
     } catch (error) {
@@ -245,7 +271,6 @@ export const importPostFromNotion = async (out = 'pages/docs') => {
         } else {
             console.log(`${title}.md exists.`)
         }
-        execSync('sleep 2')
     }
 }
 

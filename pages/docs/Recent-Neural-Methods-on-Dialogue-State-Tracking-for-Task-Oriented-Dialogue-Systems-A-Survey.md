@@ -1,6 +1,6 @@
 ---
 Title: '【論文まとめ】Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Survey'
-Date: '2023-05-21'
+Date: '2023-05-22'
 Category: 論文
 Tags: [dialogue system,survey,DST]
 Authos: ゆうぼう
@@ -9,6 +9,24 @@ Thumbnail: /images/thumbnails/Recent-Neural-Methods-on-Dialogue-State-Tracking-f
 Description: 'Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Surveyのまとめ'
 Published: true
 ---
+
+本記事において使用される図表は，原著論文内の図表を引用しています．
+
+また，本記事の内容は，著者が論文を読み，メモとして短くまとめたものになります．必ずしも内容が正しいとは限らないこと，ご了承ください．
+
+## 論文情報
+
+タイトル: Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Survey
+
+研究会: ACL SIGDIAL
+
+年度: 2021
+
+キーワード: dialogue system, survey, DST
+
+URL: [https://aclanthology.org/2021.sigdial-1.25.pdf](https://aclanthology.org/2021.sigdial-1.25.pdf)
+
+データセット: 
 
 Data State Tracking (以下DST) on Task-Oriented Dialogue Systemに焦点を当てたsurvey
 
@@ -174,7 +192,7 @@ learning to updateの場合は，turn-levelの予測を入力として，対話�
 
 ## Datasets
 
-![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/4stb497n.png)
+![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/p9w4y463.png)
 
 - Dialog State Tracking Challenge (DSTC)
 - DSTC2 and DSTC3
@@ -197,7 +215,7 @@ learning to updateの場合は，turn-levelの予測を入力として，対話�
 
 ## Static Ontology DST Models
 
-![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/672om8je.png)
+![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/qegkxt8s.png)
 
 slot-valueは事前に定義されている
 
@@ -271,7 +289,7 @@ BERTなどを使うことで，捕捉できるslot valueが増えた
 
 下図は2種のアプローチを合わせたアーキテクチャ
 
-![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/rdiiezxm.png)
+![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/l30un8m9.png)
 
 
 
@@ -285,3 +303,113 @@ dynamicだとoutputの語彙数がとても大きくなる
 
 ### Copy and pointer networks
 
+![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/7vvgrpy7.png)
+
+copy mechanismとpointer networkがメインのアプローチ
+
+どちらもattention-based
+
+
+
+Xu氏とHu氏が提案したpointer networkベースのアーキテクチャだと，すべてのslotには適用できず，postprocessingが必要だった
+
+→ Wu氏がTRADEというモデルを提案
+
+全てのslotとdomainに関する全てのパラメータを共有していて，domain transferができるらしい
+
+zero-shotアプローチと言える
+
+
+
+### Categorical and non-categorical slot-values
+
+non-categoricalなslotは，オープンなvalue集合を受け入れることができる
+
+
+
+Zhang氏が提案した手法によれば
+
+もしcategoricalのラベルがついていれば，outputは事前定義されたvalueに対する確率のスコアを出力
+
+non-categoricalであれば，outputにはinput tokenからデコードされたものを出力
+
+
+
+Heck氏は，TripPy (triple copy strategy)を提案
+
+シナリオに応じてslot-valueを予測する
+
+1. ユーザに明示的に示された
+2. システムに示され，ユーザによって言及された
+3. 別のドメインのslotのために前の対話ターンにおいて示された
+
+
+### Function-baed update
+
+$\{CARRYOVER, DELETE, DONTCARE, UPDATE\}$を使う
+
+CARRYOVER: 前の対話状況を引き継ぐ
+
+DELETE        : slot-valueを戻す
+
+UPDATE       : slot-valueの予測を必要とし，対話状況を更新する
+
+
+
+
+
+## Take-away Points
+
+
+
+1. 各スロットに多様なモデルを使うのは，汎化性能や効果的な表現を学習するのに限りがある
+2. スロット間のパラメータシェアリングは効果的で，全てのスロットに対するパフォーマンスを改善する
+3. 大規模データセットを使うと，RNNはSOTAの性能が出る
+4. RNNは，encoderとdecoderを両方使うと時間がかかる問題がある
+5. attention-basedのcopying mechanismは効果的なアプローチであり，多くのSOTAモデルで採用されているアプローチ
+6. 小資源のドメインに対しては，事前学習済みの言語モデルを使用することで性能がよくなる
+7. 統計的な更新関数はルールベースの更新関数を超える性能を出す
+8. ドメインのスケーラビリティとモデルの柔軟性が問題の時，scheme-basedアプローチを使うとscheme内での変更を入れることが可能になる
+	1. zero-shotを含むtransfer learningが可能に
+9. DSTモデルの大半は，事前学習済み言語モデルが使われている
+
+
+
+
+## DST Challenges and Future Directions
+
+現実世界の会話アプリにおいて新たなslotやdomainの追加は避けられない
+
+
+
+### Few-shot and Zero-shot Models
+
+
+
+### Data Augmentation and Data-efficient Models
+
+
+
+### Diverse Datasets
+
+
+
+![](/images/article/Recent-Neural-Methods-on-Dialogue-State-Tracking-for-Task-Oriented-Dialogue-Systems-A-Survey/3pbaksol.png)
+
+
+## 引用
+
+> @inproceedings{balaraman-etal-2021-recent,
+title = "Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Survey",
+author = "Balaraman, Vevake and
+Sheikhalishahi, Seyedmostafa and
+Magnini, Bernardo",
+booktitle = "Proceedings of the 22nd Annual Meeting of the Special Interest Group on Discourse and Dialogue",
+month = jul,
+year = "2021",
+address = "Singapore and Online",
+publisher = "Association for Computational Linguistics",
+url = "[https://aclanthology.org/2021.sigdial-1.25](https://aclanthology.org/2021.sigdial-1.25)",
+pages = "239--251",
+abstract = "This paper aims at providing a comprehensive overview of recent developments in dialogue state tracking (DST) for task-oriented conversational systems. We introduce the task, the main datasets that have been exploited as well as their evaluation metrics, and we analyze several proposed approaches. We distinguish between static ontology DST models, which predict a fixed set of dialogue states, and dynamic ontology models, which can predict dialogue states even when the ontology changes. We also discuss the model{'}s ability to track either single or multiple domains and to scale to new domains, both in terms of knowledge transfer and zero-shot learning. We cover a period from 2013 to 2020, showing a significant increase of multiple domain methods, most of them utilizing pre-trained language models.",
+}

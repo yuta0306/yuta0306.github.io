@@ -1,6 +1,6 @@
 ---
 Title: '【論文まとめ】Recent Advances in Deep Learning Based Dialogue Systems: A Systematic Survey'
-Date: '2023-05-21'
+Date: '2023-05-22'
 Category: 論文
 Tags: [survey,dialogue system]
 Authos: ゆうぼう
@@ -10,7 +10,25 @@ Description: 'Recent Advances in Deep Learning Based Dialogue Systems: A Systema
 Published: true
 ---
 
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/jjd6raay.png)
+本記事において使用される図表は，原著論文内の図表を引用しています．
+
+また，本記事の内容は，著者が論文を読み，メモとして短くまとめたものになります．必ずしも内容が正しいとは限らないこと，ご了承ください．
+
+## 論文情報
+
+タイトル: Recent Advances in Deep Learning Based Dialogue Systems: A Systematic Survey
+
+研究会: arxiv
+
+年度: 2021
+
+キーワード: survey, dialogue system
+
+URL: [https://arxiv.org/pdf/2105.04387.pdf](https://arxiv.org/pdf/2105.04387.pdf)
+
+データセット: 
+
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/ry2fz8tn.png)
 
 ## 概要
 
@@ -38,11 +56,11 @@ Published: true
 
 ### Keywords
 
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/vcs36qfg.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/8575dpgt.png)
 
 ### サーベイの主張の流れ
 
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/80r4nod6.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/hpk33ao6.png)
 
 ## まとめ
 
@@ -105,7 +123,7 @@ NLPの中には対話システムに近い領域がある．
 		- encoderの出力をCNNでベクトル化
 		- contextと返答の候補を行列にして，CNNで近さを図ることによって，妥当な候補を選び出す
 	- 基本的にCNNとencoderはセットか？
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/hdigizvu.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/37cmjuij.png)
 
 
 
@@ -117,23 +135,23 @@ NLPの中には対話システムに近い領域がある．
 	- マルコフモデルは限られた条件下においては強力なモデルになりうる．
 	- RNNは最近では提案されないが，NLPタスクにおいては未だ現役として活躍することもある
 	- Jordan-Type & Elman-Type RNN
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/ovxdz4bq.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/ts6afg6g.png)
 
 		- Jordan-Type RNN
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/o372ifqn.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/mz0mr5oj.png)
 
 			- 最新の隠れ層の状態は，Input_tとOutput_t-1による
 				
 
 		- Elman-Type RNN
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/oewhruxt.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/10bbby3m.png)
 
 			- 最新の隠れ層の状態は，Input_tとHidden_t-1による
 		- いずれにしてもシンプルなRNNは勾配消失か勾配爆発が大抵おこる
 		
 
 	- LSTM
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/k612y88q.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/k21pyf3t.png)
 
 		- Gates
 			- 入力ゲート
@@ -142,7 +160,7 @@ NLPの中には対話システムに近い領域がある．
 	
 
 	- GRU; Gated Recurrent Unit
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/42latyhe.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/fs4fug4f.png)
 
 		- Gates
 			- 更新ゲート
@@ -155,7 +173,7 @@ NLPの中には対話システムに近い領域がある．
 			
 
 	- Bi-directional RNN
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/t4zdtd2s.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/vrdvputk.png)
 
 		- 双方向を考慮したRNN
 			
@@ -163,7 +181,7 @@ NLPの中には対話システムに近い領域がある．
 	- seq2seq; Encoder-Decoder model
 		- 初めは機械翻訳のために提案された手法
 		- Encoderにより入力系列をベクトル化，その隠れ状態をDecodeして生成することを目指す
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/yubh8sbs.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/56q5hqna.png)
 
 		- Encode時
 			- t時刻のinputとt-1時刻のhiddenによって，t時刻のhiddenが決まる
@@ -176,7 +194,7 @@ NLPの中には対話システムに近い領域がある．
 	
 
 - Hierarchical Recurrent Encoder-Decoder; HRED
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/l6wqmq77.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/4s0olxfm.png)
 
 	- コンテクストを理解するためのseq2seqモデル
 	- クエリの履歴を理解する？
@@ -204,12 +222,12 @@ NLPの中には対話システムに近い領域がある．
 
 ### タスク指向型対話システム
 
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/xkjm1m9f.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/y29vzu3h.png)
 
 ドメインの決まったタスクにおいて特定の問題を解決する．
 
 - Natural Language Understanding
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/anac43sh.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/1mx5wsm3.png)
 
 	- 3つのタスクを持つ
 		- ドメイン分類
@@ -229,7 +247,7 @@ NLPの中には対話システムに近い領域がある．
 	
 
 - Dialogue State Tracking
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/vu1cl18j.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/aao7x0r4.png)
 
 	- ユーザの目的と対話履歴を追跡する
 	- NLUとDSTのタスクは近い関係にある．
@@ -262,7 +280,7 @@ NLPの中には対話システムに近い領域がある．
 	- タスク指向型対話システムにおける最終層のモジュール
 	- 最終的な自然言語表現を生成するシステム
 	- 4つのコンポーネントからなる
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/pki8nvzq.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/9ybi8yfr.png)
 
 		- Content Determination
 		- Sentence Planning
@@ -345,7 +363,7 @@ NLPの中には対話システムに近い領域がある．
 - Response Diversity
 	- 人が多用するような表現は訓練コーパスにも多く含まれ，それらばかりを返答してしまうことが問題となりうる
 	- かつては条件付き確率において，尤度関数を解くことで尤もらしい返答をもとめていた．
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/7leakwao.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/00fwhths.png)
 
 		- この手法では，返答の精度の安全性と適切さはトレードオフになっていた？
 	- ビームサーチを提案されたことも
@@ -386,7 +404,7 @@ NLPの中には対話システムに近い領域がある．
 	- 教師あり学習をした後，Interactive Trainingによってファインチューニングする
 	- 
 - Visual Dialogue
-![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/6bhqn4eh.png)
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/v3baquyk.png)
 
 	- Visual Q & Aなど
 	- 画像あり対話システムのほか，映像あり対話システムも面白いトピックだが難題でもある
@@ -399,3 +417,80 @@ NLPの中には対話システムに近い領域がある．
 
 
 
+- タスク指向型対話システムにおける評価
+	- BLEUスコアを用いて，システムの返答と人の返答を比べるなど
+	- Task Completion Rate
+		- すべてのタスクの試行に対して，いくつのイベントが成功したかの割合
+	- Task Completion Cost
+		- タスクをこなすのに使われたリソース
+		- 解決までの時間が重視されるタスクにおいて用いられる
+		- なるべく短いターン数で完遂するのが良しとされる
+	- Human-based Evaluation
+		- ユーザの対話とユーザの満足度のスコアを提供
+		- 方法はふたつ
+			- クラウドソーシングで労働を雇う
+			- 実際にローンチしてからユーザのフィードバックで評価する
+- オープンドメイン型対話システムにおける評価
+	- 明確なメトリックはない
+	- 長らくHuman Evaluationを使ってきた
+	- Word-overlap Metrics
+		- 生成された系列と実際の系列の近さを計算する
+		- 機械翻訳や要約タスクにおいて用いられる
+		- n-gramのものとして
+			- BLEU
+			- ROUGE
+			- METEOR(BLUEの改良版)
+	- Neural Metrics
+		- ニューラルモデルによって計算させる
+		- RNNやCNN,GANの識別器を使うなどして，ターンレベルの特徴量抽出を行うなど
+	- 今もホットなトピックになっている
+	
+
+### データセット
+
+タスク指向型対話システム
+
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/4xcx432d.png)
+
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/bvaa6edt.png)
+
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/5nqvspiq.png)
+
+
+
+オープンドメイン型対話システム
+
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/ja1g5vzq.png)
+
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/ki5ab45o.png)
+
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/ikzadi1i.png)
+
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/nuxspw6o.png)
+
+![](/images/article/Recent-Advances-in-Deep-Learning-Based-Dialogue-Systems-A-Systematic-Survey/1u3frgui.png)
+
+
+
+### 結論とトレンド
+
+ココ最近のトレンド
+
+- Mutlimodal dialogue systems
+	- 異なるモダリティを組み合わせる
+- Multitask dialogue systems
+	- タスク指向型と知識グラウンディングさせたオープンドメイン型を組み合わせて，一つのフレームワークまたはシングルモデルとして完結させる
+- Corpus exploration on Internet
+	- real-timeなコーパスをインターネットから取り出せるようになれば，期待がもてる
+	- 研究に値するのでは？
+- User modeling
+	- 生成と評価の双方でホットなトピック
+- Dialogue generation with a long-term goal
+	- 日常的な雑談は特に目的はない
+	- しかし，会話が意図的にある特定の目的に向かうときは，ほんの少しでも状況があるはず
+	- 現在のオープンドメイン型は，長期的な目的を除いてモデリングされがち
+		- 十分な知性を備えていない
+
+## 引用
+
+> 
