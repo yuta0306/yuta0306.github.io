@@ -400,16 +400,16 @@ UPDATE       : slot-valueの予測を必要とし，対話状況を更新する
 ## 引用
 
 > @inproceedings{balaraman-etal-2021-recent,
-title = "Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Survey",
-author = "Balaraman, Vevake and
-Sheikhalishahi, Seyedmostafa and
-Magnini, Bernardo",
-booktitle = "Proceedings of the 22nd Annual Meeting of the Special Interest Group on Discourse and Dialogue",
-month = jul,
-year = "2021",
-address = "Singapore and Online",
-publisher = "Association for Computational Linguistics",
-url = "[https://aclanthology.org/2021.sigdial-1.25](https://aclanthology.org/2021.sigdial-1.25)",
-pages = "239--251",
-abstract = "This paper aims at providing a comprehensive overview of recent developments in dialogue state tracking (DST) for task-oriented conversational systems. We introduce the task, the main datasets that have been exploited as well as their evaluation metrics, and we analyze several proposed approaches. We distinguish between static ontology DST models, which predict a fixed set of dialogue states, and dynamic ontology models, which can predict dialogue states even when the ontology changes. We also discuss the model{'}s ability to track either single or multiple domains and to scale to new domains, both in terms of knowledge transfer and zero-shot learning. We cover a period from 2013 to 2020, showing a significant increase of multiple domain methods, most of them utilizing pre-trained language models.",
-}
+> title = "Recent Neural Methods on Dialogue State Tracking for Task-Oriented Dialogue Systems: A Survey",
+> author = "Balaraman, Vevake and
+> Sheikhalishahi, Seyedmostafa and
+> Magnini, Bernardo",
+> booktitle = "Proceedings of the 22nd Annual Meeting of the Special Interest Group on Discourse and Dialogue",
+> month = jul,
+> year = "2021",
+> address = "Singapore and Online",
+> publisher = "Association for Computational Linguistics",
+> url = "[https://aclanthology.org/2021.sigdial-1.25](https://aclanthology.org/2021.sigdial-1.25)",
+> pages = "239--251",
+> abstract = "This paper aims at providing a comprehensive overview of recent developments in dialogue state tracking (DST) for task-oriented conversational systems. We introduce the task, the main datasets that have been exploited as well as their evaluation metrics, and we analyze several proposed approaches. We distinguish between static ontology DST models, which predict a fixed set of dialogue states, and dynamic ontology models, which can predict dialogue states even when the ontology changes. We also discuss the model{'}s ability to track either single or multiple domains and to scale to new domains, both in terms of knowledge transfer and zero-shot learning. We cover a period from 2013 to 2020, showing a significant increase of multiple domain methods, most of them utilizing pre-trained language models.",
+> }

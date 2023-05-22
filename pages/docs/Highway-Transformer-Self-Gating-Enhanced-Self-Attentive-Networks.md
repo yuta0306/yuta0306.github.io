@@ -117,17 +117,17 @@ SDUで計算量が増えるが，そこまで差はなかった
 ## 引用
 
 > @inproceedings{chai-etal-2020-highway,
-    title = "Highway Transformer: Self-Gating Enhanced Self-Attentive Networks",
-    author = "Chai, Yekun  and
-      Jin, Shuo  and
-      Hou, Xinwen",
-    booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
-    month = jul,
-    year = "2020",
-    address = "Online",
-    publisher = "Association for Computational Linguistics",
-    url = "https://aclanthology.org/2020.acl-main.616",
-    doi = "10.18653/v1/2020.acl-main.616",
-    pages = "6887--6900",
-    abstract = "Self-attention mechanisms have made striking state-of-the-art (SOTA) progress in various sequence learning tasks, standing on the multi-headed dot product attention by attending to all the global contexts at different locations. Through a pseudo information highway, we introduce a gated component self-dependency units (SDU) that incorporates LSTM-styled gating units to replenish internal semantic importance within the multi-dimensional latent space of individual representations. The subsidiary content-based SDU gates allow for the information flow of modulated latent embeddings through skipped connections, leading to a clear margin of convergence speed with gradient descent algorithms. We may unveil the role of gating mechanism to aid in the context-based Transformer modules, with hypothesizing that SDU gates, especially on shallow layers, could push it faster to step towards suboptimal points during the optimization process.",
-}
+>     title = "Highway Transformer: Self-Gating Enhanced Self-Attentive Networks",
+>     author = "Chai, Yekun  and
+>       Jin, Shuo  and
+>       Hou, Xinwen",
+>     booktitle = "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+>     month = jul,
+>     year = "2020",
+>     address = "Online",
+>     publisher = "Association for Computational Linguistics",
+>     url = "https://aclanthology.org/2020.acl-main.616",
+>     doi = "10.18653/v1/2020.acl-main.616",
+>     pages = "6887--6900",
+>     abstract = "Self-attention mechanisms have made striking state-of-the-art (SOTA) progress in various sequence learning tasks, standing on the multi-headed dot product attention by attending to all the global contexts at different locations. Through a pseudo information highway, we introduce a gated component self-dependency units (SDU) that incorporates LSTM-styled gating units to replenish internal semantic importance within the multi-dimensional latent space of individual representations. The subsidiary content-based SDU gates allow for the information flow of modulated latent embeddings through skipped connections, leading to a clear margin of convergence speed with gradient descent algorithms. We may unveil the role of gating mechanism to aid in the context-based Transformer modules, with hypothesizing that SDU gates, especially on shallow layers, could push it faster to step towards suboptimal points during the optimization process.",
+> }

@@ -139,19 +139,19 @@ shared laughterのタイミングについてはかけた研究である
 ## 引用
 
 > *@inproceedings{10.1145/3395035.3425265,
-author = {Lala, Divesh and Inoue, Koji and Kawahara, Tatsuya},
-title = {Prediction of Shared Laughter for Human-Robot Dialogue},
-year = {2020},
-isbn = {9781450380027},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3395035.3425265},
-doi = {10.1145/3395035.3425265},
-abstract = {Shared laughter is a phenomenon in face-to-face human dialogue which increases engagement and rapport, and so should be considered for conversation robots and agents. Our aim is to create a model of shared laughter generation for conversational robots. As part of this system, we train models which predict if shared laughter will occur, given that the user has laughed. Models trained using combinations of acoustic, prosodic features and laughter type were compared with online versions considered to better quantify their performance in a real system. We find that these models perform better than the random chance, with the multimodal combination of acoustic and prosodic features performing the best.},
-booktitle = {Companion Publication of the 2020 International Conference on Multimodal Interaction},
-pages = {62–66},
-numpages = {5},
-keywords = {shared laughter, machine learning, human-robot dialogue, conversation},
-location = {Virtual Event, Netherlands},
-series = {ICMI '20 Companion}
-}*
+> author = {Lala, Divesh and Inoue, Koji and Kawahara, Tatsuya},
+> title = {Prediction of Shared Laughter for Human-Robot Dialogue},
+> year = {2020},
+> isbn = {9781450380027},
+> publisher = {Association for Computing Machinery},
+> address = {New York, NY, USA},
+> url = {https://doi.org/10.1145/3395035.3425265},
+> doi = {10.1145/3395035.3425265},
+> abstract = {Shared laughter is a phenomenon in face-to-face human dialogue which increases engagement and rapport, and so should be considered for conversation robots and agents. Our aim is to create a model of shared laughter generation for conversational robots. As part of this system, we train models which predict if shared laughter will occur, given that the user has laughed. Models trained using combinations of acoustic, prosodic features and laughter type were compared with online versions considered to better quantify their performance in a real system. We find that these models perform better than the random chance, with the multimodal combination of acoustic and prosodic features performing the best.},
+> booktitle = {Companion Publication of the 2020 International Conference on Multimodal Interaction},
+> pages = {62–66},
+> numpages = {5},
+> keywords = {shared laughter, machine learning, human-robot dialogue, conversation},
+> location = {Virtual Event, Netherlands},
+> series = {ICMI '20 Companion}
+> }*

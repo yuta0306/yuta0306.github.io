@@ -153,8 +153,8 @@ const notionToMarkdown = async (client, pageId) => {
         content = await constructBlocks(client, blocks, slug)
         content = meta + content
 
-        const bibtex = aggregateTexts(props.BibTex.rich_text)
-        content += `\n## 引用\n\n> ${bibtex}\n`
+        const bibtex = aggregateTexts(props.BibTex.rich_text).replace(/\n/, '\n> ')
+        content += `\n## 引用\n\n> ${bibtex}`
 
         return content
     } catch (error) {
@@ -168,8 +168,6 @@ const constructBlocks = async (client, blocks, slug, prefix = '', depth = 0) => 
     let number = 0
     for await (let block of tqdm(blocks.results)) {
         const res = await retrieveBlock(client, block.id)
-        // console.log(prefix, res.type)
-        // console.log(prefix, depth, res)
 
         if (res.type == 'numbered_list_item') {
             number += 1
@@ -192,7 +190,7 @@ const constructBlocks = async (client, blocks, slug, prefix = '', depth = 0) => 
                 ext = 'jpg'
             }
             execSync(`curl '${res.image.file.url}' -o public/images/article/${slug}/${cover}.${ext}`)
-            content += `![${res.image.caption}](/images/article/${slug}/${cover}.${ext})\n\n`
+            content += `${prefix}![${res.image.caption}](/images/article/${slug}/${cover}.${ext})\n\n`
         } else if (res.type == 'numbered_list_item') {
             content += `${prefix}${number}. ${aggregateTexts(res.numbered_list_item.rich_text)}\n`
         } else if (res.type == 'bulleted_list_item') {

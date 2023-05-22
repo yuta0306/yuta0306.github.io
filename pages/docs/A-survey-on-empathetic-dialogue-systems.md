@@ -637,15 +637,15 @@ personalization, knowledge, and emotion の要素の組み合わせによる包�
 ## 引用
 
 > @article{MA202050,
-title = {A survey on empathetic dialogue systems},
-journal = {Information Fusion},
-volume = {64},
-pages = {50-70},
-year = {2020},
-issn = {1566-2535},
-doi = {https://doi.org/10.1016/j.inffus.2020.06.011},
-url = {https://www.sciencedirect.com/science/article/pii/S1566253520303092},
-author = {Yukun Ma and Khanh Linh Nguyen and Frank Z. Xing and Erik Cambria},
-keywords = {Artificial intelligence, Affective computing, Dialogue systems},
-abstract = {Dialogue systems have achieved growing success in many areas thanks to the rapid advances of machine learning techniques. In the quest for generating more human-like conversations, one of the major challenges is to learn to generate responses in a more empathetic manner. In this review article, we focus on the literature of empathetic dialogue systems, whose goal is to enhance the perception and expression of emotional states, personal preference, and knowledge. Accordingly, we identify three key features that underpin such systems: emotion-awareness, personality-awareness, and knowledge-accessibility. The main goal of this review is to serve as a comprehensive guide to research and development on empathetic dialogue systems and to suggest future directions in this domain.}
-}
+> title = {A survey on empathetic dialogue systems},
+> journal = {Information Fusion},
+> volume = {64},
+> pages = {50-70},
+> year = {2020},
+> issn = {1566-2535},
+> doi = {https://doi.org/10.1016/j.inffus.2020.06.011},
+> url = {https://www.sciencedirect.com/science/article/pii/S1566253520303092},
+> author = {Yukun Ma and Khanh Linh Nguyen and Frank Z. Xing and Erik Cambria},
+> keywords = {Artificial intelligence, Affective computing, Dialogue systems},
+> abstract = {Dialogue systems have achieved growing success in many areas thanks to the rapid advances of machine learning techniques. In the quest for generating more human-like conversations, one of the major challenges is to learn to generate responses in a more empathetic manner. In this review article, we focus on the literature of empathetic dialogue systems, whose goal is to enhance the perception and expression of emotional states, personal preference, and knowledge. Accordingly, we identify three key features that underpin such systems: emotion-awareness, personality-awareness, and knowledge-accessibility. The main goal of this review is to serve as a comprehensive guide to research and development on empathetic dialogue systems and to suggest future directions in this domain.}
+> }

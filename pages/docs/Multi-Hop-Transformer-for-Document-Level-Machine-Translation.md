@@ -148,20 +148,20 @@ Draftの方が結果がよく，pre-trained MT systemの生成結果をtarget dr
 ## 引用
 
 > @inproceedings{zhang-etal-2021-multi,
-title = "Multi-Hop Transformer for Document-Level Machine Translation",
-author = "Zhang, Long and
-Zhang, Tong and
-Zhang, Haibo and
-Yang, Baosong and
-Ye, Wei and
-Zhang, Shikun",
-booktitle = "Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
-month = jun,
-year = "2021",
-address = "Online",
-publisher = "Association for Computational Linguistics",
-url = "[https://aclanthology.org/2021.naacl-main.309](https://aclanthology.org/2021.naacl-main.309)",
-doi = "10.18653/v1/2021.naacl-main.309",
-pages = "3953--3963",
-abstract = "Document-level neural machine translation (NMT) has proven to be of profound value for its effectiveness on capturing contextual information. Nevertheless, existing approaches 1) simply introduce the representations of context sentences without explicitly characterizing the inter-sentence reasoning process; and 2) feed ground-truth target contexts as extra inputs at the training time, thus facing the problem of exposure bias. We approach these problems with an inspiration from human behavior {--} human translators ordinarily emerge a translation draft in their mind and progressively revise it according to the reasoning in discourse. To this end, we propose a novel Multi-Hop Transformer (MHT) which offers NMT abilities to explicitly model the human-like draft-editing and reasoning process. Specifically, our model serves the sentence-level translation as a draft and properly refines its representations by attending to multiple antecedent sentences iteratively. Experiments on four widely used document translation tasks demonstrate that our method can significantly improve document-level translation performance and can tackle discourse phenomena, such as coreference error and the problem of polysemy.",
-}
+> title = "Multi-Hop Transformer for Document-Level Machine Translation",
+> author = "Zhang, Long and
+> Zhang, Tong and
+> Zhang, Haibo and
+> Yang, Baosong and
+> Ye, Wei and
+> Zhang, Shikun",
+> booktitle = "Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+> month = jun,
+> year = "2021",
+> address = "Online",
+> publisher = "Association for Computational Linguistics",
+> url = "[https://aclanthology.org/2021.naacl-main.309](https://aclanthology.org/2021.naacl-main.309)",
+> doi = "10.18653/v1/2021.naacl-main.309",
+> pages = "3953--3963",
+> abstract = "Document-level neural machine translation (NMT) has proven to be of profound value for its effectiveness on capturing contextual information. Nevertheless, existing approaches 1) simply introduce the representations of context sentences without explicitly characterizing the inter-sentence reasoning process; and 2) feed ground-truth target contexts as extra inputs at the training time, thus facing the problem of exposure bias. We approach these problems with an inspiration from human behavior {--} human translators ordinarily emerge a translation draft in their mind and progressively revise it according to the reasoning in discourse. To this end, we propose a novel Multi-Hop Transformer (MHT) which offers NMT abilities to explicitly model the human-like draft-editing and reasoning process. Specifically, our model serves the sentence-level translation as a draft and properly refines its representations by attending to multiple antecedent sentences iteratively. Experiments on four widely used document translation tasks demonstrate that our method can significantly improve document-level translation performance and can tackle discourse phenomena, such as coreference error and the problem of polysemy.",
+> }
