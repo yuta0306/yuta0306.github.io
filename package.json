@@ -28,6 +28,7 @@
     "rehype-document": "^6.0.1",
     "rehype-highlight": "^5.0.2",
     "rehype-katex": "^6.0.2",
+    "rehype-mathjax": "^4.0.2",
     "rehype-parse": "^8.0.4",
     "rehype-stringify": "^9.0.3",
     "remark": "^13.0.0",
