@@ -28,6 +28,7 @@ a {
   font-weight: 200;
   font-style: italic;
   text-decoration: none;
+  word-wrap: break-word;
 
   :hover {
     cursor: pointer;
@@ -97,10 +98,10 @@ p {
   color: rgba($text-primary, .95);
 
   // Katex
-  .math {
+  .math-inline {
     width: 100%;
     display: block;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     text-align: center;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -109,6 +110,11 @@ p {
       display: none;
     }
   }
+}
+
+ul,
+ol {
+  padding-left: .3rem;
 }
 
 ul li {
