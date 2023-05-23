@@ -124,6 +124,12 @@ ul li {
   list-style-type: "✔︎ ";
 }
 
+ol li {
+  font-size: .9rem;
+  font-weight: 300;
+  color: rgba($text-primary, .95);
+}
+
 img {
   width: 100%;
 }
