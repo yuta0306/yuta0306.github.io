@@ -106,6 +106,7 @@ export default function Blog({ postData, categories, tags }) {
             <meta name="og:description" content={postData.Description} />
           </>
         }
+        <meta property="og:type" content="website" />
         {postData.Authors &&
           <meta name="author" content={postData.Authors} />
         }
