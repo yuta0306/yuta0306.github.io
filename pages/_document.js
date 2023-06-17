@@ -1,5 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
-import { author, siteDescription, siteName, siteUrl } from '../global.d'
+import { author, siteDescription } from '../global.d'
 import { GA_ID, existsGaId } from '../lib/gtag'
 
 class MyDocument extends Document {
@@ -21,14 +21,14 @@ class MyDocument extends Document {
           }
 
           {/* OGP */}
-          <meta property="og:title" content={siteName} />
+          {/* <meta property="og:title" content={siteName} />
           <meta property="og:type" content="website" />
           <meta property="og:url" content={siteUrl} />
           <meta property="og:image" content={`${siteUrl}/images/default.png`} />
           <meta property="og:site_name" content={siteName} />
           {siteDescription &&
             <meta property="og:description" content={siteDescription} />
-          }
+          } */}
           {/* OGP > Twitter */}
           <meta name="twitter:card" content="summary" />
 
