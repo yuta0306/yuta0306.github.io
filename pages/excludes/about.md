@@ -4,35 +4,40 @@ title: About Me
 
 ## Bio
 
-現在大学B3です。専攻はまだ決まっていません。
+東京で大学院生をしています．
 
-興味のある分野は自然言語処理ですが、パワー勝負の世界になっている気がしてならないので、専攻にするかはまだ迷っています。
+技術を学ぶことが好きで，このサイトでは，日々読んだ論文のまとめとや開発時のtipsなどを発信しています．
 
-## Skills
+## Certification
 
-僕が使える技術言語たちです。
+- TOEIC® Listening & Reading Test: 865 / 990
+- Python3 エンジニア認定基礎試験合格者
+- Python3 エンジニア認定データ分析試験合格者
 
-Mainに書いてあるものは、普段から使用している技術で、基本的にファーストチョイスになっています。特段新しいことに挑戦しない限りは、リファレンスがなくとも扱えます。
-
-Subは多少経験がある程度で、使用する必要があれば使います。リファレンスを常に片手に必要とする技術です。
-
-### Main
+### メイン技術 (> 3 years)
 
 - Python
 - JavaScript
 - HTML5
 - CSS3 / SCSS
 
-### Sub
+### サブ技術 (< 3 years)
 
 - C / C++ / C#
 - Go
 - TypeScript
 - PHP
+- ROS
 
-## Frame Works
+### フレームワーク
 
-- Flask (**Flask大好き芸人やってます**)
-- Pytorch
-- Pelican (Python製静的サイトジェネレータ)
-- React / Next.js (このブログで使っている)
+- Flask
+- Pytorch / Pytorch Lightning
+- Pelican (SSG with Python)
+- React / Next.js (These framework are used in this blog)
+
+## Contact
+
+GitHub: [@yuta0306](https://github.com/yuta0306)  
+Kaggle: [@yutasasaki](https://www.kaggle.com/yutasasaki)  
+Blog: [ゆうぼうの書跡棚](https://yuta0306.github.io/)

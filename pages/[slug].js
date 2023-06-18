@@ -1,7 +1,7 @@
+import { Adsense } from '@ctrl/react-adsense'
 import fs from 'fs'
 import Head from 'next/head'
 import path from 'path'
-import AdSense from 'react-adsense'
 import Footer from '../components/footer'
 import Header from '../components/header'
 import Main from '../components/main'
@@ -106,8 +106,9 @@ export default function Blog({ postData, categories, tags }) {
             <meta name="og:description" content={postData.Description} />
           </>
         }
-        {postData.Author &&
-          <meta name="author" content={postData.Author} />
+        <meta property="og:type" content="website" />
+        {postData.Authors &&
+          <meta name="author" content={postData.Authors} />
         }
 
         <meta property="og:title" content={postData.Title} />
@@ -137,7 +138,7 @@ export default function Blog({ postData, categories, tags }) {
             {socials &&
               <FollowMe socials={socials} />
             }
-            <AdSense.Google
+            <Adsense
               client='ca-pub-4998278830587376'
               slot='8978700883'
               style={{ display: 'block' }}
@@ -150,7 +151,7 @@ export default function Blog({ postData, categories, tags }) {
             {tags &&
               <Tags tags={tags} />
             }
-            <AdSense.Google
+            <Adsense
               client='ca-pub-4998278830587376'
               slot='8978700883'
               style={{ display: 'block' }}
