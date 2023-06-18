@@ -1,6 +1,6 @@
+import { Adsense } from '@ctrl/react-adsense'
 import Head from 'next/head'
 import path from 'path'
-import AdSense from 'react-adsense'
 import Footer from '../components/footer'
 import Header from '../components/header'
 import Main from '../components/main'
@@ -68,7 +68,7 @@ export default function Home({ allPostData }) {
                 return (
                   <>
                     <Card slug={slug} content={content} />
-                    <AdSense.Google
+                    <Adsense
                       client='ca-pub-4998278830587376'
                       slot='3060159795'
                       style={{ display: 'block', borderBottom: '1px dashed rgba(240, 240, 240, 0.6)' }}
@@ -95,7 +95,7 @@ export default function Home({ allPostData }) {
             {socials &&
               <FollowMe socials={socials} />
             }
-            <AdSense.Google
+            <Adsense
               client='ca-pub-4998278830587376'
               slot='8978700883'
               style={{ display: 'block' }}
@@ -108,7 +108,7 @@ export default function Home({ allPostData }) {
             {tags &&
               <Tags tags={tags} />
             }
-            <AdSense.Google
+            <Adsense
               client='ca-pub-4998278830587376'
               slot='8978700883'
               style={{ display: 'block' }}

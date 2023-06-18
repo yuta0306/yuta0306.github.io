@@ -7,8 +7,13 @@ const withTM = require('next-transpile-modules')(
     "mdast-util-math"]
 )
 
-module.exports = withTM({
+// module.exports = withTM({
+//   sassOptions: {
+//     includePaths: [path.join(__dirname, 'styles'), path.join(__dirname, 'components')],
+//   },
+// })
+module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles'), path.join(__dirname, 'components')],
   },
-})
+}

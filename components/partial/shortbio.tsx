@@ -5,7 +5,7 @@ export default function ShortBio({ bio, author }: {
     author: string
 }) {
     let paragraphs: Array<JSX.Element> = bio.split('\n').map(paragraph => {
-        return <p className={styles.container__paragraph}>{paragraph}</p>
+        return (<div><p className={styles.container__paragraph}>{paragraph}</p></div>)
     })
     return (
         <div className={styles.container} itemScope={true} itemProp='author'
