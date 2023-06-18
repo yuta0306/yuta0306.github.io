@@ -4,54 +4,9 @@ title: About Me
 
 ## Bio
 
-I am a graduate student at Tokyo Institute of Technology.  
-I would like to research into human-like dialogue systems, and build my career to develop the society where humans and AI cooperate with each other.
+東京で大学院生をしています．
 
-(日本語)  
-東京工業大学で大学院生をしています．  
-human-likeな対話システムの研究に従事し，人間とAIの共生社会の構築に人生を捧げたいと考えています．
-
-## Research Interest
-
-- Dialogue System (対話システム)
-- Multi-modal Dialogue System (マルチモーダル対話システム)
-- Speech Dialogue System (音声対話システム)
-- Humor Recognition (ユーモア検出)
-- Knowledge-Intensive NLP (知識に基づく自然言語処理？)
-
-## Publication
-
-### International Conference
-
-1. DEXA 2023
-   - Details to be confirmed with co-authors.
-
-### Domestic Conference (Japanese)
-
-1. DEIM 2023
-   - Details to be confirmed with co-authors.
-2. DEIM 2023
-   - Details to be confirmed with the main author.
-3. NLP 2023
-   - Details to be confirmed with co-authors.
-
-## Education
-
-2023.4 - **Present**  
-**Master of Tokyo Institute of Technology, Tokyo, Japan**  
-*School of Engineering Department of Information and Communications Engineering*  
-**東京工業大学**  
-*工学院 情報通信系*
-
-2019.4 - 2023.3  
-**Bachelor of Iwate University, Iwate, Japan**  
-*School of Computer, Intelligence and Media Technology, Department of Systems Innovation Engineering, Faculty of Science and Engineering*  
-**岩手大学**  
-*理工学部 システム創成工学科 知能メディア・情報コース*
-
-## Scholorship
-
-1. 岩手大学理工学部修学支援奨学金 (令和3年4月 - 令和4年3月)
+技術を学ぶことが好きで，このサイトでは，日々読んだ論文のまとめとや開発時のtipsなどを発信しています．
 
 ## Certification
 
@@ -59,31 +14,22 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
 - Python3 エンジニア認定基礎試験合格者
 - Python3 エンジニア認定データ分析試験合格者
 
-## Job Experience
-
-Comming soon...
-
-## Internship
-
-Comming soon...
-
-## Skills
-
-### Main Language (> 3 years)
+### メイン技術 (> 3 years)
 
 - Python
 - JavaScript
 - HTML5
 - CSS3 / SCSS
 
-### Sub Language (< 3 years)
+### サブ技術 (< 3 years)
 
 - C / C++ / C#
 - Go
 - TypeScript
 - PHP
+- ROS
 
-### Frameworks
+### フレームワーク
 
 - Flask
 - Pytorch / Pytorch Lightning
@@ -92,9 +38,6 @@ Comming soon...
 
 ## Contact
 
-Email: yubo1336[at]lr.pi.titech.ac.jp  
-Twitter: [@Sloth65557166](https://twitter.com/Sloth65557166)  
 GitHub: [@yuta0306](https://github.com/yuta0306)  
 Kaggle: [@yutasasaki](https://www.kaggle.com/yutasasaki)  
-LinkedIn: [Yuta SASAKI](https://www.linkedin.com/in/yuta-sasaki-170472226/)  
 Blog: [ゆうぼうの書跡棚](https://yuta0306.github.io/)
