@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import styles from './paginager.module.scss'
 
-export default function Paginager({top, pages, page, minPage=1, visible=5}: {
+export default function Paginager({ top, pages, page, minPage = 1, visible = 5 }: {
     top: string,
     pages: number,
     page: number,
@@ -15,25 +15,21 @@ export default function Paginager({top, pages, page, minPage=1, visible=5}: {
 
     const window: number = Math.floor(visible / 2)
     const startIndex: number = page - window >= minPage ?
-                    page - window - minPage : 0
+        page - window - minPage : 0
     const endIndex: number = page + window <= pages ?
-                    page + window - minPage + 1 : pages - minPage + 1
-    const pageList: Array<number> = [...Array(pageNum+1)].map((v, k) => k + minPage)
-                        .slice(startIndex, endIndex)
-    
+        page + window - minPage + 1 : pages - minPage + 1
+    const pageList: Array<number> = [...Array(pageNum + 1)].map((v, k) => k + minPage)
+        .slice(startIndex, endIndex)
+
     return (
         <div className={styles.container}>
             <ul className={styles.container__pagers}>
-                <Link href={`${top}/${minPage}`}>
-                    <a className={styles.container__pager}>
-                        <li key='<<' className={styles.container__pager__page}>&lt;&lt;</li>
-                    </a>
+                <Link href={`${top}/${minPage}`} className={styles.container__pager}>
+                    <li key='<<' className={styles.container__pager__page}>&lt;&lt;</li>
                 </Link>
                 {hasPrev ?
-                    <Link href={`${top}/${page - 1}`}>
-                        <a className={styles.container__pager}>
-                            <li key='<' className={styles.container__pager__page}>&lt;</li>
-                        </a>
+                    <Link href={`${top}/${page - 1}`} className={styles.container__pager}>
+                        <li key='<' className={styles.container__pager__page}>&lt;</li>
                     </Link>
                     :
                     <li key='<' className={styles.container__pager_deactive}>&lt;</li>
@@ -41,10 +37,8 @@ export default function Paginager({top, pages, page, minPage=1, visible=5}: {
                 {pageList.map((targetPage) => {
                     if (targetPage != page) {
                         return (
-                            <Link href={`${top}/${targetPage}`}>
-                                <a className={styles.container__pager}>
-                                    <li key={`/${top}/${targetPage}`} className={styles.container__pager__page}>{targetPage}</li>
-                                </a>
+                            <Link href={`${top}/${targetPage}`} className={styles.container__pager}>
+                                <li key={`/${top}/${targetPage}`} className={styles.container__pager__page}>{targetPage}</li>
                             </Link>
                         )
                     } else {
@@ -54,18 +48,14 @@ export default function Paginager({top, pages, page, minPage=1, visible=5}: {
                     }
                 })}
                 {hasNext ?
-                    <Link href={`${top}/${page + 1}`}>
-                        <a className={styles.container__pager}>
-                            <li key='>' className={styles.container__pager__page}>&gt;</li>
-                        </a>
+                    <Link href={`${top}/${page + 1}`} className={styles.container__pager}>
+                        <li key='>' className={styles.container__pager__page}>&gt;</li>
                     </Link>
                     :
                     <li key='>' className={styles.container__pager_deactive}>&gt;</li>
                 }
-                <Link href={`${top}/${pages}`}>
-                    <a className={styles.container__pager}>
-                        <li key='>>' className={styles.container__pager__page}>&gt;&gt;</li>
-                    </a>
+                <Link href={`${top}/${pages}`} className={styles.container__pager}>
+                    <li key='>>' className={styles.container__pager__page}>&gt;&gt;</li>
                 </Link>
             </ul>
         </div>

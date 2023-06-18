@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import styles from './tags.module.scss'
 
-export default function Tags({tags} : {
+export default function Tags({ tags }: {
     tags: Array<string>
 }) {
     const sortedTags: Array<string> = tags.sort((a, b) => {
@@ -11,20 +11,18 @@ export default function Tags({tags} : {
     })
     return (
         <div className={styles.container}>
-                <h3 className={styles.container__header}>Tags</h3>
-                <div className={styles.container__links}>
+            <h3 className={styles.container__header}>Tags</h3>
+            <div className={styles.container__links}>
                 {
                     tags.map(category => {
                         return (
-                            <Link href={`/tag/${category}/1`}>
-                                <a className={styles.container__link}>
-                                    {category}
-                                </a>
+                            <Link href={`/tag/${category}/1`} className={styles.container__link}>
+                                {category}
                             </Link>
                         )
                     })
                 }
-                </div>
             </div>
+        </div>
     )
 }

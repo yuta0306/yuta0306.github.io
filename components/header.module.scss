@@ -19,14 +19,21 @@
         justify-content: left;
         align-items: baseline;
     }
+    li {
+        list-style-type: none;
+    }
 }
 .header {
     margin: 0;
     padding: 0;
+    li {
+        list-style-type: none;
+    }
     &__title {
         color: $text-primary;
-        font-size: 1.6rem;
-        font-weight: 200;
+        font-size: 1.9rem;
+        font-weight: 700;
+        font-style:normal;
         display: block;
         margin: 0 1.3rem 0 0;
         padding: .5rem 2rem .5rem 0;
@@ -39,6 +46,9 @@
     font-weight: 300;
     a {
         text-decoration: none;
+    }
+    li {
+        list-style-type: none;
     }
     &__closed {
         font-size: 1.3rem;
@@ -117,6 +127,9 @@
     }
     a {
         text-decoration: none;
+    }
+    li {
+        list-style-type: none;
     }
     &__items {
         margin: auto;

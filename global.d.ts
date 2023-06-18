@@ -1,15 +1,17 @@
 export const siteName: string = 'ゆうぼうの書跡棚'
 export const siteUrl: string = 'https://yuta0306.github.io'
-export const siteDescription = 'スキルや知識をつけて将来ナマケモノになるまでの技術ブログです．主に，データ分析関連やPython, JavaScriptによる開発についてまとめます．'
+export const siteDescription = 'スキルや知識をつけて将来ナマケモノになるまでの技術ブログです．主に，機械学習やPython, JavaScriptによる開発についてまとめます．'
 export const author: string = 'ゆうぼう'
+export const name: string = '佐々木 裕多'
+export const nameEng: string = 'SASAKI Yuta'
 export const authorLink: string = 'https://twitter.com/Sloth65557166'
 export const bio: string = `
-地方国立大学B3のナマケモノです．
-最近ユーモア検出の研究を始めました(NLP)．
-最終的には対話システムに応用していく研究をしていく予定です．
-好きな技術は，FlaskとPytorchです．このブログはNext.jsで書いていて，Next.jsもスキ．
+国立大学院M1のナマケモノです．
+human-likeな対話システムの研究に従事し，人間とAIの共生社会の構築に人生を捧げたいと考えています．
+学部時代はコモンセンスを利用したユーモア検出の研究を行っていました(Knowledge-intensive NLP)．
+このブログはNext.jsで書いてます．
 
-Kaggle等のデータ分析コンペも一緒に楽しみたいです．
+Kaggle等のデータ分析コンペは活動休止中．
 `
 export const contactForm: string = 'https://docs.google.com/forms/d/e/1FAIpQLSdgyok9pi697ZJvVizRNEw0qghDWz517k1FrbcRmfvvERlraA/viewform'
 export const socials: Array<Array<string>> = [

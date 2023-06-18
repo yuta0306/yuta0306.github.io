@@ -17,6 +17,7 @@ body {
   overflow-x: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -27,6 +28,11 @@ a {
   font-weight: 200;
   font-style: italic;
   text-decoration: none;
+  word-wrap: break-word;
+
+  :hover {
+    cursor: pointer;
+  }
 }
 
 * {
@@ -40,90 +46,161 @@ code {
   white-space: pre;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
 strong {
-  background: linear-gradient(transparent 70%, rgba($marker-color, .7) 30%);
+  background: linear-gradient(transparent 70%, rgba($marker-color, .5) 30%);
   font-size: .9rem;
+  font-weight: 800;
+  color: $text-primary;
 }
 
 h1 {
   font-size: 1.6rem;
   font-weight: 500;
 }
+
 h2 {
-  margin-top: 4rem;
+  padding: 1rem 0 .5rem 0;
   width: 100%;
   border-bottom: 2px solid rgba($border-primary, .6);
   font-size: 1.4rem;
-  font-weight: 300;
+  font-weight: 700;
+  line-height: 1.5;
 }
+
 h3 {
-  margin-top: 3rem;
+  padding: 1rem 0 .5rem 0;
   width: 100%;
   border-bottom: 1px dashed rgba($border-primary, .6);
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 700;
+  line-height: 1.5;
 }
+
 h4 {
-  margin-top: 2.4rem;
+  padding: 1rem 0 .5rem 0;
   width: 100%;
   border-bottom: 1px dotted rgba($border-primary, .6);
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 p {
   font-size: .9rem;
   font-weight: 300;
+  line-height: 1.9;
+  color: rgba($text-primary, .95);
+
+  // Katex
+  .math-inline {
+    display: inline-block;
+    font-size: 1rem;
+    text-align: center;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .math-display {
+    width: 100%;
+    display: block;
+    font-size: 1.1rem;
+    text-align: center;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
-li {
+// ul,
+// ol {
+// padding-left: .3rem;
+// }
+
+ul li {
   font-size: .9rem;
   font-weight: 300;
+  color: rgba($text-primary, .95);
+  list-style-type: "✔︎ ";
+}
+
+ol li {
+  font-size: .9rem;
+  font-weight: 300;
+  color: rgba($text-primary, .95);
 }
 
 img {
   width: 100%;
 }
 
-table, th, td {
+table,
+th,
+td {
   font-size: 1rem;
+  color: rgba($text-primary, .95);
   border: 1.4px solid rgba($border-primary, .9);
   border-collapse: collapse;
 }
+
 thead {
   background: rgba($border-primary, .1);
 }
+
 td {
   padding: .3rem;
+}
+
+blockquote {
+  border-left: 3px solid $quote-color;
+}
+
+blockquote p {
+  padding-left: 1rem;
+  color: $text-second;
 }
 
 // 目次
 .TOC {
   padding: 0;
   list-style-position: inside;
-  & > li > a {
+
+  &>li>a {
     text-decoration: none;
+    color: $text-primary;
   }
+
   &__container {
     margin-top: 0;
   }
+
   &__header {
     margin: 0;
     padding: 0;
   }
+
   &--h1 {
     list-style-type: "+";
   }
+
   &--h2 {
     padding: .5rem 0 0 1rem;
     list-style-type: "++";
   }
 }
+
 #TOC {
   background: rgba($bg-primary, .8);
 }

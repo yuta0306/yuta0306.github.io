@@ -1,7 +1,7 @@
 ---
 Title: 【🛰MScup】超解像コンペで11位だったけど，やったことまとめまくる
 Date: '2022-02-13'
-Category: Python
+Category: Competition
 Tags: [データ分析, 超解像, SISR, Super-Resolution, Pytorch]
 Authors: ゆうぼう
 Slug: mscup-feedback
@@ -43,9 +43,7 @@ PublicもPrivateも共に11位だったので，Trust CV，Trust LBなコンペ�
 
 SSIMは以下で表され，これを最大化することを目的とします．
 
-$$
-    SSIM(x, y) = \frac{(2\mu_x\mu_y + c_1)(2\sigma_{xy} + c_2)}{(\mu_x^2 + \mu_y^2 + c_1)(\sigma_x^2 + \sigma_y^2 + c_2)}
-$$
+$$SSIM(x, y) = \frac{(2\mu_x\mu_y + c_1)(2\sigma_{xy} + c_2)}{(\mu_x^2 + \mu_y^2 + c_1)(\sigma_x^2 + \sigma_y^2 + c_2)}$$
 
 ## My Solution
 
