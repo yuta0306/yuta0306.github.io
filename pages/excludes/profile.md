@@ -29,6 +29,7 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
 ### International Conference
 
 1. **Yuta Sasaki**, Jianwei Zhang, Yuhki Shiraishi. Commonsense-aware Attentive Modeling for Humor Recognition. @ [DEXA 2023](https://www.dexa.org/dexa2023)
+   - acceptance rate ?% (FYI, 20.4% in DEXA 2019)
 
 ### Domestic Conference (Japanese)
 
