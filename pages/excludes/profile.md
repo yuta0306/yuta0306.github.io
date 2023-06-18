@@ -12,7 +12,7 @@ Please feel free to contact me!
 
 (日本語)  
 東京工業大学で大学院生をしています．  
-human-likeな対話システムの研究に従事し，人間とAIの共生社会の構築に人生を捧げたいと考えています．
+human-likeな対話システムの研究に従事し，人間とAIの共生社会の構築に人生を捧げたいと考えています．  
 インターンシップや共同研究のお誘いをお待ちしております．  
 気軽な連絡お待ちしております！
 
@@ -94,7 +94,7 @@ Comming soon...
 
 ## Contact
 
-Email: yubo1336[at]lr.pi.titech.ac.jp
+Email: yubo1336[at]lr.pi.titech.ac.jp  
 Twitter: [@Sloth65557166](https://twitter.com/Sloth65557166)  
 GitHub: [@yuta0306](https://github.com/yuta0306)  
 Kaggle: [@yutasasaki](https://www.kaggle.com/yutasasaki)  
