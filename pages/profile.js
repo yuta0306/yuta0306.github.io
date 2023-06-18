@@ -1,11 +1,10 @@
 import Head from 'next/head'
 import path from 'path'
 
-import { author, name, nameEng } from '../global'
+import { author, name, nameEng } from '../global.d'
 import { getMd2Html } from '../lib/md2html'
 
 
-import Footer from '../components/footer'
 import Main from '../components/main'
 import styles from '../styles/Home.module.css'
 
@@ -45,7 +44,7 @@ export default function About({ aboutData }) {
 
       </Main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
