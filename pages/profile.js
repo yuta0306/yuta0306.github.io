@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import path from 'path'
 
-import { author, name, nameEng } from '../global.d'
+import { name, nameEng } from '../global.d'
 import { getMd2Html } from '../lib/md2html'
 
 
@@ -30,7 +30,7 @@ export default function About({ aboutData }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>About {author}</title>
+        <title>About SASAKI Yuta</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
