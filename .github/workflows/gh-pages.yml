@@ -36,11 +36,11 @@ jobs:
         run: npm install --frozen-lockfile
 
       # 論文まとめをNotionからインポートする
-      - name: import papers
-        env:
-          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-          DATABASEID: ${{ secrets.DATABASEID }}
-        run: node utils/fetchPostFromNotion.js
+      # - name: import papers
+      #   env:
+      #     NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+      #     DATABASEID: ${{ secrets.DATABASEID }}
+      #   run: node utils/fetchPostFromNotion.js
 
       # Next.jsアプリをビルド&エクスポートする
       # プロジェクトルート直下に.nextディレクトリができる
