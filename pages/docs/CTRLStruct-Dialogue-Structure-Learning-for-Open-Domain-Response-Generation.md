@@ -48,13 +48,13 @@ PersonachatとDailyDialogの二つのデータセットを用いて，提案モ�
 
 ## 提案手法
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/az7y7hpo.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/5xkyz45g.png)
 
 ### Contrastive Utterance Representation Learning
 
 **Absolute Correlation**
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/qzj0br7x.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/njccm74r.png)
 
 SimCLRに従った自己教師なし対照学習を行う
 
@@ -74,9 +74,9 @@ SimCLRに従った自己教師なし対照学習を行う
 
 それぞれは，**Strong Relativity**，**Weak Relativity**で，対照学習として計算される．
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/xwqha3d9.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/v161lamo.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/d76ja2dn.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/4ehbyyyf.png)
 
 $l_{SR}$は発話ペア間で強い関係性を学習し，$l_{WR}$は$\lambda$を係数として導入することで，発話と次の発話間で弱い関係性を学習する
 
@@ -86,9 +86,9 @@ $l_{SR}$は発話ペア間で強い関係性を学習し，$l_{WR}$は$\lambda$�
 
 バッチサイズNに対しては以下のように計算され，最終的な対照学習を用いたエンコーダが構成される．
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/zb2epp4y.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/1vxutkwi.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/vp4bsp7j.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/cc2u35dd.png)
 
 ### Dialogue Structure Modeling
 
@@ -102,15 +102,15 @@ $l_{SR}$は発話ペア間で強い関係性を学習し，$l_{WR}$は$\lambda$�
 
 この設定を踏まえ，MLEによって，ポリシー$\pi_{\theta}$を推定する
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/d7bo8ieb.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/omgk0ge7.png)
 
 連続値の行動と状態におけるポリシーを表現するために正規分布を適応し，状態$\mathbf{h}$に対して，次で推定するポリシーが定義される
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/tm8hpifp.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/3aqswy0q.png)
 
 (9)と(10)から，以下の式に変形される
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/0x73w4qd.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/qdb1e32h.png)
 
 
 
@@ -120,7 +120,7 @@ A2CNet (Actor-to-Critice network)を用いて，$\mu_\theta(\mathbf{h})$を推�
 
 分散$\sigma_\theta^2(\mathbf h)$をパラメータ$\theta$と独立した定数とおくことで，最終的な目的関数は平均二乗誤差の回帰問題に帰着できる
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/4t9i5o6y.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/mz9dw4b8.png)
 
 これをニューラルネットで解き，ポリシーを予測する
 
@@ -128,11 +128,11 @@ A2CNet (Actor-to-Critice network)を用いて，$\mu_\theta(\mathbf{h})$を推�
 
 NLLロスとKLダイバージェンスロスによってデコーダを最適化する
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/e2slqmnl.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/vl3pmhqt.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/iw64xewb.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/cdfb2pis.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/lmidw8ee.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/j7onid54.png)
 
 ## 新規性
 
@@ -163,13 +163,13 @@ NLLロスとKLダイバージェンスロスによってデコーダを最適化
 - BlenderBot (2.7B)
 ## まとめ
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/6od54ozv.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/1xkprovo.png)
 
 CTRLStructは全体的に他のモデルの性能を超える
 
 
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/d9ff66q7.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/15gvgtph.png)
 
 HTHA (Hard Topic Hit Accuracy)，STHA (Soft Topic Hit Accuracy)
 
@@ -183,9 +183,9 @@ PersonaChatはDailyDialogと違い，トピックの多様性が低い
 
 
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/qqk2ay98.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/io3fzt35.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/8wdc6c6g.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/qspsm2n1.png)
 
 utterance representationの評価
 
@@ -197,7 +197,7 @@ Figure3から，CTRLStructは，クラスタ数に対してロバストと言え
 
 
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/mvn0jwuo.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/bbhow0b4.png)
 
 GPT2を用いて，他のバックボーンに対するCTRLStructの効果を検証
 
@@ -207,9 +207,9 @@ GPT2に対して適応させても性能が向上していることがわかっ�
 
 ## その他（なぜ通ったか？等）
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/umo2kt7x.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/pj5s4u39.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/zxglo66j.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/qboygo1u.png)
 
 ## 次読みたい論文
 
@@ -218,18 +218,18 @@ GPT2に対して適応させても性能が向上していることがわかっ�
 
 > @inproceedings{10.1145/3543507.3583285,
 > author = {Yin, Congchi and Li, Piji and Ren, Zhaochun},
-title = {CTRLStruct: Dialogue Structure Learning for Open-Domain Response Generation},
-year = {2023},
-isbn = {9781450394161},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {[https://doi.org/10.1145/3543507.3583285](https://doi.org/10.1145/3543507.3583285)},
-doi = {10.1145/3543507.3583285},
-abstract = {Dialogue structure discovery is essential in dialogue generation. Well-structured topic flow can leverage background information and predict future topics to help generate controllable and explainable responses. However, most previous work focused on dialogue structure learning in task-oriented dialogue other than open-domain dialogue which is more complicated and challenging. In this paper, we present a new framework CTRLStruct for dialogue structure learning to effectively explore topic-level dialogue clusters as well as their transitions with unlabelled information. Precisely, dialogue utterances encoded by bi-directional Transformer are further trained through a special designed contrastive learning task to improve representation. Then we perform clustering to utterance-level representations and form topic-level clusters that can be considered as vertices in dialogue structure graph. The edges in the graph indicating transition probability between vertices are calculated by mimicking expert behavior in datasets. Finally, dialogue structure graph is integrated into dialogue model to perform controlled response generation. Experiments on two popular open-domain dialogue datasets show our model can generate more coherent responses compared to some excellent dialogue models, as well as outperform some typical sentence embedding methods in dialogue utterance representation. Code is available in GitHub1.},
-booktitle = {Proceedings of the ACM Web Conference 2023},
-pages = {1539–1550},
-numpages = {12},
-keywords = {Dialogue Structure Learning, Imitation Learning, Utterance Representation, Open-Domain Dialogue Generation, Contrastive Learning},
-location = {Austin, TX, USA},
-series = {WWW '23}
-}
+> title = {CTRLStruct: Dialogue Structure Learning for Open-Domain Response Generation},
+> year = {2023},
+> isbn = {9781450394161},
+> publisher = {Association for Computing Machinery},
+> address = {New York, NY, USA},
+> url = {[https://doi.org/10.1145/3543507.3583285](https://doi.org/10.1145/3543507.3583285)},
+> doi = {10.1145/3543507.3583285},
+> abstract = {Dialogue structure discovery is essential in dialogue generation. Well-structured topic flow can leverage background information and predict future topics to help generate controllable and explainable responses. However, most previous work focused on dialogue structure learning in task-oriented dialogue other than open-domain dialogue which is more complicated and challenging. In this paper, we present a new framework CTRLStruct for dialogue structure learning to effectively explore topic-level dialogue clusters as well as their transitions with unlabelled information. Precisely, dialogue utterances encoded by bi-directional Transformer are further trained through a special designed contrastive learning task to improve representation. Then we perform clustering to utterance-level representations and form topic-level clusters that can be considered as vertices in dialogue structure graph. The edges in the graph indicating transition probability between vertices are calculated by mimicking expert behavior in datasets. Finally, dialogue structure graph is integrated into dialogue model to perform controlled response generation. Experiments on two popular open-domain dialogue datasets show our model can generate more coherent responses compared to some excellent dialogue models, as well as outperform some typical sentence embedding methods in dialogue utterance representation. Code is available in GitHub1.},
+> booktitle = {Proceedings of the ACM Web Conference 2023},
+> pages = {1539–1550},
+> numpages = {12},
+> keywords = {Dialogue Structure Learning, Imitation Learning, Utterance Representation, Open-Domain Dialogue Generation, Contrastive Learning},
+> location = {Austin, TX, USA},
+> series = {WWW '23}
+> }

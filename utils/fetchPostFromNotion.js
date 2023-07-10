@@ -153,7 +153,7 @@ const notionToMarkdown = async (client, pageId) => {
         content = await constructBlocks(client, blocks, slug)
         content = meta + content
 
-        const bibtex = aggregateTexts(props.BibTex.rich_text).replace(/\n/, '\n> ')
+        const bibtex = aggregateTexts(props.BibTex.rich_text).replace(/\n/g, '\n> ')
         content += `\n## 引用\n\n> ${bibtex}`
 
         return content
