@@ -20,6 +20,7 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
 
 - Dialogue System (対話システム)
 - Multi-modal Dialogue System (マルチモーダル対話システム)
+- Collaborative Dialogue System (共話システム？)
 - Speech Dialogue System (音声対話システム)
 - Humor Recognition (ユーモア検出)
 - Knowledge-Intensive NLP (知識に基づく自然言語処理？)
@@ -55,12 +56,6 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
 
 1. 岩手大学理工学部修学支援奨学金 (令和3年4月 - 令和4年3月)
 
-## Certification
-
-- TOEIC® Listening & Reading Test: 865 / 990
-- Python3 エンジニア認定基礎試験合格者
-- Python3 エンジニア認定データ分析試験合格者
-
 ## Job Experience
 
 Comming soon...
@@ -68,6 +63,16 @@ Comming soon...
 ## Internship
 
 Comming soon...
+
+## Other Experiences
+
+- [対話システムライブコンペティション6オーガナイザ](https://sites.google.com/view/dslc6)
+
+## Certification
+
+- TOEIC® Listening & Reading Test: 865 / 990
+- Python3 エンジニア認定基礎試験合格者
+- Python3 エンジニア認定データ分析試験合格者
 
 ## Skills
 
