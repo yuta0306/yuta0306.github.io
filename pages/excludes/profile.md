@@ -22,6 +22,7 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
 - Multi-modal Dialogue System (マルチモーダル対話システム)
 - Collaborative Dialogue System (共話システム？)
 - Speech Dialogue System (音声対話システム)
+- Human Interaction (ヒューマンインタラクション)
 - Humor Recognition (ユーモア検出)
 - Knowledge-Intensive NLP (知識に基づく自然言語処理？)
 
@@ -62,7 +63,11 @@ Comming soon...
 
 ## Internship
 
-Comming soon...
+2023.8 - **Present**  
+**Research Development Internship**  
+[*Reazon Human Interaction Lab*](https://research.reazon.jp/)  
+**研究開発に関するインターンシップ**  
+[*Reazon Human Interaction Lab*](https://research.reazon.jp/)
 
 ## Other Experiences
 
