@@ -1,5 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
-import { author, siteDescription } from '../global.d'
+import path from 'path'
+import { author, siteDescription, siteUrl } from '../global.d'
 import { GA_ID, existsGaId } from '../lib/gtag'
 
 class MyDocument extends Document {
@@ -34,6 +35,9 @@ class MyDocument extends Document {
 
           {/* Robot crawling: Default > index & follow */}
           <meta name="robots" content="index, follow" />
+
+          {/* RSS Feed */}
+          {siteUrl && <link rel="alternate" type="application/rss+xml" href={path.join(siteUrl, "feed.xml")} title="RSS2.0" />}
 
           {/* This SSG Generator */}
           <meta name="generator" content="Next.js" />
