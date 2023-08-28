@@ -55,7 +55,7 @@ export async function generateRSS(dirName, siteName, siteDescription, siteUrl) {
         title: siteName,
         description: siteDescription,
         site_url: siteUrl,
-        feed_url: path.join(siteUrl, "feed"),
+        feed_url: `${siteUrl}/feed`,
         language: 'ja',
     });
 
