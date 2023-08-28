@@ -67,7 +67,7 @@ export async function generateRSS(dirName, siteName, siteDescription, siteUrl) {
             title: content.Title,
             description: content.Description,
             date: new Date(content.Date),
-            url: path.join(siteUrl, slug),
+            url: `${siteUrl}/${slug}`,
         });
     })
     const xml = feed.xml();
