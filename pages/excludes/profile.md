@@ -40,7 +40,7 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
 2. 小田 大翔, **佐々木 裕多**, 張 建偉. 動的グラフにおけるGNNを用いたリンク予測. 2022年度情報処理学会東北支部研究会 (岩手大学).
 3. 佐藤 将太, **佐々木 裕多**, 張 建偉. 応答戦略と共感表現を考慮した感情支援対話の応答生成. 2022年度情報処理学会東北支部研究会 (山形大学).
 4. **佐々木 裕多**, 張 建偉, 白石 優旗. Commonsense-aware AttentionとDiscrepancy Resolution Lossを用いたユーモア検出手法の提案. [第15回データ工学と情報マネジメントに関するフォーラム (DEIM 2023)](https://event.dbsj.org/deim2023/). [[paper](https://proceedings-of-deim.github.io/DEIM2023/1b-3-2.pdf)]
-5. 谷 聡馬, **佐々木 裕多**, 張 建偉. ニュースコンテンツとソーシャルコンテクストを用いたフェイクニュースの早期自動検出 @ [第15回データ工学と情報マネジメントに関するフォーラム (DEIM 2023)](https://event.dbsj.org/deim2023/). [[paper](https://proceedings-of-deim.github.io/DEIM2023/1a-8-2.pdf)]
+5. 谷 聡馬, **佐々木 裕多**, 張 建偉. ニュースコンテンツとソーシャルコンテクストを用いたフェイクニュースの早期自動検出. [第15回データ工学と情報マネジメントに関するフォーラム (DEIM 2023)](https://event.dbsj.org/deim2023/). [[paper](https://proceedings-of-deim.github.io/DEIM2023/1a-8-2.pdf)]
 6. **佐々木 裕多**, 張 建偉. 漫才対話の収集及び自動アノテーションのパイプラインの検討. [言語処理学会第29回年次大会 (NLP 2023)](https://www.anlp.jp/proceedings/annual_meeting/2023/). [[paper](https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/Q4-14.pdf)]
 7. 片岸 祥帆, 小原 涼馬, **佐々木 裕多**, 荒木 健治. 漫才対話構造の分析手法の検討. NLP若手の会 (YANS) 第18回シンポジウム. [[poster](https://drive.google.com/file/d/1YNA8Wh2uIF4WnTgXJsglse9THV90aBZq/view?usp=sharing)]
 
