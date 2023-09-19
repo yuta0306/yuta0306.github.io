@@ -23,8 +23,9 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
 - Collaborative Dialogue System (共話システム？)
 - Speech Dialogue System (音声対話システム)
 - Human Interaction (ヒューマンインタラクション)
+- LLM (大規模言語モデル)
 - Humor Recognition (ユーモア検出)
-- Knowledge-Intensive NLP (知識に基づく自然言語処理？)
+- Knowledge-Intensive NLP (知識に基づく自然言語処)
 
 ## Publication
 
@@ -68,9 +69,14 @@ Comming soon...
 **Research Development Internship / R&Dインターンシップ**  
 [*Reazon Human Interaction Lab*](https://research.reazon.jp/)  
 
+2023.9  
+**Machine Learning Engineer Internship / MLエンジニアインターンシップ @ CA Tech JOB**  
+*CyberAgent 極予測LP*
+
 ## Other Experiences
 
 - [対話システムライブコンペティション6オーガナイザ](https://sites.google.com/view/dslc6)
+- [INTERSPEECH2023論文読み会登壇](https://icasspeech.connpass.com/event/292978/)
 
 ## Software
 
