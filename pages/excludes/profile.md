@@ -90,18 +90,20 @@ Comming soon...
 
 ## Skills
 
-### Main (> 3 years)
+### Main
 
 - Python
 - JavaScript
 - HTML5
 - CSS3 / SCSS
+- Docker
 
-### Sub (< 3 years)
+### Sub
 
-- C / C++ / C#
-- Go
+- GCP
 - TypeScript
+- AWS
+- C#
 - PHP
 - ROS
 
