@@ -68,10 +68,13 @@ Comming soon...
 2023.8 - **Present**  
 **Research Development Internship / R&Dインターンシップ**  
 [*Reazon Human Interaction Lab*](https://research.reazon.jp/)  
+マルチモーダル／対話システム／音声認識  
 
 2023.9  
 **Machine Learning Engineer Internship / MLエンジニアインターンシップ @ CA Tech JOB**  
-*CyberAgent 極予測LP*
+*CyberAgent 極予測LP*  
+トレーナー：石上亮介  
+LLMを用いた自動対話評価基盤の構築と検討 [リンク準備中] [リンク準備中]
 
 ## Other Experiences
 
@@ -80,7 +83,12 @@ Comming soon...
 
 ## Software
 
-Comming soon...
+### **dslclib** [[code](https://github.com/yuta0306/dslclib)] [[docs](https://yuta0306.github.io/dslclib/)] [[PyPI](https://pypi.org/project/dslclib/)]
+対話システムライブコンペティション6で使用できるPythonライブラリ．ロボットコンペの方でも使えるようになっている．
+
+### **py-arib-parser** [[code](https://github.com/yuta0306/py-arib-parser)]
+ARIB形式の字幕を抽出するため，arib対応ffmpegをインストールするdockerfileと字幕ファイルを読み込むクラスを記述したライブラリ．  
+抽出した字幕を，付与されたカラーコードでターミナルに出力することができる．
 
 ## Certification
 
