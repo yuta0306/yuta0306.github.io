@@ -166,7 +166,7 @@ const constructBlocks = async (client, blocks, slug, prefix = '', depth = 0) => 
     // console.log(blocks.results.length, prefix, depth)
     let content = ''
     let number = 0
-    for await (let block of tqdm(blocks.results)) {
+    for await (let block of tqdm(blocks.results, { sameLine: true })) {
         const res = await retrieveBlock(client, block.id)
 
         if (res.type == 'numbered_list_item') {

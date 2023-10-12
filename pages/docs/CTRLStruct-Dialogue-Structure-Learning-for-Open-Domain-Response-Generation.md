@@ -1,6 +1,6 @@
 ---
 Title: '【論文まとめ】CTRLStruct: Dialogue Structure Learning for Open-Domain Response Generation'
-Date: '2023-07-10'
+Date: '2023-08-18'
 Category: 論文
 Tags: [Dialogue Structure Learning,dialogue system,Contrastive Learning,NLG]
 Authos: ゆうぼう
@@ -48,13 +48,13 @@ PersonachatとDailyDialogの二つのデータセットを用いて，提案モ�
 
 ## 提案手法
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/5xkyz45g.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/xbah62ii.png)
 
 ### Contrastive Utterance Representation Learning
 
 **Absolute Correlation**
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/njccm74r.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/0mxxldwv.png)
 
 SimCLRに従った自己教師なし対照学習を行う
 
@@ -74,9 +74,9 @@ SimCLRに従った自己教師なし対照学習を行う
 
 それぞれは，**Strong Relativity**，**Weak Relativity**で，対照学習として計算される．
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/v161lamo.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/y2hbi2ak.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/4ehbyyyf.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/aasxu1fl.png)
 
 $l_{SR}$は発話ペア間で強い関係性を学習し，$l_{WR}$は$\lambda$を係数として導入することで，発話と次の発話間で弱い関係性を学習する
 
@@ -86,9 +86,9 @@ $l_{SR}$は発話ペア間で強い関係性を学習し，$l_{WR}$は$\lambda$�
 
 バッチサイズNに対しては以下のように計算され，最終的な対照学習を用いたエンコーダが構成される．
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/1vxutkwi.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/7234s5gh.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/cc2u35dd.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/geyfw65l.png)
 
 ### Dialogue Structure Modeling
 
@@ -102,15 +102,15 @@ $l_{SR}$は発話ペア間で強い関係性を学習し，$l_{WR}$は$\lambda$�
 
 この設定を踏まえ，MLEによって，ポリシー$\pi_{\theta}$を推定する
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/omgk0ge7.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/k1tm26qa.png)
 
 連続値の行動と状態におけるポリシーを表現するために正規分布を適応し，状態$\mathbf{h}$に対して，次で推定するポリシーが定義される
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/3aqswy0q.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/xey6pmti.png)
 
 (9)と(10)から，以下の式に変形される
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/qdb1e32h.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/db3kb47s.png)
 
 
 
@@ -120,7 +120,7 @@ A2CNet (Actor-to-Critice network)を用いて，$\mu_\theta(\mathbf{h})$を推�
 
 分散$\sigma_\theta^2(\mathbf h)$をパラメータ$\theta$と独立した定数とおくことで，最終的な目的関数は平均二乗誤差の回帰問題に帰着できる
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/mz9dw4b8.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/4k2pfiqh.png)
 
 これをニューラルネットで解き，ポリシーを予測する
 
@@ -128,11 +128,11 @@ A2CNet (Actor-to-Critice network)を用いて，$\mu_\theta(\mathbf{h})$を推�
 
 NLLロスとKLダイバージェンスロスによってデコーダを最適化する
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/vl3pmhqt.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/fh2arwet.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/cdfb2pis.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/v8zncqrw.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/j7onid54.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/3k33250b.png)
 
 ## 新規性
 
@@ -163,13 +163,13 @@ NLLロスとKLダイバージェンスロスによってデコーダを最適化
 - BlenderBot (2.7B)
 ## まとめ
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/1xkprovo.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/zf823cx5.png)
 
 CTRLStructは全体的に他のモデルの性能を超える
 
 
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/15gvgtph.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/e7ue4f13.png)
 
 HTHA (Hard Topic Hit Accuracy)，STHA (Soft Topic Hit Accuracy)
 
@@ -183,9 +183,9 @@ PersonaChatはDailyDialogと違い，トピックの多様性が低い
 
 
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/io3fzt35.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/hch8jam9.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/qspsm2n1.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/qjx3q2re.png)
 
 utterance representationの評価
 
@@ -197,7 +197,7 @@ Figure3から，CTRLStructは，クラスタ数に対してロバストと言え
 
 
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/bbhow0b4.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/7s7x51mp.png)
 
 GPT2を用いて，他のバックボーンに対するCTRLStructの効果を検証
 
@@ -207,9 +207,9 @@ GPT2に対して適応させても性能が向上していることがわかっ�
 
 ## その他（なぜ通ったか？等）
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/pj5s4u39.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/1bh93ima.png)
 
-![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/qboygo1u.png)
+![](/images/article/CTRLStruct-Dialogue-Structure-Learning-for-Open-Domain-Response-Generation/eqa0kb7k.png)
 
 ## 次読みたい論文
 
