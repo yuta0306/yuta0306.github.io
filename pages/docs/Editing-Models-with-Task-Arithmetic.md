@@ -1,6 +1,6 @@
 ---
 Title: '【論文まとめ】Editing Models with Task Arithmetic'
-Date: '2023-09-08'
+Date: '2023-10-12'
 Category: 論文
 Tags: [Weight Interpolation,Model Patching,Merging Models,Model Editing,Transfer Learning]
 Authos: ゆうぼう
@@ -42,7 +42,7 @@ element-wiseにモデルの重みをベクトル演算することで，簡単�
 
 ## 提案手法
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/hupon58u.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/zfpgdkxc.png)
 
 ### Task vectors
 
@@ -90,7 +90,7 @@ element-wiseな演算でタスク転移を可能にすることで，その操�
 
 ### Forgetting via negation
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/4hsvakhs.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/2v4k0u3j.png)
 
 CLIPモデルを用いて，コントロールタスク（l性能を保持したいタスク）をImageNetとし，8つのターゲットタスクをnegationによって忘却させるタスク．
 
@@ -100,7 +100,7 @@ CLIPモデルを用いて，コントロールタスク（l性能を保持した
 
 
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/1roifby4.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/n0je7mvy.png)
 
 GPT2-Largeを用いて，Civil Commentsデータセットを対象に実験
 
@@ -110,11 +110,11 @@ toxicな生成を低減しつつ，WikiText-103のperplexityの性能低下を�
 
 ### Learning via addition
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/vzzde0ss.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/2mxzw4qv.png)
 
 二つのタスクベクトルを加算して，マルチタスクに対応したパラメータを構築した結果．選び出して加算した二つのタスクへの性能は高い性能を維持している
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/e2mvxfqm.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/20dp9o4c.png)
 
 タスクベクトルを増やした時に性能が全てのデータセットに対して性能がどう変化するかを示す図
 
@@ -122,11 +122,11 @@ toxicな生成を低減しつつ，WikiText-103のperplexityの性能低下を�
 
 
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/eisepqvn.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/6fdez9qd.png)
 
 T5-Largeを用いて，GLUEタスクにおいて外部のタスクベクトルの加算を実験した結果
 
-Huggingface Hubに転がっている427個の公開もでうrがあり，それぞれのタスクベクトルを加算していき，検証データでベストな性能を出したモデルをセーブしてテスト
+Huggingface Hubに転がっている427個の公開モデルがあり，それぞれのタスクベクトルを加算していき，検証データでベストな性能を出したモデルをセーブしてテスト
 
 結果，GLUEでのファインチューニング+外部データのタスクベクトルを加算することで性能が向上することを確認
 
@@ -134,7 +134,7 @@ Huggingface Hubに転がっている427個の公開もでうrがあり，それ�
 
 ### Task analogies: Domain generalization
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/z2eidqey.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/sxzj9peg.png)
 
 “Language modeling (LM) on amazon is to LM on Yelp as Sentiment analysis (Sent) on amazon is to Sent on Yelp”のようなアナロジーを調査
 
@@ -148,13 +148,13 @@ LMタスクのデータセットを対象とした転移を感情予測にドメ
 
 例えば，$\hat{\tau}_{sketch\ lion} = \tau_{sketch\ dog} + (\tau_{real\ lion} - \tau_{real\ dog})$のような転移
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/80h7somn.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/gywwuanm.png)
 
 タスクベクトルを使う方が常に良い結果となって，訓練データがなくアナロジーのみでも高い精度を示している
 
 ### Task analogies: Kings and queens
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/qqimunos.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/61yz29ot.png)
 
 queen, man, womanから，kingの新たなカテゴリーを学習するようなことができるか？の検証
 
@@ -162,7 +162,7 @@ queen, man, womanから，kingの新たなカテゴリーを学習するよう�
 
 ### Similarity between task vectors
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/w71yd7ne.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/dxan9fwh.png)
 
 どれくらい複数のモデルが一つのマルチタスクモデルにcollapseできるかを理解するため，異なるタスクベクトル間のコサイン類似度を観察
 
@@ -172,7 +172,7 @@ queen, man, womanから，kingの新たなカテゴリーを学習するよう�
 
 ### The impact of the learning rate
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/f93v5ghr.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/vt80eqlg.png)
 
 ファインチューニングの場合はあるところで性能がガクッと落ちるが，タスクベクトルだと緩やかに学習率の増加とともに性能が落ちる傾向
 
@@ -180,7 +180,7 @@ queen, man, womanから，kingの新たなカテゴリーを学習するよう�
 
 ### The evolution of task vectors throughout fine-tuning
 
-![](/images/article/Editing-Models-with-Task-Arithmetic/yllc9z2f.png)
+![](/images/article/Editing-Models-with-Task-Arithmetic/9z8uflfm.png)
 
 どのように学習していくかの経過を可視化
 
