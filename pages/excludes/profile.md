@@ -20,8 +20,8 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
 
 - Dialogue System (対話システム)
 - Multi-modal Dialogue System (マルチモーダル対話システム)
-- Collaborative Dialogue System (共話システム？)
 - Speech Dialogue System (音声対話システム)
+- Speech Disfluency (非流暢性)
 - Human Interaction (ヒューマンインタラクション)
 - LLM (大規模言語モデル)
 - Humor Recognition (ユーモア検出)
@@ -76,10 +76,16 @@ Comming soon...
 トレーナー：石上亮介  
 LLMを用いた自動対話評価基盤の構築と検討 [リンク準備中] [リンク準備中]
 
+2023.11 - **Present**  
+**インターンシップ**  
+[*Elith Inc.*](https://elith.co.jp/)  
+LLMなど
+
 ## Other Experiences
 
 - [対話システムライブコンペティション6オーガナイザ](https://sites.google.com/view/dslc6)
 - [INTERSPEECH2023論文読み会登壇](https://icasspeech.connpass.com/event/292978/)
+- [SIGDIAL2023&SemDial2023論文読み会運営](https://dialog-paper.connpass.com/event/297411/)
 
 ## Software
 
@@ -89,6 +95,9 @@ LLMを用いた自動対話評価基盤の構築と検討 [リンク準備中] [
 ### **py-arib-parser** [[code](https://github.com/yuta0306/py-arib-parser)]
 ARIB形式の字幕を抽出するため，arib対応ffmpegをインストールするdockerfileと字幕ファイルを読み込むクラスを記述したライブラリ．  
 抽出した字幕を，付与されたカラーコードでターミナルに出力することができる．
+
+### **fed_ja** [[dataset](https://huggingface.co/datasets/yubo0306/fed_ja)]
+対話自動評価で用いられるFEDデータセットをGoogle Cloud Translate API v2で日本語に翻訳したデータセット．
 
 ## Certification
 
@@ -127,6 +136,7 @@ ARIB形式の字幕を抽出するため，arib対応ffmpegをインストール
 Email: yubo1336[at]lr.pi.titech.ac.jp  
 Twitter: [@Sloth65557166](https://twitter.com/Sloth65557166)  
 GitHub: [@yuta0306](https://github.com/yuta0306)  
+connpass: [@yuta0306](https://connpass.com/user/yuta0306/)  
 Kaggle: [@yutasasaki](https://www.kaggle.com/yutasasaki)  
 LinkedIn: [Yuta SASAKI](https://www.linkedin.com/in/yuta-sasaki-170472226/)  
 Blog: [ゆうぼうの書跡棚](https://yuta0306.github.io/)
