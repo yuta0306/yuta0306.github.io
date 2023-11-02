@@ -1,12 +1,12 @@
 ---
-Title: '【論文まとめ】Disfluency Generation for More　Robust Dialogue Systems'
-Date: '2023-10-15'
+Title: '【論文まとめ】Disfluency Generation for More Robust Dialogue Systems'
+Date: '2023-10-19'
 Category: 論文
 Tags: [Speech Disfluency,DST,NLG]
 Authos: ゆうぼう
 Slug: Disfluency-Generation-for-More-Robust-Dialogue-Systems
 Thumbnail: /images/thumbnails/Disfluency-Generation-for-More-Robust-Dialogue-Systems.png
-Description: 'Disfluency Generation for More　Robust Dialogue Systemsのまとめ'
+Description: 'Disfluency Generation for More Robust Dialogue Systemsのまとめ'
 Published: true
 ---
 
@@ -16,7 +16,7 @@ Published: true
 
 ## 論文情報
 
-タイトル: Disfluency Generation for More　Robust Dialogue Systems
+タイトル: Disfluency Generation for More Robust Dialogue Systems
 
 研究会: ACL
 
@@ -44,13 +44,13 @@ DOI: [http://dx.doi.org/10.18653/v1/2023.findings-acl.728](http://dx.doi.org/10.
 
 以下が非流暢性のタイプと非流暢性による対話システムのエラーの例
 
-![](/images/article/Disfluency-Generation-for-More-Robust-Dialogue-Systems/evtotgu2.png)
+![](/images/article/Disfluency-Generation-for-More-Robust-Dialogue-Systems/csx3ec6k.png)
 
-![](/images/article/Disfluency-Generation-for-More-Robust-Dialogue-Systems/rhe52mqj.png)
+![](/images/article/Disfluency-Generation-for-More-Robust-Dialogue-Systems/6tbusut8.png)
 
 非流暢性の割合を分析した結果
 
-![](/images/article/Disfluency-Generation-for-More-Robust-Dialogue-Systems/6xrbquop.png)
+![](/images/article/Disfluency-Generation-for-More-Robust-Dialogue-Systems/kv3gxn5n.png)
 
 ## 提案手法
 
@@ -94,15 +94,15 @@ Paraphraserが積極的に非流暢な変換を行いすぎると，元の発話
 - 提案手法により，対話システムのロバスト性を向上
 ## 実験
 
-![](/images/article/Disfluency-Generation-for-More-Robust-Dialogue-Systems/m9bbczfi.png)
+![](/images/article/Disfluency-Generation-for-More-Robust-Dialogue-Systems/b9oc2ma7.png)
 
 Paraphraserと分類器の学習にはFisher Englishコーパスを使用
 
 
 
-SIMMC2でDRTとNLGを評価
+SIMMC2でDSTとNLGを評価
 
-![](/images/article/Disfluency-Generation-for-More-Robust-Dialogue-Systems/r29zg4uu.png)
+![](/images/article/Disfluency-Generation-for-More-Robust-Dialogue-Systems/u9vz9p6p.png)
 
 Original：オリジナルのSIMMC2で10エポック学習されたGPT2
 
