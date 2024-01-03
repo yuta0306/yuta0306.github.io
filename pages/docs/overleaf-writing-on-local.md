@@ -12,10 +12,7 @@ Published: true
 
 無料のOverleaf環境ではGitHub連携ができないなぁと思い、ローカルに紐づけて執筆して、執筆のバージョン管理を行いたいぁと思っていたら、しゅんけーさん（[@shunk031](https://twitter.com/shunk031)）の次のポストを発見！
 
-<!-- <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">書籍執筆で VSCode 上で Overleaf のファイルを編集できる拡張機能を使っているのですがやばすぎる。特に GitHub Copilot と組み合わせることでこれまで書いてきた文を元に suggest が効いてきて執筆効率が上がっています…<a href="https://t.co/RdOzcQZgzP">https://t.co/RdOzcQZgzP</a></p>&mdash; しゅんけー (@shunk031) <a href="https://twitter.com/shunk031/status/1731665542942240826?ref_src=twsrc%5Etfw">December 4, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-> 書籍執筆で VSCode 上で Overleaf のファイルを編集できる拡張機能を使っているのですがやばすぎる。特に GitHub Copilot と組み合わせることでこれまで書いてきた文を元に suggest が効いてきて執筆効率が上がっています…<a href="https://t.co/RdOzcQZgzP">https://t.co/RdOzcQZgzP</a>
-> 
-> &mdash; しゅんけー (@shunk031) December 4, 2023
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">書籍執筆で VSCode 上で Overleaf のファイルを編集できる拡張機能を使っているのですがやばすぎる。特に GitHub Copilot と組み合わせることでこれまで書いてきた文を元に suggest が効いてきて執筆効率が上がっています…<a href="https://t.co/RdOzcQZgzP">https://t.co/RdOzcQZgzP</a></p>&mdash; しゅんけー (@shunk031) <a href="https://twitter.com/shunk031/status/1731665542942240826?ref_src=twsrc%5Etfw">December 4, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 なんだかこれは良さそうな雰囲気！！
 
