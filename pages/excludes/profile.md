@@ -4,9 +4,8 @@ title: About Me
 
 ## Bio
 
-I am a graduate student at Tokyo Institute of Technology.  
-I would like to research into human-like dialogue systems, and build my career to develop the society where humans and AI cooperate with each other.  
-I'm wating for the invitation for internships and collaborative research.  
+I am a graduate student at the Tokyo Institute of Technology.  
+I would like to research human-like dialogue systems and build my career to develop a society where humans and AI cooperate. I'm waiting for the invitation for internships and collaborative research.  
 Please feel free to contact me!
 
 
@@ -35,6 +34,7 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
    - Acceptance rate ?% (FYI, 20.4% in DEXA 2019)
    - Online presentation
 2. Jianwei Zhang, Takeru Oda, **Yuta Sasaki**, Lin Li. Link Prediction in Dynamic Networks by Combining GIN with LSTM. [The 12th International Joint Conference on Knowledge Graphs (IJCKG 2023)](https://ijckg2023.knowledge-graph.jp/index.html). [[paper](https://ijckg2023.knowledge-graph.jp/pages/proc/paper_14.pdf)]
+3. Coming soon...
 
 ### Domestic Conference (Japanese)
 
@@ -46,6 +46,7 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
 6. **佐々木 裕多**, 張 建偉. 漫才対話の収集及び自動アノテーションのパイプラインの検討. [言語処理学会第29回年次大会 (NLP 2023)](https://www.anlp.jp/proceedings/annual_meeting/2023/). [[paper](https://www.anlp.jp/proceedings/annual_meeting/2023/pdf_dir/Q4-14.pdf)]
 7. 片岸 祥帆, 小原 涼馬, **佐々木 裕多**, 荒木 健治. 漫才対話構造の分析手法の検討. NLP若手の会 (YANS) 第18回シンポジウム. [[poster](https://drive.google.com/file/d/1YNA8Wh2uIF4WnTgXJsglse9THV90aBZq/view?usp=sharing)]
 8. 東中竜一郎, 高橋哲朗, 稲葉通将, 斉志揚, **佐々木裕多**, 船越孝太郎, 守屋彰二, 佐藤志貴, 港隆史, 境くりま, 船山智, 小室允人, 西川寛之, 牧野遼作, 菊池浩史, 宇佐美まゆみ. 対話システムライブコンペティション6. [第99回人工知能学会 言語・音声理解と対話処理研究会 (第14回対話システムシンポジウム 2023)](https://jsai-slud.github.io/sig-slud/99th-sig.html)
+9. Coming Soon...
 
 ## Education
 
@@ -57,13 +58,13 @@ human-likeな対話システムの研究に従事し，人間とAIの共生社�
 **Bachelor of Iwate University, Iwate, Japan / 岩手大学**  
 *School of Computer, Intelligence and Media Technology, Department of Systems Innovation Engineering, Faculty of Science and Engineering / 理工学部 システム創成工学科 知能メディア・情報コース*
 
-## Scholorship
+## Scholarship
 
 1. 岩手大学理工学部修学支援奨学金 (令和3年4月 - 令和4年3月)
 
 ## Job Experience
 
-Comming soon...
+Coming soon...
 
 ## Internship
 
@@ -88,6 +89,7 @@ LLMなど
 - [対話システムライブコンペティション6オーガナイザ](https://sites.google.com/view/dslc6)
 - [INTERSPEECH2023論文読み会登壇](https://icasspeech.connpass.com/event/292978/)
 - [SIGDIAL2023&SemDial2023論文読み会運営](https://dialog-paper.connpass.com/event/297411/)
+- [対話論文読み会@電通大](https://speakerdeck.com/yuta0306/generative-spoken-dialogue-language-modeling-dui-hua-lun-wen-du-mihui-at-dian-tong-da)
 
 ## Software
 
@@ -131,7 +133,7 @@ ARIB形式の字幕を抽出するため，arib対応ffmpegをインストール
 - Flask
 - Pytorch / Pytorch Lightning
 - Pelican (SSG with Python)
-- React / Next.js (These framework are used in this blog)
+- React / Next.js (These frameworks are used in this blog)
 
 ## Contact
 
@@ -139,6 +141,7 @@ Email: yubo1336[at]lr.pi.titech.ac.jp
 Twitter: [@Sloth65557166](https://twitter.com/Sloth65557166)  
 GitHub: [@yuta0306](https://github.com/yuta0306)  
 connpass: [@yuta0306](https://connpass.com/user/yuta0306/)  
+Speaker Deck:  [@Yubo](https://speakerdeck.com/yuta0306)  
 Kaggle: [@yutasasaki](https://www.kaggle.com/yutasasaki)  
 LinkedIn: [Yuta SASAKI](https://www.linkedin.com/in/yuta-sasaki-170472226/)  
 Blog: [ゆうぼうの書跡棚](https://yuta0306.github.io/)
